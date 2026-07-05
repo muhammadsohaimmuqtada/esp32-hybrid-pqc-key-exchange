@@ -1,0 +1,1291 @@
+Executing action: monitor
+Serial port /dev/ttyUSB0
+Connecting......
+Detecting chip type... ESP32
+Running idf_monitor in directory /home/kali/Downloads/Tools/esp32_hybrid_pqc/firmware
+Executing "/home/kali/.espressif/python_env/idf5.4_py3.13_env/bin/python /home/kali/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB0 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/kali/Downloads/Tools/esp32_hybrid_pqc/firmware/build/esp32_hybrid_pqc.elf -m '/home/kali/.espressif/python_env/idf5.4_py3.13_env/bin/python' '/home/kali/esp/esp-idf/tools/idf.py'"...
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6276
+load:0x40078000,len:15716
+load:0x40080400,len:4
+ho 8 tail 4 room 4
+load:0x40080404,len:3860
+entry 0x4008063c
+[0;32mI (31) boot: ESP-IDF v5.4 2nd stage bootloader[0m
+[0;32mI (31) boot: compile time Jun 12 2026 01:45:15[0m
+[0;32mI (31) boot: Multicore bootloader[0m
+[0;32mI (32) boot: chip revision: v3.1[0m
+[0;32mI (35) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (39) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (42) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (46) boot: Enabling RNG early entropy source...[0m
+[0;32mI (50) boot: Partition Table:[0m
+[0;32mI (53) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (59) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (66) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (72) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (79) boot: End of partition table[0m
+[0;32mI (82) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=1e6ech (124652) map[0m
+[0;32mI (132) esp_image: segment 1: paddr=0002e714 vaddr=3ff80000 size=0001ch (    28) load[0m
+[0;32mI (133) esp_image: segment 2: paddr=0002e738 vaddr=3ffb0000 size=018e0h (  6368) load[0m
+[0;32mI (139) esp_image: segment 3: paddr=00030020 vaddr=400d0020 size=9d030h (643120) map[0m
+[0;32mI (363) esp_image: segment 4: paddr=000cd058 vaddr=3ffb18e0 size=02504h (  9476) load[0m
+[0;32mI (367) esp_image: segment 5: paddr=000cf564 vaddr=40080000 size=16b98h ( 93080) load[0m
+[0;32mI (414) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (414) boot: Disabling RNG early entropy source...[0m
+[0;32mI (425) cpu_start: Multicore app[0m
+[0;32mI (433) cpu_start: Pro cpu start user code[0m
+[0;32mI (433) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (433) app_init: Application information:[0m
+[0;32mI (433) app_init: Project name:     esp32_hybrid_pqc[0m
+[0;32mI (438) app_init: App version:      b0d29df-dirty[0m
+[0;32mI (442) app_init: Compile time:     Jun 23 2026 13:11:18[0m
+[0;32mI (447) app_init: ELF file SHA256:  5ea0942d1...[0m
+[0;32mI (452) app_init: ESP-IDF:          v5.4[0m
+[0;32mI (455) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (459) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (463) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (467) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (473) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (478) heap_init: At 3FFB8638 len 000279C8 (158 KiB): DRAM[0m
+[0;32mI (484) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (489) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (495) heap_init: At 40096B98 len 00009468 (37 KiB): IRAM[0m
+[0;32mI (501) spi_flash: detected chip: generic[0m
+[0;32mI (503) spi_flash: flash io: dio[0m
+[0;32mI (507) main_task: Started on CPU0[0m
+[0;32mI (510) main_task: Calling app_main()[0m
+[0;32mI (533) PQC_MAIN: [0m
+[0;32mI (533) PQC_MAIN: ╔══════════════════════════════════════════════════════════╗[0m
+[0;32mI (541) PQC_MAIN: ║    HYBRID POST-QUANTUM CRYPTOGRAPHY — ESP32 EDGE       ║[0m
+[0;32mI (549) PQC_MAIN: ║    X25519 + ML-KEM-512 (FIPS 203) + HKDF-SHA256        ║[0m
+[0;32mI (556) PQC_MAIN: ╠══════════════════════════════════════════════════════════╣[0m
+[0;32mI (573) PQC_MAIN: ║  Chip:    ESP32 rev 301, 2 cores @ 240 MHz             ║[0m
+[0;32mI (580) PQC_MAIN: ║  SRAM:    520 KB                                        ║[0m
+[0;32mI (587) PQC_MAIN: ║  Flash:   4 MB                                          ║[0m
+[0;32mI (595) PQC_MAIN: ║  Free heap: 271144 bytes                                   ║[0m
+[0;32mI (602) PQC_MAIN: ╚══════════════════════════════════════════════════════════╝[0m
+[0;32mI (619) PQC_MAIN: [0m
+[0;32mI (625) wifi:wifi driver task: 3ffc1f38, prio:23, stack:6656, core=0[0m
+[0;32mI (640) wifi:wifi firmware version: 48ea317a7[0m
+[0;32mI (641) wifi:wifi certification version: v7.0[0m
+[0;32mI (641) wifi:config NVS flash: enabled[0m
+[0;32mI (641) wifi:config nano formatting: disabled[0m
+[0;32mI (646) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (650) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (654) wifi:Init management short buffer num: 32[0m
+[0;32mI (659) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (663) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (667) wifi:Init static rx buffer num: 10[0m
+[0;32mI (671) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (676) wifi_init: rx ba win: 6[0m
+[0;32mI (677) wifi_init: accept mbox: 6[0m
+[0;32mI (680) wifi_init: tcpip mbox: 32[0m
+[0;32mI (683) wifi_init: udp mbox: 6[0m
+[0;32mI (686) wifi_init: tcp mbox: 6[0m
+[0;32mI (689) wifi_init: tcp tx win: 5760[0m
+[0;32mI (692) wifi_init: tcp rx win: 5760[0m
+[0;32mI (695) wifi_init: tcp mss: 1440[0m
+[0;32mI (698) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (702) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (708) phy_init: phy_version 4840,02e0d70,Sep  2 2024,19:39:07[0m
+[0;32mI (795) wifi:mode : sta (5c:01:3b:be:bc:58)[0m
+[0;32mI (796) wifi:enable tsf[0m
+[0;32mI (798) PQC_MAIN: Connecting to Wi-Fi SSID: Bomboclattt[0m
+[0;32mI (3216) PQC_MAIN: Retrying Wi-Fi connection (1/10)...[0m
+[0;32mI (5631) PQC_MAIN: Retrying Wi-Fi connection (2/10)...[0m
+[0;32mI (8045) PQC_MAIN: Retrying Wi-Fi connection (3/10)...[0m
+[0;32mI (10460) PQC_MAIN: Retrying Wi-Fi connection (4/10)...[0m
+[0;32mI (12875) PQC_MAIN: Retrying Wi-Fi connection (5/10)...[0m
+[0;32mI (15289) PQC_MAIN: Retrying Wi-Fi connection (6/10)...[0m
+[0;32mI (17704) PQC_MAIN: Retrying Wi-Fi connection (7/10)...[0m
+[0;32mI (20118) PQC_MAIN: Retrying Wi-Fi connection (8/10)...[0m
+[0;32mI (22533) PQC_MAIN: Retrying Wi-Fi connection (9/10)...[0m
+[0;32mI (24947) PQC_MAIN: Retrying Wi-Fi connection (10/10)...[0m
+[1;31mE (27360) PQC_MAIN: Wi-Fi connection failed after 10 retries[0m
+[1;31mE (27360) PQC_MAIN: Wi-Fi connection failed[0m
+[0;32mI (27360) main_task: Returned from app_main()[0m
+[0;32mI (27360) PQC_MAIN: Starting Hybrid PQC task...[0m
+[0;32mI (27367) PQC_MAIN: Testing public internet connectivity: connecting to http://www.google.com...[0m
+[1;31mE (27377) esp-tls: couldn't get hostname for :www.google.com: getaddrinfo() returns 202, addrinfo=0x0[0m
+[1;31mE (27384) transport_base: Failed to open a new connection: 32769[0m
+[1;31mE (27390) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (27394) PQC_MAIN: Google connection failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (27400) PQC_MAIN: === Executing 100-Iteration Q1 Journal Benchmark Suite ===[0m
+[0;32mI (27407) BENCHMARK: === Benchmarking PQC (ML-KEM-512) (100 iterations) ===[0m
+[0;32mI (27423) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 9315 us, 1490433 cycles[0m
+[0;32mI (27423) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (27429) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (27438) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (27449) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (27453) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (27458) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (27463) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (27468) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (27475) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (27479) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (27493) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8788 us, 1406021 cycles[0m
+[0;32mI (27494) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (27500) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (27508) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (27520) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (27524) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (27529) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (27533) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (27539) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (27546) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (27550) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (27564) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8802 us, 1408197 cycles[0m
+[0;32mI (27564) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (27570) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (27579) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (27591) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (27594) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (27599) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (27604) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (27610) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (27616) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (27621) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (27635) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8783 us, 1405169 cycles[0m
+[0;32mI (27635) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (27641) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (27650) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (27661) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (27665) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (27670) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (27675) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (27681) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (27687) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (27692) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (27706) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8808 us, 1409179 cycles[0m
+[0;32mI (27706) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (27712) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (27721) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (27732) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (27736) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (27741) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (27746) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (27751) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (27758) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (27762) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (27776) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8790 us, 1406239 cycles[0m
+[0;32mI (27777) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (27783) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (27791) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (27803) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (27806) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (27812) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (27816) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (27822) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (27829) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (27833) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (27847) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8800 us, 1407899 cycles[0m
+[0;32mI (27847) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (27853) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (27862) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (27874) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (27877) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (27882) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (27887) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (27893) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (27899) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (27904) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (27918) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8785 us, 1405591 cycles[0m
+[0;32mI (27918) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (27924) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (27933) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (27944) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (27948) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (27953) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (27958) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (27964) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (27970) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (27974) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (27989) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8810 us, 1409541 cycles[0m
+[0;32mI (27989) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (27995) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (28004) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (28015) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (28019) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (28024) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (28029) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (28034) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (28041) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (28045) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (28059) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8787 us, 1405933 cycles[0m
+[0;32mI (28060) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (28066) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (28074) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (28086) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (28089) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (28095) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (28099) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (28105) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (28111) CRYPTO_HYBRID: All key material zeroized[0m
+[0;32mI (28116) BENCHMARK:   Progress: 10/100 (last: 14.48 ms)[0m
+[1;31mE (28121) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (28135) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8830 us, 1412701 cycles[0m
+[0;32mI (28135) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (28141) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (28150) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (28162) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (28165) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (28170) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (28175) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (28181) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (28187) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (28192) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (28206) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8821 us, 1411255 cycles[0m
+[0;32mI (28206) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (28212) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (28221) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (28233) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (28236) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (28241) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (28246) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (28252) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (28258) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (28263) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (28277) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8808 us, 1409231 cycles[0m
+[0;32mI (28277) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (28283) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (28292) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (28303) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (28307) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (28312) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (28317) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (28322) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (28329) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (28333) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (28347) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8793 us, 1406927 cycles[0m
+[0;32mI (28348) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (28354) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (28362) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (28374) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (28377) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (28383) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (28387) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (28393) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (28400) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (28404) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (28418) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8799 us, 1407791 cycles[0m
+[0;32mI (28418) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (28424) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (28433) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (28445) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (28448) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (28453) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (28458) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (28464) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (28470) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (28475) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (28489) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8794 us, 1406971 cycles[0m
+[0;32mI (28489) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (28495) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (28504) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (28515) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (28519) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (28524) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (28529) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (28535) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (28541) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (28545) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (28560) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8808 us, 1409225 cycles[0m
+[0;32mI (28560) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (28566) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (28575) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (28586) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (28590) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (28595) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (28600) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (28605) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (28612) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (28616) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (28630) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8795 us, 1407135 cycles[0m
+[0;32mI (28631) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (28637) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (28645) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (28657) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (28660) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (28666) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (28670) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (28676) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (28682) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (28687) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (28701) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8805 us, 1408751 cycles[0m
+[0;32mI (28701) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (28707) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (28716) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (28728) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (28731) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (28736) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (28741) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (28747) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (28753) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (28758) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (28772) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8797 us, 1407295 cycles[0m
+[0;32mI (28772) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (28778) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (28787) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (28798) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (28802) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (28807) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (28812) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (28818) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (28824) CRYPTO_HYBRID: All key material zeroized[0m
+[0;32mI (28828) BENCHMARK:   Progress: 20/100 (last: 14.48 ms)[0m
+[1;31mE (28833) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (28848) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8834 us, 1413297 cycles[0m
+[0;32mI (28848) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (28854) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (28863) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (28874) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (28878) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (28883) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (28888) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (28893) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (28900) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (28904) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (28918) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8824 us, 1411741 cycles[0m
+[0;32mI (28919) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (28925) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (28933) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (28945) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (28948) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (28954) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (28958) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (28964) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (28971) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (28975) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (28989) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8799 us, 1407773 cycles[0m
+[0;32mI (28989) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (28995) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (29004) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (29016) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (29019) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (29024) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (29029) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (29035) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (29041) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (29046) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (29060) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8790 us, 1406181 cycles[0m
+[0;32mI (29060) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (29066) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (29075) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (29086) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (29090) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (29095) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (29100) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (29106) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (29112) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (29117) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (29131) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8809 us, 1409385 cycles[0m
+[0;32mI (29131) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (29137) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (29146) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (29157) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (29161) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (29166) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (29171) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (29176) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (29183) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (29187) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (29201) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8796 us, 1407227 cycles[0m
+[0;32mI (29202) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (29208) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (29216) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (29228) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (29231) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (29237) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (29241) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (29247) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (29253) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (29258) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (29272) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8808 us, 1409243 cycles[0m
+[0;32mI (29272) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (29278) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (29287) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (29299) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (29302) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (29307) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (29312) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (29318) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (29324) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (29329) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (29343) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8794 us, 1406995 cycles[0m
+[0;32mI (29343) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (29349) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (29358) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (29369) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (29373) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (29378) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (29383) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (29389) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (29395) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (29399) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (29413) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8807 us, 1408885 cycles[0m
+[0;32mI (29414) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (29420) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (29429) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (29440) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (29444) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (29449) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (29454) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (29459) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (29466) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (29470) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (29484) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8798 us, 1407503 cycles[0m
+[0;32mI (29485) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (29491) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (29499) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (29511) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (29514) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (29520) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (29524) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (29530) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (29536) CRYPTO_HYBRID: All key material zeroized[0m
+[0;32mI (29541) BENCHMARK:   Progress: 30/100 (last: 14.48 ms)[0m
+[1;31mE (29546) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (29560) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8831 us, 1412911 cycles[0m
+[0;32mI (29560) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (29566) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (29575) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (29587) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (29590) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (29595) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (29600) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (29606) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (29612) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (29617) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (29631) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8823 us, 1411658 cycles[0m
+[0;32mI (29631) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (29637) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (29646) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (29658) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (29661) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (29666) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (29671) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (29677) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (29683) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (29688) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (29702) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8810 us, 1409410 cycles[0m
+[0;32mI (29702) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (29708) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (29717) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (29728) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (29732) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (29737) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (29742) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (29747) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (29754) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (29758) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (29772) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8793 us, 1406681 cycles[0m
+[0;32mI (29773) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (29779) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (29787) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (29799) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (29802) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (29808) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (29812) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (29818) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (29824) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (29829) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (29843) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8812 us, 1409735 cycles[0m
+[0;32mI (29843) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (29849) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (29858) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (29870) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (29873) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (29878) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (29883) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (29889) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (29895) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (29900) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (29914) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8793 us, 1406813 cycles[0m
+[0;32mI (29914) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (29920) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (29929) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (29940) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (29944) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (29949) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (29954) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (29960) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (29966) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (29970) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (29984) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8806 us, 1408971 cycles[0m
+[0;32mI (29985) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (29991) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (30000) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (30011) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (30015) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (30020) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (30025) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (30030) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (30037) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (30041) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (30055) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8794 us, 1406837 cycles[0m
+[0;32mI (30056) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (30062) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (30070) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (30082) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (30085) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (30091) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (30095) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (30101) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (30107) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (30112) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (30126) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8809 us, 1409337 cycles[0m
+[0;32mI (30126) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (30132) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (30141) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (30153) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (30156) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (30161) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (30166) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (30172) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (30178) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (30183) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (30197) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8792 us, 1406611 cycles[0m
+[0;32mI (30197) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (30203) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (30212) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (30223) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (30227) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (30232) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (30237) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (30242) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (30249) CRYPTO_HYBRID: All key material zeroized[0m
+[0;32mI (30253) BENCHMARK:   Progress: 40/100 (last: 14.48 ms)[0m
+[1;31mE (30258) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (30273) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8834 us, 1413421 cycles[0m
+[0;32mI (30273) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (30279) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (30288) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (30299) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (30303) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (30308) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (30313) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (30318) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (30325) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (30329) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (30343) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8825 us, 1411873 cycles[0m
+[0;32mI (30344) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (30350) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (30358) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (30370) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (30373) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (30379) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (30383) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (30389) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (30395) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (30400) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (30414) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8808 us, 1409125 cycles[0m
+[0;32mI (30414) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (30420) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (30429) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (30441) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (30444) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (30449) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (30454) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (30460) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (30466) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (30471) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (30485) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8795 us, 1407063 cycles[0m
+[0;32mI (30485) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (30491) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (30500) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (30511) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (30515) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (30520) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (30525) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (30531) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (30537) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (30541) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (30556) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8809 us, 1409419 cycles[0m
+[0;32mI (30556) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (30562) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (30571) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (30582) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (30586) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (30591) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (30596) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (30601) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (30608) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (30612) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (30626) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8799 us, 1407743 cycles[0m
+[0;32mI (30627) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (30633) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (30641) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (30653) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (30656) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (30662) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (30666) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (30672) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (30678) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (30683) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (30697) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 9005 us, 1440693 cycles[0m
+[0;32mI (30697) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (30703) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (30712) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (30724) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (30727) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (30732) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (30737) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (30743) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (30749) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (30754) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (30768) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8796 us, 1407137 cycles[0m
+[0;32mI (30768) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (30774) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (30783) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (30794) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (30798) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (30803) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (30808) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (30813) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (30820) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (30824) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (30838) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8804 us, 1408441 cycles[0m
+[0;32mI (30839) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (30845) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (30854) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (30865) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (30869) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (30874) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (30879) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (30884) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (30891) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (30895) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (30909) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8798 us, 1407511 cycles[0m
+[0;32mI (30910) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (30916) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (30924) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (30936) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (30939) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (30945) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (30949) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (30955) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (30961) CRYPTO_HYBRID: All key material zeroized[0m
+[0;32mI (30966) BENCHMARK:   Progress: 50/100 (last: 14.48 ms)[0m
+[1;31mE (30971) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (30985) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8826 us, 1412051 cycles[0m
+[0;32mI (30985) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (30991) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (31000) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (31012) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (31015) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (31020) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (31025) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (31031) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (31037) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (31042) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (31056) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8818 us, 1410761 cycles[0m
+[0;32mI (31056) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (31062) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (31071) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (31082) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (31086) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (31091) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (31096) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (31102) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (31108) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (31112) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (31126) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8802 us, 1408253 cycles[0m
+[0;32mI (31127) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (31133) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (31142) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (31153) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (31157) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (31162) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (31167) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (31172) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (31179) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (31183) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (31197) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8795 us, 1407111 cycles[0m
+[0;32mI (31198) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (31204) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (31212) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (31224) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (31227) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (31233) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (31237) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (31243) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (31249) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (31254) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (31268) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8804 us, 1408535 cycles[0m
+[0;32mI (31268) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (31274) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (31283) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (31295) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (31298) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (31303) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (31308) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (31314) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (31320) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (31325) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (31339) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8794 us, 1406931 cycles[0m
+[0;32mI (31339) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (31345) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (31354) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (31365) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (31369) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (31374) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (31379) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (31384) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (31391) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (31395) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (31409) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8803 us, 1408253 cycles[0m
+[0;32mI (31410) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (31416) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (31425) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (31436) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (31440) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (31445) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (31450) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (31455) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (31462) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (31466) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (31480) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8795 us, 1406994 cycles[0m
+[0;32mI (31481) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (31487) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (31495) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (31507) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (31510) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (31516) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (31520) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (31526) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (31532) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (31537) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (31551) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8806 us, 1408853 cycles[0m
+[0;32mI (31551) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (31557) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (31566) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (31578) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (31581) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (31586) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (31591) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (31597) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (31603) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (31608) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (31622) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8794 us, 1406987 cycles[0m
+[0;32mI (31622) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (31628) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (31637) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (31648) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (31652) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (31657) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (31662) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (31667) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (31674) CRYPTO_HYBRID: All key material zeroized[0m
+[0;32mI (31678) BENCHMARK:   Progress: 60/100 (last: 14.48 ms)[0m
+[1;31mE (31683) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (31698) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8834 us, 1413237 cycles[0m
+[0;32mI (31698) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (31704) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (31713) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (31724) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (31728) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (31733) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (31738) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (31743) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (31750) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (31754) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (31768) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 9029 us, 1444451 cycles[0m
+[0;32mI (31769) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (31775) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (31783) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (31795) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (31798) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (31804) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (31808) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (31814) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (31820) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (31825) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (31839) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8806 us, 1408879 cycles[0m
+[0;32mI (31839) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (31845) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (31854) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (31866) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (31869) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (31874) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (31879) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (31885) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (31891) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (31896) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (31910) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8793 us, 1406747 cycles[0m
+[0;32mI (31910) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (31916) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (31925) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (31936) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (31940) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (31945) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (31950) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (31955) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (31962) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (31966) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (31980) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8804 us, 1408635 cycles[0m
+[0;32mI (31981) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (31987) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (31996) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (32007) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (32011) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (32016) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (32021) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (32026) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (32033) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (32037) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (32051) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8795 us, 1407254 cycles[0m
+[0;32mI (32052) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (32058) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (32066) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (32078) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (32081) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (32087) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (32091) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (32097) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (32103) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (32108) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (32122) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8805 us, 1408657 cycles[0m
+[0;32mI (32122) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (32128) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (32137) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (32149) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (32152) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (32157) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (32162) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (32168) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (32174) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (32179) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (32193) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8790 us, 1406335 cycles[0m
+[0;32mI (32193) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (32199) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (32208) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (32219) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (32223) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (32228) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (32233) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (32238) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (32245) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (32249) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (32263) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8806 us, 1408913 cycles[0m
+[0;32mI (32264) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (32270) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (32279) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (32290) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (32294) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (32299) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (32304) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (32309) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (32316) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (32320) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (32334) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8790 us, 1406253 cycles[0m
+[0;32mI (32335) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (32341) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (32349) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (32361) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (32364) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (32370) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (32374) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (32380) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (32386) CRYPTO_HYBRID: All key material zeroized[0m
+[0;32mI (32391) BENCHMARK:   Progress: 70/100 (last: 14.47 ms)[0m
+[1;31mE (32396) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (32410) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 9059 us, 1449261 cycles[0m
+[0;32mI (32411) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (32416) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (32425) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (32437) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (32440) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (32445) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (32450) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (32456) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (32462) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (32467) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (32481) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8820 us, 1411053 cycles[0m
+[0;32mI (32481) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (32487) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (32496) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (32507) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (32511) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (32516) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (32521) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (32526) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (32533) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (32537) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (32551) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8803 us, 1408427 cycles[0m
+[0;32mI (32552) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (32558) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (32567) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (32578) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (32582) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (32587) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (32592) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (32597) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (32604) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (32608) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (32622) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8794 us, 1406892 cycles[0m
+[0;32mI (32623) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (32629) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (32637) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (32649) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (32652) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (32658) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (32662) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (32668) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (32674) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (32679) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (32693) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8804 us, 1408639 cycles[0m
+[0;32mI (32693) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (32699) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (32708) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (32720) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (32723) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (32728) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (32733) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (32739) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (32745) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (32750) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (32764) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8790 us, 1406297 cycles[0m
+[0;32mI (32764) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (32770) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (32779) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (32790) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (32794) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (32799) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (32804) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (32809) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (32816) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (32820) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (32834) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8808 us, 1409233 cycles[0m
+[0;32mI (32835) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (32841) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (32850) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (32861) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (32865) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (32870) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (32875) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (32880) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (32887) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (32891) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (32905) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8790 us, 1406185 cycles[0m
+[0;32mI (32905) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (32912) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (32920) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (32932) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (32935) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (32941) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (32945) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (32951) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (32957) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (32962) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (32976) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8809 us, 1409345 cycles[0m
+[0;32mI (32976) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (32982) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (32991) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (33003) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (33006) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (33011) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (33016) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (33022) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (33028) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (33033) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (33047) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8801 us, 1408111 cycles[0m
+[0;32mI (33047) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (33053) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (33062) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (33073) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (33077) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (33082) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (33087) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (33092) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (33099) CRYPTO_HYBRID: All key material zeroized[0m
+[0;32mI (33103) BENCHMARK:   Progress: 80/100 (last: 14.48 ms)[0m
+[1;31mE (33108) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (33123) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8829 us, 1412453 cycles[0m
+[0;32mI (33123) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (33129) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (33138) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (33149) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (33153) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (33158) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (33163) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (33168) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (33175) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (33179) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (33193) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8828 us, 1412329 cycles[0m
+[0;32mI (33194) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (33200) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (33208) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (33220) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (33223) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (33229) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (33233) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (33239) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (33245) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (33250) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (33264) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8800 us, 1407923 cycles[0m
+[0;32mI (33264) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (33270) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (33279) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (33291) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (33294) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (33299) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (33304) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (33310) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (33316) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (33321) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (33335) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8794 us, 1407011 cycles[0m
+[0;32mI (33335) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (33341) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (33350) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (33361) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (33365) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (33370) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (33375) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (33380) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (33387) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (33391) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (33405) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8803 us, 1408387 cycles[0m
+[0;32mI (33406) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (33412) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (33421) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (33432) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (33436) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (33441) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (33446) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (33451) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (33458) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (33462) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (33476) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8794 us, 1406929 cycles[0m
+[0;32mI (33477) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (33483) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (33491) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (33503) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (33506) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (33512) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (33516) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (33522) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (33528) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (33533) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (33547) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8805 us, 1408655 cycles[0m
+[0;32mI (33547) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (33553) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (33562) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (33574) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (33577) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (33582) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (33587) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (33593) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (33599) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (33604) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (33618) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8797 us, 1407493 cycles[0m
+[0;32mI (33618) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (33624) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (33633) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (33644) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (33648) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (33653) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (33658) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (33663) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (33670) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (33674) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (33688) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8807 us, 1409021 cycles[0m
+[0;32mI (33689) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (33695) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (33703) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (33715) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (33719) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (33724) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (33729) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (33734) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (33741) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (33745) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (33759) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8791 us, 1406563 cycles[0m
+[0;32mI (33759) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (33766) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (33774) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (33786) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (33789) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (33795) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (33799) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (33805) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (33811) CRYPTO_HYBRID: All key material zeroized[0m
+[0;32mI (33816) BENCHMARK:   Progress: 90/100 (last: 14.47 ms)[0m
+[1;31mE (33821) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (33835) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8827 us, 1412159 cycles[0m
+[0;32mI (33835) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (33841) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (33850) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (33862) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (33865) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (33870) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (33875) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (33881) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (33887) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (33892) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (33906) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8826 us, 1412123 cycles[0m
+[0;32mI (33906) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (33912) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (33921) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (33932) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (33936) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (33941) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (33946) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (33951) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (33958) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (33962) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (33976) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8801 us, 1408199 cycles[0m
+[0;32mI (33977) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (33983) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (33992) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (34003) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (34007) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (34012) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (34017) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (34022) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (34029) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (34033) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (34047) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8802 us, 1408267 cycles[0m
+[0;32mI (34048) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (34054) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (34062) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (34074) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (34077) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (34083) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (34087) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (34093) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (34099) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (34104) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (34118) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8807 us, 1408961 cycles[0m
+[0;32mI (34118) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (34124) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (34133) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (34145) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (34148) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (34153) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (34158) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (34164) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (34170) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (34175) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (34189) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8795 us, 1407005 cycles[0m
+[0;32mI (34189) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (34195) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (34204) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (34215) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (34219) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (34224) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (34229) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (34234) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (34241) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (34245) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (34259) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8803 us, 1408433 cycles[0m
+[0;32mI (34260) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (34266) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (34274) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (34286) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (34290) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (34295) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (34300) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (34305) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (34312) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (34316) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (34330) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8792 us, 1406535 cycles[0m
+[0;32mI (34330) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (34337) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (34345) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (34357) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (34360) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (34366) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (34370) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (34376) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (34382) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (34387) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (34401) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8803 us, 1408397 cycles[0m
+[0;32mI (34401) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (34407) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (34416) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (34428) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (34431) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (34436) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (34441) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (34447) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (34453) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (34458) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (34472) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8790 us, 1406191 cycles[0m
+[0;32mI (34472) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (34478) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[0;32mI (34487) CRYPTO_HYBRID: Packed 833 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-512)[0m
+[1;31mE (34498) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (34502) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (34507) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (34512) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (34517) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (34524) CRYPTO_HYBRID: All key material zeroized[0m
+[0;32mI (34528) BENCHMARK:   Progress: 100/100 (last: 14.48 ms)[0m
+[1;31mE (34534) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (34539) BENCHMARK:   Completed: mean=14.48 ms, stddev=0.010 ms[0m
+[0;32mI (34545) BENCHMARK: [0m
+[0;32mI (34547) BENCHMARK: ╔══════════════════════════════════════════════════════════════════╗[0m
+[0;32mI (34566) BENCHMARK: ║          HYBRID PQC BENCHMARK RESULTS — ESP32-D0WD-V3           ║[0m
+[0;32mI (34575) BENCHMARK: ╠══════════════════════════════════════════════════════════════════╣[0m
+[0;32mI (34594) BENCHMARK: ║ Metric         │ Classical    │ PQC          │ Hybrid           ║[0m
+[0;32mI (34603) BENCHMARK: ╠════════════════╪══════════════╪══════════════╪══════════════════╣[0m
+[0;32mI (34622) BENCHMARK: ║ Latency (ms)   │    14.48     │     2.21     │     0.00         ║[0m
+[0;32mI (34631) BENCHMARK: ║ Peak RAM (KB)  │      0.0     │      0.0     │      0.0         ║[0m
+[0;32mI (34640) BENCHMARK: ║ Payload (B)    │     1713     │        0     │        0         ║[0m
+[0;32mI (34648) BENCHMARK: ║ CPU Cycles     │  9764316     │        0     │        0         ║[0m
+[0;32mI (34657) BENCHMARK: ╚══════════════════════════════════════════════════════════════════╝[0m
+[0;32mI (34677) BENCHMARK: [0m
+[1;31mE (34682) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (34685) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (34690) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (34695) BENCHMARK: Failed to send benchmark results to server[0m
+[0;32mI (34701) BENCHMARK: === Running Standard mbedTLS (TLS 1.3) Baseline Benchmark ===[0m
+[1;31mE (34866) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[1;31mE (35020) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[1;31mE (35175) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[1;31mE (35329) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[1;31mE (35484) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (35484) BENCHMARK: [0m
+[0;32mI (35484) BENCHMARK: ╔═════════════════════════════════════════════════════════════════════════════════════════════════╗[0m
+[0;32mI (35508) BENCHMARK: ║                  STANDARD mbedTLS (TLS 1.3) vs HYBRID PQC BASELINE COMPARISON                   ║[0m
+[0;32mI (35519) BENCHMARK: ╠═════════════════════════════════╤══════════╤══════════════╤═════════════╤═════════════════════╣[0m
+[0;32mI (35546) BENCHMARK: ║ Protocol                        │ RAM (KB) │ Latency (ms) │ Energy (mJ) │ Total Cycles        ║[0m
+[0;32mI (35557) BENCHMARK: ╠═════════════════════════════════╪══════════╪══════════════╪═════════════╪═════════════════════╣[0m
+[0;32mI (35585) BENCHMARK: ║ Standard mbedTLS (TLS 1.3)      │     49.0 │        773.7 │      357.46 │           371391753 ║[0m
+[0;32mI (35596) BENCHMARK: ║ This Work (ML-KEM-512 + X25519) │     13.8 │         21.3 │        9.84 │             4730000 ║[0m
+[0;32mI (35608) BENCHMARK: ╚═════════════════════════════════╧══════════╧══════════════╧═════════════╧═════════════════════╝[0m
+[0;32mI (35635) BENCHMARK: [0m
+[0;32mI (35637) PQC_MAIN: [0m
+[0;32mI (35639) PQC_MAIN: === Starting continuous hybrid telemetry ===[0m
+[1;31mE (35645) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (35917) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 267200 us, 42751311 cycles[0m
+[0;32mI (35918) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (35929) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 9210 us, 1473547 cycles[0m
+[0;32mI (35929) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (35935) CRYPTO_HYBRID: Packed 865 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-512)[0m
+[0;32mI (35944) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (865 bytes)...[0m
+[1;31mE (35955) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (35958) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (35964) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (35968) PQC_MAIN: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[1;31mE (35974) PQC_MAIN: Handshake network request failed or response too short (880 bytes)[0m
+[0;32mI (35981) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (40986) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (41255) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 267978 us, 42875785 cycles[0m
+[0;32mI (41255) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (41266) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8950 us, 1431973 cycles[0m
+[0;32mI (41266) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
+[0;32mI (41272) CRYPTO_HYBRID: Packed 865 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-512)[0m
+[0;32mI (41282) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (865 bytes)...[0m
+[1;31mE (41292) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (41296) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (41301) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (41306) PQC_MAIN: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[1;31mE (41311) PQC_MAIN: Handshake network request failed or response too short (880 bytes)[0m
+[0;32mI (41319) CRYPTO_HYBRID: All key material zeroized[0m

@@ -1,0 +1,108 @@
+Executing action: monitor
+Serial port /dev/ttyUSB0
+Connecting....
+Detecting chip type... ESP32
+Running idf_monitor in directory /home/kali/Downloads/Tools/esp32_hybrid_pqc/firmware
+Executing "/home/kali/.espressif/python_env/idf5.4_py3.13_env/bin/python /home/kali/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB0 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/kali/Downloads/Tools/esp32_hybrid_pqc/firmware/build/esp32_hybrid_pqc.elf -m '/home/kali/.espressif/python_env/idf5.4_py3.13_env/bin/python' '/home/kali/esp/esp-idf/tools/idf.py'"...
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6276
+load:0x40078000,len:15716
+load:0x40080400,len:4
+ho 8 tail 4 room 4
+load:0x40080404,len:3860
+entry 0x4008063c
+[0;32mI (31) boot: ESP-IDF v5.4 2nd stage bootloader[0m
+[0;32mI (31) boot: compile time Jun 12 2026 01:45:15[0m
+[0;32mI (31) boot: Multicore bootloader[0m
+[0;32mI (32) boot: chip revision: v3.1[0m
+[0;32mI (35) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (39) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (42) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (46) boot: Enabling RNG early entropy source...[0m
+[0;32mI (50) boot: Partition Table:[0m
+[0;32mI (53) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (59) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (66) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (72) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (79) boot: End of partition table[0m
+[0;32mI (82) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=1e6ech (124652) map[0m
+[0;32mI (132) esp_image: segment 1: paddr=0002e714 vaddr=3ff80000 size=0001ch (    28) load[0m
+[0;32mI (133) esp_image: segment 2: paddr=0002e738 vaddr=3ffb0000 size=018e0h (  6368) load[0m
+[0;32mI (139) esp_image: segment 3: paddr=00030020 vaddr=400d0020 size=9d030h (643120) map[0m
+[0;32mI (363) esp_image: segment 4: paddr=000cd058 vaddr=3ffb18e0 size=02504h (  9476) load[0m
+[0;32mI (367) esp_image: segment 5: paddr=000cf564 vaddr=40080000 size=16b98h ( 93080) load[0m
+[0;32mI (414) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (414) boot: Disabling RNG early entropy source...[0m
+[0;32mI (425) cpu_start: Multicore app[0m
+[0;32mI (433) cpu_start: Pro cpu start user code[0m
+[0;32mI (433) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (433) app_init: Application information:[0m
+[0;32mI (433) app_init: Project name:     esp32_hybrid_pqc[0m
+[0;32mI (438) app_init: App version:      b0d29df-dirty[0m
+[0;32mI (442) app_init: Compile time:     Jun 23 2026 13:11:18[0m
+[0;32mI (447) app_init: ELF file SHA256:  5ea0942d1...[0m
+[0;32mI (452) app_init: ESP-IDF:          v5.4[0m
+[0;32mI (455) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (459) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (463) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (467) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (473) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (478) heap_init: At 3FFB8638 len 000279C8 (158 KiB): DRAM[0m
+[0;32mI (484) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (489) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (495) heap_init: At 40096B98 len 00009468 (37 KiB): IRAM[0m
+[0;32mI (501) spi_flash: detected chip: generic[0m
+[0;32mI (503) spi_flash: flash io: dio[0m
+[0;32mI (507) main_task: Started on CPU0[0m
+[0;32mI (510) main_task: Calling app_main()[0m
+[0;32mI (533) PQC_MAIN: [0m
+[0;32mI (533) PQC_MAIN: ╔══════════════════════════════════════════════════════════╗[0m
+[0;32mI (541) PQC_MAIN: ║    HYBRID POST-QUANTUM CRYPTOGRAPHY — ESP32 EDGE       ║[0m
+[0;32mI (549) PQC_MAIN: ║    X25519 + ML-KEM-512 (FIPS 203) + HKDF-SHA256        ║[0m
+[0;32mI (556) PQC_MAIN: ╠══════════════════════════════════════════════════════════╣[0m
+[0;32mI (573) PQC_MAIN: ║  Chip:    ESP32 rev 301, 2 cores @ 240 MHz             ║[0m
+[0;32mI (580) PQC_MAIN: ║  SRAM:    520 KB                                        ║[0m
+[0;32mI (587) PQC_MAIN: ║  Flash:   4 MB                                          ║[0m
+[0;32mI (595) PQC_MAIN: ║  Free heap: 271144 bytes                                   ║[0m
+[0;32mI (602) PQC_MAIN: ╚══════════════════════════════════════════════════════════╝[0m
+[0;32mI (619) PQC_MAIN: [0m
+[0;32mI (625) wifi:wifi driver task: 3ffc1f38, prio:23, stack:6656, core=0[0m
+[0;32mI (640) wifi:wifi firmware version: 48ea317a7[0m
+[0;32mI (641) wifi:wifi certification version: v7.0[0m
+[0;32mI (641) wifi:config NVS flash: enabled[0m
+[0;32mI (641) wifi:config nano formatting: disabled[0m
+[0;32mI (646) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (650) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (654) wifi:Init management short buffer num: 32[0m
+[0;32mI (659) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (663) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (667) wifi:Init static rx buffer num: 10[0m
+[0;32mI (671) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (676) wifi_init: rx ba win: 6[0m
+[0;32mI (677) wifi_init: accept mbox: 6[0m
+[0;32mI (680) wifi_init: tcpip mbox: 32[0m
+[0;32mI (683) wifi_init: udp mbox: 6[0m
+[0;32mI (686) wifi_init: tcp mbox: 6[0m
+[0;32mI (689) wifi_init: tcp tx win: 5760[0m
+[0;32mI (692) wifi_init: tcp rx win: 5760[0m
+[0;32mI (695) wifi_init: tcp mss: 1440[0m
+[0;32mI (698) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (702) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (708) phy_init: phy_version 4840,02e0d70,Sep  2 2024,19:39:07[0m
+[0;32mI (795) wifi:mode : sta (5c:01:3b:be:bc:58)[0m
+[0;32mI (796) wifi:enable tsf[0m
+[0;32mI (799) PQC_MAIN: Connecting to Wi-Fi SSID: Bomboclattt[0m
+[0;32mI (3216) PQC_MAIN: Retrying Wi-Fi connection (1/10)...[0m
+[0;32mI (5631) PQC_MAIN: Retrying Wi-Fi connection (2/10)...[0m
+[0;32mI (8045) PQC_MAIN: Retrying Wi-Fi connection (3/10)...[0m
+[0;32mI (10460) PQC_MAIN: Retrying Wi-Fi connection (4/10)...[0m
+[0;32mI (12875) PQC_MAIN: Retrying Wi-Fi connection (5/10)...[0m
+[0;32mI (15289) PQC_MAIN: Retrying Wi-Fi connection (6/10)...[0m
+[0;32mI (17703) PQC_MAIN: Retrying Wi-Fi connection (7/10)...[0m
+[0;32mI (20118) PQC_MAIN: Retrying Wi-Fi connection (8/10)...[0m
+[0;32mI (22532) PQC_MAIN: Retrying Wi-Fi connection (9/10)...[0m

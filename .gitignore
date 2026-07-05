@@ -1,0 +1,23 @@
+# C/C++ build outputs
+build/
+*.o
+*.so
+*.a
+*.elf
+*.bin
+*.map
+
+# Python
+__pycache__/
+*.pyc
+venv/
+env/
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets
+*psk*
+*secret*

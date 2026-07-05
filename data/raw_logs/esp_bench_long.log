@@ -1,0 +1,672 @@
+Executing action: monitor
+Serial port /dev/ttyUSB0
+Connecting......
+Detecting chip type... ESP32
+Running idf_monitor in directory /home/kali/Downloads/Tools/esp32_hybrid_pqc/firmware
+Executing "/home/kali/.espressif/python_env/idf5.4_py3.13_env/bin/python /home/kali/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB0 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/kali/Downloads/Tools/esp32_hybrid_pqc/firmware/build/esp32_hybrid_pqc.elf -m '/home/kali/.espressif/python_env/idf5.4_py3.13_env/bin/python' '/home/kali/esp/esp-idf/tools/idf.py'"...
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6276
+load:0x40078000,len:15716
+load:0x40080400,len:4
+ho 8 tail 4 room 4
+load:0x40080404,len:3860
+entry 0x4008063c
+[0;32mI (31) boot: ESP-IDF v5.4 2nd stage bootloader[0m
+[0;32mI (31) boot: compile time Jun 12 2026 01:45:15[0m
+[0;32mI (31) boot: Multicore bootloader[0m
+[0;32mI (32) boot: chip revision: v3.1[0m
+[0;32mI (35) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (39) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (42) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (46) boot: Enabling RNG early entropy source...[0m
+[0;32mI (50) boot: Partition Table:[0m
+[0;32mI (53) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (59) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (66) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (72) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (79) boot: End of partition table[0m
+[0;32mI (82) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=1e6fch (124668) map[0m
+[0;32mI (132) esp_image: segment 1: paddr=0002e724 vaddr=3ff80000 size=0001ch (    28) load[0m
+[0;32mI (133) esp_image: segment 2: paddr=0002e748 vaddr=3ffb0000 size=018d0h (  6352) load[0m
+[0;32mI (139) esp_image: segment 3: paddr=00030020 vaddr=400d0020 size=9d060h (643168) map[0m
+[0;32mI (363) esp_image: segment 4: paddr=000cd088 vaddr=3ffb18d0 size=02514h (  9492) load[0m
+[0;32mI (367) esp_image: segment 5: paddr=000cf5a4 vaddr=40080000 size=16b98h ( 93080) load[0m
+[0;32mI (414) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (414) boot: Disabling RNG early entropy source...[0m
+[0;32mI (425) cpu_start: Multicore app[0m
+[0;32mI (433) cpu_start: Pro cpu start user code[0m
+[0;32mI (433) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (433) app_init: Application information:[0m
+[0;32mI (433) app_init: Project name:     esp32_hybrid_pqc[0m
+[0;32mI (438) app_init: App version:      b0d29df-dirty[0m
+[0;32mI (442) app_init: Compile time:     Jun 23 2026 13:11:18[0m
+[0;32mI (447) app_init: ELF file SHA256:  8f1e61b6a...[0m
+[0;32mI (452) app_init: ESP-IDF:          v5.4[0m
+[0;32mI (455) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (459) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (463) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (467) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (473) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (478) heap_init: At 3FFB8638 len 000279C8 (158 KiB): DRAM[0m
+[0;32mI (484) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (489) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (495) heap_init: At 40096B98 len 00009468 (37 KiB): IRAM[0m
+[0;32mI (501) spi_flash: detected chip: generic[0m
+[0;32mI (504) spi_flash: flash io: dio[0m
+[0;32mI (507) main_task: Started on CPU0[0m
+[0;32mI (510) main_task: Calling app_main()[0m
+[0;32mI (533) PQC_MAIN: [0m
+[0;32mI (533) PQC_MAIN: ╔══════════════════════════════════════════════════════════╗[0m
+[0;32mI (541) PQC_MAIN: ║    HYBRID POST-QUANTUM CRYPTOGRAPHY — ESP32 EDGE       ║[0m
+[0;32mI (549) PQC_MAIN: ║    X25519 + ML-KEM-512 (FIPS 203) + HKDF-SHA256        ║[0m
+[0;32mI (556) PQC_MAIN: ╠══════════════════════════════════════════════════════════╣[0m
+[0;32mI (573) PQC_MAIN: ║  Chip:    ESP32 rev 301, 2 cores @ 240 MHz             ║[0m
+[0;32mI (580) PQC_MAIN: ║  SRAM:    520 KB                                        ║[0m
+[0;32mI (587) PQC_MAIN: ║  Flash:   4 MB                                          ║[0m
+[0;32mI (595) PQC_MAIN: ║  Free heap: 271144 bytes                                   ║[0m
+[0;32mI (602) PQC_MAIN: ╚══════════════════════════════════════════════════════════╝[0m
+[0;32mI (619) PQC_MAIN: [0m
+[0;32mI (625) wifi:wifi driver task: 3ffc1f38, prio:23, stack:6656, core=0[0m
+[0;32mI (640) wifi:wifi firmware version: 48ea317a7[0m
+[0;32mI (641) wifi:wifi certification version: v7.0[0m
+[0;32mI (641) wifi:config NVS flash: enabled[0m
+[0;32mI (641) wifi:config nano formatting: disabled[0m
+[0;32mI (646) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (650) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (654) wifi:Init management short buffer num: 32[0m
+[0;32mI (659) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (663) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (667) wifi:Init static rx buffer num: 10[0m
+[0;32mI (670) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (676) wifi_init: rx ba win: 6[0m
+[0;32mI (677) wifi_init: accept mbox: 6[0m
+[0;32mI (680) wifi_init: tcpip mbox: 32[0m
+[0;32mI (683) wifi_init: udp mbox: 6[0m
+[0;32mI (686) wifi_init: tcp mbox: 6[0m
+[0;32mI (689) wifi_init: tcp tx win: 5760[0m
+[0;32mI (692) wifi_init: tcp rx win: 5760[0m
+[0;32mI (695) wifi_init: tcp mss: 1440[0m
+[0;32mI (698) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (702) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (708) phy_init: phy_version 4840,02e0d70,Sep  2 2024,19:39:07[0m
+[0;32mI (795) wifi:mode : sta (5c:01:3b:be:bc:58)[0m
+[0;32mI (796) wifi:enable tsf[0m
+[0;32mI (799) PQC_MAIN: Connecting to Wi-Fi SSID: Bomboclattt[0m
+[0;32mI (3217) PQC_MAIN: Retrying Wi-Fi connection (1/10)...[0m
+[0;32mI (5632) PQC_MAIN: Retrying Wi-Fi connection (2/10)...[0m
+[0;32mI (8046) PQC_MAIN: Retrying Wi-Fi connection (3/10)...[0m
+[0;32mI (10461) PQC_MAIN: Retrying Wi-Fi connection (4/10)...[0m
+[0;32mI (12876) PQC_MAIN: Retrying Wi-Fi connection (5/10)...[0m
+[0;32mI (15291) PQC_MAIN: Retrying Wi-Fi connection (6/10)...[0m
+[0;32mI (17706) PQC_MAIN: Retrying Wi-Fi connection (7/10)...[0m
+[0;32mI (20120) PQC_MAIN: Retrying Wi-Fi connection (8/10)...[0m
+[0;32mI (22535) PQC_MAIN: Retrying Wi-Fi connection (9/10)...[0m
+[0;32mI (24949) PQC_MAIN: Retrying Wi-Fi connection (10/10)...[0m
+[1;31mE (27362) PQC_MAIN: Wi-Fi connection failed after 10 retries[0m
+[1;31mE (27362) PQC_MAIN: Wi-Fi connection failed[0m
+[0;32mI (27362) main_task: Returned from app_main()[0m
+[0;32mI (27362) PQC_MAIN: Starting Hybrid PQC task...[0m
+[0;32mI (27369) PQC_MAIN: Testing public internet connectivity: connecting to http://www.google.com...[0m
+[1;31mE (27379) esp-tls: couldn't get hostname for :www.google.com: getaddrinfo() returns 202, addrinfo=0x0[0m
+[1;31mE (27386) transport_base: Failed to open a new connection: 32769[0m
+[1;31mE (27392) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (27396) PQC_MAIN: Google connection failed: ESP_ERR_HTTP_CONNECT[0m
+[0;32mI (27402) PQC_MAIN: === Executing 100-Iteration Q1 Journal Benchmark Suite ===[0m
+[0;32mI (27409) BENCHMARK: === Benchmarking Classical (X25519) (100 iterations) ===[0m
+[0;32mI (27685) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 268308 us, 42928463 cycles[0m
+[0;32mI (27685) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (27688) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (27696) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (27708) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (27712) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (27717) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (27721) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (27727) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (27734) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (27738) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (28011) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 267585 us, 42813469 cycles[0m
+[0;32mI (28012) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (28014) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (28023) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (28035) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (28038) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (28043) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (28048) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (28054) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (28060) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (28065) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (28337) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 266480 us, 42636705 cycles[0m
+[0;32mI (28337) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (28339) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (28348) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (28360) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (28363) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (28369) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (28373) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (28379) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (28386) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (28390) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (28664) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 268105 us, 42896807 cycles[0m
+[0;32mI (28664) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (28666) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (28675) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (28687) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (28690) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (28696) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (28700) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (28706) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (28712) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (28717) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (28990) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 267421 us, 42787243 cycles[0m
+[0;32mI (28990) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (28993) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (29001) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (29013) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (29017) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (29022) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (29027) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (29032) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (29039) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (29043) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (29317) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 267662 us, 42825779 cycles[0m
+[0;32mI (29317) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (29319) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (29328) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (29340) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (29343) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (29349) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (29353) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (29359) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (29365) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (29370) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (29644) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 268273 us, 42923663 cycles[0m
+[0;32mI (29644) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (29646) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (29655) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (29667) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (29670) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (29676) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (29680) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (29686) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (29693) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (29697) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (29970) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 267463 us, 42793985 cycles[0m
+[0;32mI (29970) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (29973) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (29981) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (29993) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (29997) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (30002) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (30007) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (30012) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (30019) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (30023) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (30296) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 267489 us, 42798189 cycles[0m
+[0;32mI (30297) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (30299) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (30308) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (30320) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (30323) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (30328) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (30333) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (30339) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (30345) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (30350) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (30624) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 268628 us, 42980371 cycles[0m
+[0;32mI (30624) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (30627) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (30635) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (30647) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (30651) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (30656) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (30661) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (30666) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (30673) CRYPTO_HYBRID: All key material zeroized[0m
+[0;32mI (30677) BENCHMARK:   Progress: 10/100 (last: 271.08 ms)[0m
+[1;31mE (30682) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (30957) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 269484 us, 43117461 cycles[0m
+[0;32mI (30958) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (30960) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (30969) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (30981) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (30984) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (30989) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (30994) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (31000) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (31006) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (31011) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (31284) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 267807 us, 42849033 cycles[0m
+[0;32mI (31285) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (31287) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (31296) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (31308) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (31311) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (31316) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (31321) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (31327) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (31333) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (31337) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (31612) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 268481 us, 42956893 cycles[0m
+[0;32mI (31612) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (31614) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (31623) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (31635) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (31638) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (31644) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (31648) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (31654) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (31660) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (31665) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (31938) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 267317 us, 42770691 cycles[0m
+[0;32mI (31938) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (31940) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (31949) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (31961) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (31965) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (31970) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (31974) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (31980) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (31987) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (31991) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (32265) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 268204 us, 42912567 cycles[0m
+[0;32mI (32265) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (32268) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (32276) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (32288) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (32292) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (32297) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (32302) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (32307) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (32314) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (32318) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (32592) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 267837 us, 42853869 cycles[0m
+[0;32mI (32592) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (32594) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (32603) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (32615) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (32618) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (32624) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (32628) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (32634) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (32640) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (32645) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (32919) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 268307 us, 42929009 cycles[0m
+[0;32mI (32919) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (32922) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (32930) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (32942) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (32946) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (32951) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (32955) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (32961) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (32968) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (32972) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (33246) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 268676 us, 42988091 cycles[0m
+[0;32mI (33247) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (33249) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (33258) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (33270) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (33273) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (33278) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (33283) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (33289) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (33295) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (33300) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (33575) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 270054 us, 43208529 cycles[0m
+[0;32mI (33576) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (33578) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (33587) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (33599) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (33602) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (33607) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (33612) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (33618) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (33624) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (33629) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (33904) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 269289 us, 43086245 cycles[0m
+[0;32mI (33904) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (33906) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (33915) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (33927) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (33930) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (33936) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (33940) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (33946) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (33952) CRYPTO_HYBRID: All key material zeroized[0m
+[0;32mI (33957) BENCHMARK:   Progress: 20/100 (last: 271.76 ms)[0m
+[1;31mE (33962) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (34236) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 268233 us, 42917219 cycles[0m
+[0;32mI (34236) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (34239) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (34247) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (34259) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (34263) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (34268) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (34273) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (34278) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (34285) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (34289) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (34564) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 268815 us, 43010231 cycles[0m
+[0;32mI (34564) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (34566) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (34575) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (34587) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (34590) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (34596) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (34600) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (34606) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (34612) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (34617) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (34892) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 269817 us, 43170607 cycles[0m
+[0;32mI (34893) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (34895) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (34904) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (34916) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (34919) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (34924) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (34929) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (34935) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (34941) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (34946) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (35219) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 268087 us, 42893861 cycles[0m
+[0;32mI (35220) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (35222) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (35231) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (35243) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (35246) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (35251) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (35256) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (35262) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (35268) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (35273) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (35546) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 267450 us, 42791871 cycles[0m
+[0;32mI (35546) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (35548) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (35557) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (35569) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (35572) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (35578) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (35582) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (35588) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (35594) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (35599) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (35872) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 267519 us, 42802993 cycles[0m
+[0;32mI (35872) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (35875) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (35884) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (35896) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (35899) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (35904) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (35909) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (35914) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (35921) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (35925) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (36198) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 266876 us, 42700049 cycles[0m
+[0;32mI (36198) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (36201) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (36209) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (36221) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (36225) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (36230) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (36234) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (36240) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (36247) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (36251) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[1;31mE (36308) task_wdt: Task watchdog got triggered. The following tasks/users did not reset the watchdog in time:[0m
+[1;31mE (36308) task_wdt:  - IDLE1 (CPU 1)[0m
+[1;31mE (36308) task_wdt: Tasks currently running:[0m
+[1;31mE (36308) task_wdt: CPU 0: IDLE0[0m
+[1;31mE (36308) task_wdt: CPU 1: pqc_task[0m
+[1;31mE (36308) task_wdt: Print CPU 1 backtrace[0m
+
+
+Backtrace: 0x40084D86:0x3FFB2590 0x4008337D:0x3FFB25B0 0x40126D44:0x3FFCD7C0 0x400F7461:0x3FFCD7E0 0x400F1914:0x3FFCD810 0x400F1FC1:0x3FFCD8E0 0x400EFC20:0x3FFCD900 0x400D8679:0x3FFCD950 0x400D903C:0x3FFCDAD0 0x400D93E7:0x3FFCF0A0 0x400D7CC2:0x3FFCF150
+
+[0;32mI (36547) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 290083 us, 46413213 cycles[0m
+[0;32mI (36547) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (36550) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (36558) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (36570) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (36574) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (36579) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (36583) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (36589) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (36596) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (36600) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (36874) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 268303 us, 42928411 cycles[0m
+[0;32mI (36874) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (36877) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (36886) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (36898) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (36901) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (36906) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (36911) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (36916) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (36923) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (36927) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (37200) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 266579 us, 42652513 cycles[0m
+[0;32mI (37200) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (37202) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (37211) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (37223) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (37226) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (37232) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (37236) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (37242) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (37248) CRYPTO_HYBRID: All key material zeroized[0m
+[0;32mI (37253) BENCHMARK:   Progress: 30/100 (last: 269.04 ms)[0m
+[1;31mE (37258) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (37534) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 270039 us, 43206051 cycles[0m
+[0;32mI (37534) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (37536) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (37545) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (37557) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (37560) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (37566) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (37570) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (37576) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (37582) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (37587) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (37860) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 267021 us, 42723223 cycles[0m
+[0;32mI (37860) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (37862) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (37871) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (37883) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (37886) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (37892) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (37896) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (37902) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (37908) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (37913) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (38187) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 268414 us, 42946103 cycles[0m
+[0;32mI (38187) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (38190) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (38198) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (38210) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (38214) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (38219) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (38224) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (38229) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (38236) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (38240) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (38514) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 267805 us, 42848699 cycles[0m
+[0;32mI (38514) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (38516) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (38525) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (38537) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (38540) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (38546) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (38550) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (38556) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (38562) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (38567) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (38842) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 269453 us, 43112341 cycles[0m
+[0;32mI (38842) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (38845) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (38853) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (38865) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (38869) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (38874) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (38879) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (38884) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (38891) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (38895) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (39170) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 269637 us, 43141789 cycles[0m
+[0;32mI (39171) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (39173) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (39182) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (39194) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (39197) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (39203) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (39207) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (39213) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (39219) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (39224) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (39498) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 268974 us, 43035763 cycles[0m
+[0;32mI (39499) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (39501) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (39510) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (39522) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (39525) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (39530) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (39535) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (39541) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (39547) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (39552) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (39824) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 267150 us, 42743967 cycles[0m
+[0;32mI (39825) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (39827) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (39836) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (39848) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (39851) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (39856) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (39861) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (39867) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (39873) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (39878) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (40153) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 269215 us, 43074361 cycles[0m
+[0;32mI (40153) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (40155) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (40164) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (40176) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (40179) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (40185) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (40189) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (40195) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (40201) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (40206) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (40480) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 268123 us, 42899589 cycles[0m
+[0;32mI (40480) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (40482) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (40491) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (40503) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (40506) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (40512) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (40516) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (40522) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (40528) CRYPTO_HYBRID: All key material zeroized[0m
+[0;32mI (40533) BENCHMARK:   Progress: 40/100 (last: 270.58 ms)[0m
+[1;31mE (40538) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (40812) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 268584 us, 42973275 cycles[0m
+[0;32mI (40813) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (40815) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (40824) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (40836) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (40839) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (40844) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (40849) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (40855) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (40861) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (40866) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (41139) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 267745 us, 42839165 cycles[0m
+[0;32mI (41139) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (41142) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (41150) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (41162) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (41166) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (41171) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (41176) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (41181) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (41188) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (41192) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[1;31mE (41308) task_wdt: Task watchdog got triggered. The following tasks/users did not reset the watchdog in time:[0m
+[1;31mE (41308) task_wdt:  - IDLE1 (CPU 1)[0m
+[1;31mE (41308) task_wdt: Tasks currently running:[0m
+[1;31mE (41308) task_wdt: CPU 0: IDLE0[0m
+[1;31mE (41308) task_wdt: CPU 1: pqc_task[0m
+[1;31mE (41308) task_wdt: Print CPU 1 backtrace[0m
+
+
+Backtrace: 0x40084D86:0x3FFB2590 0x4008337D:0x3FFB25B0 0x4000BFED:0x3FFCD750 0x4008A382:0x3FFCD760 0x400828D5:0x3FFCD780 0x400F755C:0x3FFCD7A0 0x400F744C:0x3FFCD7C0 0x400F0018:0x3FFCD7F0 0x400F19A5:0x3FFCD810 0x400F1FC1:0x3FFCD8E0 0x400EFC20:0x3FFCD900 0x400D8679:0x3FFCD950 0x400D903C:0x3FFCDAD0 0x400D93E7:0x3FFCF0A0 0x400D7CC2:0x3FFCF150
+
+[0;32mI (41499) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 301033 us, 48165125 cycles[0m
+[0;32mI (41499) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (41501) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (41510) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (41522) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (41526) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (41531) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (41535) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (41541) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (41548) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (41552) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (41826) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 268774 us, 43003835 cycles[0m
+[0;32mI (41827) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (41829) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (41838) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (41850) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (41853) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (41858) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (41863) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (41869) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (41875) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (41880) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (42154) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 268295 us, 42927069 cycles[0m
+[0;32mI (42154) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (42156) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (42165) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (42177) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (42180) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (42186) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (42190) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (42196) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (42202) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (42207) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (42483) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 270041 us, 43206431 cycles[0m
+[0;32mI (42483) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (42485) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (42494) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (42506) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (42509) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (42515) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (42519) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (42525) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (42531) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (42536) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (42810) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 268871 us, 43019293 cycles[0m
+[0;32mI (42811) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (42813) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (42822) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (42834) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (42837) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (42842) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (42847) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (42853) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (42859) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (42864) task_wdt: esp_task_wdt_reset(705): task not found[0m
+[0;32mI (43137) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 267420 us, 42787207 cycles[0m
+[0;32mI (43137) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (43139) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (43148) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[1;31mE (43160) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[1;31mE (43163) transport_base: Failed to open a new connection: 32772[0m
+[1;31mE (43169) HTTP_CLIENT: Connection failed, sock < 0[0m
+[1;31mE (43173) BENCHMARK: HTTP request failed: ESP_ERR_HTTP_CONNECT[0m
+[0;33mW (43179) BENCHMARK: Network handshake failed, running local-only benchmark[0m
+[0;32mI (43186) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (43190) task_wdt: esp_task_wdt_reset(705): task not found[0m
