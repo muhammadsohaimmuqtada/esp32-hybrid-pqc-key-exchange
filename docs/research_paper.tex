@@ -212,7 +212,7 @@ typedef struct {
 \subsection{Core Algorithmic Logic}
 To guarantee the entropy quality of the ephemeral key generation, the private keys are sampled from the ESP32's hardware True Random Number Generator (TRNG), which operates by sampling thermal and RF noise from the Wi-Fi/Bluetooth receiver ADC.
 
-\begin{algorithm}[htbp]
+\begin{algorithm}[!t]
 \caption{Client Keypair Generation (\texttt{hybrid\_keygen})}
 \begin{algorithmic}[1]
 \REQUIRE Cryptographic context \texttt{ctx}
@@ -231,7 +231,7 @@ To guarantee the entropy quality of the ephemeral key generation, the private ke
 \end{algorithmic}
 \end{algorithm}
 
-\begin{algorithm}[htbp]
+\begin{algorithm}[!t]
 \caption{Server Response Processing and Key Agreement}
 \begin{algorithmic}[1]
 \REQUIRE Context \texttt{ctx}; server response buffer $S_{\text{data}}$ of length $S_{\text{len}}$; pre-shared key $\mathit{PSK}$
@@ -272,7 +272,7 @@ To guarantee the entropy quality of the ephemeral key generation, the private ke
 \end{algorithmic}
 \end{algorithm}
 
-\begin{algorithm}[htbp]
+\begin{algorithm}[!t]
 \caption{Stateful Telemetry and Key Rotation Loop (\texttt{pqc\_task})}
 \begin{algorithmic}[1]
 \REQUIRE Wi-Fi connectivity; server address; pre-shared key $\mathit{PSK}$
