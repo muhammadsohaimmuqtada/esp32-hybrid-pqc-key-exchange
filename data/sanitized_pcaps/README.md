@@ -1,5 +1,7 @@
 # Sanitized Network Captures
 
-As per security guidelines, raw `.pcap` files from the experimental network are **not** distributed in this public repository to prevent the exposure of private MAC addresses, localized routing tables, and other sensitive personal network metadata.
+This directory contains fully anonymized, synthetic `.pcap` captures representing the hybrid handshake and telemetry protocol exchange. 
 
-Fully anonymized hex-dumps of the critical TLS 1.3 payload frames (Client POST and Server Response) are available in **Section V** of the accompanying research paper in the `/docs` directory. These dumps provide cryptographically verifiable proof of the AES-256-GCM encryption over the ML-KEM-512 hybrid handshake without exposing raw localized layer 2/3 traffic.
+To comply with security guidelines and prevent the exposure of private MAC addresses, localized routing tables, or sensitive network metadata, all PCAP captures in this folder were synthetically generated using a Scapy script to use generic MAC addresses and standard private IP subnets (e.g., `192.168.1.x`). 
+
+These files provide a verifiable trace of the TCP/IP frame structure, HTTP header wrappers, and encrypted payload lengths without leaking any raw physical network metadata.
