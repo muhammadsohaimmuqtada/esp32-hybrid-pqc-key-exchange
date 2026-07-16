@@ -46,3 +46,4 @@ if __name__ == "__main__":
     
     args = parser.parse_args()
     parse_log_to_csv(args.input, args.output)
+# Sanitized for public release: No real network IP or PCAP data included

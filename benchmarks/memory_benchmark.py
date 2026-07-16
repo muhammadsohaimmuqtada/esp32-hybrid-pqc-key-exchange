@@ -14,3 +14,4 @@ def print_memory_profile():
 
 if __name__ == "__main__":
     print_memory_profile()
+# Sanitized for public release: No real network IP or PCAP data included

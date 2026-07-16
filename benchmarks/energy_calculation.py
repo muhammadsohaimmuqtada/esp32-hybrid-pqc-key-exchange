@@ -47,3 +47,4 @@ if __name__ == "__main__":
     
     args = parser.parse_args()
     calculate_energy(args.input)
+# Sanitized for public release: No real network IP or PCAP data included
