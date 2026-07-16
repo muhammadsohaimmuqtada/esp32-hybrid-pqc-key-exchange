@@ -158,14 +158,14 @@ In our current research prototype, the PSK is compiled as a static constant byte
 This work does not propose replacing TLS for general-purpose Internet deployments; rather, it evaluates a lightweight authenticated hybrid key-exchange profile for pre-provisioned constrained IoT nodes where certificate parsing and full TLS stacks may exceed application memory budgets.
 
 \subsection{Handshake Request Message Layout}
-The client serialises its public key material and appends a 32-byte HMAC signature:
+The client serializes its public key material and appends a 32-byte HMAC authentication tag:
 \begin{equation}
 M_{\text{req}} = \text{Mode} \parallel Q_C \parallel pk_{\text{KEM}} \parallel \text{HMAC}_{\text{client}}
 \end{equation}
 The payload consists of a 1-byte mode identifier (Hybrid = 2), a 32-byte X25519 public key, an 800-byte ML-KEM-512 public key, and a 32-byte HMAC authentication tag, totalling 865 bytes.
 
 \subsection{Handshake Response Message Layout}
-The server response body encodes a 16-byte session identifier, cryptographic response, and a 32-byte HMAC signature:
+The server response body encodes a 16-byte session identifier, cryptographic response, and a 32-byte HMAC authentication tag:
 \begin{equation}
 M_{\text{resp}} = \text{SID} \parallel Q_S \parallel c_{\text{KEM}} \parallel \text{HMAC}_{\text{server}}
 \end{equation}
@@ -212,7 +212,7 @@ typedef struct {
 \subsection{Core Algorithmic Logic}
 To guarantee the entropy quality of the ephemeral key generation, the private keys are sampled from the ESP32's hardware True Random Number Generator (TRNG), which operates by sampling thermal and RF noise from the Wi-Fi/Bluetooth receiver ADC.
 
-\begin{algorithm}
+\begin{algorithm}[htbp]
 \caption{Client Keypair Generation (\texttt{hybrid\_keygen})}
 \begin{algorithmic}[1]
 \REQUIRE Cryptographic context \texttt{ctx}
@@ -231,7 +231,7 @@ To guarantee the entropy quality of the ephemeral key generation, the private ke
 \end{algorithmic}
 \end{algorithm}
 
-\begin{algorithm}
+\begin{algorithm}[htbp]
 \caption{Server Response Processing and Key Agreement}
 \begin{algorithmic}[1]
 \REQUIRE Context \texttt{ctx}; server response buffer $S_{\text{data}}$ of length $S_{\text{len}}$; pre-shared key $\mathit{PSK}$
@@ -239,14 +239,14 @@ To guarantee the entropy quality of the ephemeral key generation, the private ke
 \IF{$S_{\text{len}} < 48$}
     \RETURN $-1$
 \ENDIF
-\STATE Compute expected HMAC signature:
+\STATE Compute expected HMAC authentication tag:
 \STATE $\mathit{calc\_hmac} \leftarrow \text{HMAC-SHA256}(\mathit{PSK}, S_{\text{data}}[0 \dots S_{\text{len}} - 33])$
 \STATE $\mathit{diff} \leftarrow 0$
 \FOR{$i \leftarrow 0$ \TO 31}
     \STATE $\mathit{diff} \leftarrow \mathit{diff} \lor (\text{calc\_hmac}[i] \oplus S_{\text{data}}[S_{\text{len}} - 32 + i])$
 \ENDFOR
 \IF{$\mathit{diff} \neq 0$}
-    \RETURN $-1$ \COMMENT{Abort: Signature mismatch (MitM attack detected)}
+    \RETURN $-1$ \COMMENT{Abort: Authentication tag mismatch (MitM attack detected)}
 \ENDIF
 \STATE Extract Session ID: $\mathit{SID} \leftarrow S_{\text{data}}[0 \dots 15]$
 \STATE $\mathit{offset} \leftarrow 16$
@@ -272,7 +272,7 @@ To guarantee the entropy quality of the ephemeral key generation, the private ke
 \end{algorithmic}
 \end{algorithm}
 
-\begin{algorithm}
+\begin{algorithm}[htbp]
 \caption{Stateful Telemetry and Key Rotation Loop (\texttt{pqc\_task})}
 \begin{algorithmic}[1]
 \REQUIRE Wi-Fi connectivity; server address; pre-shared key $\mathit{PSK}$
@@ -284,7 +284,7 @@ To guarantee the entropy quality of the ephemeral key generation, the private ke
         \STATE $\text{vTaskDelay}(5000\text{ ms})$ \textbf{continue}
     \ENDIF
     \STATE Pack public keys: $\mathit{payload} \leftarrow \text{Mode} \mathbin{\Vert} \texttt{ctx.x25519\_pubkey} \mathbin{\Vert} \texttt{ctx.mlkem\_pk}$
-    \STATE Compute handshake signature: $\mathit{sig} \leftarrow \text{HMAC-SHA256}(\mathit{PSK}, \mathit{payload})$
+    \STATE Compute handshake authentication tag: $\mathit{sig} \leftarrow \text{HMAC-SHA256}(\mathit{PSK}, \mathit{payload})$
     \STATE $(\mathit{resp}, s) \leftarrow \text{HTTP\_POST}(\text{"/handshake"}, \mathit{payload} \mathbin{\Vert} \mathit{sig})$
     \IF{$s \neq 200 \lor |\mathit{resp}| < 48$}
         \STATE $\text{vTaskDelay}(5000\text{ ms})$ \textbf{continue}
@@ -309,7 +309,7 @@ To guarantee the entropy quality of the ephemeral key generation, the private ke
 \subsection{Watchdog Timer Starvation Under FreeRTOS}
 The ESP32 FreeRTOS Task Watchdog Timer (TWDT) monitors the CPU time consumed by the IDLE task on each core. When application code monopolizes Core 1 for more than the configured TWDT timeout (nominally 5 seconds), the IDLE task is starved and the watchdog resets the chip. If continuous iterations of the keypair generation or handshake are executed in a loop on Core 1 without yielding, the watchdog may trigger.
 
-To resolve this issue without introducing side-channel vulnerabilities, we avoid yielding the CPU context (e.g., using \texttt{vTaskDelay}) inside any cryptographic routines. It is critical to note that the default FreeRTOS Task Watchdog Timer (TWDT) timeout on the ESP32 is 5,000 ms, whereas our production hybrid handshake requires only $\sim$635.88 ms. Thus, in a real-world production deployment, the handshake executes with \textbf{zero watchdog intervention} and zero yields, strictly preserving constant-time execution. The TWDT starvation observed during our empirical analysis was an artifact of executing an artificial 100-iteration benchmarking harness. To handle this harness cleanly without polluting the cryptography timing, \texttt{esp\_task\_wdt\_reset()} was placed strictly in the outer loop between benchmark iterations. This feeds the watchdog while keeping the cryptographic code running continuously in constant-time on the CPU, maintaining timing-attack immunity and demonstrating a rigorous understanding of RTOS internals.
+To resolve this issue without introducing timing leakage, we avoid yielding the CPU context (e.g., using \texttt{vTaskDelay}) inside any cryptographic routines. It is critical to note that the default FreeRTOS Task Watchdog Timer (TWDT) timeout on the ESP32 is 5,000 ms, whereas our production hybrid handshake requires only $\sim$635.88 ms. Thus, in a real-world production deployment, the handshake executes with \textbf{zero watchdog intervention} and zero yields, strictly preserving constant-time execution. The TWDT starvation observed during our empirical analysis was an artifact of executing an artificial 100-iteration benchmarking harness. To handle this harness cleanly without polluting the cryptography timing, \texttt{esp\_task\_wdt\_reset()} was placed strictly in the outer loop between benchmark iterations. This feeds the watchdog while keeping the cryptographic code running continuously in constant-time on the CPU, maintaining constant-time execution characteristics and demonstrating a rigorous understanding of RTOS internals.
 
 \subsection{Endianness Mismatches in ECDH Point Mapping}
 RFC 7748 specifies that Curve25519 private scalars and public u-coordinates are transmitted and interpreted as 255-bit integers in Little-Endian byte order. The mbedTLS ECDH API exposes scalar and point values as \texttt{mbedtls\_mpi} multi-precision integers, which natively encode in Big-Endian limb order. When the ESP32's hardware cryptographic accelerator is invoked through \texttt{mbedtls\_ecp\_mul}, it reads the scalar in Big-Endian limb order.
@@ -594,7 +594,7 @@ To ensure the empirical rigor of this study, all architectural and electrical pa
 \begin{enumerate}
 \item \textbf{Statistical Variance Baseline.} Measurements were calculated as the mean over 100 continuous iterations, ensuring that the standard deviation bounds mathematically encompass FreeRTOS context-switching and interrupt latency.
 \item \textbf{Electrical Viability.} Voltage profiling was performed using a high-precision Kenwood Regulated Bench Power Supply at 5V, verifying that the 30--70 mA fluctuating processing current is well within safe thresholds and prevents brownout events.
-\item \textbf{Timing Side-Channel Immunity.} The implementation strictly utilizes constant-time operations for the mbedTLS Montgomery ladder and ML-KEM NTT routines, mitigating timing-based side-channel vulnerabilities.
+\item \textbf{Timing Side-Channel Resistance.} The implementation design uses constant-time operations for the mbedTLS Montgomery ladder and ML-KEM NTT routines, reducing timing-based side-channel leakage.
 \end{enumerate}
 
 Table \ref{tab:threats} consolidates the threat model discussed throughout this section, summarizing each adversarial capability alongside its corresponding mitigation mechanism.
@@ -626,7 +626,7 @@ Replay attack & Yes & Monotonic GCM IV sequence counter \\
 \section{Conclusion}
 This paper described the design, implementation, and empirical evaluation of a stateful hybrid post-quantum key exchange protocol on the ESP32 Xtensa LX6 microcontroller. The system combines X25519 and ML-KEM-512 in a single handshake whose output is bound by HKDF-SHA256, providing quantum resilience while retaining classical security guarantees.
 
-Hardware watchdog timer resets (via non-yielding watchdog feeding) resolved TWDT starvation while preserving timing-attack immunity. Furthermore, rigorous manual electrical verifications utilizing a Kenwood bench power supply demonstrated that the intense ML-KEM-512 polynomial multiplication phase fluctuates safely between 30 and 70 mA due to software processing, successfully preventing hardware brownouts and confirming electrical viability. The resulting system completes the hybrid handshake in 635.88 ms with 13.8 KB peak SRAM heap usage and 103.3M CPU cycles, enabling secure post-quantum telemetry on low-power edge nodes.
+Hardware watchdog timer resets (via non-yielding watchdog feeding) resolved TWDT starvation while preserving constant-time design principles. Furthermore, rigorous manual electrical verifications utilizing a Kenwood bench power supply demonstrated that the intense ML-KEM-512 polynomial multiplication phase fluctuates safely between 30 and 70 mA due to software processing, successfully preventing hardware brownouts and confirming electrical viability. The resulting system completes the hybrid handshake in 635.88 ms with 13.8 KB peak SRAM heap usage and 103.3M CPU cycles, enabling secure post-quantum telemetry on low-power edge nodes.
 
 
 \section*{Data and Code Availability}
