@@ -1,0 +1,129 @@
+\relax 
+\citation{b5}
+\citation{b1}
+\citation{b10}
+\citation{b2}
+\citation{b27}
+\citation{b22,b24}
+\citation{b11,b19,b23,b25,b26}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {I-A}}Contributions}{1}{}\protected@file@percent }
+\citation{b3}
+\citation{b13,b15,b30}
+\citation{b28}
+\citation{b9}
+\citation{b8}
+\citation{b14,b16,b17}
+\citation{b7}
+\citation{b6}
+\citation{b12}
+\citation{b11,b23}
+\citation{b10}
+\citation{b20,b21}
+\citation{b5}
+\@writefile{toc}{\contentsline {section}{\numberline {II}Related Work}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-A}}Evolution of Lattice-Based Cryptography}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-B}}Hybrid Key Encapsulation Mechanisms}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-C}}Architectural Paradigms: TLS vs. Native RTOS-based Design}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-D}}PQC on Constrained Devices}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-E}}IoT-Specific Security Protocols and Threat Models}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {III}Cryptographic Preliminaries and Hybrid Key Agreement}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Mathematical Foundations of Curve25519}{2}{}\protected@file@percent }
+\citation{b2}
+\citation{b4}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Module Learning With Errors and ML-KEM-512}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-B}1}Number Theoretic Transform (NTT)}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-B}2}Fujisaki-Okamoto Transform}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Cryptographic Key Binding via HKDF}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Hybrid Protocol Specification and Message Layout}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Handshake Request Message Layout}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Handshake Response Message Layout}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Telemetry POST Body Layout}{4}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces System Architecture Diagram}}{4}{}\protected@file@percent }
+\newlabel{fig1}{{1}{4}{}{figure.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Fig. 2. Authenticated hybrid X25519/ML-KEM-512 handshake over persistent TCP, showing public-parameter authentication, server encapsulation, HKDF binding, and AES-GCM telemetry activation.}}{4}{}\protected@file@percent }
+\newlabel{fig2}{{2}{4}{}{figure.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Protocol Architecture and Algorithmic Design}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}Context and Memory Management Layout}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}Core Algorithmic Logic}{4}{}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Client Keypair Generation (\texttt  {hybrid\_keygen})}}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Overcoming Embedded Constraints}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-A}}Watchdog Timer Starvation Under FreeRTOS}{4}{}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Server Response Processing and Key Agreement}}{5}{}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces Stateful Telemetry and Key Rotation Loop (\texttt  {pqc\_task})}}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-B}}Endianness Mismatches in ECDH Point Mapping}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-C}}System Architecture and RTOS Topology}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Experimental Results}{6}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Protocol Mode Comparison}}{6}{}\protected@file@percent }
+\newlabel{tab:protocol_comparison}{{I}{6}{}{table.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Statistical Confidence (n=100)}}{6}{}\protected@file@percent }
+\newlabel{tab:statistical_confidence}{{II}{6}{}{table.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Hardware and Software Configuration}}{6}{}\protected@file@percent }
+\newlabel{tab:hw_config}{{III}{6}{}{table.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-A}}Network Latency and CPU Overheads}{6}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Detailed Hybrid Handshake Micro-Benchmark Breakdown}}{6}{}\protected@file@percent }
+\newlabel{tab:latency}{{IV}{6}{}{table.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-B}}Resource Footprint Comparison}{6}{}\protected@file@percent }
+\citation{b6}
+\citation{b7}
+\citation{b7}
+\citation{b4}
+\citation{b29}
+\@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces Standalone mbedTLS (TLS 1.3) Baseline Benchmark}}{7}{}\protected@file@percent }
+\newlabel{tab:mbedtls}{{V}{7}{}{table.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-C}}Comparative Efficiency Against Published Work}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-D}}Manual Electrical Verifications and Voltage Profiling}{7}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Power Consumption Lifecycle of the ESP32}}{7}{}\protected@file@percent }
+\newlabel{fig3}{{3}{7}{}{figure.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VIII}Security Evaluation and Threat Matrix}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-A}}Formal Security Reductions and IND-CCA2 Security}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-B}}Active MitM Protection via HMAC-SHA256 PSK}{7}{}\protected@file@percent }
+\citation{b18,b19}
+\@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces Comparative Performance Against Published PQC-IoT Implementations}}{8}{}\protected@file@percent }
+\newlabel{tab:comparison}{{VI}{8}{}{table.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {VII}{\ignorespaces Comparative Electrical Power Profile (Isolated Kenwood Bench Supply, 5.0V)}}{8}{}\protected@file@percent }
+\newlabel{tab:power}{{VII}{8}{}{table.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-C}}Forward Secrecy and Key Rotation}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-D}}Side-Channel Resistance and Watchdog Management}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-E}}Replay Attack Resistance and Nonce Lifecycle}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-F}}Diagnostic Log Hardening}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-G}}Protocol Robustness and Cryptographic Binding}{8}{}\protected@file@percent }
+\citation{b2,b4}
+\citation{b5}
+\citation{b8}
+\bibcite{b1}{1}
+\bibcite{b2}{2}
+\bibcite{b3}{3}
+\bibcite{b4}{4}
+\bibcite{b5}{5}
+\bibcite{b6}{6}
+\bibcite{b7}{7}
+\bibcite{b8}{8}
+\bibcite{b9}{9}
+\bibcite{b10}{10}
+\bibcite{b11}{11}
+\bibcite{b12}{12}
+\bibcite{b13}{13}
+\bibcite{b14}{14}
+\bibcite{b15}{15}
+\bibcite{b16}{16}
+\bibcite{b17}{17}
+\bibcite{b18}{18}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-H}}Scope and Experimental Validation}{9}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {VIII}{\ignorespaces Security Threat Matrix}}{9}{}\protected@file@percent }
+\newlabel{tab:threats}{{VIII}{9}{}{table.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {IX}Conclusion and Future Work}{9}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{References}{9}{}\protected@file@percent }
+\bibcite{b19}{19}
+\bibcite{b20}{20}
+\bibcite{b21}{21}
+\bibcite{b22}{22}
+\bibcite{b23}{23}
+\bibcite{b24}{24}
+\bibcite{b25}{25}
+\bibcite{b26}{26}
+\bibcite{b27}{27}
+\bibcite{b28}{28}
+\bibcite{b29}{29}
+\bibcite{b30}{30}
+\gdef \@abspage@last{10}
