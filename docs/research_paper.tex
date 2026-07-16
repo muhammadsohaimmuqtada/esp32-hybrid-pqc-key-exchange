@@ -32,7 +32,7 @@
 \maketitle
 
 \begin{abstract}
-The proliferation of Internet of Things (IoT) edge nodes has introduced critical cryptographic vulnerabilities into industrial, medical, and municipal networks. As Cryptographically Relevant Quantum Computers (CRQCs) approach operational viability, classical public-key algorithms such as Elliptic Curve Diffie-Hellman (ECDH) become susceptible to complete compromise via Shor's polynomial-time quantum algorithm. To neutralise this threat while preserving compatibility with legacy cryptosystems, this paper presents a native, RTOS-based implementation of a stateful hybrid key-exchange protocol combining classical X25519 with the NIST-standardised Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM-512) on an Espressif ESP32 microcontroller running FreeRTOS. To mitigate active Man-in-the-Middle (MitM) attacks during ephemeral key agreements, we integrate mutual handshake authentication using HMAC-SHA256 authentication tags under a 32-byte pre-shared key (PSK). Ephemeral shared secrets are bound via HKDF-SHA256, deriving a 256-bit symmetric session key. Subsequent application traffic is protected by stateful AES-256-GCM encryption. Empirical evaluation over continuous iterations demonstrates a fully network-integrated hybrid handshake latency of 635.88 ms, peak heap allocation of 13.8 KB SRAM, and total CPU cycle cost of 103.38M cycles. Furthermore, manual physical electrical verification utilizing a Kenwood bench power supply bypassing the USB power path and providing a stable bench-supply input proved stable voltage operations, with a 110 mA Wi-Fi boot peak and a dynamically fluctuating 30--70 mA current during intense lattice cryptographic processing, completely avoiding hardware brownouts. This confirms the practicality of the hardened hybrid cryptosystem on resource-constrained hardware.
+The proliferation of Internet of Things (IoT) edge nodes has introduced critical cryptographic vulnerabilities into industrial, medical, and municipal networks. As Cryptographically Relevant Quantum Computers (CRQCs) approach operational viability, classical public-key algorithms such as Elliptic Curve Diffie-Hellman (ECDH) become susceptible to complete compromise via Shor's polynomial-time quantum algorithm. To neutralize this threat while preserving compatibility with legacy cryptosystems, this paper presents a native, RTOS-based implementation of a stateful hybrid key-exchange protocol combining classical X25519 with the NIST-standardized Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM-512) on an Espressif ESP32 microcontroller running FreeRTOS. To mitigate active Man-in-the-Middle (MitM) attacks during ephemeral key agreements, we integrate mutual handshake authentication using HMAC-SHA256 authentication tags under a 32-byte pre-shared key (PSK). Ephemeral shared secrets are bound via HKDF-SHA256, deriving a 256-bit symmetric session key. Subsequent application traffic is protected by stateful AES-256-GCM encryption. Empirical evaluation over continuous iterations demonstrates a fully network-integrated hybrid handshake latency of 635.88 ms, peak heap allocation of 13.8 KB SRAM, and total CPU cycle cost of 103.38M cycles. Furthermore, manual physical electrical verification utilizing a Kenwood bench power supply bypassing the USB power path and providing a stable bench-supply input proved stable voltage operations, with a 110 mA Wi-Fi boot peak and a dynamically fluctuating 30--70 mA current during intense lattice cryptographic processing, completely avoiding hardware brownouts. This confirms the practicality of the hardened hybrid cryptosystem on resource-constrained hardware.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -140,7 +140,7 @@ The classical and post-quantum shared secrets must be bound to prevent an advers
     & \text{X25519\_ss} \parallel \text{ML-KEM\_ss})
     \end{aligned}
     \end{equation}
-    where the salt is 
+    where the HKDF salt is set to the ASCII string\\
     \texttt{"HybridPQC-ESP32-Session-v1"}.
     \item \textbf{Expand:} Derives the 256-bit symmetric session key:
     \begin{equation}
@@ -307,7 +307,7 @@ To guarantee the entropy quality of the ephemeral key generation, the private ke
 
 \section{Overcoming Embedded Constraints}
 \subsection{Watchdog Timer Starvation Under FreeRTOS}
-The ESP32 FreeRTOS Task Watchdog Timer (TWDT) monitors the CPU time consumed by the IDLE task on each core. When application code monopolises Core 1 for more than the configured TWDT timeout (nominally 5 seconds), the IDLE task is starved and the watchdog resets the chip. If continuous iterations of the keypair generation or handshake are executed in a loop on Core 1 without yielding, the watchdog may trigger.
+The ESP32 FreeRTOS Task Watchdog Timer (TWDT) monitors the CPU time consumed by the IDLE task on each core. When application code monopolizes Core 1 for more than the configured TWDT timeout (nominally 5 seconds), the IDLE task is starved and the watchdog resets the chip. If continuous iterations of the keypair generation or handshake are executed in a loop on Core 1 without yielding, the watchdog may trigger.
 
 To resolve this issue without introducing side-channel vulnerabilities, we avoid yielding the CPU context (e.g., using \texttt{vTaskDelay}) inside any cryptographic routines. It is critical to note that the default FreeRTOS Task Watchdog Timer (TWDT) timeout on the ESP32 is 5,000 ms, whereas our production hybrid handshake requires only $\sim$635.88 ms. Thus, in a real-world production deployment, the handshake executes with \textbf{zero watchdog intervention} and zero yields, strictly preserving constant-time execution. The TWDT starvation observed during our empirical analysis was an artifact of executing an artificial 100-iteration benchmarking harness. To handle this harness cleanly without polluting the cryptography timing, \texttt{esp\_task\_wdt\_reset()} was placed strictly in the outer loop between benchmark iterations. This feeds the watchdog while keeping the cryptographic code running continuously in constant-time on the CPU, maintaining timing-attack immunity and demonstrating a rigorous understanding of RTOS internals.
 
@@ -324,7 +324,7 @@ The \texttt{pqc\_task}, responsible for executing the hybrid handshake and telem
 To mitigate the risk of stack overflows during the deep call graphs of the Keccak-f[1600] permutation, the \texttt{pqc\_task} is allocated a dedicated 16 KB static stack. All dynamic key material is allocated on the FreeRTOS heap to contain the stack footprint.
 
 \section{Experimental Results}
-We evaluated the performance of the hybrid protocol against standalone classical and PQC modes over 100 consecutive end-to-end iterations on our physical testbed. Measurements for latency and CPU cycles were captured using native hardware timers (\texttt{esp\_timer\_get\_time()}).
+We evaluated the performance of the hybrid protocol against standalone classical and PQC modes over 100 consecutive end-to-end iterations on our physical testbed, with the high-level protocol mode comparisons detailed in Table \ref{tab:protocol_comparison}. A full statistical confidence breakdown across the 100 iterations is provided in Table \ref{tab:statistical_confidence}, while the specific hardware and software configuration used for all benchmarks is documented in Table \ref{tab:hw_config}. Measurements for latency and CPU cycles were captured using native hardware timers (\texttt{esp\_timer\_get\_time()}).
 
 \begin{table}[htbp]
 \caption{Protocol Mode Comparison}
@@ -452,7 +452,7 @@ Table \ref{tab:latency} reveals that X25519 scalar multiplication dominates the 
 
 To establish a baseline, we executed a standard mbedTLS 1.3 handshake on the same ESP32 hardware over the local network. The TLS 1.3 baseline was evaluated using mbedTLS with an ECDHE-ECDSA (prime256v1) certificate, running at 240 MHz CPU frequency on Core 1 with identical task priority as the hybrid protocol, connecting to a local TLS 1.3 server on the same Wi-Fi network to provide a fair, controlled comparison. This baseline consumed $776.40$ ms (approximately 1.22$\times$ slower in latency than our native RTOS-based hybrid protocol) and required $372,662,685$ CPU cycles (representing approximately 3.60$\times$ more processor overhead).
 
-Table \ref{tab:mbedtls} reports the raw instrumented output of this standalone benchmark, captured via native hardware timers over the ESP32's serial interface during a live handshake execution. These figures corroborate the mbedTLS baseline row already summarised in Table \ref{tab:comparison}.
+Table \ref{tab:mbedtls} reports the raw instrumented output of this standalone benchmark, captured via native hardware timers over the ESP32's serial interface during a live handshake execution. These figures corroborate the mbedTLS baseline row already summarized in Table \ref{tab:comparison}.
 
 \begin{table}[htbp]
 \caption{Standalone mbedTLS (TLS 1.3) Baseline Benchmark}
@@ -510,7 +510,7 @@ To rigorously profile and resolve this, power was injected directly into the \te
 \end{figure}
 Fig. \ref{fig3} illustrates the resulting power consumption lifecycle of the ESP32 across the full boot-to-idle sequence. The physically isolated electrical tests revealed a 110 mA peak current spike during the initial Wi-Fi radio calibration boot phase and X25519/ML-KEM-512 key generation. Following successful connection to the WLAN and completion of the handshake, the device entered its telemetry loop. During standard TLS 1.3 telemetry (AES-GCM encryption), the hardware AES accelerator maintains a flat 30 mA. However, during continuous Hybrid mode telemetry, the heavy software-based NTT polynomial operations drove the steady-state current to fluctuate dynamically between 30 mA and 70 mA.
 
-Table \ref{tab:power} summarises the comparative electrical profile across the four tested cryptographic modes. To ensure absolute physical isolation and prevent linear regulator dropouts, all current measurements were obtained natively by injecting 5.0V directly into the \texttt{VIN} rail using a Kenwood Regulated Bench Power Supply, with a digital multimeter connected in series. 
+Table \ref{tab:power} summarizes the comparative electrical profile across the four tested cryptographic modes. To ensure absolute physical isolation and prevent linear regulator dropouts, all current measurements were obtained natively by injecting 5.0V directly into the \texttt{VIN} rail using a Kenwood Regulated Bench Power Supply, with a digital multimeter connected in series. 
 
 \begin{table}[htbp]
 \caption{Comparative Electrical Power Profile (Isolated Kenwood Bench Supply, 5.0V)}
@@ -556,7 +556,7 @@ The X25519 Montgomery ladder executes in strict constant time. The ML-KEM-512 NT
 \subsection{Replay Attack Resistance and Nonce Lifecycle}
 To prevent the replay of intercepted telemetry, our protocol incorporates a 4-byte monotonic sequence counter into the 12-byte AES-GCM IV (followed by 8 bytes of hardware TRNG randomness), compliant with NIST SP 800-38D using the invocation construction per Section 8.2.2. The Client increments this counter for every transmitted packet. The Server extracts the counter from the GCM IV and compares it against the highest counter observed for that Session ID ($C_{\text{recv}} > C_{\text{last}}$), immediately rejecting replayed packets. The Server mirrors this counter in its GCM acknowledgment IV, providing mutual replay verification.
 
-In embedded environments, verifying nonce security across device reboots is critical. When the ESP32 reboots, its sequence counter resets to zero. However, because every reboot forces a fresh ephemeral X25519 + ML-KEM key exchange, a completely new Session ID and 256-bit session key are established. Resetting the sequence counter to zero under a newly negotiated key ensures that an IV is never reused for the same key, preserving AES-GCM security guarantees. Furthermore, because session keys are strictly rotated every 50 packets, the 32-bit sequence counter (maximum $4.29 \times 10^9$) will never overflow.
+In embedded environments, verifying nonce security across device reboots is critical (summarized in Table \ref{tab:lifecycle}). When the ESP32 reboots, its sequence counter resets to zero. However, because every reboot forces a fresh ephemeral X25519 + ML-KEM key exchange, a completely new Session ID and 256-bit session key are established. Resetting the sequence counter to zero under a newly negotiated key ensures that an IV is never reused for the same key, preserving AES-GCM security guarantees. Furthermore, because session keys are strictly rotated every 50 packets, the 32-bit sequence counter (maximum $4.29 \times 10^9$) will never overflow.
 
 \begin{table}[htbp]
 \caption{IV and Key Lifecycle State Machine}
@@ -597,7 +597,7 @@ To ensure the empirical rigor of this study, all architectural and electrical pa
 \item \textbf{Timing Side-Channel Immunity.} The implementation strictly utilizes constant-time operations for the mbedTLS Montgomery ladder and ML-KEM NTT routines, mitigating timing-based side-channel vulnerabilities.
 \end{enumerate}
 
-Table \ref{tab:threats} consolidates the threat model discussed throughout this section, summarising each adversarial capability alongside its corresponding mitigation mechanism.
+Table \ref{tab:threats} consolidates the threat model discussed throughout this section, summarizing each adversarial capability alongside its corresponding mitigation mechanism.
 
 \begin{table}[htbp]
 \caption{Security Threat Matrix}
