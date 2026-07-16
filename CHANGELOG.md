@@ -10,3 +10,4 @@ All notable changes to this project will be documented in this file.
 - Comprehensive benchmark and telemetry generation scripts
 - Sanitized dataset of PCAP captures and raw serial logs
 - Full threat model and hardware setup documentation
+
