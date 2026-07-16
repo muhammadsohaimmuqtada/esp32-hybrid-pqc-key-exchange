@@ -623,15 +623,14 @@ Replay attack & Yes & Monotonic GCM IV sequence counter \\
 \end{center}
 \end{table}
 
-\section{Conclusion and Future Work}
+\section{Conclusion}
 This paper described the design, implementation, and empirical evaluation of a stateful hybrid post-quantum key exchange protocol on the ESP32 Xtensa LX6 microcontroller. The system combines X25519 and ML-KEM-512 in a single handshake whose output is bound by HKDF-SHA256, providing quantum resilience while retaining classical security guarantees.
 
 Hardware watchdog timer resets (via non-yielding watchdog feeding) resolved TWDT starvation while preserving timing-attack immunity. Furthermore, rigorous manual electrical verifications utilizing a Kenwood bench power supply demonstrated that the intense ML-KEM-512 polynomial multiplication phase fluctuates safely between 30 and 70 mA due to software processing, successfully preventing hardware brownouts and confirming electrical viability. The resulting system completes the hybrid handshake in 635.88 ms with 13.8 KB peak SRAM heap usage and 103.3M CPU cycles, enabling secure post-quantum telemetry on low-power edge nodes.
 
-Future work will focus on evaluating the protocol's scalability to multi-node wireless mesh networks and assessing the computational performance impact of migrating to higher security parameter sets such as ML-KEM-768.
 
 \section*{Data and Code Availability}
-The complete source code of the firmware, benchmark scripts, and the Python server implementation, along with the captured PCAP files and raw telemetry logs, are openly available in an anonymized repository at \url{https://github.com/anonymous-author-pqc/esp32-hybrid-pqc}.
+The complete source code of the firmware, benchmark scripts, and the Python server implementation, along with the captured PCAP files and raw telemetry logs, are openly available in the repository at \url{https://github.com/muhammadsohaimmuqtada/esp32-hybrid-pqc-key-exchange}.
 
 \begin{thebibliography}{00}
 \setlength{\itemsep}{0.5pt}
