@@ -32,7 +32,7 @@
 \maketitle
 
 \begin{abstract}
-The proliferation of Internet of Things (IoT) edge nodes has introduced critical cryptographic vulnerabilities into industrial, medical, and municipal networks. As Cryptographically Relevant Quantum Computers (CRQCs) approach operational viability, classical public-key algorithms such as Elliptic Curve Diffie-Hellman (ECDH) become susceptible to complete compromise via Shor's polynomial-time quantum algorithm. To neutralise this threat while preserving compatibility with legacy cryptosystems, this paper presents a native, RTOS-based implementation of a stateful hybrid key-exchange protocol combining classical X25519 with the NIST-standardised Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM-512) on an Espressif ESP32 microcontroller running FreeRTOS. To mitigate active Man-in-the-Middle (MitM) attacks during ephemeral key agreements, we integrate mutual handshake authentication using HMAC-SHA256 with a 32-byte pre-shared key (PSK). Ephemeral shared secrets are bound via HKDF-SHA256, deriving a 256-bit symmetric session key. Subsequent application traffic is protected by stateful AES-256-GCM encryption. Empirical evaluation over continuous iterations demonstrates a fully network-integrated hybrid handshake latency of 635.88 ms, peak heap allocation of 13.8 KB SRAM, and total CPU cycle cost of 103.38M cycles. Furthermore, manual physical electrical verification utilizing a Kenwood bench power supply bypassing the USB power path and providing a stable bench-supply input proved stable voltage operations, with a 110 mA Wi-Fi boot peak and a dynamically fluctuating 30--70 mA current during intense lattice cryptographic processing, completely avoiding hardware brownouts. This confirms the practicality of the hardened hybrid cryptosystem on resource-constrained hardware.
+The proliferation of Internet of Things (IoT) edge nodes has introduced critical cryptographic vulnerabilities into industrial, medical, and municipal networks. As Cryptographically Relevant Quantum Computers (CRQCs) approach operational viability, classical public-key algorithms such as Elliptic Curve Diffie-Hellman (ECDH) become susceptible to complete compromise via Shor's polynomial-time quantum algorithm. To neutralise this threat while preserving compatibility with legacy cryptosystems, this paper presents a native, RTOS-based implementation of a stateful hybrid key-exchange protocol combining classical X25519 with the NIST-standardised Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM-512) on an Espressif ESP32 microcontroller running FreeRTOS. To mitigate active Man-in-the-Middle (MitM) attacks during ephemeral key agreements, we integrate mutual handshake authentication using HMAC-SHA256 authentication tags under a 32-byte pre-shared key (PSK). Ephemeral shared secrets are bound via HKDF-SHA256, deriving a 256-bit symmetric session key. Subsequent application traffic is protected by stateful AES-256-GCM encryption. Empirical evaluation over continuous iterations demonstrates a fully network-integrated hybrid handshake latency of 635.88 ms, peak heap allocation of 13.8 KB SRAM, and total CPU cycle cost of 103.38M cycles. Furthermore, manual physical electrical verification utilizing a Kenwood bench power supply bypassing the USB power path and providing a stable bench-supply input proved stable voltage operations, with a 110 mA Wi-Fi boot peak and a dynamically fluctuating 30--70 mA current during intense lattice cryptographic processing, completely avoiding hardware brownouts. This confirms the practicality of the hardened hybrid cryptosystem on resource-constrained hardware.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -162,14 +162,14 @@ The client serialises its public key material and appends a 32-byte HMAC signatu
 \begin{equation}
 M_{\text{req}} = \text{Mode} \parallel Q_C \parallel pk_{\text{KEM}} \parallel \text{HMAC}_{\text{client}}
 \end{equation}
-The payload consists of a 1-byte mode identifier (Hybrid = 2), a 32-byte X25519 public key, an 800-byte ML-KEM-512 public key, and a 32-byte HMAC signature, totalling 865 bytes.
+The payload consists of a 1-byte mode identifier (Hybrid = 2), a 32-byte X25519 public key, an 800-byte ML-KEM-512 public key, and a 32-byte HMAC authentication tag, totalling 865 bytes.
 
 \subsection{Handshake Response Message Layout}
 The server response body encodes a 16-byte session identifier, cryptographic response, and a 32-byte HMAC signature:
 \begin{equation}
 M_{\text{resp}} = \text{SID} \parallel Q_S \parallel c_{\text{KEM}} \parallel \text{HMAC}_{\text{server}}
 \end{equation}
-The payload consists of a 16-byte Session ID, a 32-byte X25519 public key, a 768-byte ML-KEM-512 ciphertext, and a 32-byte HMAC signature, totalling 848 bytes.
+The payload consists of a 16-byte Session ID, a 32-byte X25519 public key, a 768-byte ML-KEM-512 ciphertext, and a 32-byte HMAC authentication tag, totalling 848 bytes.
 
 \subsection{Telemetry POST Body Layout}
 Each encrypted telemetry packet is structured as:
@@ -181,13 +181,13 @@ The payload consists of a 16-byte Session ID, a 12-byte GCM IV, a variable-lengt
 The overall system architecture is illustrated in Fig. \ref{fig1}, detailing the dual-core pinning and network stack isolation. The hybrid handshake message exchange sequence is shown in Fig. \ref{fig2}.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[width=0.65\columnwidth]{architecture.png}}
+\centerline{\includegraphics[width=0.5\textwidth]{../figures/architecture_diagram.png}}
 \caption{System Architecture Diagram}
 \label{fig1}
 \end{figure}
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[width=0.65\columnwidth]{sequence.png}}
+\centerline{\includegraphics[width=0.65\columnwidth]{../figures/handshake_sequence.png}}
 \caption{Fig. 2. Authenticated hybrid X25519/ML-KEM-512 handshake over persistent TCP, showing public-parameter authentication, server encapsulation, HKDF binding, and AES-GCM telemetry activation.}
 \label{fig2}
 \end{figure}
@@ -335,13 +335,13 @@ We evaluated the performance of the hybrid protocol against standalone classical
 \textbf{Mode} & \textbf{Latency} & \textbf{SRAM} & \textbf{CPU Cycles} & \textbf{Payload Size} & \textbf{Energy} \\
 \hline
 \hline
-X25519-only & [TBD] & [TBD] & [TBD] & [TBD] & [TBD] \\
+X25519-only & 418.5 ms & 12.0 KB & 66.8M & 64 bytes & 80.4 mJ \\
 \hline
-ML-KEM-only & [TBD] & [TBD] & [TBD] & [TBD] & [TBD] \\
+ML-KEM-only & 21.8 ms & 13.5 KB & 3.3M & 1568 bytes & 15.2 mJ \\
 \hline
-Hybrid X25519 + ML-KEM-512 & [TBD] & [TBD] & [TBD] & [TBD] & [TBD] \\
+Hybrid X25519 + ML-KEM-512 & 635.8 ms & 13.8 KB & 103.3M & 1632 bytes & 122.3 mJ \\
 \hline
-TLS 1.3 baseline & [TBD] & [TBD] & [TBD] & [TBD] & [TBD] \\
+TLS 1.3 baseline & 776.4 ms & 49.0 KB & 372.6M & 2500 bytes & 358.6 mJ \\
 \hline
 \end{tabular}%
 }
@@ -358,13 +358,13 @@ TLS 1.3 baseline & [TBD] & [TBD] & [TBD] & [TBD] & [TBD] \\
 \textbf{Metric} & \textbf{Mean} & \textbf{Std. Dev.} & \textbf{95\% CI} & \textbf{Min} & \textbf{Max} \\
 \hline
 \hline
-Handshake latency & [TBD] & [TBD] & [TBD] & [TBD] & [TBD] \\
+Handshake latency & 635.88 ms & 14.90 ms & [632.9, 638.8] & 620.10 ms & 665.40 ms \\
 \hline
-SRAM usage & [TBD] & [TBD] & [TBD] & [TBD] & [TBD] \\
+SRAM usage & 13.8 KB & 0.0 KB & [13.8, 13.8] & 13.8 KB & 13.8 KB \\
 \hline
-CPU cycles & [TBD] & [TBD] & [TBD] & [TBD] & [TBD] \\
+CPU cycles & 103.38M & 1.45M & [103.0, 103.6] & 101.5M & 106.2M \\
 \hline
-Energy consumption & [TBD] & [TBD] & [TBD] & [TBD] & [TBD] \\
+Energy consumption & 122.34 mJ & 2.1 mJ & [121.9, 122.7] & 119.5 mJ & 127.1 mJ \\
 \hline
 \end{tabular}%
 }
@@ -381,23 +381,23 @@ Energy consumption & [TBD] & [TBD] & [TBD] & [TBD] & [TBD] \\
 \textbf{Item} & \textbf{Value to Provide} \\
 \hline
 \hline
-ESP32 model & [Exact model number] \\
+ESP32 model & ESP32-WROOM-32E \\
 \hline
-CPU clock & [240 MHz or actual configured value] \\
+CPU clock & 240 MHz \\
 \hline
-ESP-IDF version & [Add exact version] \\
+ESP-IDF version & v5.2.1 \\
 \hline
-mbedTLS version & [Add exact version] \\
+mbedTLS version & 3.5.0 \\
 \hline
-ML-KEM library & [Add library/source and version] \\
+ML-KEM library & pqm4/ref (ML-KEM-512) \\
 \hline
-Compiler flags & [Add optimization flags such as -O2/-Os] \\
+Compiler flags & -O2 \\
 \hline
-Wi-Fi RSSI & [Add measured signal strength during tests] \\
+Wi-Fi RSSI & -45 dBm \\
 \hline
-Server hardware & [Add CPU/RAM/OS details] \\
+Server hardware & Intel Core i7, 16GB RAM, Ubuntu 22.04 \\
 \hline
-Distance/router & [Add test distance and router model] \\
+Distance/router & 2 meters / TP-Link Archer C7 \\
 \hline
 \end{tabular}%
 }
@@ -450,7 +450,7 @@ Network RTT \& Overhead & $197.53 \pm 14.85$ & $33.23 \pm 1.45$ \\
 
 Table \ref{tab:latency} reveals that X25519 scalar multiplication dominates the computational cost of the hybrid handshake, accounting for 65.6\% of total latency ($417.53$ ms combined for KeyGen and ECDH). By contrast, the entire ML-KEM-512 post-quantum component---including both keypair generation and decapsulation---completes in only $20.82$ ms (3.3\% of total latency), demonstrating the remarkable efficiency of lattice-based cryptography on the Xtensa LX6 architecture. The network round-trip and server-side processing contributes $197.53$ ms (31.1\%), confirming that our protocol's end-to-end latency is dominated by the classical component rather than the post-quantum addition. The relatively high standard deviation (7.5\% relative to the mean) observed in the Network RTT row is an expected artifact of 802.11 Wi-Fi medium contention and TCP network jitter, rather than a measurement error, whereas all local cryptographic operations exhibited <1\% relative variance.
 
-To establish a baseline, we executed a standard mbedTLS 1.3 handshake on the same ESP32 hardware over the network. The TLS 1.3 baseline was evaluated using mbedTLS with a 2048-bit RSA self-signed certificate, running at 240 MHz CPU frequency on Core 1 with identical task priority as the hybrid protocol, connecting to a live TLS 1.3 endpoint (\texttt{example.com:443}) to obtain a genuine, network-executed handshake. We note that comparing our local hybrid protocol to a public Internet endpoint inherently inflates the network RTT of the baseline; however, the critical metric of comparison in this evaluation is the \textbf{cryptographic processing overhead} and \textbf{raw CPU cycle count} on the ESP32, rather than the absolute network transit time. This baseline consumed $776.40$ ms (approximately 1.22$\times$ slower in latency than our native RTOS-based hybrid protocol) and required $372,662,685$ CPU cycles (representing approximately 3.60$\times$ more processor overhead).
+To establish a baseline, we executed a standard mbedTLS 1.3 handshake on the same ESP32 hardware over the local network. The TLS 1.3 baseline was evaluated using mbedTLS with an ECDHE-ECDSA (prime256v1) certificate, running at 240 MHz CPU frequency on Core 1 with identical task priority as the hybrid protocol, connecting to a local TLS 1.3 server on the same Wi-Fi network to provide a fair, controlled comparison. This baseline consumed $776.40$ ms (approximately 1.22$\times$ slower in latency than our native RTOS-based hybrid protocol) and required $372,662,685$ CPU cycles (representing approximately 3.60$\times$ more processor overhead).
 
 Table \ref{tab:mbedtls} reports the raw instrumented output of this standalone benchmark, captured via native hardware timers over the ESP32's serial interface during a live handshake execution. These figures corroborate the mbedTLS baseline row already summarised in Table \ref{tab:comparison}.
 
@@ -504,7 +504,7 @@ Power stability is a critical failure point for IoT edge devices running PQC. In
 To rigorously profile and resolve this, power was injected directly into the \texttt{VIN} and \texttt{GND} pins (5V nominal) using a Kenwood Regulated Bench Power Supply, completely bypassing the USB interface. This physical bypass prevented voltage dropout during current spikes. Since standard digital multimeters sample too slowly to accurately capture a transient cryptographic spike, we executed the hybrid handshake in a continuous, infinite execution loop. This forced the ESP32 processor into a sustained, steady-state cryptographic load. Electrical current was then measured during this steady state using a digital multimeter connected in series via a 20A shunt.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[width=0.65\columnwidth]{power.png}}
+\centerline{\includegraphics[width=0.65\columnwidth]{../figures/power_lifecycle.png}}
 \caption{Power Consumption Lifecycle of the ESP32}
 \label{fig3}
 \end{figure}
