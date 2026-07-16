@@ -94,9 +94,9 @@ entry 0x4008063c
 [0;32mI (698) wifi_init: WiFi IRAM OP enabled[0m
 [0;32mI (702) wifi_init: WiFi RX IRAM OP enabled[0m
 [0;32mI (708) phy_init: phy_version 4840,02e0d70,Sep  2 2024,19:39:07[0m
-[0;32mI (795) wifi:mode : sta (5c:01:3b:be:bc:58)[0m
+[0;32mI (795) wifi:mode : sta (XX:XX:XX:XX:XX:XX)[0m
 [0;32mI (796) wifi:enable tsf[0m
-[0;32mI (799) PQC_MAIN: Connecting to Wi-Fi SSID: Bomboclattt[0m
+[0;32mI (799) PQC_MAIN: Connecting to Wi-Fi SSID: REPLACE_WITH_YOUR_SSID[0m
 [0;32mI (3216) PQC_MAIN: Retrying Wi-Fi connection (1/10)...[0m
 [0;32mI (5631) PQC_MAIN: Retrying Wi-Fi connection (2/10)...[0m
 [0;32mI (8045) PQC_MAIN: Retrying Wi-Fi connection (3/10)...[0m

@@ -94,9 +94,9 @@ entry 0x4008063c
 [0;32mI (698) wifi_init: WiFi IRAM OP enabled[0m
 [0;32mI (702) wifi_init: WiFi RX IRAM OP enabled[0m
 [0;32mI (708) phy_init: phy_version 4840,02e0d70,Sep  2 2024,19:39:07[0m
-[0;32mI (795) wifi:mode : sta (5c:01:3b:be:bc:58)[0m
+[0;32mI (795) wifi:mode : sta (XX:XX:XX:XX:XX:XX)[0m
 [0;32mI (796) wifi:enable tsf[0m
-[0;32mI (798) PQC_MAIN: Connecting to Wi-Fi SSID: Bomboclattt[0m
+[0;32mI (798) PQC_MAIN: Connecting to Wi-Fi SSID: REPLACE_WITH_YOUR_SSID[0m
 [0;32mI (3216) PQC_MAIN: Retrying Wi-Fi connection (1/10)...[0m
 [0;32mI (5631) PQC_MAIN: Retrying Wi-Fi connection (2/10)...[0m
 [0;32mI (8045) PQC_MAIN: Retrying Wi-Fi connection (3/10)...[0m
@@ -1269,7 +1269,7 @@ entry 0x4008063c
 [0;32mI (35929) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 9210 us, 1473547 cycles[0m
 [0;32mI (35929) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
 [0;32mI (35935) CRYPTO_HYBRID: Packed 865 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-512)[0m
-[0;32mI (35944) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (865 bytes)...[0m
+[0;32mI (35944) PQC_MAIN: Sending handshake to http://192.168.X.X:8443/handshake (865 bytes)...[0m
 [1;31mE (35955) esp-tls: [sock=54] connect() error: Host is unreachable[0m
 [1;31mE (35958) transport_base: Failed to open a new connection: 32772[0m
 [1;31mE (35964) HTTP_CLIENT: Connection failed, sock < 0[0m
@@ -1282,7 +1282,7 @@ entry 0x4008063c
 [0;32mI (41266) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keygen]: 8950 us, 1431973 cycles[0m
 [0;32mI (41266) CRYPTO_HYBRID: ML-KEM-512 keypair generated (pk=800 bytes, sk=1632 bytes)[0m
 [0;32mI (41272) CRYPTO_HYBRID: Packed 865 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-512)[0m
-[0;32mI (41282) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (865 bytes)...[0m
+[0;32mI (41282) PQC_MAIN: Sending handshake to http://192.168.X.X:8443/handshake (865 bytes)...[0m
 [1;31mE (41292) esp-tls: [sock=54] connect() error: Host is unreachable[0m
 [1;31mE (41296) transport_base: Failed to open a new connection: 32772[0m
 [1;31mE (41301) HTTP_CLIENT: Connection failed, sock < 0[0m

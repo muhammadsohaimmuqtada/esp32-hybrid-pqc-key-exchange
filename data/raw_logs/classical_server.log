@@ -1,0 +1,2081 @@
+WARNING: oqs-python not installed. PQC and Hybrid modes will use simulation.
+Install with: pip install oqs
+06:14:30 [WARNING] PQC_SERVER: ML-KEM-512 not available — using simulation mode
+06:14:30 [INFO] PQC_SERVER:
+06:14:30 [INFO] PQC_SERVER: ╔═══════════════════════════════════════════════════
+═══════════╗
+06:14:30 [INFO] PQC_SERVER: ║    HYBRID PQC SERVER — X25519 + ML-KEM-512 + HKDF-
+SHA256   ║
+06:14:30 [INFO] PQC_SERVER: ╠═══════════════════════════════════════════════════
+═══════════╣
+06:14:30 [INFO] PQC_SERVER: ║  Listening:  0.0.0.0:8443
+║
+06:14:30 [INFO] PQC_SERVER: ║  Dashboard:  http://localhost:8443/
+    ║
+06:14:30 [INFO] PQC_SERVER: ║  API:        http://localhost:8443/api/benchmarks
+     ║
+06:14:30 [INFO] PQC_SERVER: ║  ML-KEM-512: SIMULATED ⚠
+    ║
+06:14:30 [INFO] PQC_SERVER: ╚═══════════════════════════════════════════════════
+═══════════╝
+06:14:30 [INFO] PQC_SERVER:
+06:17:32 [INFO] PQC_SERVER: [192.168.X.X:51377] POST /handshake (65 bytes)
+06:17:32 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+06:17:32 [INFO] PQC_SERVER: Handshake #1: mode=Classical (X25519)
+06:17:32 [INFO] PQC_SERVER:   Assigned Session ID: d246982cd983234ca4225f28756c4
+30a
+06:17:32 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+06:17:33 [INFO] PQC_SERVER: [192.168.X.X:51378] POST /handshake (65 bytes)
+06:17:33 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+06:17:33 [INFO] PQC_SERVER: Handshake #2: mode=Classical (X25519)
+06:17:33 [INFO] PQC_SERVER:   Assigned Session ID: 26900e3fe1635272f4198ecdf4f5a
+dbd
+06:17:33 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+06:17:34 [INFO] PQC_SERVER: [192.168.X.X:51379] POST /handshake (65 bytes)
+06:17:34 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+06:17:34 [INFO] PQC_SERVER: Handshake #3: mode=Classical (X25519)
+06:17:34 [INFO] PQC_SERVER:   Assigned Session ID: 011804a7f1237d869781624878aee
+ffb
+06:17:34 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+06:17:35 [INFO] PQC_SERVER: [192.168.X.X:51380] POST /handshake (65 bytes)
+06:17:35 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+06:17:35 [INFO] PQC_SERVER: Handshake #4: mode=Classical (X25519)
+06:17:35 [INFO] PQC_SERVER:   Assigned Session ID: 20a15c14d94af1757d17a86a86eef
+d5c
+06:17:35 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+06:17:35 [INFO] PQC_SERVER: [192.168.X.X:51381] POST /handshake (65 bytes)
+06:17:35 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+06:17:35 [INFO] PQC_SERVER: Handshake #5: mode=Classical (X25519)
+06:17:35 [INFO] PQC_SERVER:   Assigned Session ID: e601c73e4d7516c548c30c046b743
+668
+06:17:35 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+06:17:36 [INFO] PQC_SERVER: [192.168.X.X:51382] POST /handshake (65 bytes)
+06:17:36 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+06:17:36 [INFO] PQC_SERVER: Handshake #6: mode=Classical (X25519)
+06:17:36 [INFO] PQC_SERVER:   Assigned Session ID: 919c9812234712a006dc7985f4036
+ee3
+06:17:36 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+06:17:37 [INFO] PQC_SERVER: [192.168.X.X:51383] POST /handshake (65 bytes)
+06:17:37 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+06:17:37 [INFO] PQC_SERVER: Handshake #7: mode=Classical (X25519)
+06:17:37 [INFO] PQC_SERVER:   Assigned Session ID: b79abf0560971dcd8373416d57ecf
+fe6
+06:17:37 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+06:17:38 [INFO] PQC_SERVER: [192.168.X.X:51384] POST /handshake (65 bytes)
+06:17:38 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+06:17:38 [INFO] PQC_SERVER: Handshake #8: mode=Classical (X25519)
+06:17:38 [INFO] PQC_SERVER:   Assigned Session ID: 85dc628d5acd79c97204ce5792a45
+121
+06:17:38 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+06:17:38 [INFO] PQC_SERVER: [192.168.X.X:51385] POST /handshake (65 bytes)
+06:17:38 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+06:17:38 [INFO] PQC_SERVER: Handshake #9: mode=Classical (X25519)
+06:17:38 [INFO] PQC_SERVER:   Assigned Session ID: 5c35b549b1820eb64d12292a5b3ef
+80b
+06:17:38 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+06:17:40 [INFO] PQC_SERVER: [192.168.X.X:51386] POST /handshake (65 bytes)
+06:17:40 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+06:17:40 [INFO] PQC_SERVER: Handshake #10: mode=Classical (X25519)
+06:17:40 [INFO] PQC_SERVER:   Assigned Session ID: d400416c85ab4d9a23f2730a3495d
+591
+06:17:40 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+06:17:41 [INFO] PQC_SERVER: [192.168.X.X:51387] POST /handshake (833 bytes)
+06:17:41 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+06:17:41 [INFO] PQC_SERVER: Handshake #11: mode=PQC (ML-KEM-512)
+06:17:41 [INFO] PQC_SERVER:   [DEBUG] PK recv: dd3424d71548e32a...15cf5c9fcbe5d1
+2f
+06:17:41 [INFO] PQC_SERVER:   [DEBUG] CT sent: 24049bc7de48e3ed...bacf6131f93ea6
+6b
+06:17:41 [INFO] PQC_SERVER:   Assigned Session ID: ddfd02c6c3f9fa67d4423d33bbbbe
+f40
+06:17:41 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+06:17:41 [INFO] PQC_SERVER: [192.168.X.X:51388] POST /handshake (833 bytes)
+06:17:41 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+06:17:41 [INFO] PQC_SERVER: Handshake #12: mode=PQC (ML-KEM-512)
+06:17:41 [INFO] PQC_SERVER:   [DEBUG] PK recv: 9038840bd730dc36...8a681ec92ee413
+f4
+06:17:41 [INFO] PQC_SERVER:   [DEBUG] CT sent: 89f937815eccd1bc...d6acba0835aa63
+68
+06:17:41 [INFO] PQC_SERVER:   Assigned Session ID: 46a9db848c8faf92fbee8dcb74957
+170
+06:17:41 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+06:17:41 [INFO] PQC_SERVER: [192.168.X.X:51389] POST /handshake (833 bytes)
+06:17:41 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+06:17:41 [INFO] PQC_SERVER: Handshake #13: mode=PQC (ML-KEM-512)
+06:17:41 [INFO] PQC_SERVER:   [DEBUG] PK recv: 78c512ca48bf0a80...93274dc5129c04
+d0
+06:17:41 [INFO] PQC_SERVER:   [DEBUG] CT sent: fec886b322646b98...948cf95414b4f8
+19
+06:17:41 [INFO] PQC_SERVER:   Assigned Session ID: bace0aca71165d860cd0530bc7820
+0bd
+06:17:41 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+06:17:41 [INFO] PQC_SERVER: [192.168.X.X:51390] POST /handshake (833 bytes)
+06:17:41 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+06:17:41 [INFO] PQC_SERVER: Handshake #14: mode=PQC (ML-KEM-512)
+06:17:41 [INFO] PQC_SERVER:   [DEBUG] PK recv: 76e799c4d307edd9...cc1984db57bf68
+ef
+06:17:41 [INFO] PQC_SERVER:   [DEBUG] CT sent: 6e0467c91d9ba5c4...56e02a6377ed30
+5d
+06:17:41 [INFO] PQC_SERVER:   Assigned Session ID: e2d473aa5290b8f3db15c4f37e7a4
+002
+06:17:41 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+06:17:42 [INFO] PQC_SERVER: [192.168.X.X:51391] POST /handshake (833 bytes)
+06:17:42 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+06:17:42 [INFO] PQC_SERVER: Handshake #15: mode=PQC (ML-KEM-512)
+06:17:42 [INFO] PQC_SERVER:   [DEBUG] PK recv: 1fd7ab3482ade848...9551d54c618fa7
+83
+06:17:42 [INFO] PQC_SERVER:   [DEBUG] CT sent: 4f3380e606ae603f...1915aa2bc669c1
+54
+06:17:42 [INFO] PQC_SERVER:   Assigned Session ID: d5090c6e2fd37217b2fdcdb761fbd
+dff
+06:17:42 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+06:17:42 [INFO] PQC_SERVER: [192.168.X.X:51392] POST /handshake (833 bytes)
+06:17:42 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+06:17:42 [INFO] PQC_SERVER: Handshake #16: mode=PQC (ML-KEM-512)
+06:17:42 [INFO] PQC_SERVER:   [DEBUG] PK recv: 0237a447053626c9...d5929afbe903b5
+57
+06:17:42 [INFO] PQC_SERVER:   [DEBUG] CT sent: 8ba6190a94d661b3...118b876b2dc4a2
+5c
+06:17:42 [INFO] PQC_SERVER:   Assigned Session ID: 1b98c0fc363e93a56b64b9b931268
+845
+06:17:42 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+06:17:42 [INFO] PQC_SERVER: [192.168.X.X:51393] POST /handshake (833 bytes)
+06:17:42 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+06:17:42 [INFO] PQC_SERVER: Handshake #17: mode=PQC (ML-KEM-512)
+06:17:42 [INFO] PQC_SERVER:   [DEBUG] PK recv: c2d935fc48bf5d35...410c56bbadab2f
+09
+06:17:42 [INFO] PQC_SERVER:   [DEBUG] CT sent: a01eef0cd93eca2e...fda7703e561827
+e9
+06:17:42 [INFO] PQC_SERVER:   Assigned Session ID: d7e7776ed501c2305ef9e0a3aa3af
+309
+06:17:42 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+06:17:42 [INFO] PQC_SERVER: [192.168.X.X:51394] POST /handshake (833 bytes)
+06:17:42 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+06:17:42 [INFO] PQC_SERVER: Handshake #18: mode=PQC (ML-KEM-512)
+06:17:42 [INFO] PQC_SERVER:   [DEBUG] PK recv: b2637b124986e110...d58b1623fd1371
+22
+06:17:42 [INFO] PQC_SERVER:   [DEBUG] CT sent: cf9eda1769099b19...554193a133afe5
+44
+06:17:42 [INFO] PQC_SERVER:   Assigned Session ID: 45680fce3b7cec7012d67f1deb99d
+1e2
+06:17:42 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+06:17:42 [INFO] PQC_SERVER: [192.168.X.X:51395] POST /handshake (833 bytes)
+06:17:42 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+06:17:42 [INFO] PQC_SERVER: Handshake #19: mode=PQC (ML-KEM-512)
+06:17:42 [INFO] PQC_SERVER:   [DEBUG] PK recv: 4e417f65746ba7c4...f6a9ca50e10cce
+c5
+06:17:42 [INFO] PQC_SERVER:   [DEBUG] CT sent: 036720cdc2f63e2a...b946f2356bac81
+68
+06:17:42 [INFO] PQC_SERVER:   Assigned Session ID: 1a22b57a652ef41057fc3379bd019
+155
+06:17:42 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+06:17:42 [INFO] PQC_SERVER: [192.168.X.X:51396] POST /handshake (833 bytes)
+06:17:42 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+06:17:42 [INFO] PQC_SERVER: Handshake #20: mode=PQC (ML-KEM-512)
+06:17:42 [INFO] PQC_SERVER:   [DEBUG] PK recv: f7da021573334848...53d3b3d89b4211
+2e
+06:17:42 [INFO] PQC_SERVER:   [DEBUG] CT sent: 3ccc3e8fbff8aba6...cda9d131cdf8bb
+58
+06:17:42 [INFO] PQC_SERVER:   Assigned Session ID: db1cf6a28ff793711ccd22b72c4b9
+e45
+06:17:42 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:03:27 [INFO] PQC_SERVER: [192.168.X.X:50035] POST /handshake (65 bytes)
+07:03:27 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:27 [INFO] PQC_SERVER: Handshake #21: mode=Classical (X25519)
+07:03:27 [INFO] PQC_SERVER:   Assigned Session ID: be3542316af2ffec38371282115bd
+c5c
+07:03:27 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:03:29 [INFO] PQC_SERVER: [192.168.X.X:50036] POST /handshake (65 bytes)
+07:03:29 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:29 [INFO] PQC_SERVER: Handshake #22: mode=Classical (X25519)
+07:03:29 [INFO] PQC_SERVER:   Assigned Session ID: 08b6e3cc9ca01916dc0303dfd4092
+85a
+07:03:29 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:03:31 [INFO] PQC_SERVER: [192.168.X.X:50037] POST /handshake (65 bytes)
+07:03:31 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:31 [INFO] PQC_SERVER: Handshake #23: mode=Classical (X25519)
+07:03:31 [INFO] PQC_SERVER:   Assigned Session ID: cf471e60112fc6d1c0285b322822a
+bee
+07:03:31 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:03:33 [INFO] PQC_SERVER: [192.168.X.X:50038] POST /handshake (65 bytes)
+07:03:33 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:33 [INFO] PQC_SERVER: Handshake #24: mode=Classical (X25519)
+07:03:33 [INFO] PQC_SERVER:   Assigned Session ID: 6020f0256548ec6ef8b63a79a08dd
+4e2
+07:03:33 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:03:34 [INFO] PQC_SERVER: [192.168.X.X:50039] POST /handshake (65 bytes)
+07:03:34 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:34 [INFO] PQC_SERVER: Handshake #25: mode=Classical (X25519)
+07:03:34 [INFO] PQC_SERVER:   Assigned Session ID: 87b4cdf53e899dd20923d3b03b243
+c0f
+07:03:34 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:03:36 [INFO] PQC_SERVER: [192.168.X.X:50040] POST /handshake (65 bytes)
+07:03:36 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:36 [INFO] PQC_SERVER: Handshake #26: mode=Classical (X25519)
+07:03:36 [INFO] PQC_SERVER:   Assigned Session ID: e9c1da017a00da8680eb0632e624e
+3c7
+07:03:36 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:03:37 [INFO] PQC_SERVER: [192.168.X.X:50041] POST /handshake (65 bytes)
+07:03:37 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:37 [INFO] PQC_SERVER: Handshake #27: mode=Classical (X25519)
+07:03:37 [INFO] PQC_SERVER:   Assigned Session ID: 35a17023512c1f1ccd9dd8d57d1ff
+f6c
+07:03:37 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:03:38 [INFO] PQC_SERVER: [192.168.X.X:50042] POST /handshake (65 bytes)
+07:03:38 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:38 [INFO] PQC_SERVER: Handshake #28: mode=Classical (X25519)
+07:03:38 [INFO] PQC_SERVER:   Assigned Session ID: 71750c9a15ad97a176be027141f40
+c08
+07:03:38 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:03:39 [INFO] PQC_SERVER: [192.168.X.X:50043] POST /handshake (65 bytes)
+07:03:39 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:39 [INFO] PQC_SERVER: Handshake #29: mode=Classical (X25519)
+07:03:39 [INFO] PQC_SERVER:   Assigned Session ID: faa07809980e835913f614d67ef60
+65f
+07:03:39 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:03:41 [INFO] PQC_SERVER: [192.168.X.X:50044] POST /handshake (65 bytes)
+07:03:41 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:41 [INFO] PQC_SERVER: Handshake #30: mode=Classical (X25519)
+07:03:41 [INFO] PQC_SERVER:   Assigned Session ID: e02726de18389eb1f658d33896c67
+a86
+07:03:41 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:03:41 [INFO] PQC_SERVER: [192.168.X.X:50045] POST /handshake (833 bytes)
+07:03:41 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:41 [INFO] PQC_SERVER: Handshake #31: mode=PQC (ML-KEM-512)
+07:03:41 [INFO] PQC_SERVER:   [DEBUG] PK recv: acc7072ea3a76889...98d7ca6f81fadb
+01
+07:03:41 [INFO] PQC_SERVER:   [DEBUG] CT sent: 234fc509564be6f8...e190f29c34468e
+b0
+07:03:41 [INFO] PQC_SERVER:   Assigned Session ID: c19a96cc452b525635600e188b5fc
+707
+07:03:41 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:03:41 [INFO] PQC_SERVER: [192.168.X.X:50046] POST /handshake (833 bytes)
+07:03:41 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:41 [INFO] PQC_SERVER: Handshake #32: mode=PQC (ML-KEM-512)
+07:03:41 [INFO] PQC_SERVER:   [DEBUG] PK recv: 68ca292df3380d4c...e52b35a0ea823c
+21
+07:03:41 [INFO] PQC_SERVER:   [DEBUG] CT sent: be64a56bf3f0bc91...20ed98c7c5a5c4
+ce
+07:03:41 [INFO] PQC_SERVER:   Assigned Session ID: d1e4da8da4a63e9e6fa0ad7995509
+e6a
+07:03:41 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:03:41 [INFO] PQC_SERVER: [192.168.X.X:50047] POST /handshake (833 bytes)
+07:03:41 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:41 [INFO] PQC_SERVER: Handshake #33: mode=PQC (ML-KEM-512)
+07:03:41 [INFO] PQC_SERVER:   [DEBUG] PK recv: a6a677bdd510fb17...7b1b129eb38d61
+6a
+07:03:41 [INFO] PQC_SERVER:   [DEBUG] CT sent: 033f13cacd936dee...6692bde3bf48ee
+88
+07:03:41 [INFO] PQC_SERVER:   Assigned Session ID: 55ddfb6d625d1e152fabc21a70019
+2d8
+07:03:41 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:03:42 [INFO] PQC_SERVER: [192.168.X.X:50048] POST /handshake (833 bytes)
+07:03:42 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:42 [INFO] PQC_SERVER: Handshake #34: mode=PQC (ML-KEM-512)
+07:03:42 [INFO] PQC_SERVER:   [DEBUG] PK recv: 2c40c77e09d0a323...16838adf45f5e4
+e4
+07:03:42 [INFO] PQC_SERVER:   [DEBUG] CT sent: fb51ae07c6ccfd09...4a740e21cd72ff
+35
+07:03:42 [INFO] PQC_SERVER:   Assigned Session ID: c244acfa0bd6503e40493fbdc5a56
+090
+07:03:42 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:03:42 [INFO] PQC_SERVER: [192.168.X.X:50049] POST /handshake (833 bytes)
+07:03:42 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:42 [INFO] PQC_SERVER: Handshake #35: mode=PQC (ML-KEM-512)
+07:03:42 [INFO] PQC_SERVER:   [DEBUG] PK recv: 188031c04b593d1a...6fdec0f45c5dcc
+7a
+07:03:42 [INFO] PQC_SERVER:   [DEBUG] CT sent: 48ca343195f45cf5...0d92ec703e712f
+af
+07:03:42 [INFO] PQC_SERVER:   Assigned Session ID: e174724dcd0eaf2c81b7fd6b608c6
+45e
+07:03:42 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:03:42 [INFO] PQC_SERVER: [192.168.X.X:50050] POST /handshake (833 bytes)
+07:03:42 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:42 [INFO] PQC_SERVER: Handshake #36: mode=PQC (ML-KEM-512)
+07:03:42 [INFO] PQC_SERVER:   [DEBUG] PK recv: ef742ec0d12e2d22...6be1ea0b31e234
+ed
+07:03:42 [INFO] PQC_SERVER:   [DEBUG] CT sent: 1164b8ae84aa4ba3...19e1071a068530
+be
+07:03:42 [INFO] PQC_SERVER:   Assigned Session ID: aa4eb410f6bc9b0d7288125ca91f6
+c87
+07:03:42 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:03:42 [INFO] PQC_SERVER: [192.168.X.X:50051] POST /handshake (833 bytes)
+07:03:42 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:42 [INFO] PQC_SERVER: Handshake #37: mode=PQC (ML-KEM-512)
+07:03:42 [INFO] PQC_SERVER:   [DEBUG] PK recv: a23a543a37c2c1fb...08f57ad8599d6d
+f1
+07:03:42 [INFO] PQC_SERVER:   [DEBUG] CT sent: a75a0990e77c987a...1da0fcc204f8df
+1e
+07:03:42 [INFO] PQC_SERVER:   Assigned Session ID: 53df6de2f08bd791e6d6503180f10
+d99
+07:03:42 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:03:42 [INFO] PQC_SERVER: [192.168.X.X:50052] POST /handshake (833 bytes)
+07:03:42 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:42 [INFO] PQC_SERVER: Handshake #38: mode=PQC (ML-KEM-512)
+07:03:42 [INFO] PQC_SERVER:   [DEBUG] PK recv: 7cec5a7eba338b99...8e593f8410c5bc
+ed
+07:03:42 [INFO] PQC_SERVER:   [DEBUG] CT sent: 12d9785bdc7dc003...a7b256142fd0cb
+57
+07:03:42 [INFO] PQC_SERVER:   Assigned Session ID: cb657b7d6dd1e76c6817aef18336c
+059
+07:03:42 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:03:42 [INFO] PQC_SERVER: [192.168.X.X:50053] POST /handshake (833 bytes)
+07:03:42 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:42 [INFO] PQC_SERVER: Handshake #39: mode=PQC (ML-KEM-512)
+07:03:42 [INFO] PQC_SERVER:   [DEBUG] PK recv: 36497edeb492e627...faae88e1faaf5e
+2e
+07:03:42 [INFO] PQC_SERVER:   [DEBUG] CT sent: 944138b6dac8c4d3...42362c3426b345
+65
+07:03:42 [INFO] PQC_SERVER:   Assigned Session ID: 47af21562529031713beaf4da0393
+a67
+07:03:42 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:03:42 [INFO] PQC_SERVER: [192.168.X.X:50054] POST /handshake (833 bytes)
+07:03:42 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:42 [INFO] PQC_SERVER: Handshake #40: mode=PQC (ML-KEM-512)
+07:03:42 [INFO] PQC_SERVER:   [DEBUG] PK recv: 5da13200fb7b7250...e655ac9ce0fc36
+96
+07:03:42 [INFO] PQC_SERVER:   [DEBUG] CT sent: 05e5bd2c78d58706...811180693b9076
+12
+07:03:42 [INFO] PQC_SERVER:   Assigned Session ID: a12285098168b125f47115aad2758
+f33
+07:03:42 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:03:44 [INFO] PQC_SERVER: [192.168.X.X:50055] POST /handshake (865 bytes)
+07:03:44 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:44 [INFO] PQC_SERVER: Handshake #41: mode=Hybrid (X25519 + ML-KEM-512)
+07:03:44 [INFO] PQC_SERVER:   [DEBUG] PK recv: e87039c732255b81...29566458ae7120
+97
+07:03:44 [INFO] PQC_SERVER:   [DEBUG] CT sent: d0316e206cb6c5af...5f40cf184b84f9
+43
+07:03:44 [INFO] PQC_SERVER:   Assigned Session ID: acb4eddcad19a40252dd246a11d11
+fb8
+07:03:44 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:03:45 [INFO] PQC_SERVER: [192.168.X.X:50056] POST /handshake (865 bytes)
+07:03:45 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:45 [INFO] PQC_SERVER: Handshake #42: mode=Hybrid (X25519 + ML-KEM-512)
+07:03:45 [INFO] PQC_SERVER:   [DEBUG] PK recv: 1d8a3140c650edb3...b41f8a6ec7a928
+5a
+07:03:45 [INFO] PQC_SERVER:   [DEBUG] CT sent: 26bbc6228f161dd9...01fbaae70e3d08
+2c
+07:03:45 [INFO] PQC_SERVER:   Assigned Session ID: 2caf0875242940a9249655f45cc1f
+66f
+07:03:45 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:03:46 [INFO] PQC_SERVER: [192.168.X.X:50057] POST /handshake (865 bytes)
+07:03:46 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:46 [INFO] PQC_SERVER: Handshake #43: mode=Hybrid (X25519 + ML-KEM-512)
+07:03:46 [INFO] PQC_SERVER:   [DEBUG] PK recv: 06eca1f9a6babd4c...004e2c4f34048b
+83
+07:03:46 [INFO] PQC_SERVER:   [DEBUG] CT sent: 22b3e3d39a9a8ab0...468cac225db42a
+39
+07:03:46 [INFO] PQC_SERVER:   Assigned Session ID: 92115a8f823d99f799a78ce6ffe6c
+d3c
+07:03:46 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:03:47 [INFO] PQC_SERVER: [192.168.X.X:50058] POST /handshake (865 bytes)
+07:03:47 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:47 [INFO] PQC_SERVER: Handshake #44: mode=Hybrid (X25519 + ML-KEM-512)
+07:03:47 [INFO] PQC_SERVER:   [DEBUG] PK recv: 306c0927026a6be3...49c624e1018d40
+6f
+07:03:47 [INFO] PQC_SERVER:   [DEBUG] CT sent: 849c455207a00f76...6c443b9d55201e
+d7
+07:03:47 [INFO] PQC_SERVER:   Assigned Session ID: 9211328d5a0f839ed6c1b98db3ecb
+aa8
+07:03:47 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:03:48 [INFO] PQC_SERVER: [192.168.X.X:50059] POST /handshake (865 bytes)
+07:03:48 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:48 [INFO] PQC_SERVER: Handshake #45: mode=Hybrid (X25519 + ML-KEM-512)
+07:03:48 [INFO] PQC_SERVER:   [DEBUG] PK recv: 9c987233ec034ce2...2a207b6c8c7d9e
+21
+07:03:48 [INFO] PQC_SERVER:   [DEBUG] CT sent: 18c02e90e1f6ad0b...7a9115d305a97a
+75
+07:03:48 [INFO] PQC_SERVER:   Assigned Session ID: 2ee9bba8dffa19ca1c327f482ffe9
+b32
+07:03:48 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:03:50 [INFO] PQC_SERVER: [192.168.X.X:50060] POST /handshake (865 bytes)
+07:03:50 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:50 [INFO] PQC_SERVER: Handshake #46: mode=Hybrid (X25519 + ML-KEM-512)
+07:03:50 [INFO] PQC_SERVER:   [DEBUG] PK recv: 093c0973a2741644...eec07fd29934d1
+a4
+07:03:50 [INFO] PQC_SERVER:   [DEBUG] CT sent: b3c936b36a97020d...3a580c357c7891
+af
+07:03:50 [INFO] PQC_SERVER:   Assigned Session ID: c31c2687bac9449edd0537d31b463
+267
+07:03:50 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:03:51 [INFO] PQC_SERVER: [192.168.X.X:50061] POST /handshake (865 bytes)
+07:03:51 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:51 [INFO] PQC_SERVER: Handshake #47: mode=Hybrid (X25519 + ML-KEM-512)
+07:03:51 [INFO] PQC_SERVER:   [DEBUG] PK recv: 89c3832a951a2e57...32278be4cf4ad6
+c8
+07:03:51 [INFO] PQC_SERVER:   [DEBUG] CT sent: 74887a3ca6236212...65dd029543d1e1
+11
+07:03:51 [INFO] PQC_SERVER:   Assigned Session ID: 671a017e5c8f1cdab8e376441a34e
+94a
+07:03:51 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:03:52 [INFO] PQC_SERVER: [192.168.X.X:50062] POST /handshake (865 bytes)
+07:03:52 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:52 [INFO] PQC_SERVER: Handshake #48: mode=Hybrid (X25519 + ML-KEM-512)
+07:03:52 [INFO] PQC_SERVER:   [DEBUG] PK recv: 6038be6d9cb0c0cb...aad7efc58e15da
+36
+07:03:52 [INFO] PQC_SERVER:   [DEBUG] CT sent: a257787b342fd5f1...5a8561d26c0f66
+6f
+07:03:52 [INFO] PQC_SERVER:   Assigned Session ID: 294f4dd7bf605ad46fe76fcf60e6a
+491
+07:03:52 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:03:53 [INFO] PQC_SERVER: [192.168.X.X:50063] POST /handshake (865 bytes)
+07:03:53 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:53 [INFO] PQC_SERVER: Handshake #49: mode=Hybrid (X25519 + ML-KEM-512)
+07:03:53 [INFO] PQC_SERVER:   [DEBUG] PK recv: dc99b5ca69020bf4...ea4d3c897b1bae
+e7
+07:03:53 [INFO] PQC_SERVER:   [DEBUG] CT sent: 0e6e4d5ee58e8044...ae92ceeb6f7bf8
+b9
+07:03:53 [INFO] PQC_SERVER:   Assigned Session ID: 388ed0aa7691da003a7729289cae2
+4ea
+07:03:53 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:03:54 [INFO] PQC_SERVER: [192.168.X.X:50064] POST /handshake (865 bytes)
+07:03:54 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:54 [INFO] PQC_SERVER: Handshake #50: mode=Hybrid (X25519 + ML-KEM-512)
+07:03:54 [INFO] PQC_SERVER:   [DEBUG] PK recv: 10fc7c4b039db12b...2f2c4a156f920e
+80
+07:03:54 [INFO] PQC_SERVER:   [DEBUG] CT sent: b4869c4b255e54b9...29825b4b377eca
+03
+07:03:54 [INFO] PQC_SERVER:   Assigned Session ID: c2f297d5fe77bf4f5e1ffe5e8fd32
+88f
+07:03:54 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:03:54 [INFO] PQC_SERVER: [192.168.X.X:50065] POST /api/benchmarks (350 byt
+es)
+07:03:54 [INFO] PQC_SERVER: Received benchmark results: {
+  "classical": {
+    "latency_ms": 1517.69,
+    "peak_heap_kb": 0.1,
+    "payload_bytes": 145,
+    "cpu_cycles": 244308811
+  },
+  "pqc": {
+    "latency_ms": 96.76,
+    "peak_heap_kb": 0.0,
+    "payload_bytes": 1649,
+    "cpu_cycles": 16949720
+  },
+  "hybrid": {
+    "latency_ms": 1135.74,
+    "peak_heap_kb": 0.0,
+    "payload_bytes": 1713,
+    "cpu_cycles": 183354422
+  },
+  "iterations": 10,
+  "chip": "ESP32-D0WD-V3",
+  "freq_mhz": 240,
+  "sram_kb": 520,
+  "timestamp": "2026-07-16T07:03:54.967278"
+}
+07:03:57 [INFO] PQC_SERVER: [192.168.X.X:50066] POST /handshake (65 bytes)
+07:03:57 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:03:57 [INFO] PQC_SERVER: Handshake #51: mode=Classical (X25519)
+07:03:57 [INFO] PQC_SERVER:   Assigned Session ID: fc7e8f7c289f5680d47f919a08124
+4f3
+07:03:57 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:04:03 [INFO] PQC_SERVER: [192.168.X.X:50067] POST /api/telemetry (135 byte
+s)
+07:04:03 [INFO] PQC_SERVER:   Telemetry: temp=22.5°C, humidity=52.1%, seq=0
+07:04:08 [INFO] PQC_SERVER: [192.168.X.X:50068] POST /api/telemetry (135 byte
+s)
+07:04:08 [INFO] PQC_SERVER:   Telemetry: temp=27.7°C, humidity=55.7%, seq=1
+07:04:13 [INFO] PQC_SERVER: [192.168.X.X:50069] POST /api/telemetry (135 byte
+s)
+07:04:13 [INFO] PQC_SERVER:   Telemetry: temp=22.9°C, humidity=55.5%, seq=2
+07:04:18 [INFO] PQC_SERVER: [192.168.X.X:50070] POST /api/telemetry (135 byte
+s)
+07:04:18 [INFO] PQC_SERVER:   Telemetry: temp=24.2°C, humidity=62.9%, seq=3
+07:04:23 [INFO] PQC_SERVER: [192.168.X.X:50071] POST /api/telemetry (135 byte
+s)
+07:04:23 [INFO] PQC_SERVER:   Telemetry: temp=29.9°C, humidity=51.3%, seq=4
+07:04:28 [INFO] PQC_SERVER: [192.168.X.X:50072] POST /api/telemetry (135 byte
+s)
+07:04:28 [INFO] PQC_SERVER:   Telemetry: temp=28.3°C, humidity=56.1%, seq=5
+07:04:33 [INFO] PQC_SERVER: [192.168.X.X:50073] POST /api/telemetry (135 byte
+s)
+07:04:33 [INFO] PQC_SERVER:   Telemetry: temp=27.2°C, humidity=61.8%, seq=6
+07:04:38 [INFO] PQC_SERVER: [192.168.X.X:50074] POST /api/telemetry (135 byte
+s)
+07:04:38 [INFO] PQC_SERVER:   Telemetry: temp=22.8°C, humidity=60.1%, seq=7
+07:04:49 [INFO] PQC_SERVER: [192.168.X.X:52667] POST /handshake (65 bytes)
+07:04:49 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:04:49 [INFO] PQC_SERVER: Handshake #52: mode=Classical (X25519)
+07:04:49 [INFO] PQC_SERVER:   Assigned Session ID: 6b4f40311cf3f0890f1df6702b011
+1b9
+07:04:49 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:04:49 [INFO] PQC_SERVER: [192.168.X.X:52668] POST /handshake (65 bytes)
+07:04:49 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:04:49 [INFO] PQC_SERVER: Handshake #53: mode=Classical (X25519)
+07:04:49 [INFO] PQC_SERVER:   Assigned Session ID: 5905ce3fc7fb70ff1bdc746892617
+670
+07:04:49 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:04:50 [INFO] PQC_SERVER: [192.168.X.X:52669] POST /handshake (65 bytes)
+07:04:50 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:04:50 [INFO] PQC_SERVER: Handshake #54: mode=Classical (X25519)
+07:04:50 [INFO] PQC_SERVER:   Assigned Session ID: 3c4b0ef18baf3ddb7540c26ed81d4
+f06
+07:04:50 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:04:51 [INFO] PQC_SERVER: [192.168.X.X:52670] POST /handshake (65 bytes)
+07:04:51 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:04:51 [INFO] PQC_SERVER: Handshake #55: mode=Classical (X25519)
+07:04:51 [INFO] PQC_SERVER:   Assigned Session ID: 13d41f8f675987470982107ab9f7d
+bbc
+07:04:51 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:04:52 [INFO] PQC_SERVER: [192.168.X.X:52671] POST /handshake (65 bytes)
+07:04:52 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:04:52 [INFO] PQC_SERVER: Handshake #56: mode=Classical (X25519)
+07:04:52 [INFO] PQC_SERVER:   Assigned Session ID: ec52b9ed8468c2d8dc370474e3f6a
+16b
+07:04:52 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:04:53 [INFO] PQC_SERVER: [192.168.X.X:52672] POST /handshake (65 bytes)
+07:04:53 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:04:53 [INFO] PQC_SERVER: Handshake #57: mode=Classical (X25519)
+07:04:53 [INFO] PQC_SERVER:   Assigned Session ID: 952dfae31b0688fd8ddf49b457609
+5f2
+07:04:53 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:04:54 [INFO] PQC_SERVER: [192.168.X.X:52673] POST /handshake (65 bytes)
+07:04:54 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:04:54 [INFO] PQC_SERVER: Handshake #58: mode=Classical (X25519)
+07:04:54 [INFO] PQC_SERVER:   Assigned Session ID: ce7e4a761bb4dfda9974f92e236aa
+3f7
+07:04:54 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:04:55 [INFO] PQC_SERVER: [192.168.X.X:52674] POST /handshake (65 bytes)
+07:04:55 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:04:55 [INFO] PQC_SERVER: Handshake #59: mode=Classical (X25519)
+07:04:55 [INFO] PQC_SERVER:   Assigned Session ID: 49ecf8ef053159db6a533298dfc45
+1b1
+07:04:55 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:04:56 [INFO] PQC_SERVER: [192.168.X.X:52675] POST /handshake (65 bytes)
+07:04:56 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:04:56 [INFO] PQC_SERVER: Handshake #60: mode=Classical (X25519)
+07:04:56 [INFO] PQC_SERVER:   Assigned Session ID: e18dd27c0f74d29488ef9450d0619
+3de
+07:04:56 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:04:57 [INFO] PQC_SERVER: [192.168.X.X:52676] POST /handshake (65 bytes)
+07:04:57 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:04:57 [INFO] PQC_SERVER: Handshake #61: mode=Classical (X25519)
+07:04:57 [INFO] PQC_SERVER:   Assigned Session ID: c30c868ee9ca73941d6af690076a0
+7ba
+07:04:57 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:04:58 [INFO] PQC_SERVER: [192.168.X.X:52677] POST /handshake (833 bytes)
+07:04:58 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:04:58 [INFO] PQC_SERVER: Handshake #62: mode=PQC (ML-KEM-512)
+07:04:58 [INFO] PQC_SERVER:   [DEBUG] PK recv: e3ab4d5728120905...d7b24363a2253f
+9a
+07:04:58 [INFO] PQC_SERVER:   [DEBUG] CT sent: 5f4a652e70137602...1228902c8d3f2e
+e0
+07:04:58 [INFO] PQC_SERVER:   Assigned Session ID: aeac133b13ffa299bfbbafdb4610c
+7bf
+07:04:58 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:04:58 [INFO] PQC_SERVER: [192.168.X.X:52678] POST /handshake (833 bytes)
+07:04:58 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:04:58 [INFO] PQC_SERVER: Handshake #63: mode=PQC (ML-KEM-512)
+07:04:58 [INFO] PQC_SERVER:   [DEBUG] PK recv: 65f140841c5ab4c4...737e9da8816dc6
+dd
+07:04:58 [INFO] PQC_SERVER:   [DEBUG] CT sent: ebeb52f738809850...db5adcb598de2f
+58
+07:04:58 [INFO] PQC_SERVER:   Assigned Session ID: 27fd4a59b3163954fac487b5ed6a2
+711
+07:04:58 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:04:58 [INFO] PQC_SERVER: [192.168.X.X:52679] POST /handshake (833 bytes)
+07:04:58 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:04:58 [INFO] PQC_SERVER: Handshake #64: mode=PQC (ML-KEM-512)
+07:04:58 [INFO] PQC_SERVER:   [DEBUG] PK recv: e3d4ab04850db549...57007095858bde
+21
+07:04:58 [INFO] PQC_SERVER:   [DEBUG] CT sent: 33e6154966facdab...5a5b5afaaa46e1
+d5
+07:04:58 [INFO] PQC_SERVER:   Assigned Session ID: 3b0619eb3ef11bf124ebd38c32f0e
+d7e
+07:04:58 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:04:58 [INFO] PQC_SERVER: [192.168.X.X:52680] POST /handshake (833 bytes)
+07:04:58 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:04:58 [INFO] PQC_SERVER: Handshake #65: mode=PQC (ML-KEM-512)
+07:04:58 [INFO] PQC_SERVER:   [DEBUG] PK recv: e98a57593415494b...649fe8c553e00a
+60
+07:04:58 [INFO] PQC_SERVER:   [DEBUG] CT sent: dba05c6ba4e209ed...e35b07f71c2a94
+89
+07:04:58 [INFO] PQC_SERVER:   Assigned Session ID: 1d4c61b1ec51ce4053f58bee62ad3
+3ca
+07:04:58 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:04:58 [INFO] PQC_SERVER: [192.168.X.X:52681] POST /handshake (833 bytes)
+07:04:58 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:04:58 [INFO] PQC_SERVER: Handshake #66: mode=PQC (ML-KEM-512)
+07:04:58 [INFO] PQC_SERVER:   [DEBUG] PK recv: b7b4218d69ab6247...a81146695346b5
+d2
+07:04:58 [INFO] PQC_SERVER:   [DEBUG] CT sent: 3ddaa48e9ac80399...e2e562d3a56ed6
+d6
+07:04:58 [INFO] PQC_SERVER:   Assigned Session ID: 485acce04156f5c13dbcde625760b
+892
+07:04:58 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:04:58 [INFO] PQC_SERVER: [192.168.X.X:52682] POST /handshake (833 bytes)
+07:04:58 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:04:58 [INFO] PQC_SERVER: Handshake #67: mode=PQC (ML-KEM-512)
+07:04:58 [INFO] PQC_SERVER:   [DEBUG] PK recv: d39a2003f51c20da...4bf60e5157c06f
+4e
+07:04:58 [INFO] PQC_SERVER:   [DEBUG] CT sent: bff16ea47fa217e3...c44197174e7ce2
+77
+07:04:58 [INFO] PQC_SERVER:   Assigned Session ID: ef812406509867073a4aa284c7db7
+b11
+07:04:58 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:04:58 [INFO] PQC_SERVER: [192.168.X.X:52683] POST /handshake (833 bytes)
+07:04:58 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:04:58 [INFO] PQC_SERVER: Handshake #68: mode=PQC (ML-KEM-512)
+07:04:58 [INFO] PQC_SERVER:   [DEBUG] PK recv: db679369a3a74fb8...d98e4cb698b8af
+7b
+07:04:58 [INFO] PQC_SERVER:   [DEBUG] CT sent: 6a8561798de1526d...66fbed2c94f2db
+68
+07:04:58 [INFO] PQC_SERVER:   Assigned Session ID: 6234c318c04577bba99019f484e1f
+1a3
+07:04:58 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:04:58 [INFO] PQC_SERVER: [192.168.X.X:52684] POST /handshake (833 bytes)
+07:04:58 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:04:58 [INFO] PQC_SERVER: Handshake #69: mode=PQC (ML-KEM-512)
+07:04:58 [INFO] PQC_SERVER:   [DEBUG] PK recv: 074543312b7b3194...7aa0ee6b900963
+39
+07:04:58 [INFO] PQC_SERVER:   [DEBUG] CT sent: 6ab8cafe59d4ec79...4a092f37a1bc6d
+4e
+07:04:58 [INFO] PQC_SERVER:   Assigned Session ID: 13db4f4081fba5c5298c1cf4a4c13
+b62
+07:04:58 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:04:58 [INFO] PQC_SERVER: [192.168.X.X:52685] POST /handshake (833 bytes)
+07:04:58 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:04:58 [INFO] PQC_SERVER: Handshake #70: mode=PQC (ML-KEM-512)
+07:04:58 [INFO] PQC_SERVER:   [DEBUG] PK recv: 7ed12a72b1067d04...f662e87b40f148
+78
+07:04:58 [INFO] PQC_SERVER:   [DEBUG] CT sent: f6c37ed0aec1ca9d...ff3585a2349ed6
+57
+07:04:58 [INFO] PQC_SERVER:   Assigned Session ID: aec59b62860c7f1a45c146ecd5df9
+ce5
+07:04:58 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:04:59 [INFO] PQC_SERVER: [192.168.X.X:52686] POST /handshake (833 bytes)
+07:04:59 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:04:59 [INFO] PQC_SERVER: Handshake #71: mode=PQC (ML-KEM-512)
+07:04:59 [INFO] PQC_SERVER:   [DEBUG] PK recv: 0655a2a6294580f7...5ee96de23d5235
+79
+07:04:59 [INFO] PQC_SERVER:   [DEBUG] CT sent: 203fe0d43a82a508...a957ecd389087d
+22
+07:04:59 [INFO] PQC_SERVER:   Assigned Session ID: f4ecb5d6426407698edb7635095c1
+749
+07:04:59 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:05:00 [INFO] PQC_SERVER: [192.168.X.X:52687] POST /handshake (865 bytes)
+07:05:00 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:05:00 [INFO] PQC_SERVER: Handshake #72: mode=Hybrid (X25519 + ML-KEM-512)
+07:05:00 [INFO] PQC_SERVER:   [DEBUG] PK recv: d9e698e94a13b827...13870433d90192
+19
+07:05:00 [INFO] PQC_SERVER:   [DEBUG] CT sent: 119deaf555a52f31...85028551e93618
+79
+07:05:00 [INFO] PQC_SERVER:   Assigned Session ID: 4bcd97d9b654a404598bdce870d82
+a8e
+07:05:00 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:05:02 [INFO] PQC_SERVER: [192.168.X.X:52688] POST /handshake (865 bytes)
+07:05:02 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:05:02 [INFO] PQC_SERVER: Handshake #73: mode=Hybrid (X25519 + ML-KEM-512)
+07:05:02 [INFO] PQC_SERVER:   [DEBUG] PK recv: 61d10a350c58d808...49810ffab50757
+a2
+07:05:02 [INFO] PQC_SERVER:   [DEBUG] CT sent: 737357593b880fc3...8c388a4127a161
+d9
+07:05:02 [INFO] PQC_SERVER:   Assigned Session ID: eeeebef769acf2643481a56a45c0b
+757
+07:05:02 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:05:03 [INFO] PQC_SERVER: [192.168.X.X:52689] POST /handshake (865 bytes)
+07:05:03 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:05:03 [INFO] PQC_SERVER: Handshake #74: mode=Hybrid (X25519 + ML-KEM-512)
+07:05:03 [INFO] PQC_SERVER:   [DEBUG] PK recv: f018bef57568e926...65d4930652f0ec
+38
+07:05:03 [INFO] PQC_SERVER:   [DEBUG] CT sent: 68a5f45830d83f55...e06e1f39e722b1
+00
+07:05:03 [INFO] PQC_SERVER:   Assigned Session ID: 9566762e34a096ec57c3963ff4363
+e01
+07:05:03 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:05:03 [INFO] PQC_SERVER: [192.168.X.X:52690] POST /handshake (865 bytes)
+07:05:03 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:05:03 [INFO] PQC_SERVER: Handshake #75: mode=Hybrid (X25519 + ML-KEM-512)
+07:05:03 [INFO] PQC_SERVER:   [DEBUG] PK recv: 2c45655aba99e204...71a6743c1c3be2
+ce
+07:05:03 [INFO] PQC_SERVER:   [DEBUG] CT sent: ad2e2300ebd457b1...56510a31d6bc84
+03
+07:05:03 [INFO] PQC_SERVER:   Assigned Session ID: 07f1032687d673ee0c4013ad299e9
+adb
+07:05:03 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:05:05 [INFO] PQC_SERVER: [192.168.X.X:52691] POST /handshake (865 bytes)
+07:05:05 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:05:05 [INFO] PQC_SERVER: Handshake #76: mode=Hybrid (X25519 + ML-KEM-512)
+07:05:05 [INFO] PQC_SERVER:   [DEBUG] PK recv: 008c1825735afbe1...f89197de9d7733
+44
+07:05:05 [INFO] PQC_SERVER:   [DEBUG] CT sent: e87e2fd2274727a4...da8f801ac6f6e4
+9b
+07:05:05 [INFO] PQC_SERVER:   Assigned Session ID: 9f1fa87ae80fa0aa8475e3c94d864
+a0f
+07:05:05 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:05:06 [INFO] PQC_SERVER: [192.168.X.X:52692] POST /handshake (865 bytes)
+07:05:06 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:05:06 [INFO] PQC_SERVER: Handshake #77: mode=Hybrid (X25519 + ML-KEM-512)
+07:05:06 [INFO] PQC_SERVER:   [DEBUG] PK recv: 0d53063549ba2cc4...6730ea95a9417e
+ef
+07:05:06 [INFO] PQC_SERVER:   [DEBUG] CT sent: 783de92d1b61af76...47cf13e33c6a51
+5f
+07:05:06 [INFO] PQC_SERVER:   Assigned Session ID: 429c7e557d9aa1760f057923cace8
+11e
+07:05:06 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:05:08 [INFO] PQC_SERVER: [192.168.X.X:52693] POST /handshake (865 bytes)
+07:05:08 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:05:08 [INFO] PQC_SERVER: Handshake #78: mode=Hybrid (X25519 + ML-KEM-512)
+07:05:08 [INFO] PQC_SERVER:   [DEBUG] PK recv: 2915c23e0178f195...ec47f4c0a42795
+27
+07:05:08 [INFO] PQC_SERVER:   [DEBUG] CT sent: 5b8405bbebb89636...a2500b4d2dddd3
+39
+07:05:08 [INFO] PQC_SERVER:   Assigned Session ID: bc74169912c574ae17aebca341d13
+782
+07:05:08 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:05:08 [INFO] PQC_SERVER: [192.168.X.X:52694] POST /handshake (865 bytes)
+07:05:08 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:05:08 [INFO] PQC_SERVER: Handshake #79: mode=Hybrid (X25519 + ML-KEM-512)
+07:05:08 [INFO] PQC_SERVER:   [DEBUG] PK recv: f6ca6db51c2a6857...5820eaaca345df
+69
+07:05:08 [INFO] PQC_SERVER:   [DEBUG] CT sent: 218b3d96e065cfdd...0187e30dd967c4
+7d
+07:05:08 [INFO] PQC_SERVER:   Assigned Session ID: 4268209684ef5d2058bea2ed56692
+bb5
+07:05:08 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:05:09 [INFO] PQC_SERVER: [192.168.X.X:52695] POST /handshake (865 bytes)
+07:05:09 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:05:09 [INFO] PQC_SERVER: Handshake #80: mode=Hybrid (X25519 + ML-KEM-512)
+07:05:09 [INFO] PQC_SERVER:   [DEBUG] PK recv: 7b9a45a9120aa303...62b69a0f388e69
+96
+07:05:09 [INFO] PQC_SERVER:   [DEBUG] CT sent: 836a8caa7a7a0c22...21b4dce5a99f07
+ea
+07:05:09 [INFO] PQC_SERVER:   Assigned Session ID: 9dda8c8ba8dac5533abaac7bf210e
+092
+07:05:09 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:05:11 [INFO] PQC_SERVER: [192.168.X.X:52696] POST /handshake (865 bytes)
+07:05:11 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:05:11 [INFO] PQC_SERVER: Handshake #81: mode=Hybrid (X25519 + ML-KEM-512)
+07:05:11 [INFO] PQC_SERVER:   [DEBUG] PK recv: 71d988e3c018f127...111c8b445fe0a0
+86
+07:05:11 [INFO] PQC_SERVER:   [DEBUG] CT sent: 4ad7ea6d4200d9bf...8a355e41e791fd
+85
+07:05:11 [INFO] PQC_SERVER:   Assigned Session ID: 3e4c1e2a75a40ac7bd4266474b4a6
+41e
+07:05:11 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:05:12 [INFO] PQC_SERVER: [192.168.X.X:52697] POST /api/benchmarks (350 byt
+es)
+07:05:12 [INFO] PQC_SERVER: Received benchmark results: {
+  "classical": {
+    "latency_ms": 881.1,
+    "peak_heap_kb": 0.1,
+    "payload_bytes": 145,
+    "cpu_cycles": 142449718
+  },
+  "pqc": {
+    "latency_ms": 133.13,
+    "peak_heap_kb": 0.0,
+    "payload_bytes": 1649,
+    "cpu_cycles": 22768034
+  },
+  "hybrid": {
+    "latency_ms": 1246.92,
+    "peak_heap_kb": 0.0,
+    "payload_bytes": 1713,
+    "cpu_cycles": 201142905
+  },
+  "iterations": 10,
+  "chip": "ESP32-D0WD-V3",
+  "freq_mhz": 240,
+  "sram_kb": 520,
+  "timestamp": "2026-07-16T07:05:12.970795"
+}
+07:05:15 [INFO] PQC_SERVER: [192.168.X.X:52698] POST /handshake (65 bytes)
+07:05:15 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:05:15 [INFO] PQC_SERVER: Handshake #82: mode=Classical (X25519)
+07:05:15 [INFO] PQC_SERVER:   Assigned Session ID: fa6cd316a7aa2918cdd5467e54b07
+8e3
+07:05:15 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:05:20 [INFO] PQC_SERVER: [192.168.X.X:52699] POST /api/telemetry (135 byte
+s)
+07:05:20 [INFO] PQC_SERVER:   Telemetry: temp=26.1°C, humidity=46.1%, seq=0
+07:05:25 [INFO] PQC_SERVER: [192.168.X.X:52700] POST /api/telemetry (135 byte
+s)
+07:05:25 [INFO] PQC_SERVER:   Telemetry: temp=23.4°C, humidity=58.5%, seq=1
+07:05:30 [INFO] PQC_SERVER: [192.168.X.X:52701] POST /api/telemetry (135 byte
+s)
+07:05:30 [INFO] PQC_SERVER:   Telemetry: temp=29.4°C, humidity=55.1%, seq=2
+07:05:35 [INFO] PQC_SERVER: [192.168.X.X:52702] POST /api/telemetry (135 byte
+s)
+07:05:35 [INFO] PQC_SERVER:   Telemetry: temp=28.5°C, humidity=50.6%, seq=3
+07:05:40 [INFO] PQC_SERVER: [192.168.X.X:52703] POST /api/telemetry (135 byte
+s)
+07:05:40 [INFO] PQC_SERVER:   Telemetry: temp=24.8°C, humidity=61.1%, seq=4
+07:05:45 [INFO] PQC_SERVER: [192.168.X.X:52704] POST /api/telemetry (135 byte
+s)
+07:05:45 [INFO] PQC_SERVER:   Telemetry: temp=27.2°C, humidity=47.7%, seq=5
+07:05:50 [INFO] PQC_SERVER: [192.168.X.X:52705] POST /api/telemetry (135 byte
+s)
+07:05:50 [INFO] PQC_SERVER:   Telemetry: temp=29.1°C, humidity=53.0%, seq=6
+07:05:55 [INFO] PQC_SERVER: [192.168.X.X:52706] POST /api/telemetry (135 byte
+s)
+07:05:55 [INFO] PQC_SERVER:   Telemetry: temp=24.3°C, humidity=63.1%, seq=7
+07:06:01 [INFO] PQC_SERVER: [192.168.X.X:52707] POST /api/telemetry (135 byte
+s)
+07:06:01 [INFO] PQC_SERVER:   Telemetry: temp=22.6°C, humidity=50.7%, seq=8
+07:06:06 [INFO] PQC_SERVER: [192.168.X.X:52708] POST /api/telemetry (135 byte
+s)
+07:06:06 [INFO] PQC_SERVER:   Telemetry: temp=27.6°C, humidity=64.8%, seq=9
+07:06:11 [INFO] PQC_SERVER: [192.168.X.X:52709] POST /api/telemetry (136 byte
+s)
+07:06:11 [INFO] PQC_SERVER:   Telemetry: temp=30.0°C, humidity=61.0%, seq=10
+07:06:16 [INFO] PQC_SERVER: [192.168.X.X:52710] POST /api/telemetry (136 byte
+s)
+07:06:16 [INFO] PQC_SERVER:   Telemetry: temp=22.6°C, humidity=59.9%, seq=11
+07:06:21 [INFO] PQC_SERVER: [192.168.X.X:52711] POST /api/telemetry (136 byte
+s)
+07:06:21 [INFO] PQC_SERVER:   Telemetry: temp=22.2°C, humidity=46.0%, seq=12
+07:06:26 [INFO] PQC_SERVER: [192.168.X.X:52712] POST /api/telemetry (137 byte
+s)
+07:06:26 [INFO] PQC_SERVER:   Telemetry: temp=29.5°C, humidity=49.5%, seq=13
+07:06:31 [INFO] PQC_SERVER: [192.168.X.X:52713] POST /api/telemetry (137 byte
+s)
+07:06:31 [INFO] PQC_SERVER:   Telemetry: temp=31.9°C, humidity=56.9%, seq=14
+07:06:36 [INFO] PQC_SERVER: [192.168.X.X:52714] POST /api/telemetry (137 byte
+s)
+07:06:36 [INFO] PQC_SERVER:   Telemetry: temp=29.5°C, humidity=58.4%, seq=15
+07:06:41 [INFO] PQC_SERVER: [192.168.X.X:52715] POST /api/telemetry (137 byte
+s)
+07:06:41 [INFO] PQC_SERVER:   Telemetry: temp=22.9°C, humidity=56.6%, seq=16
+07:06:47 [INFO] PQC_SERVER: [192.168.X.X:52716] POST /api/telemetry (137 byte
+s)
+07:06:47 [INFO] PQC_SERVER:   Telemetry: temp=29.7°C, humidity=54.5%, seq=17
+07:06:59 [INFO] PQC_SERVER: [192.168.X.X:53634] POST /handshake (65 bytes)
+07:06:59 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:06:59 [INFO] PQC_SERVER: Handshake #83: mode=Classical (X25519)
+07:06:59 [INFO] PQC_SERVER:   Assigned Session ID: 6968de3e119da53727f238e5e3657
+479
+07:06:59 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:07:00 [INFO] PQC_SERVER: [192.168.X.X:53635] POST /handshake (65 bytes)
+07:07:00 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:00 [INFO] PQC_SERVER: Handshake #84: mode=Classical (X25519)
+07:07:00 [INFO] PQC_SERVER:   Assigned Session ID: 48c24ab62b55979b4c794eeb9e6e1
+0f0
+07:07:00 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:07:01 [INFO] PQC_SERVER: [192.168.X.X:53636] POST /handshake (65 bytes)
+07:07:01 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:01 [INFO] PQC_SERVER: Handshake #85: mode=Classical (X25519)
+07:07:01 [INFO] PQC_SERVER:   Assigned Session ID: 81a0257103a7618d67dae06e3e00e
+8f0
+07:07:01 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:07:01 [INFO] PQC_SERVER: [192.168.X.X:53637] POST /handshake (65 bytes)
+07:07:01 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:01 [INFO] PQC_SERVER: Handshake #86: mode=Classical (X25519)
+07:07:01 [INFO] PQC_SERVER:   Assigned Session ID: cb3cc972ee694fa89469868a6fa8e
+018
+07:07:01 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:07:02 [INFO] PQC_SERVER: [192.168.X.X:53638] POST /handshake (65 bytes)
+07:07:02 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:02 [INFO] PQC_SERVER: Handshake #87: mode=Classical (X25519)
+07:07:02 [INFO] PQC_SERVER:   Assigned Session ID: 96726389a16e69975ae25f96a90fe
+2a0
+07:07:02 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:07:04 [INFO] PQC_SERVER: [192.168.X.X:53639] POST /handshake (65 bytes)
+07:07:04 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:04 [INFO] PQC_SERVER: Handshake #88: mode=Classical (X25519)
+07:07:04 [INFO] PQC_SERVER:   Assigned Session ID: de5a32b2409d62446c2a2c5877453
+540
+07:07:04 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:07:04 [INFO] PQC_SERVER: [192.168.X.X:53640] POST /handshake (65 bytes)
+07:07:04 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:04 [INFO] PQC_SERVER: Handshake #89: mode=Classical (X25519)
+07:07:04 [INFO] PQC_SERVER:   Assigned Session ID: cf44a8f580a59049600aa5d7be5ff
+2d0
+07:07:04 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:07:05 [INFO] PQC_SERVER: [192.168.X.X:53641] POST /handshake (65 bytes)
+07:07:05 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:05 [INFO] PQC_SERVER: Handshake #90: mode=Classical (X25519)
+07:07:05 [INFO] PQC_SERVER:   Assigned Session ID: 8e3a10380080a5ddbfff15a178864
+79c
+07:07:05 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:07:06 [INFO] PQC_SERVER: [192.168.X.X:53642] POST /handshake (65 bytes)
+07:07:06 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:06 [INFO] PQC_SERVER: Handshake #91: mode=Classical (X25519)
+07:07:06 [INFO] PQC_SERVER:   Assigned Session ID: f150346dbdc703c3c3862d4fa63de
+676
+07:07:06 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:07:06 [INFO] PQC_SERVER: [192.168.X.X:53643] POST /handshake (65 bytes)
+07:07:06 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:06 [INFO] PQC_SERVER: Handshake #92: mode=Classical (X25519)
+07:07:06 [INFO] PQC_SERVER:   Assigned Session ID: ae27d3efc73fd92bb9f04720c7289
+11c
+07:07:06 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:07:07 [INFO] PQC_SERVER: [192.168.X.X:53644] POST /handshake (833 bytes)
+07:07:07 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:07 [INFO] PQC_SERVER: Handshake #93: mode=PQC (ML-KEM-512)
+07:07:07 [INFO] PQC_SERVER:   [DEBUG] PK recv: 0f5801c3a2212d56...e7c9df3df139c0
+ea
+07:07:07 [INFO] PQC_SERVER:   [DEBUG] CT sent: a49455cb9c2024a4...6ddab9e0549153
+0d
+07:07:07 [INFO] PQC_SERVER:   Assigned Session ID: 7259b5e2b6b0e9486fbab763e036c
+247
+07:07:07 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:07:07 [INFO] PQC_SERVER: [192.168.X.X:53645] POST /handshake (833 bytes)
+07:07:07 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:07 [INFO] PQC_SERVER: Handshake #94: mode=PQC (ML-KEM-512)
+07:07:07 [INFO] PQC_SERVER:   [DEBUG] PK recv: 410ccf89cc4c8e31...c8b4f862fc6761
+c4
+07:07:07 [INFO] PQC_SERVER:   [DEBUG] CT sent: 52ec877436801ff7...ac9e757e5b022e
+ba
+07:07:07 [INFO] PQC_SERVER:   Assigned Session ID: 04553e5f09d97e43ee138fd525ac0
+781
+07:07:07 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:07:07 [INFO] PQC_SERVER: [192.168.X.X:53646] POST /handshake (833 bytes)
+07:07:07 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:07 [INFO] PQC_SERVER: Handshake #95: mode=PQC (ML-KEM-512)
+07:07:07 [INFO] PQC_SERVER:   [DEBUG] PK recv: e82345c38b070b62...b17f2db2250dd5
+04
+07:07:07 [INFO] PQC_SERVER:   [DEBUG] CT sent: 4d3b479b698d50bf...36fb222c8d7ef5
+f4
+07:07:07 [INFO] PQC_SERVER:   Assigned Session ID: 3e848ea630315642b4c4790902ae0
+34a
+07:07:07 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:07:07 [INFO] PQC_SERVER: [192.168.X.X:53647] POST /handshake (833 bytes)
+07:07:07 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:07 [INFO] PQC_SERVER: Handshake #96: mode=PQC (ML-KEM-512)
+07:07:07 [INFO] PQC_SERVER:   [DEBUG] PK recv: 54c1a79e0368491c...8775b457d3b779
+c4
+07:07:07 [INFO] PQC_SERVER:   [DEBUG] CT sent: 40f887da8a2ac08c...194a2ffe1047cc
+2b
+07:07:07 [INFO] PQC_SERVER:   Assigned Session ID: a63e12f754c26f3e1a01213c0e07b
+efd
+07:07:07 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:07:07 [INFO] PQC_SERVER: [192.168.X.X:53648] POST /handshake (833 bytes)
+07:07:07 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:07 [INFO] PQC_SERVER: Handshake #97: mode=PQC (ML-KEM-512)
+07:07:07 [INFO] PQC_SERVER:   [DEBUG] PK recv: f972cd255c8de66c...5b6d9eb1c55cf8
+c4
+07:07:07 [INFO] PQC_SERVER:   [DEBUG] CT sent: 96d2a86d80bf4595...52c966b4898294
+f0
+07:07:07 [INFO] PQC_SERVER:   Assigned Session ID: a9ad6c3dff041c0c10878596d5049
+14b
+07:07:07 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:07:07 [INFO] PQC_SERVER: [192.168.X.X:53649] POST /handshake (833 bytes)
+07:07:07 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:07 [INFO] PQC_SERVER: Handshake #98: mode=PQC (ML-KEM-512)
+07:07:07 [INFO] PQC_SERVER:   [DEBUG] PK recv: efb5172fbc43ae22...4c59db86adc3d8
+e7
+07:07:07 [INFO] PQC_SERVER:   [DEBUG] CT sent: 1c406306b99b669b...3bda72dd50bf59
+43
+07:07:07 [INFO] PQC_SERVER:   Assigned Session ID: 52a0a4c6d1843ef48784c74627f7b
+e51
+07:07:07 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:07:07 [INFO] PQC_SERVER: [192.168.X.X:53650] POST /handshake (833 bytes)
+07:07:07 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:07 [INFO] PQC_SERVER: Handshake #99: mode=PQC (ML-KEM-512)
+07:07:07 [INFO] PQC_SERVER:   [DEBUG] PK recv: 1359b42c33003ca3...6b81e54e8b0f8e
+d8
+07:07:07 [INFO] PQC_SERVER:   [DEBUG] CT sent: d8d4f5b2e61f529c...8280ac4efdfda0
+b6
+07:07:07 [INFO] PQC_SERVER:   Assigned Session ID: 64202660ff7dbab9f8bb23c35418a
+9b0
+07:07:07 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:07:08 [INFO] PQC_SERVER: [192.168.X.X:53651] POST /handshake (833 bytes)
+07:07:08 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:08 [INFO] PQC_SERVER: Handshake #100: mode=PQC (ML-KEM-512)
+07:07:08 [INFO] PQC_SERVER:   [DEBUG] PK recv: 49dcc41a558afd39...69d578f5669e00
+12
+07:07:08 [INFO] PQC_SERVER:   [DEBUG] CT sent: 8e0ed43d80403dce...484d77ccad176f
+a2
+07:07:08 [INFO] PQC_SERVER:   Assigned Session ID: af6dd7d2bfd4fd73aff8ae3e15bc3
+74f
+07:07:08 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:07:08 [INFO] PQC_SERVER: [192.168.X.X:53652] POST /handshake (833 bytes)
+07:07:08 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:08 [INFO] PQC_SERVER: Handshake #101: mode=PQC (ML-KEM-512)
+07:07:08 [INFO] PQC_SERVER:   [DEBUG] PK recv: 0db11ad188684547...234d53242fef2a
+5d
+07:07:08 [INFO] PQC_SERVER:   [DEBUG] CT sent: 5bb99971ca3988f2...881c412e5588a8
+ea
+07:07:08 [INFO] PQC_SERVER:   Assigned Session ID: 974c6141f8d50c6413a1347458aec
+818
+07:07:08 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:07:08 [INFO] PQC_SERVER: [192.168.X.X:53653] POST /handshake (833 bytes)
+07:07:08 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:08 [INFO] PQC_SERVER: Handshake #102: mode=PQC (ML-KEM-512)
+07:07:08 [INFO] PQC_SERVER:   [DEBUG] PK recv: 3c080a42b39502e0...4fa906fca09c33
+07
+07:07:08 [INFO] PQC_SERVER:   [DEBUG] CT sent: 3aa695e807169d2f...a29d40cb8571c7
+74
+07:07:08 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: d246982cd983234ca4225f28756c430a
+07:07:08 [INFO] PQC_SERVER:   Assigned Session ID: 09ca7826b2834ce480ac0cef019ca
+574
+07:07:08 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:07:09 [INFO] PQC_SERVER: [192.168.X.X:53654] POST /handshake (865 bytes)
+07:07:09 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:09 [INFO] PQC_SERVER: Handshake #103: mode=Hybrid (X25519 + ML-KEM-512)
+07:07:09 [INFO] PQC_SERVER:   [DEBUG] PK recv: a3ca7df8d7c5088a...6c14d4bd4b9fa8
+7b
+07:07:09 [INFO] PQC_SERVER:   [DEBUG] CT sent: fb80848cfa9d7448...f2a07ade76f63c
+e6
+07:07:09 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: 26900e3fe1635272f4198ecdf4f5adbd
+07:07:09 [INFO] PQC_SERVER:   Assigned Session ID: e158fba1cfc29fd41ffe87ae14fb4
+a58
+07:07:09 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:07:10 [INFO] PQC_SERVER: [192.168.X.X:53655] POST /handshake (865 bytes)
+07:07:10 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:10 [INFO] PQC_SERVER: Handshake #104: mode=Hybrid (X25519 + ML-KEM-512)
+07:07:10 [INFO] PQC_SERVER:   [DEBUG] PK recv: 39003314a60a0f59...100b6e687dc705
+f2
+07:07:10 [INFO] PQC_SERVER:   [DEBUG] CT sent: 872cc8613b7fb902...45acc08271c5b2
+6e
+07:07:10 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: 011804a7f1237d869781624878aeeffb
+07:07:10 [INFO] PQC_SERVER:   Assigned Session ID: fabfde0666f669fb7af1288f39bde
+324
+07:07:10 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:07:10 [INFO] PQC_SERVER: [192.168.X.X:53656] POST /handshake (865 bytes)
+07:07:10 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:10 [INFO] PQC_SERVER: Handshake #105: mode=Hybrid (X25519 + ML-KEM-512)
+07:07:10 [INFO] PQC_SERVER:   [DEBUG] PK recv: e15c01b2546cb4d5...df31b5eb67bb44
+46
+07:07:10 [INFO] PQC_SERVER:   [DEBUG] CT sent: 6a8f0e4ccf89081e...463e148e22070d
+aa
+07:07:10 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: 20a15c14d94af1757d17a86a86eefd5c
+07:07:10 [INFO] PQC_SERVER:   Assigned Session ID: d4708c664411e3e8d096b85e68043
+365
+07:07:10 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:07:11 [INFO] PQC_SERVER: [192.168.X.X:53657] POST /handshake (865 bytes)
+07:07:11 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:11 [INFO] PQC_SERVER: Handshake #106: mode=Hybrid (X25519 + ML-KEM-512)
+07:07:11 [INFO] PQC_SERVER:   [DEBUG] PK recv: d5587695875d1eab...1da0dd07bec20c
+fa
+07:07:11 [INFO] PQC_SERVER:   [DEBUG] CT sent: 223655f0fa57a049...fc1394aa3258b6
+cb
+07:07:11 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: e601c73e4d7516c548c30c046b743668
+07:07:11 [INFO] PQC_SERVER:   Assigned Session ID: 6b0a54e55a1b8dec845048b7eb9c6
+971
+07:07:11 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:07:12 [INFO] PQC_SERVER: [192.168.X.X:53658] POST /handshake (865 bytes)
+07:07:12 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:12 [INFO] PQC_SERVER: Handshake #107: mode=Hybrid (X25519 + ML-KEM-512)
+07:07:12 [INFO] PQC_SERVER:   [DEBUG] PK recv: a1350ea6a56839ca...e0501f869116f4
+0e
+07:07:12 [INFO] PQC_SERVER:   [DEBUG] CT sent: 4fd6f619b0efd013...a6042a484895f2
+44
+07:07:12 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: 919c9812234712a006dc7985f4036ee3
+07:07:12 [INFO] PQC_SERVER:   Assigned Session ID: 0cd25a6d529cf1c4c7b9e4e39760f
+43d
+07:07:12 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:07:13 [INFO] PQC_SERVER: [192.168.X.X:53659] POST /handshake (865 bytes)
+07:07:13 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:13 [INFO] PQC_SERVER: Handshake #108: mode=Hybrid (X25519 + ML-KEM-512)
+07:07:13 [INFO] PQC_SERVER:   [DEBUG] PK recv: 57c42fb1f080f2da...a2b22c3e898135
+31
+07:07:13 [INFO] PQC_SERVER:   [DEBUG] CT sent: 4445468af40892b3...9c5166eff994d5
+28
+07:07:13 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: b79abf0560971dcd8373416d57ecffe6
+07:07:13 [INFO] PQC_SERVER:   Assigned Session ID: 5b7e162f33d51b2bc24f4fe0c50bf
+6b6
+07:07:13 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:07:14 [INFO] PQC_SERVER: [192.168.X.X:53660] POST /handshake (865 bytes)
+07:07:14 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:14 [INFO] PQC_SERVER: Handshake #109: mode=Hybrid (X25519 + ML-KEM-512)
+07:07:14 [INFO] PQC_SERVER:   [DEBUG] PK recv: 4e384e32678880b3...9c77dcf6246dd7
+1d
+07:07:14 [INFO] PQC_SERVER:   [DEBUG] CT sent: c54df85e0deaef6f...6fbf6991c9efec
+61
+07:07:14 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: 85dc628d5acd79c97204ce5792a45121
+07:07:14 [INFO] PQC_SERVER:   Assigned Session ID: ea1fa7760dff9690f3f5b309467fe
+db0
+07:07:14 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:07:15 [INFO] PQC_SERVER: [192.168.X.X:53661] POST /handshake (865 bytes)
+07:07:15 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:15 [INFO] PQC_SERVER: Handshake #110: mode=Hybrid (X25519 + ML-KEM-512)
+07:07:15 [INFO] PQC_SERVER:   [DEBUG] PK recv: 9a2757005a8df9eb...91e7b7a3e5a032
+c1
+07:07:15 [INFO] PQC_SERVER:   [DEBUG] CT sent: ed0edab9aaef2a11...f961946b1c474b
+44
+07:07:15 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: 5c35b549b1820eb64d12292a5b3ef80b
+07:07:15 [INFO] PQC_SERVER:   Assigned Session ID: 4026d693a074187c1baebaeb0bbb3
+489
+07:07:15 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:07:16 [INFO] PQC_SERVER: [192.168.X.X:53662] POST /handshake (865 bytes)
+07:07:16 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:16 [INFO] PQC_SERVER: Handshake #111: mode=Hybrid (X25519 + ML-KEM-512)
+07:07:16 [INFO] PQC_SERVER:   [DEBUG] PK recv: 086b0a9cda7a803a...abf6eee3f02fca
+ac
+07:07:16 [INFO] PQC_SERVER:   [DEBUG] CT sent: 666623c469cb0cc1...458bb738119e52
+7a
+07:07:16 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: d400416c85ab4d9a23f2730a3495d591
+07:07:16 [INFO] PQC_SERVER:   Assigned Session ID: 57959c181c498795849ff033af7f1
+52a
+07:07:16 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:07:18 [INFO] PQC_SERVER: [192.168.X.X:53663] POST /handshake (865 bytes)
+07:07:18 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:18 [INFO] PQC_SERVER: Handshake #112: mode=Hybrid (X25519 + ML-KEM-512)
+07:07:18 [INFO] PQC_SERVER:   [DEBUG] PK recv: 65b111cbaa3ecc9b...21f2ac6e2697ef
+2a
+07:07:18 [INFO] PQC_SERVER:   [DEBUG] CT sent: 096d2aabcb350a7c...e2d36d8e480d1e
+73
+07:07:18 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: ddfd02c6c3f9fa67d4423d33bbbbef40
+07:07:18 [INFO] PQC_SERVER:   Assigned Session ID: acb73e0331ffbabfd404839a61d0e
+b8d
+07:07:18 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:07:18 [INFO] PQC_SERVER: [192.168.X.X:53664] POST /api/benchmarks (349 byt
+es)
+07:07:18 [INFO] PQC_SERVER: Received benchmark results: {
+  "classical": {
+    "latency_ms": 779.52,
+    "peak_heap_kb": 0.0,
+    "payload_bytes": 145,
+    "cpu_cycles": 126195818
+  },
+  "pqc": {
+    "latency_ms": 101.07,
+    "peak_heap_kb": 0.0,
+    "payload_bytes": 1649,
+    "cpu_cycles": 17638995
+  },
+  "hybrid": {
+    "latency_ms": 987.52,
+    "peak_heap_kb": 0.0,
+    "payload_bytes": 1713,
+    "cpu_cycles": 159637988
+  },
+  "iterations": 10,
+  "chip": "ESP32-D0WD-V3",
+  "freq_mhz": 240,
+  "sram_kb": 520,
+  "timestamp": "2026-07-16T07:07:18.552689"
+}
+07:07:20 [INFO] PQC_SERVER: [192.168.X.X:53665] POST /handshake (65 bytes)
+07:07:20 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:07:20 [INFO] PQC_SERVER: Handshake #113: mode=Classical (X25519)
+07:07:20 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: 46a9db848c8faf92fbee8dcb74957170
+07:07:20 [INFO] PQC_SERVER:   Assigned Session ID: 0b99a0f6f2b82a558306a636819f0
+64b
+07:07:20 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:07:25 [INFO] PQC_SERVER: [192.168.X.X:53666] POST /api/telemetry (135 byte
+s)
+07:07:25 [INFO] PQC_SERVER:   Telemetry: temp=25.6°C, humidity=57.7%, seq=0
+07:07:30 [INFO] PQC_SERVER: [192.168.X.X:53667] POST /api/telemetry (135 byte
+s)
+07:07:30 [INFO] PQC_SERVER:   Telemetry: temp=23.1°C, humidity=64.3%, seq=1
+07:07:35 [INFO] PQC_SERVER: [192.168.X.X:53668] POST /api/telemetry (135 byte
+s)
+07:07:35 [INFO] PQC_SERVER:   Telemetry: temp=28.0°C, humidity=53.7%, seq=2
+07:07:41 [INFO] PQC_SERVER: [192.168.X.X:53669] POST /api/telemetry (135 byte
+s)
+07:07:41 [INFO] PQC_SERVER:   Telemetry: temp=26.2°C, humidity=51.0%, seq=3
+07:07:46 [INFO] PQC_SERVER: [192.168.X.X:53670] POST /api/telemetry (135 byte
+s)
+07:07:46 [INFO] PQC_SERVER:   Telemetry: temp=31.1°C, humidity=58.9%, seq=4
+07:07:51 [INFO] PQC_SERVER: [192.168.X.X:53671] POST /api/telemetry (135 byte
+s)
+07:07:51 [INFO] PQC_SERVER:   Telemetry: temp=24.9°C, humidity=53.4%, seq=5
+07:07:56 [INFO] PQC_SERVER: [192.168.X.X:53672] POST /api/telemetry (135 byte
+s)
+07:07:56 [INFO] PQC_SERVER:   Telemetry: temp=23.6°C, humidity=62.8%, seq=6
+07:08:01 [INFO] PQC_SERVER: [192.168.X.X:53673] POST /api/telemetry (135 byte
+s)
+07:08:01 [INFO] PQC_SERVER:   Telemetry: temp=30.6°C, humidity=64.7%, seq=7
+07:08:06 [INFO] PQC_SERVER: [192.168.X.X:53674] POST /api/telemetry (135 byte
+s)
+07:08:06 [INFO] PQC_SERVER:   Telemetry: temp=22.6°C, humidity=49.8%, seq=8
+07:08:11 [INFO] PQC_SERVER: [192.168.X.X:53675] POST /api/telemetry (135 byte
+s)
+07:08:11 [INFO] PQC_SERVER:   Telemetry: temp=22.2°C, humidity=51.1%, seq=9
+07:08:16 [INFO] PQC_SERVER: [192.168.X.X:53676] POST /api/telemetry (136 byte
+s)
+07:08:16 [INFO] PQC_SERVER:   Telemetry: temp=22.9°C, humidity=55.6%, seq=10
+07:08:21 [INFO] PQC_SERVER: [192.168.X.X:53677] POST /api/telemetry (136 byte
+s)
+07:08:21 [INFO] PQC_SERVER:   Telemetry: temp=26.9°C, humidity=60.4%, seq=11
+07:08:26 [INFO] PQC_SERVER: [192.168.X.X:53678] POST /api/telemetry (136 byte
+s)
+07:08:26 [INFO] PQC_SERVER:   Telemetry: temp=22.4°C, humidity=55.5%, seq=12
+07:08:32 [INFO] PQC_SERVER: [192.168.X.X:53679] POST /api/telemetry (136 byte
+s)
+07:08:32 [INFO] PQC_SERVER:   Telemetry: temp=24.3°C, humidity=58.2%, seq=13
+07:08:37 [INFO] PQC_SERVER: [192.168.X.X:53680] POST /api/telemetry (137 byte
+s)
+07:08:37 [INFO] PQC_SERVER:   Telemetry: temp=23.8°C, humidity=58.1%, seq=14
+07:08:42 [INFO] PQC_SERVER: [192.168.X.X:53681] POST /api/telemetry (137 byte
+s)
+07:08:42 [INFO] PQC_SERVER:   Telemetry: temp=24.5°C, humidity=46.1%, seq=15
+07:08:47 [INFO] PQC_SERVER: [192.168.X.X:53682] POST /api/telemetry (137 byte
+s)
+07:08:47 [INFO] PQC_SERVER:   Telemetry: temp=29.4°C, humidity=47.6%, seq=16
+07:08:52 [INFO] PQC_SERVER: [192.168.X.X:53683] POST /api/telemetry (137 byte
+s)
+07:08:52 [INFO] PQC_SERVER:   Telemetry: temp=22.4°C, humidity=48.0%, seq=17
+07:08:57 [INFO] PQC_SERVER: [192.168.X.X:53684] POST /api/telemetry (137 byte
+s)
+07:08:57 [INFO] PQC_SERVER:   Telemetry: temp=26.1°C, humidity=60.7%, seq=18
+07:09:03 [INFO] PQC_SERVER: [192.168.X.X:53685] POST /api/telemetry (137 byte
+s)
+07:09:03 [INFO] PQC_SERVER:   Telemetry: temp=29.6°C, humidity=53.5%, seq=19
+07:09:08 [INFO] PQC_SERVER: [192.168.X.X:53686] POST /api/telemetry (137 byte
+s)
+07:09:08 [INFO] PQC_SERVER:   Telemetry: temp=24.7°C, humidity=64.6%, seq=20
+07:09:13 [INFO] PQC_SERVER: [192.168.X.X:53687] POST /api/telemetry (137 byte
+s)
+07:09:13 [INFO] PQC_SERVER:   Telemetry: temp=22.7°C, humidity=49.2%, seq=21
+07:09:18 [INFO] PQC_SERVER: [192.168.X.X:53688] POST /api/telemetry (137 byte
+s)
+07:09:18 [INFO] PQC_SERVER:   Telemetry: temp=30.8°C, humidity=57.0%, seq=22
+07:09:24 [INFO] PQC_SERVER: [192.168.X.X:53689] POST /api/telemetry (137 byte
+s)
+07:09:24 [INFO] PQC_SERVER:   Telemetry: temp=31.6°C, humidity=49.6%, seq=23
+07:09:29 [INFO] PQC_SERVER: [192.168.X.X:53690] POST /api/telemetry (137 byte
+s)
+07:09:29 [INFO] PQC_SERVER:   Telemetry: temp=26.8°C, humidity=47.1%, seq=24
+07:09:34 [INFO] PQC_SERVER: [192.168.X.X:53691] POST /api/telemetry (137 byte
+s)
+07:09:34 [INFO] PQC_SERVER:   Telemetry: temp=29.6°C, humidity=49.6%, seq=25
+07:09:39 [INFO] PQC_SERVER: [192.168.X.X:53692] POST /api/telemetry (137 byte
+s)
+07:09:39 [INFO] PQC_SERVER:   Telemetry: temp=22.7°C, humidity=60.2%, seq=26
+07:09:44 [INFO] PQC_SERVER: [192.168.X.X:53693] POST /api/telemetry (137 byte
+s)
+07:09:44 [INFO] PQC_SERVER:   Telemetry: temp=25.9°C, humidity=57.2%, seq=27
+07:09:49 [INFO] PQC_SERVER: [192.168.X.X:53694] POST /api/telemetry (137 byte
+s)
+07:09:49 [INFO] PQC_SERVER:   Telemetry: temp=31.3°C, humidity=61.6%, seq=28
+07:09:54 [INFO] PQC_SERVER: [192.168.X.X:53695] POST /api/telemetry (137 byte
+s)
+07:09:54 [INFO] PQC_SERVER:   Telemetry: temp=24.7°C, humidity=52.3%, seq=29
+07:09:59 [INFO] PQC_SERVER: [192.168.X.X:53696] POST /api/telemetry (137 byte
+s)
+07:09:59 [INFO] PQC_SERVER:   Telemetry: temp=23.0°C, humidity=64.5%, seq=30
+07:10:04 [INFO] PQC_SERVER: [192.168.X.X:53697] POST /api/telemetry (137 byte
+s)
+07:10:04 [INFO] PQC_SERVER:   Telemetry: temp=25.4°C, humidity=64.7%, seq=31
+07:10:09 [INFO] PQC_SERVER: [192.168.X.X:53698] POST /api/telemetry (137 byte
+s)
+07:10:09 [INFO] PQC_SERVER:   Telemetry: temp=30.2°C, humidity=57.2%, seq=32
+07:10:14 [INFO] PQC_SERVER: [192.168.X.X:53699] POST /api/telemetry (137 byte
+s)
+07:10:14 [INFO] PQC_SERVER:   Telemetry: temp=24.0°C, humidity=50.8%, seq=33
+07:10:19 [INFO] PQC_SERVER: [192.168.X.X:53700] POST /api/telemetry (137 byte
+s)
+07:10:19 [INFO] PQC_SERVER:   Telemetry: temp=25.7°C, humidity=56.2%, seq=34
+07:10:24 [INFO] PQC_SERVER: [192.168.X.X:53701] POST /api/telemetry (137 byte
+s)
+07:10:24 [INFO] PQC_SERVER:   Telemetry: temp=27.0°C, humidity=58.1%, seq=35
+07:10:29 [INFO] PQC_SERVER: [192.168.X.X:53702] POST /api/telemetry (137 byte
+s)
+07:10:29 [INFO] PQC_SERVER:   Telemetry: temp=31.5°C, humidity=53.5%, seq=36
+07:10:34 [INFO] PQC_SERVER: [192.168.X.X:53703] POST /api/telemetry (137 byte
+s)
+07:10:34 [INFO] PQC_SERVER:   Telemetry: temp=24.9°C, humidity=58.9%, seq=37
+07:10:39 [INFO] PQC_SERVER: [192.168.X.X:53704] POST /api/telemetry (137 byte
+s)
+07:10:39 [INFO] PQC_SERVER:   Telemetry: temp=23.2°C, humidity=51.0%, seq=38
+07:10:45 [INFO] PQC_SERVER: [192.168.X.X:53705] POST /api/telemetry (137 byte
+s)
+07:10:45 [INFO] PQC_SERVER:   Telemetry: temp=25.2°C, humidity=51.5%, seq=39
+07:10:50 [INFO] PQC_SERVER: [192.168.X.X:53706] POST /api/telemetry (137 byte
+s)
+07:10:50 [INFO] PQC_SERVER:   Telemetry: temp=31.0°C, humidity=51.8%, seq=40
+07:10:55 [INFO] PQC_SERVER: [192.168.X.X:53707] POST /api/telemetry (137 byte
+s)
+07:10:55 [INFO] PQC_SERVER:   Telemetry: temp=29.4°C, humidity=63.4%, seq=41
+07:11:00 [INFO] PQC_SERVER: [192.168.X.X:53708] POST /api/telemetry (137 byte
+s)
+07:11:00 [INFO] PQC_SERVER:   Telemetry: temp=28.5°C, humidity=57.4%, seq=42
+07:11:05 [INFO] PQC_SERVER: [192.168.X.X:53709] POST /api/telemetry (137 byte
+s)
+07:11:05 [INFO] PQC_SERVER:   Telemetry: temp=31.9°C, humidity=63.3%, seq=43
+07:11:10 [INFO] PQC_SERVER: [192.168.X.X:53710] POST /api/telemetry (137 byte
+s)
+07:11:10 [INFO] PQC_SERVER:   Telemetry: temp=28.4°C, humidity=54.2%, seq=44
+07:11:15 [INFO] PQC_SERVER: [192.168.X.X:53711] POST /api/telemetry (137 byte
+s)
+07:11:15 [INFO] PQC_SERVER:   Telemetry: temp=31.4°C, humidity=56.8%, seq=45
+07:11:20 [INFO] PQC_SERVER: [192.168.X.X:53712] POST /api/telemetry (137 byte
+s)
+07:11:20 [INFO] PQC_SERVER:   Telemetry: temp=25.9°C, humidity=64.2%, seq=46
+07:11:25 [INFO] PQC_SERVER: [192.168.X.X:53713] POST /api/telemetry (137 byte
+s)
+07:11:25 [INFO] PQC_SERVER:   Telemetry: temp=25.8°C, humidity=47.2%, seq=47
+07:11:30 [INFO] PQC_SERVER: [192.168.X.X:53714] POST /api/telemetry (137 byte
+s)
+07:11:30 [INFO] PQC_SERVER:   Telemetry: temp=24.4°C, humidity=58.0%, seq=48
+07:11:35 [INFO] PQC_SERVER: [192.168.X.X:53715] POST /api/telemetry (137 byte
+s)
+07:11:35 [INFO] PQC_SERVER:   Telemetry: temp=24.8°C, humidity=63.8%, seq=49
+07:11:36 [INFO] PQC_SERVER: [192.168.X.X:53716] POST /handshake (65 bytes)
+07:11:36 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:11:36 [INFO] PQC_SERVER: Handshake #114: mode=Classical (X25519)
+07:11:36 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: bace0aca71165d860cd0530bc78200bd
+07:11:36 [INFO] PQC_SERVER:   Assigned Session ID: d918ff44eb8d268949696d6638e9c
+385
+07:11:36 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:11:42 [INFO] PQC_SERVER: [192.168.X.X:53717] POST /api/telemetry (137 byte
+s)
+07:11:42 [INFO] PQC_SERVER:   Telemetry: temp=24.4°C, humidity=46.5%, seq=0
+07:11:47 [INFO] PQC_SERVER: [192.168.X.X:53718] POST /api/telemetry (137 byte
+s)
+07:11:47 [INFO] PQC_SERVER:   Telemetry: temp=27.5°C, humidity=50.4%, seq=1
+07:11:52 [INFO] PQC_SERVER: [192.168.X.X:53719] POST /api/telemetry (137 byte
+s)
+07:11:52 [INFO] PQC_SERVER:   Telemetry: temp=23.6°C, humidity=49.3%, seq=2
+07:11:57 [INFO] PQC_SERVER: [192.168.X.X:53720] POST /api/telemetry (137 byte
+s)
+07:11:57 [INFO] PQC_SERVER:   Telemetry: temp=23.7°C, humidity=62.1%, seq=3
+07:12:02 [INFO] PQC_SERVER: [192.168.X.X:53721] POST /api/telemetry (137 byte
+s)
+07:12:02 [INFO] PQC_SERVER:   Telemetry: temp=22.4°C, humidity=57.2%, seq=4
+07:12:08 [INFO] PQC_SERVER: [192.168.X.X:53722] POST /api/telemetry (137 byte
+s)
+07:12:08 [INFO] PQC_SERVER:   Telemetry: temp=30.8°C, humidity=49.2%, seq=5
+07:12:13 [INFO] PQC_SERVER: [192.168.X.X:53723] POST /api/telemetry (137 byte
+s)
+07:12:13 [INFO] PQC_SERVER:   Telemetry: temp=22.9°C, humidity=58.5%, seq=6
+07:12:18 [INFO] PQC_SERVER: [192.168.X.X:53724] POST /api/telemetry (137 byte
+s)
+07:12:18 [INFO] PQC_SERVER:   Telemetry: temp=26.9°C, humidity=47.8%, seq=7
+07:12:23 [INFO] PQC_SERVER: [192.168.X.X:53725] POST /api/telemetry (137 byte
+s)
+07:12:23 [INFO] PQC_SERVER:   Telemetry: temp=23.4°C, humidity=56.6%, seq=8
+07:12:28 [INFO] PQC_SERVER: [192.168.X.X:53726] POST /api/telemetry (137 byte
+s)
+07:12:28 [INFO] PQC_SERVER:   Telemetry: temp=24.1°C, humidity=56.1%, seq=9
+07:12:33 [INFO] PQC_SERVER: [192.168.X.X:53727] POST /api/telemetry (137 byte
+s)
+07:12:33 [INFO] PQC_SERVER:   Telemetry: temp=27.7°C, humidity=54.5%, seq=10
+07:12:38 [INFO] PQC_SERVER: [192.168.X.X:53728] POST /api/telemetry (137 byte
+s)
+07:12:38 [INFO] PQC_SERVER:   Telemetry: temp=28.7°C, humidity=62.7%, seq=11
+07:12:43 [INFO] PQC_SERVER: [192.168.X.X:53729] POST /api/telemetry (137 byte
+s)
+07:12:43 [INFO] PQC_SERVER:   Telemetry: temp=31.0°C, humidity=60.1%, seq=12
+07:12:49 [INFO] PQC_SERVER: [192.168.X.X:53730] POST /api/telemetry (137 byte
+s)
+07:12:49 [INFO] PQC_SERVER:   Telemetry: temp=30.1°C, humidity=48.2%, seq=13
+07:12:54 [INFO] PQC_SERVER: [192.168.X.X:53731] POST /api/telemetry (137 byte
+s)
+07:12:54 [INFO] PQC_SERVER:   Telemetry: temp=31.2°C, humidity=47.0%, seq=14
+07:12:59 [INFO] PQC_SERVER: [192.168.X.X:53732] POST /api/telemetry (137 byte
+s)
+07:12:59 [INFO] PQC_SERVER:   Telemetry: temp=26.5°C, humidity=63.2%, seq=15
+07:13:04 [INFO] PQC_SERVER: [192.168.X.X:53733] POST /api/telemetry (137 byte
+s)
+07:13:04 [INFO] PQC_SERVER:   Telemetry: temp=31.6°C, humidity=51.7%, seq=16
+07:13:09 [INFO] PQC_SERVER: [192.168.X.X:53734] POST /api/telemetry (137 byte
+s)
+07:13:09 [INFO] PQC_SERVER:   Telemetry: temp=29.0°C, humidity=60.0%, seq=17
+07:13:14 [INFO] PQC_SERVER: [192.168.X.X:53735] POST /api/telemetry (137 byte
+s)
+07:13:14 [INFO] PQC_SERVER:   Telemetry: temp=28.2°C, humidity=61.4%, seq=18
+07:13:19 [INFO] PQC_SERVER: [192.168.X.X:53736] POST /api/telemetry (137 byte
+s)
+07:13:19 [INFO] PQC_SERVER:   Telemetry: temp=27.6°C, humidity=51.6%, seq=19
+07:13:24 [INFO] PQC_SERVER: [192.168.X.X:53737] POST /api/telemetry (137 byte
+s)
+07:13:24 [INFO] PQC_SERVER:   Telemetry: temp=24.3°C, humidity=55.6%, seq=20
+07:13:29 [INFO] PQC_SERVER: [192.168.X.X:53738] POST /api/telemetry (137 byte
+s)
+07:13:29 [INFO] PQC_SERVER:   Telemetry: temp=31.0°C, humidity=52.6%, seq=21
+07:13:34 [INFO] PQC_SERVER: [192.168.X.X:53739] POST /api/telemetry (137 byte
+s)
+07:13:34 [INFO] PQC_SERVER:   Telemetry: temp=27.5°C, humidity=49.0%, seq=22
+07:13:40 [INFO] PQC_SERVER: [192.168.X.X:53740] POST /api/telemetry (137 byte
+s)
+07:13:40 [INFO] PQC_SERVER:   Telemetry: temp=23.5°C, humidity=48.5%, seq=23
+07:13:45 [INFO] PQC_SERVER: [192.168.X.X:53741] POST /api/telemetry (137 byte
+s)
+07:13:45 [INFO] PQC_SERVER:   Telemetry: temp=25.7°C, humidity=51.3%, seq=24
+07:13:50 [INFO] PQC_SERVER: [192.168.X.X:53742] POST /api/telemetry (137 byte
+s)
+07:13:50 [INFO] PQC_SERVER:   Telemetry: temp=22.9°C, humidity=54.9%, seq=25
+07:13:55 [INFO] PQC_SERVER: [192.168.X.X:53743] POST /api/telemetry (137 byte
+s)
+07:13:55 [INFO] PQC_SERVER:   Telemetry: temp=28.9°C, humidity=55.2%, seq=26
+07:14:00 [INFO] PQC_SERVER: [192.168.X.X:53744] POST /api/telemetry (137 byte
+s)
+07:14:00 [INFO] PQC_SERVER:   Telemetry: temp=30.2°C, humidity=53.1%, seq=27
+07:14:05 [INFO] PQC_SERVER: [192.168.X.X:53745] POST /api/telemetry (137 byte
+s)
+07:14:05 [INFO] PQC_SERVER:   Telemetry: temp=22.8°C, humidity=50.3%, seq=28
+07:14:10 [INFO] PQC_SERVER: [192.168.X.X:53746] POST /api/telemetry (137 byte
+s)
+07:14:10 [INFO] PQC_SERVER:   Telemetry: temp=29.0°C, humidity=45.6%, seq=29
+07:14:15 [INFO] PQC_SERVER: [192.168.X.X:53747] POST /api/telemetry (137 byte
+s)
+07:14:15 [INFO] PQC_SERVER:   Telemetry: temp=29.6°C, humidity=64.4%, seq=30
+07:14:20 [INFO] PQC_SERVER: [192.168.X.X:53748] POST /api/telemetry (137 byte
+s)
+07:14:20 [INFO] PQC_SERVER:   Telemetry: temp=28.5°C, humidity=64.1%, seq=31
+07:14:25 [INFO] PQC_SERVER: [192.168.X.X:53749] POST /api/telemetry (137 byte
+s)
+07:14:25 [INFO] PQC_SERVER:   Telemetry: temp=30.0°C, humidity=58.3%, seq=32
+07:14:30 [INFO] PQC_SERVER: [192.168.X.X:53750] POST /api/telemetry (137 byte
+s)
+07:14:30 [INFO] PQC_SERVER:   Telemetry: temp=26.5°C, humidity=63.1%, seq=33
+07:14:35 [INFO] PQC_SERVER: [192.168.X.X:53751] POST /api/telemetry (137 byte
+s)
+07:14:35 [INFO] PQC_SERVER:   Telemetry: temp=27.3°C, humidity=47.9%, seq=34
+07:14:40 [INFO] PQC_SERVER: [192.168.X.X:53752] POST /api/telemetry (137 byte
+s)
+07:14:40 [INFO] PQC_SERVER:   Telemetry: temp=25.4°C, humidity=51.3%, seq=35
+07:14:45 [INFO] PQC_SERVER: [192.168.X.X:53753] POST /api/telemetry (137 byte
+s)
+07:14:45 [INFO] PQC_SERVER:   Telemetry: temp=27.0°C, humidity=64.3%, seq=36
+07:14:50 [INFO] PQC_SERVER: [192.168.X.X:53754] POST /api/telemetry (137 byte
+s)
+07:14:50 [INFO] PQC_SERVER:   Telemetry: temp=25.5°C, humidity=49.4%, seq=37
+07:14:55 [INFO] PQC_SERVER: [192.168.X.X:53755] POST /api/telemetry (137 byte
+s)
+07:14:55 [INFO] PQC_SERVER:   Telemetry: temp=27.5°C, humidity=58.9%, seq=38
+07:15:01 [INFO] PQC_SERVER: [192.168.X.X:53756] POST /api/telemetry (137 byte
+s)
+07:15:01 [INFO] PQC_SERVER:   Telemetry: temp=25.9°C, humidity=61.4%, seq=39
+07:15:06 [INFO] PQC_SERVER: [192.168.X.X:53757] POST /api/telemetry (137 byte
+s)
+07:15:06 [INFO] PQC_SERVER:   Telemetry: temp=31.5°C, humidity=60.5%, seq=40
+07:15:11 [INFO] PQC_SERVER: [192.168.X.X:53758] POST /api/telemetry (137 byte
+s)
+07:15:11 [INFO] PQC_SERVER:   Telemetry: temp=27.1°C, humidity=61.3%, seq=41
+07:15:16 [INFO] PQC_SERVER: [192.168.X.X:53759] POST /api/telemetry (137 byte
+s)
+07:15:16 [INFO] PQC_SERVER:   Telemetry: temp=23.3°C, humidity=55.5%, seq=42
+07:15:21 [INFO] PQC_SERVER: [192.168.X.X:53760] POST /api/telemetry (137 byte
+s)
+07:15:21 [INFO] PQC_SERVER:   Telemetry: temp=23.6°C, humidity=50.4%, seq=43
+07:15:26 [INFO] PQC_SERVER: [192.168.X.X:53761] POST /api/telemetry (137 byte
+s)
+07:15:26 [INFO] PQC_SERVER:   Telemetry: temp=30.0°C, humidity=50.9%, seq=44
+07:15:31 [INFO] PQC_SERVER: [192.168.X.X:53762] POST /api/telemetry (137 byte
+s)
+07:15:31 [INFO] PQC_SERVER:   Telemetry: temp=24.4°C, humidity=63.2%, seq=45
+07:15:36 [INFO] PQC_SERVER: [192.168.X.X:53763] POST /api/telemetry (137 byte
+s)
+07:15:36 [INFO] PQC_SERVER:   Telemetry: temp=30.5°C, humidity=53.0%, seq=46
+07:15:41 [INFO] PQC_SERVER: [192.168.X.X:53764] POST /api/telemetry (137 byte
+s)
+07:15:41 [INFO] PQC_SERVER:   Telemetry: temp=24.9°C, humidity=56.6%, seq=47
+07:15:47 [INFO] PQC_SERVER: [192.168.X.X:53765] POST /api/telemetry (137 byte
+s)
+07:15:47 [INFO] PQC_SERVER:   Telemetry: temp=29.0°C, humidity=49.0%, seq=48
+07:15:53 [INFO] PQC_SERVER: [192.168.X.X:53766] POST /api/telemetry (137 byte
+s)
+07:15:53 [INFO] PQC_SERVER:   Telemetry: temp=30.3°C, humidity=63.0%, seq=49
+07:15:53 [INFO] PQC_SERVER: [192.168.X.X:53767] POST /handshake (65 bytes)
+07:15:53 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:15:53 [INFO] PQC_SERVER: Handshake #115: mode=Classical (X25519)
+07:15:53 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: e2d473aa5290b8f3db15c4f37e7a4002
+07:15:53 [INFO] PQC_SERVER:   Assigned Session ID: 06301634240cbb3c1acb89a0d6018
+5a1
+07:15:53 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:15:59 [INFO] PQC_SERVER: [192.168.X.X:53768] POST /api/telemetry (138 byte
+s)
+07:15:59 [INFO] PQC_SERVER:   Telemetry: temp=31.2°C, humidity=56.9%, seq=0
+07:16:04 [INFO] PQC_SERVER: [192.168.X.X:53769] POST /api/telemetry (138 byte
+s)
+07:16:04 [INFO] PQC_SERVER:   Telemetry: temp=23.4°C, humidity=57.5%, seq=1
+07:16:09 [INFO] PQC_SERVER: [192.168.X.X:53770] POST /api/telemetry (138 byte
+s)
+07:16:09 [INFO] PQC_SERVER:   Telemetry: temp=25.4°C, humidity=61.7%, seq=2
+07:16:14 [INFO] PQC_SERVER: [192.168.X.X:53771] POST /api/telemetry (138 byte
+s)
+07:16:14 [INFO] PQC_SERVER:   Telemetry: temp=26.0°C, humidity=53.4%, seq=3
+07:16:19 [INFO] PQC_SERVER: [192.168.X.X:53772] POST /api/telemetry (138 byte
+s)
+07:16:19 [INFO] PQC_SERVER:   Telemetry: temp=29.6°C, humidity=48.7%, seq=4
+07:16:24 [INFO] PQC_SERVER: [192.168.X.X:53773] POST /api/telemetry (138 byte
+s)
+07:16:24 [INFO] PQC_SERVER:   Telemetry: temp=26.8°C, humidity=46.1%, seq=5
+07:16:29 [INFO] PQC_SERVER: [192.168.X.X:53774] POST /api/telemetry (138 byte
+s)
+07:16:29 [INFO] PQC_SERVER:   Telemetry: temp=23.7°C, humidity=54.4%, seq=6
+07:16:34 [INFO] PQC_SERVER: [192.168.X.X:53775] POST /api/telemetry (138 byte
+s)
+07:16:34 [INFO] PQC_SERVER:   Telemetry: temp=22.0°C, humidity=55.0%, seq=7
+07:16:39 [INFO] PQC_SERVER: [192.168.X.X:53776] POST /api/telemetry (138 byte
+s)
+07:16:39 [INFO] PQC_SERVER:   Telemetry: temp=26.3°C, humidity=45.1%, seq=8
+07:16:44 [INFO] PQC_SERVER: [192.168.X.X:53777] POST /api/telemetry (138 byte
+s)
+07:16:44 [INFO] PQC_SERVER:   Telemetry: temp=25.6°C, humidity=55.9%, seq=9
+07:16:49 [INFO] PQC_SERVER: [192.168.X.X:53778] POST /api/telemetry (138 byte
+s)
+07:16:49 [INFO] PQC_SERVER:   Telemetry: temp=28.7°C, humidity=58.2%, seq=10
+07:16:54 [INFO] PQC_SERVER: [192.168.X.X:53779] POST /api/telemetry (138 byte
+s)
+07:16:54 [INFO] PQC_SERVER:   Telemetry: temp=23.6°C, humidity=64.4%, seq=11
+07:17:00 [INFO] PQC_SERVER: [192.168.X.X:53780] POST /api/telemetry (138 byte
+s)
+07:17:00 [INFO] PQC_SERVER:   Telemetry: temp=30.4°C, humidity=56.9%, seq=12
+07:17:05 [INFO] PQC_SERVER: [192.168.X.X:53781] POST /api/telemetry (138 byte
+s)
+07:17:05 [INFO] PQC_SERVER:   Telemetry: temp=25.7°C, humidity=49.4%, seq=13
+07:17:10 [INFO] PQC_SERVER: [192.168.X.X:53782] POST /api/telemetry (138 byte
+s)
+07:17:10 [INFO] PQC_SERVER:   Telemetry: temp=28.6°C, humidity=48.8%, seq=14
+07:17:15 [INFO] PQC_SERVER: [192.168.X.X:53783] POST /api/telemetry (138 byte
+s)
+07:17:15 [INFO] PQC_SERVER:   Telemetry: temp=24.0°C, humidity=47.3%, seq=15
+07:17:20 [INFO] PQC_SERVER: [192.168.X.X:53784] POST /api/telemetry (138 byte
+s)
+07:17:20 [INFO] PQC_SERVER:   Telemetry: temp=22.3°C, humidity=55.0%, seq=16
+07:17:35 [INFO] PQC_SERVER: [192.168.X.X:65236] POST /handshake (65 bytes)
+07:17:35 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:17:35 [INFO] PQC_SERVER: Handshake #116: mode=Classical (X25519)
+07:17:35 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: d5090c6e2fd37217b2fdcdb761fbddff
+07:17:35 [INFO] PQC_SERVER:   Assigned Session ID: 8f15675c65ee202dc0f2c94c7dc34
+1d6
+07:17:35 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:17:36 [INFO] PQC_SERVER: [192.168.X.X:65237] POST /handshake (65 bytes)
+07:17:36 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:17:36 [INFO] PQC_SERVER: Handshake #117: mode=Classical (X25519)
+07:17:36 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: 1b98c0fc363e93a56b64b9b931268845
+07:17:36 [INFO] PQC_SERVER:   Assigned Session ID: 65b425dc28725d89a035f9cbd92d0
+721
+07:17:36 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:17:36 [INFO] PQC_SERVER: [192.168.X.X:65238] POST /handshake (65 bytes)
+07:17:36 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:17:36 [INFO] PQC_SERVER: Handshake #118: mode=Classical (X25519)
+07:17:36 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: d7e7776ed501c2305ef9e0a3aa3af309
+07:17:36 [INFO] PQC_SERVER:   Assigned Session ID: a7d31b974fb5bebe2baf380324be7
+056
+07:17:36 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:17:37 [INFO] PQC_SERVER: [192.168.X.X:65239] POST /handshake (65 bytes)
+07:17:37 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:17:37 [INFO] PQC_SERVER: Handshake #119: mode=Classical (X25519)
+07:17:37 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: 45680fce3b7cec7012d67f1deb99d1e2
+07:17:37 [INFO] PQC_SERVER:   Assigned Session ID: 07717383aae310cbd09bfb936100a
+030
+07:17:37 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:17:38 [INFO] PQC_SERVER: [192.168.X.X:65240] POST /handshake (65 bytes)
+07:17:38 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:17:38 [INFO] PQC_SERVER: Handshake #120: mode=Classical (X25519)
+07:17:38 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: 1a22b57a652ef41057fc3379bd019155
+07:17:38 [INFO] PQC_SERVER:   Assigned Session ID: ca4c236604928a1cbc847bdf8d8a8
+22a
+07:17:38 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:17:55 [INFO] PQC_SERVER: [192.168.X.X:56371] POST /handshake (65 bytes)
+07:17:55 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:17:55 [INFO] PQC_SERVER: Handshake #121: mode=Classical (X25519)
+07:17:55 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: db1cf6a28ff793711ccd22b72c4b9e45
+07:17:55 [INFO] PQC_SERVER:   Assigned Session ID: ca8355ef747f2a8805ce96beadb79
+e55
+07:17:55 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:17:56 [INFO] PQC_SERVER: [192.168.X.X:56372] POST /handshake (65 bytes)
+07:17:56 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:17:56 [INFO] PQC_SERVER: Handshake #122: mode=Classical (X25519)
+07:17:56 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: be3542316af2ffec38371282115bdc5c
+07:17:56 [INFO] PQC_SERVER:   Assigned Session ID: cf52fdbf5a240895fc9d6ef954308
+5d4
+07:17:56 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:17:57 [INFO] PQC_SERVER: [192.168.X.X:56373] POST /handshake (65 bytes)
+07:17:57 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:17:57 [INFO] PQC_SERVER: Handshake #123: mode=Classical (X25519)
+07:17:57 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: 08b6e3cc9ca01916dc0303dfd409285a
+07:17:57 [INFO] PQC_SERVER:   Assigned Session ID: d431171966d397abcc9dbf7fbe8ed
+c22
+07:17:57 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:17:58 [INFO] PQC_SERVER: [192.168.X.X:56374] POST /handshake (65 bytes)
+07:17:58 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:17:58 [INFO] PQC_SERVER: Handshake #124: mode=Classical (X25519)
+07:17:58 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: cf471e60112fc6d1c0285b322822abee
+07:17:58 [INFO] PQC_SERVER:   Assigned Session ID: eda6e51227eaf23d355565ad6d446
+233
+07:17:58 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:17:58 [INFO] PQC_SERVER: [192.168.X.X:56375] POST /handshake (65 bytes)
+07:17:58 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:17:58 [INFO] PQC_SERVER: Handshake #125: mode=Classical (X25519)
+07:17:58 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: 6020f0256548ec6ef8b63a79a08dd4e2
+07:17:58 [INFO] PQC_SERVER:   Assigned Session ID: 6f4aefb61aba6f67d269083b719e1
+8ef
+07:17:58 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:18:00 [INFO] PQC_SERVER: [192.168.X.X:56376] POST /handshake (65 bytes)
+07:18:00 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:18:00 [INFO] PQC_SERVER: Handshake #126: mode=Classical (X25519)
+07:18:00 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: 87b4cdf53e899dd20923d3b03b243c0f
+07:18:00 [INFO] PQC_SERVER:   Assigned Session ID: 0c82231231bade0f8fb96eee4d8f2
+a90
+07:18:00 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:18:01 [INFO] PQC_SERVER: [192.168.X.X:56377] POST /handshake (65 bytes)
+07:18:01 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:18:01 [INFO] PQC_SERVER: Handshake #127: mode=Classical (X25519)
+07:18:01 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: e9c1da017a00da8680eb0632e624e3c7
+07:18:01 [INFO] PQC_SERVER:   Assigned Session ID: ba5334cd0a5169dbb2935aa4070a7
+294
+07:18:01 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:18:02 [INFO] PQC_SERVER: [192.168.X.X:56378] POST /handshake (65 bytes)
+07:18:02 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:18:02 [INFO] PQC_SERVER: Handshake #128: mode=Classical (X25519)
+07:18:02 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: 35a17023512c1f1ccd9dd8d57d1fff6c
+07:18:02 [INFO] PQC_SERVER:   Assigned Session ID: f40a10ea61b78f34e1229c87fc31b
+3b8
+07:18:02 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:18:03 [INFO] PQC_SERVER: [192.168.X.X:56379] POST /handshake (65 bytes)
+07:18:03 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:18:03 [INFO] PQC_SERVER: Handshake #129: mode=Classical (X25519)
+07:18:03 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: 71750c9a15ad97a176be027141f40c08
+07:18:03 [INFO] PQC_SERVER:   Assigned Session ID: fd37976cdcfb4f510b1f8ea3d1cc8
+4c1
+07:18:03 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:18:03 [INFO] PQC_SERVER: [192.168.X.X:56380] POST /handshake (65 bytes)
+07:18:03 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:18:03 [INFO] PQC_SERVER: Handshake #130: mode=Classical (X25519)
+07:18:03 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: faa07809980e835913f614d67ef6065f
+07:18:03 [INFO] PQC_SERVER:   Assigned Session ID: 57bb0f5eb870f18c0f14d62acbc3d
+2fa
+07:18:03 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:18:04 [INFO] PQC_SERVER: [192.168.X.X:56381] POST /handshake (833 bytes)
+07:18:04 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:18:04 [INFO] PQC_SERVER: Handshake #131: mode=PQC (ML-KEM-512)
+07:18:04 [INFO] PQC_SERVER:   [DEBUG] PK recv: 8aa39a4639cd1659...cb118b13469f35
+91
+07:18:04 [INFO] PQC_SERVER:   [DEBUG] CT sent: 201247be2d2dc483...0abfba7db09349
+8e
+07:18:04 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: e02726de18389eb1f658d33896c67a86
+07:18:04 [INFO] PQC_SERVER:   Assigned Session ID: df7a668f17b544350356a84dbc308
+ccf
+07:18:04 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:18:04 [INFO] PQC_SERVER: [192.168.X.X:56382] POST /handshake (833 bytes)
+07:18:04 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:18:04 [INFO] PQC_SERVER: Handshake #132: mode=PQC (ML-KEM-512)
+07:18:04 [INFO] PQC_SERVER:   [DEBUG] PK recv: 97d5210f013b3dec...3893e657bc1b26
+a4
+07:18:04 [INFO] PQC_SERVER:   [DEBUG] CT sent: 2f5a32f8d2bf3f87...ebf79ae486ff16
+f5
+07:18:04 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: c19a96cc452b525635600e188b5fc707
+07:18:04 [INFO] PQC_SERVER:   Assigned Session ID: 71a9dca704bff2b6672fa863a92d6
+24d
+07:18:04 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:18:04 [INFO] PQC_SERVER: [192.168.X.X:56383] POST /handshake (833 bytes)
+07:18:04 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:18:04 [INFO] PQC_SERVER: Handshake #133: mode=PQC (ML-KEM-512)
+07:18:04 [INFO] PQC_SERVER:   [DEBUG] PK recv: 037982fbbb95c674...01c64b5ccada47
+0f
+07:18:04 [INFO] PQC_SERVER:   [DEBUG] CT sent: a443867a3b04f6ab...1867e2da83f4f8
+78
+07:18:04 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: d1e4da8da4a63e9e6fa0ad7995509e6a
+07:18:04 [INFO] PQC_SERVER:   Assigned Session ID: 53edd86e934ea8e5c645866886ca2
+40b
+07:18:04 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:18:04 [INFO] PQC_SERVER: [192.168.X.X:56384] POST /handshake (833 bytes)
+07:18:04 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:18:04 [INFO] PQC_SERVER: Handshake #134: mode=PQC (ML-KEM-512)
+07:18:04 [INFO] PQC_SERVER:   [DEBUG] PK recv: 220ac0187a2f48e0...83470284e70004
+56
+07:18:04 [INFO] PQC_SERVER:   [DEBUG] CT sent: cdc5695f652ed4b4...e45efba4fe3616
+ec
+07:18:04 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: 55ddfb6d625d1e152fabc21a700192d8
+07:18:04 [INFO] PQC_SERVER:   Assigned Session ID: b741c626d77bc5c646c2fd8938e0b
+b98
+07:18:04 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:18:04 [INFO] PQC_SERVER: [192.168.X.X:56385] POST /handshake (833 bytes)
+07:18:04 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:18:04 [INFO] PQC_SERVER: Handshake #135: mode=PQC (ML-KEM-512)
+07:18:04 [INFO] PQC_SERVER:   [DEBUG] PK recv: 07da9e8d224fa579...713c6a9eddc7b0
+84
+07:18:04 [INFO] PQC_SERVER:   [DEBUG] CT sent: 87d9423d493a4144...e847a7335eabee
+68
+07:18:04 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: c244acfa0bd6503e40493fbdc5a56090
+07:18:04 [INFO] PQC_SERVER:   Assigned Session ID: 4afe50195487338db69f90408dbca
+127
+07:18:04 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:18:04 [INFO] PQC_SERVER: [192.168.X.X:56386] POST /handshake (833 bytes)
+07:18:04 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:18:04 [INFO] PQC_SERVER: Handshake #136: mode=PQC (ML-KEM-512)
+07:18:04 [INFO] PQC_SERVER:   [DEBUG] PK recv: 7ae7ad88c3a9c261...33e2a03ebd49c2
+f5
+07:18:04 [INFO] PQC_SERVER:   [DEBUG] CT sent: ee61246e840b4d38...66397ba101be3e
+c0
+07:18:04 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: e174724dcd0eaf2c81b7fd6b608c645e
+07:18:04 [INFO] PQC_SERVER:   Assigned Session ID: 6958d4dcc1ab0fe06db28f9467e01
+148
+07:18:04 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:18:04 [INFO] PQC_SERVER: [192.168.X.X:56387] POST /handshake (833 bytes)
+07:18:04 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:18:04 [INFO] PQC_SERVER: Handshake #137: mode=PQC (ML-KEM-512)
+07:18:04 [INFO] PQC_SERVER:   [DEBUG] PK recv: a605a0fe205af0a6...040585dd88ef8e
+05
+07:18:04 [INFO] PQC_SERVER:   [DEBUG] CT sent: 699b88e63763fe12...f6b8e1924a2c91
+2a
+07:18:04 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: aa4eb410f6bc9b0d7288125ca91f6c87
+07:18:04 [INFO] PQC_SERVER:   Assigned Session ID: b75c842fc7783f732170379ffa3ff
+2e8
+07:18:04 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:18:04 [INFO] PQC_SERVER: [192.168.X.X:56388] POST /handshake (833 bytes)
+07:18:04 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:18:04 [INFO] PQC_SERVER: Handshake #138: mode=PQC (ML-KEM-512)
+07:18:04 [INFO] PQC_SERVER:   [DEBUG] PK recv: 6a81a9af73524044...b1eee85f8d60dd
+12
+07:18:04 [INFO] PQC_SERVER:   [DEBUG] CT sent: e0ac91f84c8a570e...14336a17a51fe2
+e3
+07:18:04 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: 53df6de2f08bd791e6d6503180f10d99
+07:18:04 [INFO] PQC_SERVER:   Assigned Session ID: d476720f86cb65b8b4609d185fde6
+941
+07:18:04 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:18:05 [INFO] PQC_SERVER: [192.168.X.X:56389] POST /handshake (833 bytes)
+07:18:05 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:18:05 [INFO] PQC_SERVER: Handshake #139: mode=PQC (ML-KEM-512)
+07:18:05 [INFO] PQC_SERVER:   [DEBUG] PK recv: 9c7a81d0b82451b8...a2bc28be549173
+9d
+07:18:05 [INFO] PQC_SERVER:   [DEBUG] CT sent: 60b66e25d36a9d73...3af67c8279843b
+48
+07:18:05 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: cb657b7d6dd1e76c6817aef18336c059
+07:18:05 [INFO] PQC_SERVER:   Assigned Session ID: 2c70a8032c7394a5f0c10261af4c0
+75a
+07:18:05 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:18:05 [INFO] PQC_SERVER: [192.168.X.X:56390] POST /handshake (833 bytes)
+07:18:05 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:18:05 [INFO] PQC_SERVER: Handshake #140: mode=PQC (ML-KEM-512)
+07:18:05 [INFO] PQC_SERVER:   [DEBUG] PK recv: a1ba50aa1a31201c...29e5d51ed87a43
+15
+07:18:05 [INFO] PQC_SERVER:   [DEBUG] CT sent: 24a7081ce0481f5b...ab50b9edb70d0b
+2d
+07:18:05 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: 47af21562529031713beaf4da0393a67
+07:18:05 [INFO] PQC_SERVER:   Assigned Session ID: 1626d7cb6fa916ef989aed603c2ea
+ff9
+07:18:05 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 816 bytes
+07:18:06 [INFO] PQC_SERVER: [192.168.X.X:56391] POST /handshake (865 bytes)
+07:18:06 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:18:06 [INFO] PQC_SERVER: Handshake #141: mode=Hybrid (X25519 + ML-KEM-512)
+07:18:06 [INFO] PQC_SERVER:   [DEBUG] PK recv: 1527274984776ad5...e56746746a38ab
+1f
+07:18:06 [INFO] PQC_SERVER:   [DEBUG] CT sent: b3f02da670a223ee...09aff75243253a
+70
+07:18:06 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: a12285098168b125f47115aad2758f33
+07:18:06 [INFO] PQC_SERVER:   Assigned Session ID: 28d56fd51b1f998aa61444c74d6fa
+af7
+07:18:06 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:18:06 [INFO] PQC_SERVER: [192.168.X.X:56392] POST /handshake (865 bytes)
+07:18:06 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:18:06 [INFO] PQC_SERVER: Handshake #142: mode=Hybrid (X25519 + ML-KEM-512)
+07:18:06 [INFO] PQC_SERVER:   [DEBUG] PK recv: bad12c58dba80869...a0a54fd1fb7a56
+e7
+07:18:06 [INFO] PQC_SERVER:   [DEBUG] CT sent: cfb1ad0e05db8878...924b739cc0a03f
+ae
+07:18:06 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: acb4eddcad19a40252dd246a11d11fb8
+07:18:06 [INFO] PQC_SERVER:   Assigned Session ID: 628c38c8c2f7e0ce1b399c17978a3
+a0b
+07:18:06 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:18:07 [INFO] PQC_SERVER: [192.168.X.X:56393] POST /handshake (865 bytes)
+07:18:07 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:18:07 [INFO] PQC_SERVER: Handshake #143: mode=Hybrid (X25519 + ML-KEM-512)
+07:18:07 [INFO] PQC_SERVER:   [DEBUG] PK recv: 6a2859e117b8d910...6401dc2d0fac64
+cb
+07:18:07 [INFO] PQC_SERVER:   [DEBUG] CT sent: b25775e10b002e97...3599eaf5f780f5
+1e
+07:18:07 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: 2caf0875242940a9249655f45cc1f66f
+07:18:07 [INFO] PQC_SERVER:   Assigned Session ID: 7e43640aa1b3e8639b2d70368b269
+a0d
+07:18:07 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:18:08 [INFO] PQC_SERVER: [192.168.X.X:56394] POST /handshake (865 bytes)
+07:18:08 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:18:08 [INFO] PQC_SERVER: Handshake #144: mode=Hybrid (X25519 + ML-KEM-512)
+07:18:08 [INFO] PQC_SERVER:   [DEBUG] PK recv: 8af16a4b87b694b9...828b1608e01ae4
+28
+07:18:08 [INFO] PQC_SERVER:   [DEBUG] CT sent: 67849a2d9d6bb7d1...6b73b22ea44fec
+2e
+07:18:08 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: 92115a8f823d99f799a78ce6ffe6cd3c
+07:18:08 [INFO] PQC_SERVER:   Assigned Session ID: 2d5d3fcec6e939a8dbda2b8f60f4f
+287
+07:18:08 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:18:08 [INFO] PQC_SERVER: [192.168.X.X:56395] POST /handshake (865 bytes)
+07:18:08 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:18:08 [INFO] PQC_SERVER: Handshake #145: mode=Hybrid (X25519 + ML-KEM-512)
+07:18:08 [INFO] PQC_SERVER:   [DEBUG] PK recv: c7f0a9db087bc196...f27a931f3904a0
+fc
+07:18:08 [INFO] PQC_SERVER:   [DEBUG] CT sent: 81ff2076bd05539d...19c9081599a5ab
+ca
+07:18:08 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: 9211328d5a0f839ed6c1b98db3ecbaa8
+07:18:08 [INFO] PQC_SERVER:   Assigned Session ID: d319e2f5ef3ce969e9ae746700691
+436
+07:18:08 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:18:09 [INFO] PQC_SERVER: [192.168.X.X:56396] POST /handshake (865 bytes)
+07:18:09 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:18:09 [INFO] PQC_SERVER: Handshake #146: mode=Hybrid (X25519 + ML-KEM-512)
+07:18:09 [INFO] PQC_SERVER:   [DEBUG] PK recv: 0b9b4ca0444e6912...e232b77f0cbbc8
+22
+07:18:09 [INFO] PQC_SERVER:   [DEBUG] CT sent: 419be8efb374ba74...b221dc343aad2c
+d8
+07:18:09 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: 2ee9bba8dffa19ca1c327f482ffe9b32
+07:18:09 [INFO] PQC_SERVER:   Assigned Session ID: 6ca05923410a3c03c1aad0552f20d
+25d
+07:18:09 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:18:10 [INFO] PQC_SERVER: [192.168.X.X:56397] POST /handshake (865 bytes)
+07:18:10 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:18:10 [INFO] PQC_SERVER: Handshake #147: mode=Hybrid (X25519 + ML-KEM-512)
+07:18:10 [INFO] PQC_SERVER:   [DEBUG] PK recv: 5dc360859963a123...3eb19dd6e1d7d4
+fd
+07:18:10 [INFO] PQC_SERVER:   [DEBUG] CT sent: 7b191ac514536aa8...ef18fb7285c397
+78
+07:18:10 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: c31c2687bac9449edd0537d31b463267
+07:18:10 [INFO] PQC_SERVER:   Assigned Session ID: 9d4ea4c2feeadf78dba1ac289d793
+a13
+07:18:10 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:18:11 [INFO] PQC_SERVER: [192.168.X.X:56398] POST /handshake (865 bytes)
+07:18:11 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:18:11 [INFO] PQC_SERVER: Handshake #148: mode=Hybrid (X25519 + ML-KEM-512)
+07:18:11 [INFO] PQC_SERVER:   [DEBUG] PK recv: 01d9cf9ad99c6c1c...afc6f02dd2029c
+12
+07:18:11 [INFO] PQC_SERVER:   [DEBUG] CT sent: d75ce608b8fa4339...ccb747540c2d8c
+0d
+07:18:11 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: 671a017e5c8f1cdab8e376441a34e94a
+07:18:11 [INFO] PQC_SERVER:   Assigned Session ID: 26f4ca41eaed578693343747d62ca
+a99
+07:18:11 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:18:11 [INFO] PQC_SERVER: [192.168.X.X:56399] POST /handshake (865 bytes)
+07:18:11 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:18:11 [INFO] PQC_SERVER: Handshake #149: mode=Hybrid (X25519 + ML-KEM-512)
+07:18:11 [INFO] PQC_SERVER:   [DEBUG] PK recv: 3ecc61ba055659cb...133afa0a5d4f33
+4a
+07:18:11 [INFO] PQC_SERVER:   [DEBUG] CT sent: 46a1a83dcf43a9f6...a58cc4c97b154f
+6a
+07:18:11 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: 294f4dd7bf605ad46fe76fcf60e6a491
+07:18:11 [INFO] PQC_SERVER:   Assigned Session ID: ed66aa9e0c9dcb391ec5b9f77628e
+b4d
+07:18:11 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:18:12 [INFO] PQC_SERVER: [192.168.X.X:56400] POST /handshake (865 bytes)
+07:18:12 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:18:12 [INFO] PQC_SERVER: Handshake #150: mode=Hybrid (X25519 + ML-KEM-512)
+07:18:12 [INFO] PQC_SERVER:   [DEBUG] PK recv: 16234ac956a3ba6a...9f5c3cd7c73963
+7c
+07:18:12 [INFO] PQC_SERVER:   [DEBUG] CT sent: a27e136dd05581b5...d20a54d12e04c3
+ba
+07:18:12 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: 388ed0aa7691da003a7729289cae24ea
+07:18:12 [INFO] PQC_SERVER:   Assigned Session ID: 2646a9c8f1e51933f4e8ec3ff4830
+c1d
+07:18:12 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 848 bytes
+07:18:13 [INFO] PQC_SERVER: [192.168.X.X:56401] POST /api/benchmarks (349 byt
+es)
+07:18:13 [INFO] PQC_SERVER: Received benchmark results: {
+  "classical": {
+    "latency_ms": 873.03,
+    "peak_heap_kb": 0.0,
+    "payload_bytes": 145,
+    "cpu_cycles": 141166844
+  },
+  "pqc": {
+    "latency_ms": 104.54,
+    "peak_heap_kb": 0.0,
+    "payload_bytes": 1649,
+    "cpu_cycles": 18194948
+  },
+  "hybrid": {
+    "latency_ms": 736.47,
+    "peak_heap_kb": 0.0,
+    "payload_bytes": 1713,
+    "cpu_cycles": 119471226
+  },
+  "iterations": 10,
+  "chip": "ESP32-D0WD-V3",
+  "freq_mhz": 240,
+  "sram_kb": 520,
+  "timestamp": "2026-07-16T07:18:13.881907"
+}
+07:18:16 [INFO] PQC_SERVER: [192.168.X.X:56402] POST /handshake (65 bytes)
+07:18:16 [INFO] PQC_SERVER: Client handshake HMAC verification successful
+07:18:16 [INFO] PQC_SERVER: Handshake #151: mode=Classical (X25519)
+07:18:16 [INFO] PQC_SERVER:   Session cache limit reached. Pruned oldest Session
+ ID: c2f297d5fe77bf4f5e1ffe5e8fd3288f
+07:18:16 [INFO] PQC_SERVER:   Assigned Session ID: 3b35f58505638152277077b64bf66
+9ab
+07:18:16 [INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B H
+MAC): 80 bytes
+07:18:22 [INFO] PQC_SERVER: [192.168.X.X:56403] POST /api/telemetry (135 byte
+s)
+07:18:22 [INFO] PQC_SERVER:   Telemetry: temp=27.7°C, humidity=60.8%, seq=0
+07:18:27 [INFO] PQC_SERVER: [192.168.X.X:56404] POST /api/telemetry (135 byte
+s)
+07:18:27 [INFO] PQC_SERVER:   Telemetry: temp=22.9°C, humidity=56.4%, seq=1

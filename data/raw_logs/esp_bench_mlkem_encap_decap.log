@@ -40,7 +40,7 @@ Connecting......
 Chip is ESP32-D0WD-V3 (revision v3.1)
 Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
 Crystal is 40MHz
-MAC: 5c:01:3b:be:bc:58
+MAC: XX:XX:XX:XX:XX:XX
 Uploading stub...
 Running stub...
 Stub running...
@@ -194,7 +194,7 @@ entry 0x4008063c
 [0;32mI (699) wifi_init: WiFi IRAM OP enabled[0m
 [0;32mI (703) wifi_init: WiFi RX IRAM OP enabled[0m
 [0;32mI (729) phy_init: phy_version 4840,02e0d70,Sep  2 2024,19:39:07[0m
-[0;32mI (813) wifi:mode : sta (5c:01:3b:be:bc:58)[0m
+[0;32mI (813) wifi:mode : sta (XX:XX:XX:XX:XX:XX)[0m
 [0;32mI (814) wifi:enable tsf[0m
 [0;32mI (817) PQC_MAIN: Connecting to Wi-Fi SSID: shahid jutt 4g[0m
 [0;32mI (3234) PQC_MAIN: Retrying Wi-Fi connection (1/10)...[0m

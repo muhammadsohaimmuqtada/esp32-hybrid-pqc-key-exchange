@@ -145,7 +145,6 @@ int hybrid_keygen(hybrid_ctx_t *ctx) {
     return 0;
 }
 
-// SANITIZED FOR PUBLIC REPOSITORY
 #define DEMO_PSK "REPLACE_WITH_32_BYTE_TEST_PSK_ONLY"
 const uint8_t handshake_psk[HANDSHAKE_PSK_SIZE] = DEMO_PSK;
 

@@ -5,11 +5,11 @@
 #ifndef WIFI_CONFIG_H
 #define WIFI_CONFIG_H
 
-#define WIFI_SSID      "YOUR_SSID_HERE"
-#define WIFI_PASS      "YOUR_WIFI_PASSWORD_HERE"
+#define WIFI_SSID      "REPLACE_WITH_YOUR_SSID"
+#define WIFI_PASS      "REPLACE_WITH_YOUR_PASSWORD"
 
 /* Server configuration - set to your Python server's LAN IP */
-#define SERVER_HOST    "192.168.x.x" // Change this to your Server's IP
+#define SERVER_HOST    "192.168.X.X" // Change this to your Server's IP
 #define SERVER_PORT    8443
 
 /* Benchmark configuration */

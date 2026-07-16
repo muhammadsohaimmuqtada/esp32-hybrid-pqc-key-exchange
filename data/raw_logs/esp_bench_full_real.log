@@ -94,27 +94,27 @@ entry 0x4008063c
 [0;32mI (699) wifi_init: WiFi IRAM OP enabled[0m
 [0;32mI (703) wifi_init: WiFi RX IRAM OP enabled[0m
 [0;32mI (709) phy_init: phy_version 4840,02e0d70,Sep  2 2024,19:39:07[0m
-[0;32mI (796) wifi:mode : sta (5c:01:3b:be:bc:58)[0m
+[0;32mI (796) wifi:mode : sta (XX:XX:XX:XX:XX:XX)[0m
 [0;32mI (797) wifi:enable tsf[0m
 [0;32mI (799) PQC_MAIN: Connecting to Wi-Fi SSID: YOUR_SSID_HERE[0m
 [0;32mI (1632) wifi:new:<6,0>, old:<1,0>, ap:<255,255>, sta:<6,0>, prof:1, snd_ch_cfg:0x0[0m
 [0;32mI (1634) wifi:state: init -> auth (0xb0)[0m
 [0;32mI (1640) wifi:state: auth -> assoc (0x0)[0m
 [0;32mI (1646) wifi:state: assoc -> run (0x10)[0m
-[0;32mI (1747) wifi:connected with YOUR_SSID_HERE, aid = 2, channel 6, BW20, bssid = dc:51:93:92:34:ac[0m
+[0;32mI (1747) wifi:connected with YOUR_SSID_HERE, aid = 2, channel 6, BW20, bssid = XX:XX:XX:XX:XX:XX[0m
 [0;32mI (1748) wifi:security: WPA2-PSK, phy: bgn, rssi: -54[0m
 [0;32mI (1761) wifi:pm start, type: 1[0m
 
 [0;32mI (1761) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
 [0;32mI (1805) wifi:AP's beacon interval = 102400 us, DTIM period = 1[0m
-[0;32mI (3964) wifi:<ba-add>idx:0 (ifx:0, dc:51:93:92:34:ac), tid:0, ssn:0, winSize:64[0m
-[0;32mI (5096) esp_netif_handlers: sta ip: 192.168.1.6, mask: 255.255.255.0, gw: 192.168.1.1[0m
-[0;32mI (5097) PQC_MAIN: Connected! IP: 192.168.1.6[0m
+[0;32mI (3964) wifi:<ba-add>idx:0 (ifx:0, XX:XX:XX:XX:XX:XX), tid:0, ssn:0, winSize:64[0m
+[0;32mI (5096) esp_netif_handlers: sta ip: 192.168.X.X, mask: 255.255.255.0, gw: 192.168.X.X[0m
+[0;32mI (5097) PQC_MAIN: Connected! IP: 192.168.X.X[0m
 [0;32mI (5097) PQC_MAIN: Wi-Fi connected successfully[0m
 [0;32mI (5102) main_task: Returned from app_main()[0m
 [0;32mI (5102) PQC_MAIN: Starting Hybrid PQC task...[0m
 [0;32mI (5110) PQC_MAIN: Testing public internet connectivity: connecting to http://www.google.com...[0m
-[0;32mI (5134) wifi:<ba-add>idx:1 (ifx:0, dc:51:93:92:34:ac), tid:6, ssn:3, winSize:64[0m
+[0;32mI (5134) wifi:<ba-add>idx:1 (ifx:0, XX:XX:XX:XX:XX:XX), tid:6, ssn:3, winSize:64[0m
 [0;32mI (6262) PQC_MAIN: Google connection successful! Status: 200, Length: -1[0m
 [0;32mI (6265) PQC_MAIN: === Executing 100-Iteration Q1 Journal Benchmark Suite ===[0m
 [0;32mI (6265) BENCHMARK: === Benchmarking Classical (X25519) (100 iterations) ===[0m
