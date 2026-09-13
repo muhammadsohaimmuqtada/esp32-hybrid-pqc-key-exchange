@@ -1,0 +1,27 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Syntax check Python sources
+        run: |
+          python -m compileall -q server tests
+      - name: Validate JSON data files
+        run: |
+          python - <<'PY'
+          import json, pathlib, sys
+          for p in pathlib.Path(".").rglob("*.json"):
+              try:
+                  json.loads(p.read_text(encoding="utf-8"))
+              except Exception as e:
+                  print(f"Invalid JSON: {p}: {e}")
+                  sys.exit(1)
+          print("OK")
+          PY
