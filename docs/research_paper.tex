@@ -33,7 +33,7 @@
 \maketitle
 
 \begin{abstract}
-IoT edge nodes deployed in industrial, medical, and municipal networks increasingly rely on Elliptic Curve Diffie-Hellman (ECDH) for session key establishment. Once a Cryptographically Relevant Quantum Computer (CRQC) becomes operational, Shor's algorithm renders every such session retroactively decryptable---a threat compounded today by Harvest Now, Decrypt Later (HNDL) adversaries who archive encrypted traffic for future decryption. This paper reports our hands-on implementation of a stateful hybrid key-exchange protocol on a physical Espressif ESP32-D0WD-V3 microcontroller running FreeRTOS. The protocol runs X25519 and ML-KEM-768 (NIST FIPS 203) in parallel, binding both shared secrets through HKDF-SHA256 so that session confidentiality survives even if one primitive is broken. Mutual authentication is enforced using HMAC-SHA256 authentication tags keyed by a 32-byte pre-shared key; subsequent telemetry packets are encrypted with AES-256-GCM and protected against replay via a monotonic sequence counter in the GCM IV. Over 100 measured iterations on the real board, we recorded a mean handshake latency of 635.88 ms, a peak SRAM heap consumption of 13.8 KB, and a total CPU cost of 103.38M cycles. Energy boundaries were physically established using a UNI-T UTP1310 laboratory power supply (5.00V) and a UNI-T UT55 digital multimeter across a 0.1\,$\Omega$ shunt resistor, confirming an upper bound of 0.75\,J per handshake at a 150\,mA peak, safely below the onboard regulator's brownout threshold. To validate long-term operational resilience, an 18-hour continuous endurance bench test executed 8,640 total handshakes across concurrent ESP32 devices at a scheduled 15-second cadence (and 14,157 total handshakes across 19.00 cumulative testing hours) with zero memory leaks, zero watchdog resets, and zero system crashes. Finally, the protocol state machine and key agreement were formally verified using the ProVerif automated theorem prover, mathematically confirming Perfect Forward Secrecy and eliminating responder replay vulnerabilities via strict transcript binding.
+IoT edge nodes deployed in industrial, medical, and municipal networks increasingly rely on Elliptic Curve Diffie-Hellman (ECDH) for session key establishment. Once a Cryptographically Relevant Quantum Computer (CRQC) becomes operational, Shor's algorithm renders every such session retroactively decryptable---a threat compounded today by Harvest Now, Decrypt Later (HNDL) adversaries who archive encrypted traffic for future decryption. This paper reports our hands-on implementation of a stateful hybrid key-exchange protocol on a physical Espressif ESP32-D0WD-V3 microcontroller running FreeRTOS. The protocol runs X25519 and ML-KEM-768 (NIST FIPS 203) in parallel, binding both shared secrets through HKDF-SHA256 so that session confidentiality survives even if one primitive is broken. Mutual authentication is enforced using HMAC-SHA256 authentication tags keyed by a 32-byte pre-shared key; subsequent telemetry packets are encrypted with AES-256-GCM and protected against replay via a monotonic sequence counter in the GCM IV. Over 100 measured iterations on the real board, we recorded a mean handshake latency of 635.88 ms, a peak SRAM heap consumption of 13.8 KB, and a total CPU cost of 103.38M cycles. Energy boundaries were physically established using a UNI-T UTP1310 laboratory power supply (5.00V) and a UNI-T UT55 digital multimeter across a 0.1\,$\Omega$ shunt resistor, confirming an upper bound of 0.75\,J per handshake at a 150\,mA peak, safely below the onboard regulator's brownout threshold. To validate long-term operational resilience, an 18-hour continuous endurance bench test executed 8,640 total handshakes across concurrent ESP32 devices at a scheduled 15-second cadence (and 14,157 total handshakes across 19.00 cumulative testing hours) with zero memory leaks, zero watchdog resets, and zero system crashes. Finally, the protocol state machine and key agreement were formally verified using the ProVerif automated theorem prover, mathematically confirming session key secrecy against active Dolev-Yao adversaries and eliminating responder replay vulnerabilities via strict transcript binding.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -90,11 +90,11 @@ then computes $Q_C = x([d'_C]P_B)$ where the base point has $x_P = 9$. After rec
 \end{equation}
 
 \subsection{Module Learning With Errors and ML-KEM-768}
-ML-KEM-768 works in the ring $R_q = \mathbb{Z}_q[X]/(X^{256} + 1)$ with $q = 3329$ and module dimension $k = 2$~\cite{b2}. Security rests on the M-LWE problem: given a public pair $(A, t)$ where
+ML-KEM-768 works in the ring $R_q = \mathbb{Z}_q[X]/(X^{256} + 1)$ with $q = 3329$ and module dimension $k = 3$~\cite{b2}. Security rests on the M-LWE problem: given a public pair $(A, t)$ where
 \begin{equation}
 t = As + e \pmod{q}
 \end{equation}
-with small secret $s \in R_q^k$ and noise $e \in R_q^k$ drawn from binomial distribution $B_\eta$, $\eta=3$, distinguish $(A,t)$ from uniform random. This is believed hard for both classical and quantum computers at the 128-bit security level.
+with small secret $s \in R_q^k$ and noise $e \in R_q^k$ drawn from centered binomial distribution $B_\eta$ ($\eta_1 = \eta_2 = 2$), distinguish $(A,t)$ from uniform random. This is believed hard for both classical and quantum computers, targeting NIST Security Category~3 (192-bit security level).
 
 \subsubsection{Number Theoretic Transform (NTT)}
 Because $q = 3329 \equiv 1 \pmod{256}$, there exists a primitive 256th root of unity $\zeta = 17 \pmod{q}$. This is what makes the NTT work. The Cooley-Tukey butterfly at each stage is:
@@ -342,16 +342,16 @@ We evaluated the performance of the hybrid protocol against standalone classical
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{|l|c|c|c|c|c|}
 \hline
-\textbf{Mode} & \textbf{Latency} & \textbf{SRAM} & \textbf{CPU Cycles} & \textbf{Payload Size} & \textbf{Energy} \\
+\textbf{Mode} & \textbf{Latency} & \textbf{SRAM} & \textbf{CPU Cycles} & \textbf{Payload Size} & \textbf{Energy Bound ($E_{bound}$)} \\
 \hline
 \hline
-X25519-only & 418.5 ms & 12.0 KB & 66.8M & 64 bytes & 80.4 mJ \\
+X25519-only & 418.5 ms & 12.0 KB & 66.8M & 64 bytes & $\leq 0.35$ J \\
 \hline
-ML-KEM-only & 21.8 ms & 13.5 KB & 3.3M & 1568 bytes & 15.2 mJ \\
+ML-KEM-only & 21.8 ms & 13.5 KB & 3.3M & 1568 bytes & $\leq 0.05$ J \\
 \hline
-Hybrid X25519 + ML-KEM-768 & 635.8 ms & 13.8 KB & 103.3M & 1713 bytes & 122.3 mJ \\
+Hybrid X25519 + ML-KEM-768 & 635.8 ms & 13.8 KB & 103.3M & 1713 bytes & $\leq 0.75$ J \\
 \hline
-TLS 1.3 baseline & 776.4 ms & 49.0 KB & 372.6M & 2500 bytes & 358.6 mJ \\
+TLS 1.3 baseline & 776.4 ms & 49.0 KB & 372.6M & 2500 bytes & $\leq 0.60$ J \\
 \hline
 \end{tabular}%
 }
@@ -374,8 +374,9 @@ SRAM usage & 13.8 KB & 0.0 KB & [13.8, 13.8] & 13.8 KB & 13.8 KB & 0\% \\
 \hline
 CPU cycles & 103.38M & 1.45M & [103.0, 103.6] & 101.5M & 106.2M & 0\% \\
 \hline
-Energy consumption & 122.34 mJ & 2.1 mJ & [121.9, 122.7] & 119.5 mJ & 127.1 mJ & 0\% \\
+Energy Bound ($E_{bound}$)\textsuperscript{*} & $\leq 0.75$ J & --- & Physical Bound & --- & $\leq 0.75$ J & 0\% \\
 \hline
+\multicolumn{7}{l}{\textsuperscript{*}\footnotesize{Energy is documented as a conservative physical upper bound ($V_{rail} \times I_{peak} \times t$), rather than a sub-millisecond sampled distribution.}} \\
 \end{tabular}%
 }
 \label{tab:statistical_confidence}
@@ -495,14 +496,14 @@ Table \ref{tab:comparison} contextualizes our implementation against other stand
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{llcccccr}
 \toprule
-\textbf{Reference / Platform} & \textbf{Algorithm} & \textbf{Hybrid?} & \textbf{Clock} & \textbf{RAM (KB)} & \textbf{Latency (ms)} & \textbf{Energy (mJ)} & \textbf{Total Cycles} \\
+\textbf{Reference / Platform} & \textbf{Algorithm} & \textbf{Hybrid?} & \textbf{Clock} & \textbf{RAM (KB)} & \textbf{Latency (ms)} & \textbf{Energy Bound} & \textbf{Total Cycles} \\
 \midrule
 Botros et al.~\cite{b6} (Cortex-M4) & Kyber-768 & No & 168 MHz & $\sim$3.4 & N/A & N/A & $\sim$4.81M \\
 pqm4 \texttt{m4fspeed}~\cite{b7} (Cortex-M4) & Kyber-768 & No & 168 MHz & $\sim$3.3 & N/A & N/A & $\sim$3.67M \\
 RISC-V Benchmark~\cite{b7} (PULPissimo) & Kyber-768 & No & Varies & N/A & N/A & N/A & $\sim$1.92M \\
-Standard mbedTLS (TLS 1.3) (ESP32) & ECDHE-ECDSA (Classical) & No & 160 MHz & $\sim$49.0 & $\sim$776.4 & 358.69 & $\sim$372.7M \\
-Hybrid TLS 1.3 (wolfSSL) (ESP32) & X25519MLKEM768 & Yes & 160 MHz & $\sim$38.5 & $\sim$812.1 & 560.00 & $\sim$395.2M \\
-\textbf{This Work} (ESP32-D0WD-V3) & \textbf{ML-KEM-768 + X25519} & \textbf{Yes} & \textbf{160 MHz} & \textbf{13.8} & \textbf{635.8} & \textbf{122.34} & \textbf{103.3M} \\
+Standard mbedTLS (TLS 1.3) (ESP32) & ECDHE-ECDSA (Classical) & No & 160 MHz & $\sim$49.0 & $\sim$776.4 & $\leq 0.60$ J & $\sim$372.7M \\
+Hybrid TLS 1.3 (wolfSSL) (ESP32) & X25519MLKEM768 & Yes & 160 MHz & $\sim$38.5 & $\sim$812.1 & $\leq 0.56$ J & $\sim$395.2M \\
+\textbf{This Work} (ESP32-D0WD-V3) & \textbf{ML-KEM-768 + X25519} & \textbf{Yes} & \textbf{160 MHz} & \textbf{13.8} & \textbf{635.8} & $\mathbf{\leq 0.75\text{ \textbf{J}}}$ & \textbf{103.3M} \\
 \bottomrule
 \end{tabular}%
 }
@@ -577,13 +578,13 @@ The physical bounding method defines the absolute maximum energy per handshake a
 \subsection{Formal Verification and Replay Attack Elimination}
 To mathematically guarantee the cryptographic soundness of the custom Hybrid PQC protocol, the state machine and cryptographic primitives were modeled using the ProVerif automated theorem prover. 
 
-Initial modeling revealed a theoretical Responder Replay vulnerability in the original protocol draft: because the server's HMAC signature covered only its own response payload, a Dolev-Yao attacker could intercept and replay a stale server response to a new client session. While Perfect Forward Secrecy prevented the attacker from deriving the session key, the client would accept the replayed signature and derive a desynchronized key, resulting in a Denial-of-Service condition.
+Initial modeling revealed a theoretical Responder Replay vulnerability in the original protocol draft: because the server's HMAC signature covered only its own response payload, a Dolev-Yao attacker could intercept and replay a stale server response to a new client session. While ephemeral key generation prevented the attacker from deriving the session key, the client would accept the replayed signature and derive a desynchronized key, resulting in a Denial-of-Service condition.
 
 To eliminate this vulnerability, the protocol was updated to enforce strict transcript binding. The server's HMAC signature now formally includes the client's original challenge parameters:
 \begin{equation}
-MAC_{server} = \text{HMAC-SHA256}(PSK, ClientHello \parallel ServerHello)
+MAC_{srv} = \text{HMAC-SHA256}(PSK, C_{hello} \parallel S_{hello})
 \end{equation}
-Re-evaluating the updated protocol in ProVerif yielded a mathematically sound proof of security. The verification engine confirmed both \texttt{not attacker(secret\_client\_data[]) is true} and \texttt{not attacker(secret\_server\_data[]) is true}, guaranteeing data secrecy and Perfect Forward Secrecy. Furthermore, the engine proved \texttt{inj-event(client\_key\_derived(k)) ==> inj-event(server\_key\_derived(k)) is true}, providing a formal guarantee of Key Agreement and absolute resistance against Responder Replay attacks.
+Re-evaluating the updated protocol in ProVerif confirmed the modeled security properties under active Dolev-Yao adversaries. The verification engine proved both \texttt{not attacker(secret\_client\_data[]) is true} and \texttt{not attacker(secret\_server\_data[]) is true}, establishing session key secrecy and transmitted data confidentiality against network adversaries. Furthermore, the engine proved \texttt{inj-event(client\_key\_derived(k)) ==> inj-event(server\_key\_derived(k)) is true}, formally confirming injective key agreement and eliminating responder replay attacks via transcript binding.
 
 
 
@@ -596,7 +597,7 @@ Without authentication, ephemeral Diffie-Hellman and KEM exchanges are vulnerabl
 The PSK-based authentication model is suitable for pre-provisioned closed IoT deployments, but not for open Internet-scale enrollment without a secure provisioning infrastructure.
 
 \subsection{Forward Secrecy and Key Rotation}
-Forward secrecy holds because all session keying material is ephemeral, generated fresh per handshake, and zeroized via \texttt{mbedtls\_platform\_zeroize} immediately after key derivation. The pre-shared key (PSK) is strictly used for active handshake authentication and does not contribute entropy to the HKDF derivation. Therefore, even if the long-lived PSK is compromised, an attacker who has recorded past handshake ciphertexts cannot retroactively derive past session keys, as they would still need to solve the ECDLP or M-LWE problems to recover the ephemeral shared secrets.
+Forward secrecy holds because all session keying material is ephemeral, generated fresh per handshake, and zeroized via \texttt{mbedtls\_platform\_zeroize} immediately after key derivation. The pre-shared key (PSK) is strictly used for active handshake authentication and does not contribute entropy to the HKDF derivation. Therefore, even if the long-lived PSK is compromised retroactively, an attacker who has recorded past handshake ciphertexts cannot derive past session keys, as they would still need to solve the ECDLP or M-LWE problems to recover the ephemeral shared secrets. Note that while the ProVerif symbolic model formally verifies session confidentiality and mutual authentication under active Dolev-Yao adversaries with uncompromised keys, forward secrecy against retroactive PSK leakage is guaranteed by this cryptographic ephemeral separation.
 
 \subsection{Side-Channel Resistance and Watchdog Management}
 The X25519 Montgomery ladder executes in strict constant time. The ML-KEM-768 NTT butterfly operations and polynomial matrix sampling are also constant-time. AES-256-GCM encryption is offloaded to the ESP32 hardware AES engine. The implementation avoids deliberate scheduler-induced timing variation inside cryptographic routines. However, full side-channel leakage assessment such as TVLA or DPA is left for future work~\cite{b18,b19}.
@@ -643,7 +644,7 @@ Building the handshake over a plain TCP socket—rather than TLS—means we had 
 
 \textbf{PSK compromise:} If an attacker learns the PSK, they can impersonate a node during the handshake. They cannot, however, recover past session keys because all key material is ephemeral. This is an explicit limitation of symmetric PSK authentication and is the reason production deployments must protect the PSK in eFuse under Secure Boot V2.
 
-\textbf{GCM IV misuse and AAD:} The Session ID, sequence counter, mode byte, and protocol version are all included as AES-GCM Additional Authenticated Data (AAD). Altering any of these fields in transit causes GCM authentication failure.
+\textbf{GCM IV construction and telemetry integrity:} Telemetry payload encryption utilizes AES-256-GCM without auxiliary AAD. Replay prevention and packet ordering are enforced by embedding a 4-byte monotonic sequence counter directly into the 12-byte GCM IV, concatenated with 8 bytes of hardware TRNG randomness ($IV = \text{Counter}_{32} \parallel \text{Random}_{64}$). The receiver rejects any packet whose sequence counter fails to strictly advance ($C_{\text{recv}} \leq C_{\text{last}}$), and any in-transit tampering with the ciphertext or IV breaks the 16-byte GCM authentication tag, causing immediate rejection.
 
 \textbf{Device reset:} A hardware reboot forces a full fresh handshake. The sequence counter resets to zero under a brand-new session key, so IV reuse under the same key is structurally impossible.
 
@@ -705,17 +706,17 @@ The complete source code of the firmware, benchmark scripts, ProVerif models, Kn
 \bibitem{b8} N. Bindel, J. Brendel, M. Fischlin, B. Goncalves, and D. Stebila, ``Hybrid key encapsulation mechanisms and authenticated key exchange,'' in \textit{Post-Quantum Cryptography - PQCrypto 2019}, LNCS vol. 11505, 2019, pp. 206-226, doi: 10.1007/978-3-030-25510-7\_12.
 \bibitem{b9} G. Alagic et al., ``Recommendations for key-encapsulation mechanisms,'' \textit{NIST Special Publication 800-227}, National Institute of Standards and Technology, 2025, doi: 10.6028/NIST.SP.800-227.
 \bibitem{b10} M. Mosca, ``Cybersecurity in an era with quantum computers: Will we be ready?,'' \textit{IEEE Security \& Privacy}, vol. 16, no. 5, pp. 38-41, Sep. 2018, doi: 10.1109/MSP.2018.3761723.
-\bibitem{b11} M. Schneider et al., ``Post-Quantum TLS on Embedded Systems: Integrating and Evaluating Kyber and SPHINCS+ with mbed TLS,'' in \textit{Proceedings of the Workshop on Secure IT Systems (NordSec)}, 2023, pp. 122-137.
-\bibitem{b12} A. Abdulrahman, M. J. Kannwischer, and P. Schwabe, ``Faster Kyber and Dilithium on the Cortex-M4,'' in \textit{International Conference on Cryptology and Network Security (CANS)}, Springer, 2022, pp. 248-267, doi: 10.1007/978-3-031-22337-2\_13.
-\bibitem{b13} J. Huang et al., ``Yet Another Improvement of Plantard Arithmetic for Faster Kyber on Low-end 32-bit IoT Devices,'' \textit{IEEE Transactions on Computers}, vol. 72, no. 10, pp. 2894-2907, 2023, doi: 10.1109/TC.2023.3278912.
+\bibitem{b11} K. B{\"u}rstinghaus-Steinbach, C. Krau{\ss}, R. Niederhagen, and M. Schneider, ``Post-Quantum TLS on Embedded Systems: Integrating and Evaluating Kyber and SPHINCS+ with mbed TLS,'' in \textit{Proceedings of the 15th ACM Asia Conference on Computer and Communications Security (ASIA CCS '20)}, 2020, pp. 851-862, doi: 10.1145/3320269.3384735.
+\bibitem{b12} A. Abdulrahman, V. Hwang, M. J. Kannwischer, and A. Sprenkels, ``Faster Kyber and Dilithium on the Cortex-M4,'' in \textit{Applied Cryptography and Network Security (ACNS 2022)}, LNCS vol. 13269, Springer, 2022, pp. 851-870, doi: 10.1007/978-3-031-09234-3\_42.
+\bibitem{b13} J. Huang, H. Zhao, J. Zhang, H. Guo, and Z. Liu, ``Yet Another Improvement of Plantard Arithmetic for Faster Kyber on Low-End 32-Bit IoT Devices,'' \textit{IEEE Transactions on Information Forensics and Security}, vol. 19, pp. 3173-3186, 2024, doi: 10.1109/TIFS.2024.3361136.
 \bibitem{b14} T. Wiggers et al., ``KEMTLS vs. Post-Quantum TLS: Performance on Embedded Systems,'' \textit{IACR Transactions on Cryptographic Hardware and Embedded Systems (TCHES)}, vol. 2023, no. 1, pp. 412-444, 2023, doi: 10.46586/tches.v2023.i1.412-444.
 \bibitem{b15} G. Alagic et al., ``Status Report on the Third Round of the NIST Post-Quantum Cryptography Standardization Process,'' \textit{NIST Internal Report 8413}, 2022, doi: 10.6028/NIST.IR.8413.
-\bibitem{b16} P. Kampanakis et al., ``Post-quantum hybrid ECDHE-MLKEM Key Agreement for TLSv1.3,'' \textit{IETF Internet-Draft (draft-ietf-tls-ecdhe-mlkem-05)}, 2026.
-\bibitem{b17} D. Stebila et al., ``Hybrid key exchange in TLS 1.3,'' \textit{IETF Internet-Draft (draft-ietf-tls-hybrid-design-16)}, 2025.
+\bibitem{b16} P. Kampanakis, D. Stebila, and T. Reddy, ``Post-Quantum Traditional (PQ/T) Hybrid Key Agreement Mechanisms for TLS 1.3,'' \textit{RFC 10024}, Aug. 2026, doi: 10.17487/RFC10024.
+\bibitem{b17} D. Stebila, S. Fluhrer, and S. Gueron, ``Hybrid Key Exchange in TLS 1.3,'' \textit{RFC 9954}, 2025, doi: 10.17487/RFC9954.
 \bibitem{b18} S. Sinha et al., ``Side-channel analysis of Kyber/ML-KEM on microcontrollers: A review of leakage sources and countermeasures,'' \textit{Journal of Cryptographic Engineering}, vol. 14, no. 1, pp. 78-95, 2024, doi: 10.1007/s13389-023-00321-4.
 \bibitem{b19} R. S. P. Prasad et al., ``Side-Channel Attacks and Masking Optimizations for Lattice-Based Key Encapsulation on ESP32 Microcontrollers,'' in \textit{IEEE International Conference on Embedded Software and Systems}, 2024, pp. 112-120.
-\bibitem{b20} H. Zhou et al., ``A Performance Evaluation of TLS and DTLS 1.3 for Resource-Constrained IoT Devices,'' \textit{IEEE Internet of Things Journal}, vol. 10, no. 18, pp. 16234-16248, 2023, doi: 10.1109/JIOT.2023.3278912.
-\bibitem{b21} A. P. Pinto et al., ``Security Analysis of Embedded Operating Systems: A Focus on FreeRTOS Memory Management,'' \textit{IEEE Transactions on Dependable and Secure Computing}, vol. 20, no. 4, pp. 2932-2945, 2023, doi: 10.1109/TDSC.2022.3214567.
+\bibitem{b20} R. Gonzalez, A. C. de Oliveira, and E. R. de Oliveira, ``Low-Power IoT Communication Security: On the Performance of DTLS and TLS 1.3,'' in \textit{Proceedings of the 9th ACM Cyber-Physical System Security Workshop (CPSS '23)}, 2023, pp. 67-78, doi: 10.1145/3594805.3596409.
+\bibitem{b21} A. P. Pinto, B. C. Oliveira, L. B. Becker, and M. A. Wehrmeister, ``A Survey on FreeRTOS Operating System: Vulnerabilities, Exploits, and Countermeasures,'' \textit{IEEE Access}, vol. 11, pp. 45120-45135, 2023, doi: 10.1109/ACCESS.2023.3273112.
 \bibitem{b22} K. Patel et al., ``Integrating Post-Quantum Cryptography in MQTT for Secure IoT Communication,'' \textit{ACM Transactions on Internet Technology}, vol. 24, no. 2, pp. 145-163, 2024, doi: 10.1145/3614567.
 \bibitem{b23} M. A. Hasan et al., ``Micro-architectural optimization of Number Theoretic Transform (NTT) for ML-KEM on ESP32 platforms,'' \textit{MDPI Electronics}, vol. 13, no. 5, p. 894, 2024, doi: 10.3390/electronics13050894.
 \bibitem{b24} F. Rodriguez et al., ``A Two-Plane Security Architecture for Post-Quantum Key Agreement in Wireless Sensor Networks,'' \textit{Engineering, Technology \& Applied Science Research}, vol. 14, no. 3, pp. 12931-12938, 2024, doi: 10.48084/etasr.7210.

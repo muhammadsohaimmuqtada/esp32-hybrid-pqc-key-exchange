@@ -47,7 +47,7 @@ The protocol establishes a post-quantum forward-secure session key between an ES
 Upon successful decapsulation and ECDH computation:
 1. **Shared Secret Concatenation**:
    $$SS_{hybrid} = SS_{X25519} \parallel SS_{ML-KEM-768} \quad (\text{64 bytes})$$
-   *(Note: Weak/all-zero $SS_{X25519}$ values are rejected prior to combination).*
+   *(Note: RFC 7748 Section 6.1: Weak/all-zero $SS_{X25519}$ values are rejected in constant time prior to HKDF combination).*
 2. **HKDF Extraction**:
    $$PRK = \text{HKDF-Extract}(\text{salt}=\text{None}, IKM=SS_{hybrid})$$
 3. **HKDF Expansion**:
@@ -63,5 +63,6 @@ Upon successful decapsulation and ECDH computation:
 | 16 bytes        | 12 bytes            | Variable length       | 16 bytes           |
 +-----------------+---------------------+-----------------------+--------------------+
 ```
-* **GCM IV**: 12 bytes = 4-byte big-endian monotonic sequence counter + 8-byte random salt.
-* **Anti-Replay**: The server strictly enforces that the incoming sequence counter exceeds the highest sequence counter recorded for that session.
+* **GCM IV**: 12 bytes = 4-byte big-endian monotonic sequence counter + 8-byte random salt ($IV = \text{Counter}_{32} \parallel \text{Random}_{64}$).
+* **Additional Authenticated Data (AAD)**: None (`NULL, 0`). Sequence counter integrity and packet ordering are enforced directly through the GCM IV Galois counter computation and the 16-byte authentication tag.
+* **Anti-Replay**: The server strictly enforces that the incoming sequence counter exceeds the highest sequence counter recorded for that session ($C_{\text{recv}} > C_{\text{last}}$). Replayed or out-of-order packets are dropped immediately.

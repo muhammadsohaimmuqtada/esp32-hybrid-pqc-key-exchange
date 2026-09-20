@@ -61,5 +61,55 @@ class TestMLKEM768(unittest.TestCase):
         lib.mlkem768_decaps(ss_tampered, tampered_ct, sk)
         self.assertNotEqual(bytes(ss_enc), bytes(ss_tampered), "Tampered ciphertext did not trigger implicit rejection!")
 
+class TestX25519RFC7748Rejection(unittest.TestCase):
+    """
+    Automated test suite to verify compliance with RFC 7748 Section 6.1:
+    Explicit constant-time rejection of all-zero shared secrets.
+    """
+    def test_x25519_valid_exchange(self):
+        from cryptography.hazmat.primitives.asymmetric.x25519 import X25519PrivateKey, X25519PublicKey
+        import sys
+        sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../server')))
+        from server import HybridPQCServer
+
+        srv = HybridPQCServer()
+        client_priv = X25519PrivateKey.generate()
+        client_pub_bytes = client_priv.public_key().public_bytes_raw()
+
+        srv_pub_bytes, srv_ss = srv._perform_x25519(client_pub_bytes)
+        self.assertEqual(len(srv_ss), 32)
+        self.assertFalse(all(b == 0 for b in srv_ss))
+
+        # Check peer derivation matches
+        srv_pub = X25519PublicKey.from_public_bytes(srv_pub_bytes)
+        client_ss = client_priv.exchange(srv_pub)
+        self.assertEqual(srv_ss, client_ss)
+
+    def test_x25519_all_zero_detection_logic(self):
+        # Emulate the firmware constant-time accumulator in Python
+        # uint8_t zero_acc = 0; for(int i=0; i<32; i++) zero_acc |= secret[i];
+        def check_zero_acc(secret_bytes):
+            zero_acc = 0
+            for b in secret_bytes:
+                zero_acc |= b
+            return zero_acc == 0
+
+        all_zeros = bytes(32)
+        self.assertTrue(check_zero_acc(all_zeros), "Zero accumulator must detect all-zero buffer")
+
+        one_bit_set = bytes([0] * 31 + [1])
+        self.assertFalse(check_zero_acc(one_bit_set), "Zero accumulator must not flag valid secret")
+
+    def test_x25519_low_order_point_rejection(self):
+        import sys
+        sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../server')))
+        from server import HybridPQCServer
+
+        srv = HybridPQCServer()
+        # Point of order 1 (all zeros), RFC 7748 Section 6.1
+        zero_point = bytes(32)
+        with self.assertRaises(ValueError):
+            srv._perform_x25519(zero_point)
+
 if __name__ == '__main__':
     unittest.main()

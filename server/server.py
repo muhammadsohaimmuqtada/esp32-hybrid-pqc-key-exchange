@@ -118,6 +118,9 @@ class HybridPQCServer:
 
         client_pubkey = X25519PublicKey.from_public_bytes(client_pubkey_bytes)
         shared_secret = server_privkey.exchange(client_pubkey)
+        # RFC 7748 Section 6.1: Reject all-zero shared secret
+        if len(shared_secret) != 32 or all(b == 0 for b in shared_secret):
+            raise ValueError("RFC 7748 violation: X25519 shared secret is all zeros")
         return server_pubkey_bytes, shared_secret
 
     def _perform_mlkem_encaps(self, client_pk_bytes: bytes):

@@ -20,6 +20,12 @@ def parse_log_to_csv(input_file, output_file):
                 match = pattern.search(line)
                 if match:
                     operation = match.group(1).strip()
+                    # Map legacy firmware log string to standard FIPS 203 ML-KEM-768
+                    if "ML-KEM" in operation:
+                        if "Keygen" in operation:
+                            operation = "ML-KEM-768 Keygen"
+                        elif "Decap" in operation:
+                            operation = "ML-KEM-768 Decap"
                     latency_us = int(match.group(2))
                     cycles = int(match.group(3))
                     results.append([operation, latency_us, cycles])
