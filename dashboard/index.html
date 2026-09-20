@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hybrid PQC Edge Benchmark — ESP32</title>
-<meta name="description" content="Real-time benchmark dashboard for hybrid post-quantum cryptography (X25519 + ML-KEM-512) testing on ESP32 microcontroller.">
+<meta name="description" content="Real-time benchmark dashboard for hybrid post-quantum cryptography (X25519 + ML-KEM-768) testing on ESP32 microcontroller.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -725,8 +725,8 @@ const DEMO = {
   total_iterations: 100,
   latency: {
     classical: { value: 3.4, label: 'Classical', algo: 'X25519' },
-    pqc:       { value: 17.1, label: 'PQC', algo: 'ML-KEM-512' },
-    hybrid:    { value: 20.5, label: 'Hybrid', algo: 'X25519 + ML-KEM-512' },
+    pqc:       { value: 17.1, label: 'PQC', algo: 'ML-KEM-768' },
+    hybrid:    { value: 20.5, label: 'Hybrid', algo: 'X25519 + ML-KEM-768' },
   },
   memory: {
     classical: { value: 2.1, total: 520, label: 'Classical' },
@@ -960,7 +960,7 @@ function renderProtocolSVG() {
       <animate attributeName="opacity" from="0" to="1" begin="0.5s" dur="0.4s" fill="freeze"/>
     </line>
     <text x="360" y="113" text-anchor="middle" fill="rgba(210,200,255,0.5)" font-family="JetBrains Mono, monospace" font-size="9" opacity="0">
-      PubKeys: X25519 + ML-KEM-512
+      PubKeys: X25519 + ML-KEM-768
       <animate attributeName="opacity" from="0" to="1" begin="0.6s" dur="0.3s" fill="freeze"/>
     </text>
     <rect x="320" y="123" width="80" height="18" rx="4" fill="rgba(245,158,11,0.08)" stroke="rgba(245,158,11,0.2)" stroke-width="0.8" opacity="0">
@@ -1019,7 +1019,7 @@ function renderProtocolSVG() {
 // ──── Protocol Steps ────
 function renderProtoSteps() {
   const steps = [
-    { n: '1', text: '<strong>ESP32</strong> generates <strong>X25519</strong> + <strong>ML-KEM-512</strong> keypairs' },
+    { n: '1', text: '<strong>ESP32</strong> generates <strong>X25519</strong> + <strong>ML-KEM-768</strong> keypairs' },
     { n: '2', text: 'Send combined public keys to server <span class="bytes">832 bytes</span>' },
     { n: '3', text: '<strong>Server</strong> performs ECDH + ML-KEM <strong>Encapsulate</strong>' },
     { n: '4', text: 'Server returns pub key + ciphertext <span class="bytes">800 bytes</span>' },
@@ -1153,8 +1153,8 @@ function normalizeServerData(raw) {
       total_iterations: raw.total_iterations ?? DEMO.total_iterations,
       latency: {
         classical: { value: raw.latency?.classical?.value ?? DEMO.latency.classical.value, label: 'Classical', algo: 'X25519' },
-        pqc:       { value: raw.latency?.pqc?.value ?? DEMO.latency.pqc.value, label: 'PQC', algo: 'ML-KEM-512' },
-        hybrid:    { value: raw.latency?.hybrid?.value ?? DEMO.latency.hybrid.value, label: 'Hybrid', algo: 'X25519 + ML-KEM-512' },
+        pqc:       { value: raw.latency?.pqc?.value ?? DEMO.latency.pqc.value, label: 'PQC', algo: 'ML-KEM-768' },
+        hybrid:    { value: raw.latency?.hybrid?.value ?? DEMO.latency.hybrid.value, label: 'Hybrid', algo: 'X25519 + ML-KEM-768' },
       },
       memory: {
         classical: { value: raw.memory?.classical?.value ?? DEMO.memory.classical.value, total: 520, label: 'Classical' },

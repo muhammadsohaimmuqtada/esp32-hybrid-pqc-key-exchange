@@ -10,9 +10,23 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - name: Build Native ML-KEM-768 Library
+        run: |
+          make -C firmware/components/mlkem768
+
       - name: Syntax check Python sources
         run: |
-          python -m compileall -q server tests
+          python -m compileall -q server tests tools benchmarks
+
+      - name: Run Cryptographic Unit Tests
+        run: |
+          python -m unittest discover -s tests
+
+      - name: Run NIST ML-KEM-768 Known Answer Tests
+        run: |
+          python tools/test_mlkem768_kat.py
+
       - name: Validate JSON data files
         run: |
           python - <<'PY'
