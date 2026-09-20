@@ -2,7 +2,7 @@
 
 ## Overview
 
-This directory contains the ESP-IDF FreeRTOS firmware for the ESP32-WROOM-32E that implements the hybrid X25519 + ML-KEM-512 post-quantum key exchange protocol.
+This directory contains the ESP-IDF FreeRTOS firmware for the ESP32-WROOM-32E that implements the hybrid X25519 + ML-KEM-768 post-quantum key exchange protocol (NIST FIPS 203).
 
 ## Directory Structure
 
@@ -11,17 +11,13 @@ firmware/
 ├── main/
 │   ├── CMakeLists.txt          # Build configuration
 │   ├── main.c                  # Entry point: Wi-Fi init, handshake loop, telemetry
-│   ├── crypto_hybrid.c         # Hybrid handshake implementation
+│   ├── crypto_hybrid.c         # Hybrid handshake implementation (X25519 + ML-KEM-768)
 │   ├── crypto_hybrid.h         # Header for handshake context and API
 │   └── Kconfig.projbuild       # Menuconfig options (Wi-Fi SSID, server IP)
 ├── components/
-│   └── mlkem/                  # ML-KEM-512 reference implementation (pqm4/ref)
-│       ├── mlkem512.c
-│       ├── mlkem512.h
-│       ├── ntt.c               # Number Theoretic Transform (NTT butterfly)
-│       ├── poly.c              # Polynomial arithmetic
-│       ├── polyvec.c           # Polynomial vector operations
-│       └── CMakeLists.txt
+│   └── mlkem768/               # Pure FIPS 203 ML-KEM-768 C implementation
+│       ├── include/            # FIPS 203 headers, params (KYBER_K=3), fips202
+│       └── src/ref/            # NTT butterfly, poly arithmetic, vector operations
 ├── sdkconfig.defaults          # Default build configuration
 └── README.md                   # This file
 ```
