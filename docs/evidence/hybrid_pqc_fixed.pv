@@ -1,0 +1,90 @@
+(* 
+ * Formal Model of Custom Hybrid PQC IoT Key Exchange 
+ * FOCUS: Fixed Version (Transcript-bound Server MAC)
+ *)
+
+free c: channel.
+type psk_t.
+free psk_auth: psk_t [private].
+
+fun senc(bitstring, bitstring): bitstring.
+reduc forall m: bitstring, k: bitstring; sdec(senc(m,k),k) = m.
+
+fun hmac(bitstring, psk_t): bitstring.
+
+type G.
+type exponent.
+const g: G.
+fun exp(G, exponent): G.
+equation forall x: exponent, y: exponent; exp(exp(g, x), y) = exp(exp(g, y), x).
+
+type skey.
+type pkey.
+type seed.
+fun pk(skey): pkey.
+fun kem_encap_c(pkey, seed): bitstring.
+fun kem_encap_k(pkey, seed): bitstring.
+fun kem_dec(bitstring, skey): bitstring.
+
+equation forall sk: skey, r: seed; 
+    kem_dec(kem_encap_c(pk(sk), r), sk) = kem_encap_k(pk(sk), r).
+
+fun hkdf(G, bitstring): bitstring.
+
+(* Queries *)
+free secret_client_data: bitstring [private].
+free secret_server_data: bitstring [private].
+query attacker(secret_client_data).
+query attacker(secret_server_data).
+
+event client_key_derived(bitstring).
+event server_key_derived(bitstring).
+
+(* Key Agreement / Authentication Query *)
+query k: bitstring; inj-event(client_key_derived(k)) ==> inj-event(server_key_derived(k)).
+
+let Client() =
+    new x_priv: exponent;
+    let x_pub = exp(g, x_priv) in
+    new m_sk: skey;
+    let m_pk = pk(m_sk) in
+    
+    let msg1 = (x_pub, m_pk) in
+    let sig1 = hmac(msg1, psk_auth) in
+    out(c, (msg1, sig1));
+    
+    in(c, (msg2: bitstring, sig2: bitstring));
+    let (x_pub_s: G, m_ct: bitstring) = msg2 in
+    
+    (* FIXED: Client verifies HMAC over both msg1 and msg2 *)
+    if sig2 = hmac((msg1, msg2), psk_auth) then
+        let ss_x = exp(x_pub_s, x_priv) in
+        let ss_m = kem_dec(m_ct, m_sk) in
+        let session_key = hkdf(ss_x, ss_m) in
+        
+        event client_key_derived(session_key).
+
+let Server() =
+    in(c, (msg1: bitstring, sig1: bitstring));
+    let (x_pub_c: G, m_pk_c: pkey) = msg1 in
+    
+    if sig1 = hmac(msg1, psk_auth) then
+        new x_priv_s: exponent;
+        let x_pub_s = exp(g, x_priv_s) in
+        new r: seed;
+        let m_ct = kem_encap_c(m_pk_c, r) in
+        let ss_m = kem_encap_k(m_pk_c, r) in
+        
+        let ss_x = exp(x_pub_c, x_priv_s) in
+        let session_key = hkdf(ss_x, ss_m) in
+        
+        event server_key_derived(session_key);
+        
+        let msg2 = (x_pub_s, m_ct) in
+        (* FIXED: Server generates HMAC over both msg1 and msg2 *)
+        let sig2 = hmac((msg1, msg2), psk_auth) in
+        out(c, (msg2, sig2)).
+
+process
+    (!Client) | (!Server)
+

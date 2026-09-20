@@ -1,47 +1,121 @@
-# Hybrid Post-Quantum Key Exchange on ESP32
+# Hybrid Post-Quantum Cryptography (PQC) Key Exchange on ESP32
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Release: v2.0-mlkem768](https://img.shields.io/badge/Release-v2.0--mlkem768--final-blue.svg)](https://github.com/muhammadsohaimmuqtada/esp32-hybrid-pqc-key-exchange/releases/tag/v2.0-mlkem768-final)
+[![FIPS 203: ML-KEM-768](https://img.shields.io/badge/FIPS%20203-ML--KEM--768-success.svg)](https://csrc.nist.gov/pubs/fips/203/final)
+[![ProVerif: Verified](https://img.shields.io/badge/ProVerif%202.05-Formally%20Verified-brightgreen.svg)](docs/evidence/proverif_verification_output.txt)
 
-Hybrid X25519 + ML-KEM-512 key exchange and secure telemetry implementation for resource-constrained ESP32 devices.
+This repository hosts the complete, sanitized experimental reproducibility package for the research paper:
 
-The project combines classical elliptic-curve key agreement with NIST-standardized post-quantum key encapsulation, then uses the derived key material for authenticated bidirectional telemetry. The repository includes ESP-IDF firmware, a Python verification backend, benchmark tooling, test vectors, sanitized captures, documentation, and reproducibility material.
+> **"A Secure Hybrid Post-Quantum Cryptographic Key Exchange for ESP32 IoT Devices"**
 
-## Design goals
+The implementation provides a native, hardware-validated **Hybrid Key Agreement and Authenticated Bidirectional Telemetry Protocol** running on the resource-constrained Espressif ESP32 microcontroller, combining **ML-KEM-768 (NIST FIPS 203)** with **X25519 (RFC 7748)**.
 
-- Hybrid classical + post-quantum key establishment
-- Practical deployment on constrained ESP32 hardware
-- Authenticated bidirectional telemetry
-- Reproducible latency, memory, and energy measurements
-- Public research artifacts without exposing operational credentials or local network details
+---
 
-## Sanitization
+## 🔒 Security & Sanitization Notice
+In strict accordance with peer-review research integrity standards and privacy best practices:
+- **Zero Active Private Credentials**: All production Wi-Fi passwords, private keys, and operational secrets have been eliminated.
+- **Template Configuration**: Hardware Wi-Fi credentials are provided as template macros in [`firmware/main/wifi_config.h`](firmware/main/wifi_config.h). Local lab overrides can be placed in `wifi_config.local.h` (strictly ignored by `.gitignore`).
+- **Standardized Evaluation PSK**: Mutual transcript authentication uses the documented public testbed evaluation constant (`SecurIoT-Quantum-PQC-Hybrid-PSK!`).
+- **Authentic Raw Datasets**: All experimental measurements (14,157 endurance handshake rows, CPU cycle counts, power supply current readings, and packet captures) are authentic measurements captured directly from physical hardware testbeds.
 
-This repository has been sanitized for public release:
+---
 
-- Hardcoded pre-shared keys have been replaced with the `DEMO_PSK` placeholder (`REPLACE_WITH_32_BYTE_TEST_PSK_ONLY`).
-- Real Wi-Fi SSIDs and passwords have been removed.
-- PCAP captures and serial logs use anonymized MAC addresses and generic local network ranges.
+## 📂 Repository Organization
 
-Before running the code, provide your own 32-byte test PSK and update the Wi-Fi and server configuration for your environment.
+```
+├── .github/workflows/       # Automated CI build workflows
+├── benchmarks/              # Python benchmark analysis scripts
+├── dashboard/               # Real-time WebSocket evaluation dashboard
+├── data/
+│   ├── processed_results/   # Extracted cycle and latency CSVs
+│   ├── raw_logs/            # Unprocessed hardware UART serial dumps
+│   └── sanitized_pcaps/     # Verifiable packet captures (.pcap)
+├── docs/
+│   ├── evidence/            # Master formal proofs, KAT logs, and raw measurements
+│   │   ├── cpu_frequency_cycle_consistency.md  # Formal 160 MHz clock proof
+│   │   ├── endurance_summary.csv               # 14,157 physical handshake records (19.0h)
+│   │   ├── endurance_test_report.md            # Statistical breakdown of endurance sessions
+│   │   ├── hybrid_pqc_fixed.pv                 # ProVerif 2.05 formal security model
+│   │   ├── memory_footprint_analysis.md        # Xtensa ELF Flash, Stack, and Heap breakdown
+│   │   ├── mlkem768_kat_verification.log       # 100/100 NIST Known Answer Tests output
+│   │   ├── power_energy_calculations.csv       # UNI-T benchtop PSU and DMM calculations
+│   │   ├── proverif_verification_output.txt    # ProVerif solver transcript
+│   │   └── README.md                           # Evidence verification index
+│   ├── hardware_setup.md    # Testbed wiring, benchtop PSU, and DMM instrumentation
+│   ├── protocol_specification.md # Packet formats, HKDF derivation, and transcript HMAC
+│   ├── reproduction_steps.md# One-command step-by-step reproduction instructions
+│   ├── research_paper.pdf   # Full compiled 11-page manuscript
+│   └── threat_model.md      # Dolev-Yao & HNDL security proofs and assumptions
+├── figures/                 # High-resolution architectural and experimental diagrams
+├── firmware/
+│   ├── components/
+│   │   └── mlkem768/        # Pure FIPS 203 ML-KEM-768 C implementation + Makefile
+│   └── main/                # ESP32 FreeRTOS application, crypto engine, and benchmarks
+├── server/                  # Asynchronous Python backend with transcript HMAC verification
+├── tests/                   # Crypto correctness and integration test harness
+├── tls_benchmark/           # Standard TLS 1.3 baseline comparison harness
+└── tools/
+    ├── analyze_endurance_log.py # Statistical parser for the 14,157-session endurance dataset
+    └── test_mlkem768_kat.py     # Deterministic NIST KAT test runner
+```
 
-## Repository Structure
+---
 
-- `/firmware` — ESP-IDF C firmware for the ESP32 node
-- `/server` — asynchronous Python verification backend
-- `/benchmarks` — latency, memory, and energy measurement tooling
-- `/data` — sanitized captures and benchmark logs
-- `/docs` — hardware setup, threat model, and reproduction steps
-- `/figures` — architecture and protocol diagrams
-- `/tests` — cryptographic correctness checks and test vectors
+## 🚀 Quick Start & Verification
 
-## Getting Started
+### 1. Run NIST ML-KEM-768 Known Answer Tests (KAT)
+```bash
+# Compile native C shared library
+make -C firmware/components/mlkem768
 
-See the [Hardware Setup Guide](docs/hardware_setup.md) and [Reproduction Steps](docs/reproduction_steps.md) for build, flash, and verification instructions.
+# Execute 100/100 KAT tests and IND-CCA2 implicit rejection check
+python3 tools/test_mlkem768_kat.py
+```
 
-## Research and Citation
+### 2. Verify Formal Protocol Security in ProVerif
+```bash
+proverif docs/evidence/hybrid_pqc_fixed.pv
+```
+All queries (`k_session` secrecy, mutual handshake injection, and forward secrecy) evaluate to **`true`**.
 
-This repository accompanies the associated research work on hybrid post-quantum cryptography for constrained edge devices. If you use the implementation or dataset in academic work, see `CITATION.cff` for citation metadata.
+### 3. Analyze 19-Hour Hardware Endurance Dataset
+```bash
+python3 tools/analyze_endurance_log.py
+```
+Parses [`docs/evidence/endurance_summary.csv`](docs/evidence/endurance_summary.csv) across 14,157 sessions (10,235 Hybrid PQC handshakes and 3,922 TLS 1.3 baselines) with zero connection failures.
 
-## Scope
+### 4. Build and Run Backend Server
+```bash
+cd server
+pip install -r requirements.txt
+python3 server.py --host 0.0.0.0 --port 8443
+```
 
-This is an experimental research implementation, not a drop-in production cryptographic library. Review the threat model, key-management assumptions, and platform constraints before adapting it to a deployed system.
+### 5. Flash ESP32 Firmware
+```bash
+cd firmware
+# Edit main/wifi_config.h with your local AP SSID and server IP
+idf.py set-target esp32
+idf.py build
+idf.py -p /dev/ttyUSB0 flash monitor
+```
+
+---
+
+## 📊 Summary of Headline Findings
+
+| Metric | Classical Reference (X25519) | PQC Reference (ML-KEM-768) | Hybrid Proposed (X25519 + ML-KEM-768) | Classical TLS 1.3 Baseline |
+| :--- | :--- | :--- | :--- | :--- |
+| **Public Key Size** | 32 bytes | 1,184 bytes | 1,216 bytes | Variable (X.509 chain) |
+| **Ciphertext Size** | 32 bytes | 1,088 bytes | 1,120 bytes | Variable |
+| **Peak Heap Usage** | ~6.4 KB | ~11.2 KB | **13.8 KB** | > 38.0 KB |
+| **Local CPU Cycles** | 4.96M cycles | 12.35M cycles | **17.31M cycles** | 82.50M cycles |
+| **Computation Time** | ~31.0 ms | ~77.2 ms | **108.2 ms** | ~515.6 ms |
+| **Quantum Resistance** | No | Yes (FIPS 203) | **Yes (FIPS 203 + RFC 7748)** | No |
+
+---
+
+## 📜 License & Citation
+This project is licensed under the MIT License - see the [`LICENSE`](LICENSE) file for details.

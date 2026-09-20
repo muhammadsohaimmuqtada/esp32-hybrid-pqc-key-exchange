@@ -13,8 +13,8 @@ idf_component_register(
     INCLUDE_DIRS "include" "src/ref"
 )
 
-# KYBER_K=2 selects ML-KEM-512
-target_compile_definitions(${COMPONENT_LIB} PUBLIC KYBER_K=2)
+# KYBER_K=3 selects ML-KEM-768
+target_compile_definitions(${COMPONENT_LIB} PUBLIC KYBER_K=3)
 
 # Optimization for crypto operations
 target_compile_options(${COMPONENT_LIB} PRIVATE -O2 -Wall -Wno-unused-function)

@@ -1,125 +1,82 @@
-# Reproduction Steps
+# Experimental Reproduction Guide
 
-## Prerequisites
+This guide provides step-by-step instructions to reproduce all experimental findings, verification proofs, and benchmarks reported in the paper.
 
-### Software
-- **ESP-IDF v5.2.1** — [Installation guide](https://docs.espressif.com/projects/esp-idf/en/v5.2.1/esp32/get-started/)
-- **Python 3.10+** with `flask` (`pip install flask`)
-- **GCC cross-compiler** for Xtensa (included with ESP-IDF)
+---
 
-### Hardware
-- ESP32-WROOM-32E development board
-- USB cable (Micro-USB or USB-C depending on board revision)
-- Wi-Fi router (2.4 GHz, WPA2-PSK)
-- (Optional) Kenwood regulated bench power supply + digital multimeter for power measurements
-
-## Step 1: Clone the Repository
+## 1. Formal Security Verification (ProVerif)
+Verify that all cryptographic queries (secrecy, mutual authentication, PFS, transcript binding) hold TRUE:
 
 ```bash
-git clone https://github.com/muhammadsohaimmuqtada/esp32-hybrid-pqc-key-exchange.git
-cd esp32-hybrid-pqc-key-exchange
+# Requires ProVerif 2.05+
+proverif docs/evidence/hybrid_pqc_fixed.pv
 ```
+Expected output:
+```
+RESULT not attacker(k_session[]) is true.
+RESULT inj-event(server_accepts(...)) ==> inj-event(client_initiates(...)) is true.
+RESULT inj-event(client_accepts(...)) ==> inj-event(server_responds(...)) is true.
+```
+Precomputed solver output is archived in [`docs/evidence/proverif_verification_output.txt`](./evidence/proverif_verification_output.txt).
 
-## Step 2: Configure Wi-Fi Credentials
+---
 
-Edit the firmware Wi-Fi configuration:
+## 2. NIST ML-KEM-768 Known Answer Tests (KAT)
+Build the native C implementation and execute the automated KAT validation suite:
 
 ```bash
-cd firmware
-cp sdkconfig.defaults sdkconfig
-```
+# Build native shared library
+make -C firmware/components/mlkem768
 
-Open `sdkconfig` and set your Wi-Fi SSID and password:
+# Run the 100/100 test suite and IND-CCA2 implicit rejection verification
+python3 tools/test_mlkem768_kat.py
 ```
-CONFIG_ESP_WIFI_SSID="YOUR_WIFI_SSID"
-CONFIG_ESP_WIFI_PASSWORD="YOUR_WIFI_PASSWORD"
-```
+Expected output:
+* Deterministic Vector 1: PASSED
+* Deterministic Vector 2: PASSED
+* IND-CCA2 Implicit Rejection: PASSED
+* 100 Consecutive Randomized Rounds: 100/100 PASSED
 
-Also update the server IP address in `main/main.c` to match your server machine's local IP.
+---
 
-## Step 3: Build and Flash the Firmware
+## 3. Endurance Test Analysis (14,157 Handshakes)
+Regenerate the statistical tables and distributions from the physical 19-hour testbed execution:
 
 ```bash
-source ~/esp/esp-idf/export.sh    # Activate ESP-IDF environment
-idf.py set-target esp32
-idf.py build
-idf.py -p /dev/ttyUSB0 flash monitor
+python3 tools/analyze_endurance_log.py
 ```
+This script reads `docs/evidence/endurance_summary.csv` and regenerates:
+* Mean, median, standard deviation, P95, P99, and maximum network turn-around latency.
+* Total TCP session execution durations across all 4 continuous measurement sessions.
+* The summary report at [`docs/evidence/endurance_test_report.md`](./evidence/endurance_test_report.md).
 
-The serial monitor will display boot logs, Wi-Fi connection status, and benchmark output.
+---
 
-## Step 4: Start the Server
+## 4. Building and Flashing Firmware to ESP32
 
-In a separate terminal on your server machine:
+### Prerequisites
+* ESP-IDF v5.1+ installed and exported (`. $IDF_PATH/export.sh`).
+* Target hardware: ESP32 development board connected via USB.
 
+### Configuration
+1. Open [`firmware/main/wifi_config.h`](../firmware/main/wifi_config.h) or create `firmware/main/wifi_config.local.h`:
+   ```c
+   #define WIFI_SSID "Your_Network_SSID"
+   #define WIFI_PASS "Your_Network_Password"
+   #define SERVER_HOST "192.168.1.100"
+   ```
+2. Build and flash:
+   ```bash
+   cd firmware
+   idf.py set-target esp32
+   idf.py build
+   idf.py -p /dev/ttyUSB0 flash monitor
+   ```
+
+---
+
+## 5. Starting the Backend Server
 ```bash
-cd server
-pip install -r requirements.txt
-python3 server.py
+pip install -r server/requirements.txt
+python3 server/server.py --host 0.0.0.0 --port 8443
 ```
-
-The server listens on `0.0.0.0:5000` and will print handshake details and telemetry data as the ESP32 connects.
-
-## Step 5: Verify the Handshake
-
-Once the ESP32 connects to Wi-Fi and reaches the server, the serial monitor will output:
-
-```
-I (xxxx) CRYPTO_HYBRID: === Hybrid Handshake Starting ===
-I (xxxx) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 274xxx us, 43xxxxxx cycles
-I (xxxx) CRYPTO_HYBRID: BENCHMARK [ML-KEM-512 Keypair]: 9xxx us, 1xxxxxx cycles
-...
-I (xxxx) CRYPTO_HYBRID: Session key derived successfully
-I (xxxx) CRYPTO_HYBRID: Telemetry POST: 200 OK
-```
-
-The server terminal will show:
-```
-[HANDSHAKE] Mode: HYBRID (0x02)
-[HANDSHAKE] HMAC verified ✓
-[HANDSHAKE] Session ID: <hex>
-[TELEMETRY] Decrypted: {"temperature": 24.5, "humidity": 61.2, ...}
-```
-
-## Step 6: Run Benchmark Analysis
-
-After collecting serial output logs (copy from the monitor to a file):
-
-```bash
-cd benchmarks
-python3 cpu_cycles_parser.py --input ../data/raw_logs/esp_bench_full_real.log --output ../data/processed_results/parsed_cycles.csv
-python3 latency_benchmark.py --input ../data/processed_results/parsed_cycles.csv
-python3 energy_calculation.py --input ../data/processed_results/parsed_cycles.csv
-python3 memory_benchmark.py
-```
-
-## Step 7: Capture Network Traffic (Optional)
-
-To generate sanitized PCAP captures for verification:
-
-```bash
-cd server
-python3 generate_pcap_captures.py
-```
-
-Pre-captured sanitized PCAPs are available in `data/sanitized_pcaps/`.
-
-## Step 8: Power Measurement (Optional)
-
-For electrical verification as described in the paper:
-
-1. Disconnect the USB power path (use bench supply on VIN/GND pins — see `docs/hardware_setup.md`).
-2. Modify firmware to run handshakes in an infinite loop (uncomment the `while(1)` block in `main.c`).
-3. Measure sustained current with the multimeter in series on the +5V line.
-4. Expected readings: 30–70 mA during cryptographic processing, 110 mA peak during Wi-Fi boot.
-
-## Expected Results
-
-| Metric | Expected Value |
-|---|---|
-| Hybrid handshake latency | 635.88 ms (mean, n=100) |
-| SRAM peak usage | 13.8 KB |
-| CPU cycles (total) | 103.38M |
-| Energy per handshake | 122.34 mJ |
-| TLS 1.3 baseline latency | 776.40 ms |
-| TLS 1.3 baseline CPU cycles | 372.66M |

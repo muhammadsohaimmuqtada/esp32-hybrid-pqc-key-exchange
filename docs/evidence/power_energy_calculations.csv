@@ -1,0 +1,6 @@
+Mode,Firmware,Supply_Voltage_V,Shunt_Resistor_Ohm,Shunt_Idle_mV,Shunt_Peak_mV,Idle_Current_A,Peak_Current_A,Handshake_Duration_s,Energy_Idle_Floor_J,Energy_Peak_Bound_J,Notes
+Classical TLS 1.3,main.c,5.00,0.100,5.5,12.0,0.055,0.120,1.000,0.275,0.600,ECDHE-ECDSA-AES128-GCM baseline
+TLS Hybrid (X25519MLKEM768),main_hybrid_tls.c,5.00,0.100,5.0,10.1,0.050,0.101,1.100,0.275,0.556,Standard TLS 1.3 with draft PQC extension
+TLS Hybrid Peak Spike,main_hybrid_tls.c,5.00,0.100,5.0,14.2,0.050,0.142,1.100,0.275,0.781,Transient peak spike during ML-KEM-768 decapsulation
+Custom HTTP Hybrid PQC,main_backup.c,5.00,0.100,6.0,15.0,0.060,0.150,1.000,0.300,0.750,X25519 + ML-KEM-768 + HKDF-SHA256 + AES-GCM
+PSU Baseline Floor (Idle),UTP1310 Bench,5.00,0.100,3.2,3.2,0.032,0.032,1.000,0.160,0.160,Quiescent baseline current with Wi-Fi connected idle

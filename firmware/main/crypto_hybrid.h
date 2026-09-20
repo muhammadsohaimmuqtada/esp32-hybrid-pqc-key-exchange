@@ -1,6 +1,6 @@
 /*
  * Hybrid PQC Crypto Module for ESP32
- * X25519 (mbedTLS) + ML-KEM-512 + HKDF-SHA256
+ * X25519 (mbedTLS) + ML-KEM-768 + HKDF-SHA256
  * Paper Section 3.2 Protocol Implementation
  */
 #ifndef CRYPTO_HYBRID_H
@@ -8,13 +8,13 @@
 
 #include <stdint.h>
 #include <stddef.h>
-#include "mlkem512.h"
+#include "mlkem768.h"
 
 /* Handshake modes for benchmarking */
 typedef enum {
     MODE_CLASSICAL = 0,   /* X25519 only */
-    MODE_PQC       = 1,   /* ML-KEM-512 only */
-    MODE_HYBRID    = 2    /* X25519 + ML-KEM-512 */
+    MODE_PQC       = 1,   /* ML-KEM-768 only */
+    MODE_HYBRID    = 2    /* X25519 + ML-KEM-768 */
 } handshake_mode_t;
 
 /* Key material sizes */
@@ -35,7 +35,7 @@ typedef struct {
     uint8_t x25519_pubkey[X25519_KEY_SIZE];
     uint8_t x25519_shared_secret[X25519_SECRET_SIZE];
 
-    /* ML-KEM-512 */
+    /* ML-KEM-768 */
     uint8_t mlkem_pk[KYBER_PUBLICKEYBYTES];
     uint8_t mlkem_sk[KYBER_SECRETKEYBYTES];
     uint8_t mlkem_shared_secret[KYBER_SSBYTES];

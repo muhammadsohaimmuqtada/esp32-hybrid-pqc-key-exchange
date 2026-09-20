@@ -27,8 +27,16 @@
 #include "mbedtls/ctr_drbg.h"
 #include "mbedtls/error.h"
 
-#define WIFI_SSID      "SHAHID-JUTT-4G"
-#define WIFI_PASS      "wanbhachran"
+#if __has_include("wifi_config.local.h")
+#include "wifi_config.local.h"
+#endif
+
+#ifndef WIFI_SSID
+#define WIFI_SSID      "YOUR_SSID_HERE"
+#endif
+#ifndef WIFI_PASS
+#define WIFI_PASS      "YOUR_WIFI_PASSWORD_HERE"
+#endif
 #define WEB_SERVER     "example.com"
 #define WEB_PORT       "443"
 

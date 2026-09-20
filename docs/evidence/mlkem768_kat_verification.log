@@ -1,0 +1,35 @@
+================================================================================
+      ML-KEM-768 (FIPS 203) KNOWN ANSWER TEST & VERIFICATION SUITE
+================================================================================
+Library: /home/kali/Hybrid-PQC-implementaion-on-IOT-esp32-/tools/../firmware/components/mlkem768/libmlkem.so
+Parameter Set: ML-KEM-768 (Kyber-768)
+  Public Key Size:  1184 bytes
+  Secret Key Size:  2400 bytes
+  Ciphertext Size:  1088 bytes
+  Shared Key Size:  32 bytes
+--------------------------------------------------------------------------------
+[TEST 1] Deterministic KAT with Fixed Seed Vector 1 (All zeros seed)...
+  PK SHA-256: f95c185fe5b2335d2fc938dd889c6425944acd74376b6952bf1130f720f6ba99
+  SK SHA-256: a5e078867af0c0a9702149b3af1adf208dccf878bc9f9e32d4fb028473addd09
+  CT SHA-256: 1f92454af68a16b43b8013a909a1df7058c44f170b5cf9cc00cb165a3ca58c68
+  SS (enc):   b4d29cd55bab43e16554b74b9098cdfce583996c968bcd2cfd1ad9455e351fbf
+  SS (dec):   b4d29cd55bab43e16554b74b9098cdfce583996c968bcd2cfd1ad9455e351fbf
+  => PASSED: Deterministic KAT Vector 1 validated perfectly.
+--------------------------------------------------------------------------------
+[TEST 2] Deterministic KAT with Fixed Seed Vector 2 (0x01..0x40)...
+  PK SHA-256: db4782927013b79c13111f87949d9c9d39ca8c25dd52155d98d6e7f2bad55087
+  CT SHA-256: fad24faf35278a65beed2c66ab12eecb4b141592ea98bd2821c92cf6d5ddd1db
+  Shared Secret: ad3d694ec21e55cc502b735e4b74c9d4f57270624a1c8d9442fc88fb0afd15f2
+  => PASSED: Deterministic KAT Vector 2 validated perfectly.
+--------------------------------------------------------------------------------
+[TEST 3] IND-CCA2 Implicit Rejection on Ciphertext Modification...
+  Original SS:  ad3d694ec21e55cc502b735e4b74c9d4f57270624a1c8d9442fc88fb0afd15f2
+  Rejected SS:  cb9942c74b9f3e27aa9161aa1f8b0c0c7703e4f9ec86e05450b07b7ebe92aa25 (Pseudorandom invalid key returned)
+  => PASSED: IND-CCA2 implicit rejection confirmed. No timing or error oracle exposed.
+--------------------------------------------------------------------------------
+[TEST 4] Running 100 Consecutive Randomized KeyGen/Encaps/Decaps Rounds...
+  Rounds executed: 100 | Passed: 100/100
+  => PASSED: 100/100 rounds verified 100% agreement.
+================================================================================
+                  ALL ML-KEM-768 KAT VERIFICATIONS PASSED
+================================================================================

@@ -6,19 +6,45 @@ build/
 *.elf
 *.bin
 *.map
+*.hex
+*.d
+
+# ESP-IDF specific
+sdkconfig
+sdkconfig.old
 
 # Python
 __pycache__/
 *.pyc
-venv/
+*.pyo
+*.pyd
+.Python
 env/
-.env
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
 
-# OS
-.DS_Store
-Thumbs.db
-
-# Secrets
+# Secrets & Local Configurations
 *psk*
 *secret*
+wifi_config.local.h
+*.local.h
+.env
+.env.*
+*.pem
+*.key
+*id_rsa*
+*id_ed25519*
 
+# OS & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*~

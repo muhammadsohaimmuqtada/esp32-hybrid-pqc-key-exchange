@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """
 Hybrid PQC Backend Server for ESP32 Edge Testing
-X25519 + ML-KEM-512 + HKDF-SHA256 + AES-256-GCM
+X25519 + ML-KEM-768 + HKDF-SHA256 + AES-256-GCM
 
 Implements the server side of the hybrid handshake protocol:
   session_key = HKDF-SHA256(X25519_shared_secret || ML-KEM_shared_secret)
 
 Supports three benchmark modes:
   0 = Classical (X25519 only)
-  1 = PQC (ML-KEM-512 only)
-  2 = Hybrid (X25519 + ML-KEM-512)
+  1 = PQC (ML-KEM-768 only)
+  2 = Hybrid (X25519 + ML-KEM-768)
 
 Usage:
   pip install oqs cryptography
@@ -53,8 +53,8 @@ logger = logging.getLogger('PQC_SERVER')
 
 # Constants
 X25519_KEY_SIZE = 32
-KYBER_PK_SIZE = 800
-KYBER_CT_SIZE = 768
+KYBER_PK_SIZE = 1184
+KYBER_CT_SIZE = 1088
 KYBER_SS_SIZE = 32
 HKDF_OUTPUT_SIZE = 32
 AES_GCM_IV_SIZE = 12
@@ -68,19 +68,22 @@ MODE_HYBRID = 2
 
 MODE_NAMES = {
     MODE_CLASSICAL: "Classical (X25519)",
-    MODE_PQC: "PQC (ML-KEM-512)",
-    MODE_HYBRID: "Hybrid (X25519 + ML-KEM-512)",
+    MODE_PQC: "PQC (ML-KEM-768)",
+    MODE_HYBRID: "Hybrid (X25519 + ML-KEM-768)",
 }
 
 import ctypes
 
-mlkem_lib_path = "/home/kali/Downloads/Tools/esp32_hybrid_pqc/firmware/components/mlkem512/libmlkem.so"
+mlkem_lib_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../firmware/components/mlkem768/libmlkem.so")
+if not os.path.exists(mlkem_lib_path):
+    mlkem_lib_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "libmlkem.so")
 try:
     libmlkem = ctypes.CDLL(mlkem_lib_path)
-    libmlkem.mlkem512_encaps.argtypes = [ctypes.POINTER(ctypes.c_uint8), ctypes.POINTER(ctypes.c_uint8), ctypes.POINTER(ctypes.c_uint8)]
-    libmlkem.mlkem512_encaps.restype = ctypes.c_int
+    libmlkem.mlkem768_encaps.argtypes = [ctypes.POINTER(ctypes.c_uint8), ctypes.POINTER(ctypes.c_uint8), ctypes.POINTER(ctypes.c_uint8)]
+    libmlkem.mlkem768_encaps.restype = ctypes.c_int
 except OSError:
     libmlkem = None
+
 
 
 class HybridPQCServer:
@@ -96,13 +99,13 @@ class HybridPQCServer:
         self.sessions = {}
         self.session_counters = {}
 
-        # Initialize ML-KEM-512 KEM if available
+        # Initialize ML-KEM-768 KEM if available
         if HAS_OQS:
-            self.kem = oqs.KeyEncapsulation('Kyber512')
-            logger.info("Kyber512 (liboqs) initialized")
+            self.kem = oqs.KeyEncapsulation('Kyber768')
+            logger.info("Kyber768 (liboqs) initialized")
         else:
             self.kem = None
-            logger.warning("ML-KEM-512 not available — using simulation mode")
+            logger.warning("ML-KEM-768 not available — using simulation mode")
 
     def _perform_x25519(self, client_pubkey_bytes: bytes):
         """Perform X25519 key agreement."""
@@ -118,19 +121,19 @@ class HybridPQCServer:
         return server_pubkey_bytes, shared_secret
 
     def _perform_mlkem_encaps(self, client_pk_bytes: bytes):
-        """Perform ML-KEM-512 encapsulation."""
+        """Perform ML-KEM-768 encapsulation."""
         if libmlkem:
             ct = (ctypes.c_uint8 * KYBER_CT_SIZE)()
             ss = (ctypes.c_uint8 * KYBER_SS_SIZE)()
             pk = (ctypes.c_uint8 * KYBER_PK_SIZE).from_buffer_copy(client_pk_bytes)
-            libmlkem.mlkem512_encaps(ct, ss, pk)
+            libmlkem.mlkem768_encaps(ct, ss, pk)
             ciphertext = bytes(ct)
             shared_secret = bytes(ss)
             logger.info(f"  [DEBUG] PK recv: {client_pk_bytes[:8].hex()}...{client_pk_bytes[-8:].hex()}")
             logger.info(f"  [DEBUG] CT sent: {ciphertext[:8].hex()}...{ciphertext[-8:].hex()}")
             return ciphertext, shared_secret
         else:
-            logger.error("  ML-KEM-512 native library not found!")
+            logger.error("  ML-KEM-768 native library not found!")
             import secrets
             return secrets.token_bytes(KYBER_CT_SIZE), secrets.token_bytes(KYBER_SS_SIZE)
 
@@ -186,7 +189,7 @@ class HybridPQCServer:
             response += server_pub
             shared_secrets.append(x25519_ss)
 
-        # ML-KEM-512 component
+        # ML-KEM-768 component
         if mode in (MODE_PQC, MODE_HYBRID):
             if offset + KYBER_PK_SIZE > len(handshake_data):
                 logger.error(f"Body too short for ML-KEM pubkey: have {len(handshake_data)-offset}, need {KYBER_PK_SIZE}")
@@ -220,8 +223,9 @@ class HybridPQCServer:
             
             response = session_id + response
             
-            # Sign the response payload (Session ID + server pub/ciphertext) with HMAC-SHA256
-            response_hmac = hmac.digest(HANDSHAKE_PSK, response, 'sha256')
+            # Sign the response payload (Client Challenge + Session ID + server pub/ciphertext) with HMAC-SHA256
+            transcript = handshake_data + response
+            response_hmac = hmac.digest(HANDSHAKE_PSK, transcript, 'sha256')
             response += response_hmac
             logger.info(f"  Handshake complete! Total payload (including 32B HMAC): {len(response)} bytes")
 
@@ -434,12 +438,12 @@ class HybridPQCServer:
 
         logger.info("")
         logger.info("╔══════════════════════════════════════════════════════════════╗")
-        logger.info("║    HYBRID PQC SERVER — X25519 + ML-KEM-512 + HKDF-SHA256   ║")
+        logger.info("║    HYBRID PQC SERVER — X25519 + ML-KEM-768 + HKDF-SHA256   ║")
         logger.info("╠══════════════════════════════════════════════════════════════╣")
         logger.info(f"║  Listening:  {self.host}:{self.port}                         ║")
         logger.info(f"║  Dashboard:  http://localhost:{self.port}/                   ║")
         logger.info(f"║  API:        http://localhost:{self.port}/api/benchmarks      ║")
-        logger.info(f"║  ML-KEM-512: {'liboqs ✓' if HAS_OQS else 'SIMULATED ⚠'}                              ║")
+        logger.info(f"║  ML-KEM-768: {'liboqs ✓' if HAS_OQS else 'SIMULATED ⚠'}                              ║")
         logger.info("╚══════════════════════════════════════════════════════════════╝")
         logger.info("")
 

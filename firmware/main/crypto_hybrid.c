@@ -1,12 +1,12 @@
 /*
  * Hybrid PQC Crypto Module Implementation
- * X25519 (mbedTLS) + ML-KEM-512 + HKDF-SHA256 + AES-256-GCM
+ * X25519 (mbedTLS) + ML-KEM-768 + HKDF-SHA256 + AES-256-GCM
  *
  * Implements the protocol from Paper Section 3.2:
  * session_key = HKDF-SHA256(X25519_shared_secret || ML-KEM_shared_secret)
  */
 #include "crypto_hybrid.h"
-#include "mlkem512.h"
+#include "mlkem768.h"
 
 #include "mbedtls/ecdh.h"
 #include "mbedtls/ecp.h"
@@ -48,8 +48,8 @@ static int mbedtls_rng_wrapper(void *ctx, unsigned char *buf, size_t len) {
 const char* hybrid_mode_name(handshake_mode_t mode) {
     switch (mode) {
         case MODE_CLASSICAL: return "Classical (X25519)";
-        case MODE_PQC:       return "PQC (ML-KEM-512)";
-        case MODE_HYBRID:    return "Hybrid (X25519 + ML-KEM-512)";
+        case MODE_PQC:       return "PQC (ML-KEM-768)";
+        case MODE_HYBRID:    return "Hybrid (X25519 + ML-KEM-768)";
         default:             return "Unknown";
     }
 }
@@ -63,7 +63,7 @@ void hybrid_init(hybrid_ctx_t *ctx, handshake_mode_t mode) {
 /*
  * Step 1: Generate ephemeral keypairs
  * X25519: via mbedTLS ECDH
- * ML-KEM-512: via our self-contained implementation
+ * ML-KEM-768: via our self-contained implementation
  */
 int hybrid_keygen(hybrid_ctx_t *ctx) {
     int ret;
@@ -128,25 +128,29 @@ int hybrid_keygen(hybrid_ctx_t *ctx) {
         int64_t mlkem_start = esp_timer_get_time();
         uint32_t mlkem_cycles_start = esp_cpu_get_cycle_count();
 
-        ret = mlkem512_keypair(ctx->mlkem_pk, ctx->mlkem_sk);
+        ret = mlkem768_keypair(ctx->mlkem_pk, ctx->mlkem_sk);
         
         uint32_t mlkem_cycles = esp_cpu_get_cycle_count() - mlkem_cycles_start;
         int64_t mlkem_time = esp_timer_get_time() - mlkem_start;
 
         if (ret != 0) {
-            ESP_LOGE(TAG, "ML-KEM-512 keypair generation failed: %d", ret);
+            ESP_LOGE(TAG, "ML-KEM-768 keypair generation failed: %d", ret);
             return -1;
         }
-        ESP_LOGI(TAG, "BENCHMARK [ML-KEM-512 Keygen]: %lld us, %lu cycles", mlkem_time, mlkem_cycles);
-        ESP_LOGI(TAG, "ML-KEM-512 keypair generated (pk=%d bytes, sk=%d bytes)",
+        ESP_LOGI(TAG, "BENCHMARK [ML-KEM-768 Keygen]: %lld us, %lu cycles", mlkem_time, mlkem_cycles);
+        ESP_LOGI(TAG, "ML-KEM-768 keypair generated (pk=%d bytes, sk=%d bytes)",
                  KYBER_PUBLICKEYBYTES, KYBER_SECRETKEYBYTES);
     }
 
     return 0;
 }
 
-#define DEMO_PSK "REPLACE_WITH_32_BYTE_TEST_PSK_ONLY"
-const uint8_t handshake_psk[HANDSHAKE_PSK_SIZE] = DEMO_PSK;
+const uint8_t handshake_psk[HANDSHAKE_PSK_SIZE] = {
+    0x53, 0x65, 0x63, 0x75, 0x72, 0x49, 0x6f, 0x54, 
+    0x2d, 0x51, 0x75, 0x61, 0x6e, 0x74, 0x75, 0x6d, 
+    0x2d, 0x50, 0x51, 0x43, 0x2d, 0x48, 0x79, 0x62, 
+    0x72, 0x69, 0x64, 0x2d, 0x50, 0x53, 0x4b, 0x21
+};
 
 static int compute_hmac_sha256(const uint8_t *key, size_t key_len,
                                const uint8_t *data, size_t data_len,
@@ -158,9 +162,9 @@ static int compute_hmac_sha256(const uint8_t *key, size_t key_len,
 
 /*
  * Step 2: Pack public keys for transmission to server and sign with HMAC-SHA256
- * Classical: 33B key material + 32B HMAC = 65B
- * PQC:       801B key material + 32B HMAC = 833B
- * Hybrid:    833B key material + 32B HMAC = 865B
+ * Classical: 1B mode + 32B X25519 + 32B HMAC = 65B
+ * PQC:       1B mode + 1184B ML-KEM-768 + 32B HMAC = 1217B
+ * Hybrid:    1B mode + 32B X25519 + 1184B ML-KEM-768 + 32B HMAC = 1249B
  */
 int hybrid_pack_pubkeys(hybrid_ctx_t *ctx, uint8_t *buf, size_t buflen) {
     size_t offset = 0;
@@ -199,9 +203,9 @@ int hybrid_pack_pubkeys(hybrid_ctx_t *ctx, uint8_t *buf, size_t buflen) {
  * Step 5: Process server response and derive session key
  *
  * Server response format:
- * Classical: [32B X25519 server pub]
- * PQC:       [768B ML-KEM ciphertext]
- * Hybrid:    [32B X25519 server pub][768B ML-KEM ciphertext]
+ * Classical: [16B Session ID][32B X25519 server pub][32B HMAC] = 80B
+ * PQC:       [16B Session ID][1088B ML-KEM-768 ciphertext][32B HMAC] = 1136B
+ * Hybrid:    [16B Session ID][32B X25519 server pub][1088B ML-KEM-768 ciphertext][32B HMAC] = 1168B
  *
  * Derivation: session_key = HKDF-SHA256(X25519_ss || ML-KEM_ss)
  */
@@ -217,9 +221,28 @@ int hybrid_process_server_response(hybrid_ctx_t *ctx,
         return -1;
     }
 
-    /* Compute and verify HMAC-SHA256 of server response (covers Session ID + crypto payload) */
+    /* Re-create the client handshake data to verify transcript signature */
+    uint8_t *client_data = malloc(2048);
+    size_t c_offset = 0;
+    client_data[c_offset++] = (uint8_t)ctx->mode;
+    if (ctx->mode == MODE_CLASSICAL || ctx->mode == MODE_HYBRID) {
+        memcpy(client_data + c_offset, ctx->x25519_pubkey, X25519_KEY_SIZE);
+        c_offset += X25519_KEY_SIZE;
+    }
+    if (ctx->mode == MODE_PQC || ctx->mode == MODE_HYBRID) {
+        memcpy(client_data + c_offset, ctx->mlkem_pk, KYBER_PUBLICKEYBYTES);
+        c_offset += KYBER_PUBLICKEYBYTES;
+    }
+
+    /* Compute and verify HMAC-SHA256 of server response (covers Client Challenge + Session ID + crypto payload) */
+    uint8_t *transcript = malloc(c_offset + server_data_len - 32);
+    memcpy(transcript, client_data, c_offset);
+    memcpy(transcript + c_offset, server_data, server_data_len - 32);
+
     uint8_t calculated_hmac[32];
-    ret = compute_hmac_sha256(handshake_psk, HANDSHAKE_PSK_SIZE, server_data, server_data_len - 32, calculated_hmac);
+    ret = compute_hmac_sha256(handshake_psk, HANDSHAKE_PSK_SIZE, transcript, c_offset + server_data_len - 32, calculated_hmac);
+    free(transcript);
+    free(client_data);
     if (ret != 0) {
         ESP_LOGE(TAG, "HMAC verification computation failed: %d", ret);
         return -1;
@@ -298,38 +321,38 @@ int hybrid_process_server_response(hybrid_ctx_t *ctx,
             return -1;
         }
 
-        /* ML-KEM-512 decapsulation */
+        /* ML-KEM-768 decapsulation */
         const uint8_t *server_mlkem_ct = server_data + offset;
         offset += KYBER_CIPHERTEXTBYTES;
 
         ESP_LOGI(TAG, "[DEBUG] PK sent: %02x%02x%02x%02x%02x%02x%02x%02x...%02x%02x%02x%02x%02x%02x%02x%02x",
                  ctx->mlkem_pk[0], ctx->mlkem_pk[1], ctx->mlkem_pk[2], ctx->mlkem_pk[3],
                  ctx->mlkem_pk[4], ctx->mlkem_pk[5], ctx->mlkem_pk[6], ctx->mlkem_pk[7],
-                 ctx->mlkem_pk[792], ctx->mlkem_pk[793], ctx->mlkem_pk[794], ctx->mlkem_pk[795],
-                 ctx->mlkem_pk[796], ctx->mlkem_pk[797], ctx->mlkem_pk[798], ctx->mlkem_pk[799]);
+                 ctx->mlkem_pk[1176], ctx->mlkem_pk[1177], ctx->mlkem_pk[1178], ctx->mlkem_pk[1179],
+                 ctx->mlkem_pk[1180], ctx->mlkem_pk[1181], ctx->mlkem_pk[1182], ctx->mlkem_pk[1183]);
         
         ESP_LOGI(TAG, "[DEBUG] CT recv: %02x%02x%02x%02x%02x%02x%02x%02x...%02x%02x%02x%02x%02x%02x%02x%02x",
                  server_mlkem_ct[0], server_mlkem_ct[1], server_mlkem_ct[2], server_mlkem_ct[3],
                  server_mlkem_ct[4], server_mlkem_ct[5], server_mlkem_ct[6], server_mlkem_ct[7],
-                 server_mlkem_ct[760], server_mlkem_ct[761], server_mlkem_ct[762], server_mlkem_ct[763],
-                 server_mlkem_ct[764], server_mlkem_ct[765], server_mlkem_ct[766], server_mlkem_ct[767]);
+                 server_mlkem_ct[1080], server_mlkem_ct[1081], server_mlkem_ct[1082], server_mlkem_ct[1083],
+                 server_mlkem_ct[1084], server_mlkem_ct[1085], server_mlkem_ct[1086], server_mlkem_ct[1087]);
 
         int64_t mlkem_dec_start = esp_timer_get_time();
         uint32_t mlkem_dec_cycles_start = esp_cpu_get_cycle_count();
 
-        ret = mlkem512_decaps(ctx->mlkem_shared_secret, server_mlkem_ct, ctx->mlkem_sk);
+        ret = mlkem768_decaps(ctx->mlkem_shared_secret, server_mlkem_ct, ctx->mlkem_sk);
         uint32_t mlkem_dec_cycles = esp_cpu_get_cycle_count() - mlkem_dec_cycles_start;
         int64_t mlkem_dec_time = esp_timer_get_time() - mlkem_dec_start;
-        ESP_LOGI(TAG, "BENCHMARK [ML-KEM-512 Decap]: %lld us, %lu cycles", mlkem_dec_time, mlkem_dec_cycles);
+        ESP_LOGI(TAG, "BENCHMARK [ML-KEM-768 Decap]: %lld us, %lu cycles", mlkem_dec_time, mlkem_dec_cycles);
 
         if (ret != 0) {
-            ESP_LOGE(TAG, "ML-KEM-512 decapsulation failed: %d", ret);
+            ESP_LOGE(TAG, "ML-KEM-768 decapsulation failed: %d", ret);
             return -1;
         }
 
         memcpy(combined_secret + combined_len, ctx->mlkem_shared_secret, KYBER_SSBYTES);
         combined_len += KYBER_SSBYTES;
-        ESP_LOGI(TAG, "ML-KEM-512 shared secret derived and appended");
+        ESP_LOGI(TAG, "ML-KEM-768 shared secret derived and appended");
     }
 
     /* HKDF-SHA256 key derivation */

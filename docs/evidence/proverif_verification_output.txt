@@ -1,0 +1,119 @@
+Linear part:
+exp(exp(g,x),y) = exp(exp(g,y),x)
+Completing equations...
+Completed equations:
+exp(exp(g,x),y) = exp(exp(g,y),x)
+Convergent part:
+kem_dec(kem_encap_c(pk(sk),r),sk) = kem_encap_k(pk(sk),r)
+Completing equations...
+Completed equations:
+kem_dec(kem_encap_c(pk(sk),r),sk) = kem_encap_k(pk(sk),r)
+Process 0 (that is, the initial process):
+(
+    {1}!
+    {2}new x_priv: exponent;
+    {3}let x_pub: G = exp(g,x_priv) in
+    {4}new m_sk: skey;
+    {5}let m_pk: pkey = pk(m_sk) in
+    {6}let msg1: bitstring = (x_pub,m_pk) in
+    {7}let sig1: bitstring = hmac(msg1,psk_auth) in
+    {8}out(c, (msg1,sig1));
+    {9}in(c, (msg2: bitstring,sig2: bitstring));
+    {10}let (x_pub_s: G,m_ct: bitstring) = msg2 in
+    {11}if (sig2 = hmac((msg1,msg2),psk_auth)) then
+    {12}let ss_x: G = exp(x_pub_s,x_priv) in
+    {13}let ss_m: bitstring = kem_dec(m_ct,m_sk) in
+    {14}let session_key: bitstring = hkdf(ss_x,ss_m) in
+    {15}event client_key_derived(session_key)
+) | (
+    {16}!
+    {17}in(c, (msg1_1: bitstring,sig1_1: bitstring));
+    {18}let (x_pub_c: G,m_pk_c: pkey) = msg1_1 in
+    {19}if (sig1_1 = hmac(msg1_1,psk_auth)) then
+    {20}new x_priv_s: exponent;
+    {21}let x_pub_s_1: G = exp(g,x_priv_s) in
+    {22}new r: seed;
+    {23}let m_ct_1: bitstring = kem_encap_c(m_pk_c,r) in
+    {24}let ss_m_1: bitstring = kem_encap_k(m_pk_c,r) in
+    {25}let ss_x_1: G = exp(x_pub_c,x_priv_s) in
+    {26}let session_key_1: bitstring = hkdf(ss_x_1,ss_m_1) in
+    {27}event server_key_derived(session_key_1);
+    {28}let msg2_1: bitstring = (x_pub_s_1,m_ct_1) in
+    {29}let sig2_1: bitstring = hmac((msg1_1,msg2_1),psk_auth) in
+    {30}out(c, (msg2_1,sig2_1))
+)
+
+--  Process 1 (that is, process 0, with let moved downwards):
+(
+    {1}!
+    {2}new x_priv: exponent;
+    {4}new m_sk: skey;
+    {5}let m_pk: pkey = pk(m_sk) in
+    {3}let x_pub: G = exp(g,x_priv) in
+    {6}let msg1: bitstring = (x_pub,m_pk) in
+    {7}let sig1: bitstring = hmac(msg1,psk_auth) in
+    {8}out(c, (msg1,sig1));
+    {9}in(c, (msg2: bitstring,sig2: bitstring));
+    {10}let (x_pub_s: G,m_ct: bitstring) = msg2 in
+    {11}if (sig2 = hmac((msg1,msg2),psk_auth)) then
+    {13}let ss_m: bitstring = kem_dec(m_ct,m_sk) in
+    {12}let ss_x: G = exp(x_pub_s,x_priv) in
+    {14}let session_key: bitstring = hkdf(ss_x,ss_m) in
+    {15}event client_key_derived(session_key)
+) | (
+    {16}!
+    {17}in(c, (msg1_1: bitstring,sig1_1: bitstring));
+    {18}let (x_pub_c: G,m_pk_c: pkey) = msg1_1 in
+    {19}if (sig1_1 = hmac(msg1_1,psk_auth)) then
+    {20}new x_priv_s: exponent;
+    {22}new r: seed;
+    {25}let ss_x_1: G = exp(x_pub_c,x_priv_s) in
+    {24}let ss_m_1: bitstring = kem_encap_k(m_pk_c,r) in
+    {26}let session_key_1: bitstring = hkdf(ss_x_1,ss_m_1) in
+    {27}event server_key_derived(session_key_1);
+    {23}let m_ct_1: bitstring = kem_encap_c(m_pk_c,r) in
+    {21}let x_pub_s_1: G = exp(g,x_priv_s) in
+    {28}let msg2_1: bitstring = (x_pub_s_1,m_ct_1) in
+    {29}let sig2_1: bitstring = hmac((msg1_1,msg2_1),psk_auth) in
+    {30}out(c, (msg2_1,sig2_1))
+)
+
+-- Query not attacker(secret_client_data[]) in process 1.
+Translating the process into Horn clauses...
+select attacker(hmac((x_pub_c_1,m_pk_c_1),psk_auth[]))/-5000
+Completing...
+Starting query not attacker(secret_client_data[])
+RESULT not attacker(secret_client_data[]) is true.
+-- Query not attacker(secret_server_data[]) in process 1.
+Translating the process into Horn clauses...
+select attacker(hmac((x_pub_c_1,m_pk_c_1),psk_auth[]))/-5000
+Completing...
+Starting query not attacker(secret_server_data[])
+RESULT not attacker(secret_server_data[]) is true.
+-- Query inj-event(client_key_derived(k)) ==> inj-event(server_key_derived(k)) in process 1.
+Translating the process into Horn clauses...
+select attacker(hmac((x_pub_c_1,m_pk_c_1),psk_auth[]))/-5000
+Completing...
+Starting query inj-event(client_key_derived(k)) ==> inj-event(server_key_derived(k))
+goal reachable: b-inj-event(server_key_derived(hkdf(exp(exp(g,x_priv_1),x_priv_s_1),kem_encap_k(pk(m_sk_1),r_1))),@occ27_1) -> inj-event(client_key_derived(hkdf(exp(exp(g,x_priv_s_1),x_priv_1),kem_dec(kem_encap_c(pk(m_sk_1),r_1),m_sk_1))),@occ15_1)
+The hypothesis occurs strictly before the conclusion.
+Abbreviations:
+x_priv_1 = x_priv[!1 = @sid]
+m_sk_1 = m_sk[!1 = @sid]
+x_priv_s_1 = x_priv_s[sig1_1 = hmac((exp(g,x_priv_1),pk(m_sk_1)),psk_auth[]),msg1_1 = (exp(g,x_priv_1),pk(m_sk_1)),!1 = @sid_1]
+r_1 = r[sig1_1 = hmac((exp(g,x_priv_1),pk(m_sk_1)),psk_auth[]),msg1_1 = (exp(g,x_priv_1),pk(m_sk_1)),!1 = @sid_1]
+@occ15_1 = @occ15[sig2 = hmac(((exp(g,x_priv_1),pk(m_sk_1)),(exp(g,x_priv_s_1),kem_encap_c(pk(m_sk_1),r_1))),psk_auth[]),msg2 = (exp(g,x_priv_s_1),kem_encap_c(pk(m_sk_1),r_1)),!1 = @sid]
+@occ27_1 = @occ27[sig1_1 = hmac((exp(g,x_priv_1),pk(m_sk_1)),psk_auth[]),msg1_1 = (exp(g,x_priv_1),pk(m_sk_1)),!1 = @sid_1]
+RESULT inj-event(client_key_derived(k)) ==> inj-event(server_key_derived(k)) is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Query not attacker(secret_client_data[]) is true.
+
+Query not attacker(secret_server_data[]) is true.
+
+Query inj-event(client_key_derived(k)) ==> inj-event(server_key_derived(k)) is true.
+
+--------------------------------------------------------------
+

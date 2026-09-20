@@ -138,24 +138,24 @@ int benchmark_run_single(handshake_mode_t mode, benchmark_result_t *result,
         result->handshake_ms = 0;
         
         if (mode == MODE_PQC || mode == MODE_HYBRID) {
-            uint8_t ct[1024]; // kyber_ciphertextbytes is 768
+            uint8_t ct[KYBER_CIPHERTEXTBYTES]; // kyber_ciphertextbytes is 768
             uint8_t ss[32];
             
             // Encap
             uint32_t enc_start_c = benchmark_get_cycles();
             int64_t enc_start_u = esp_timer_get_time();
-            mlkem512_encaps(ct, ss, ctx.mlkem_pk);
+            mlkem768_encaps(ct, ss, ctx.mlkem_pk);
             uint32_t enc_end_c = benchmark_get_cycles();
             int64_t enc_end_u = esp_timer_get_time();
-            ESP_LOGI(TAG, "BENCHMARK [ML-KEM-512 Encap]: %lld us, %lu cycles", (long long)(enc_end_u - enc_start_u), (unsigned long)(enc_end_c - enc_start_c));
+            ESP_LOGI(TAG, "BENCHMARK [ML-KEM-768 Encap]: %lld us, %lu cycles", (long long)(enc_end_u - enc_start_u), (unsigned long)(enc_end_c - enc_start_c));
             
             // Decap
             uint32_t dec_start_c = benchmark_get_cycles();
             int64_t dec_start_u = esp_timer_get_time();
-            mlkem512_decaps(ss, ct, ctx.mlkem_sk);
+            mlkem768_decaps(ss, ct, ctx.mlkem_sk);
             uint32_t dec_end_c = benchmark_get_cycles();
             int64_t dec_end_u = esp_timer_get_time();
-            ESP_LOGI(TAG, "BENCHMARK [ML-KEM-512 Decap]: %lld us, %lu cycles", (long long)(dec_end_u - dec_start_u), (unsigned long)(dec_end_c - dec_start_c));
+            ESP_LOGI(TAG, "BENCHMARK [ML-KEM-768 Decap]: %lld us, %lu cycles", (long long)(dec_end_u - dec_start_u), (unsigned long)(dec_end_c - dec_start_c));
         }
     } else {
         ret = hybrid_process_server_response(&ctx, response_buf, response_len);
@@ -478,7 +478,7 @@ void benchmark_run_mbedtls_baseline(void) {
     ESP_LOGI(TAG, "╠═════════════════════════════════╪══════════╪══════════════╪═════════════╪═════════════════════╣");
     ESP_LOGI(TAG, "║ Standard mbedTLS (TLS 1.3)      │ %8.1f │ %12.1f │ %11.2f │ %19lu ║",
              (float)total_mbedtls_ram_kb, latency_ms, energy_mj, (unsigned long)total_cycles);
-    ESP_LOGI(TAG, "║ This Work (ML-KEM-512 + X25519) │ %8.1f │ %12.1f │ %11.2f │ %19lu ║",
+    ESP_LOGI(TAG, "║ This Work (ML-KEM-768 + X25519) │ %8.1f │ %12.1f │ %11.2f │ %19lu ║",
              hybrid_ram, hybrid_latency, hybrid_energy, (unsigned long)hybrid_cycles);
     ESP_LOGI(TAG, "╚═════════════════════════════════╧══════════╧══════════════╧═════════════╧═════════════════════╝");
     ESP_LOGI(TAG, "");
