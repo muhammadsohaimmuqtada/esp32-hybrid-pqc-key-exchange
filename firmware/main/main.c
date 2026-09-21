@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "sdkconfig.h"
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
@@ -146,13 +147,20 @@ static void print_system_info(void) {
     esp_chip_info_t chip_info;
     esp_chip_info(&chip_info);
 
+    int cpu_freq = 160;
+#if defined(CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ)
+    cpu_freq = CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ;
+#elif defined(CONFIG_ESP32_DEFAULT_CPU_FREQ_MHZ)
+    cpu_freq = CONFIG_ESP32_DEFAULT_CPU_FREQ_MHZ;
+#endif
+
     ESP_LOGI(TAG, "");
     ESP_LOGI(TAG, "╔══════════════════════════════════════════════════════════╗");
     ESP_LOGI(TAG, "║    HYBRID POST-QUANTUM CRYPTOGRAPHY — ESP32 EDGE       ║");
     ESP_LOGI(TAG, "║    X25519 + ML-KEM-768 (FIPS 203) + HKDF-SHA256        ║");
     ESP_LOGI(TAG, "╠══════════════════════════════════════════════════════════╣");
-    ESP_LOGI(TAG, "║  Chip:    ESP32 rev %d, %d cores @ 240 MHz             ║",
-             chip_info.revision, chip_info.cores);
+    ESP_LOGI(TAG, "║  Chip:    ESP32 rev %d, %d cores @ %d MHz             ║",
+             chip_info.revision, chip_info.cores, cpu_freq);
     ESP_LOGI(TAG, "║  SRAM:    520 KB                                        ║");
     ESP_LOGI(TAG, "║  Flash:   4 MB                                          ║");
     ESP_LOGI(TAG, "║  Free heap: %lu bytes                                   ║",

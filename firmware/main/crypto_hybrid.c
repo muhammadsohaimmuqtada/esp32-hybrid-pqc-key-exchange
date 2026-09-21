@@ -310,13 +310,13 @@ int hybrid_process_server_response(hybrid_ctx_t *ctx,
             return -1;
         }
 
-        /* RFC 7748 Section 6.1: Reject all-zero shared secret in constant time */
-        uint8_t zero_acc = 0;
-        for (int i = 0; i < X25519_SECRET_SIZE; i++) {
+        /* RFC 7748 Section 6.1: Constant-time all-zero shared secret check */
+        volatile uint8_t zero_acc = 0;
+        for (size_t i = 0; i < X25519_SECRET_SIZE; i++) {
             zero_acc |= ctx->x25519_shared_secret[i];
         }
         if (zero_acc == 0) {
-            ESP_LOGE(TAG, "RFC 7748 violation: X25519 shared secret is all zeros! Aborting.");
+            ESP_LOGE(TAG, "X25519 shared secret is all zeros (RFC 7748 violation)");
             return -1;
         }
 

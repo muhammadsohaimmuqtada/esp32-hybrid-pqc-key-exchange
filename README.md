@@ -18,7 +18,7 @@ In strict accordance with peer-review research integrity standards and privacy b
 - **Zero Active Private Credentials**: All production Wi-Fi passwords, private keys, and operational secrets have been eliminated.
 - **Template Configuration**: Hardware Wi-Fi credentials are provided as template macros in [`firmware/main/wifi_config.h`](firmware/main/wifi_config.h). Local lab overrides can be placed in `wifi_config.local.h` (strictly ignored by `.gitignore`).
 - **Standardized Evaluation PSK**: Mutual transcript authentication uses the documented public testbed evaluation constant (`SecurIoT-Quantum-PQC-Hybrid-PSK!`).
-- **Authentic Raw Datasets**: All experimental measurements (14,157 endurance handshake rows, CPU cycle counts, power supply current readings, and packet captures) are authentic measurements captured directly from physical hardware testbeds.
+- **Authentic Raw Datasets**: All experimental measurements (17,502 raw SYNs, 14,157 parser-accepted endurance sessions, CPU cycle counts, power supply current readings, and packet captures) are authentic measurements captured directly from physical hardware testbeds.
 
 ---
 
@@ -84,7 +84,12 @@ All queries (`k_session` secrecy, mutual handshake injection, and forward secrec
 ```bash
 python3 tools/analyze_endurance_log.py
 ```
-Parses [`docs/evidence/endurance_summary.csv`](docs/evidence/endurance_summary.csv) across 14,157 sessions (10,235 Hybrid PQC handshakes and 3,922 TLS 1.3 baselines) with zero connection failures.
+Parses [`docs/evidence/endurance_summary.csv`](docs/evidence/endurance_summary.csv) across physical testbed sessions:
+- **17,502 raw SYNs** captured on the wire across all operational sessions (7,234 on port 4443 and 10,268 on port 8443).
+- **14,157 parser-accepted sessions** validated by payload size and TCP FIN (10,235 Custom Hybrid PQC and 3,922 Hybrid TLS 1.3).
+- **19.00 h active duration** across **4 operational sittings** (separated by three pauses: two daytime power/network interruptions and one 5.0 h overnight bench pause).
+- **8.10 h longest continuous window** during uninterrupted overnight testing.
+- **Port 4443 = Hybrid TLS 1.3 X25519MLKEM768** (wolfSSL), not classical baseline.
 
 ### 4. Build and Run Backend Server
 ```bash
