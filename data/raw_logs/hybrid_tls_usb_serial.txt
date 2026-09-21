@@ -1,0 +1,17 @@
+Chip is ESP32-D0WD-V3 (revision v3.1)
+Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+Crystal is 40MHz
+MAC: 5c:01:3b:be:bc:58
+
+I (5821) HYBRID_TLS: time set: Fri Sep  4 00:00:00 2026
+I (5830) HYBRID_TLS: der_len=789 load_verify=1
+I (6183) HYBRID_TLS: heap before tls 157364
+I (7276) HYBRID_TLS: handshake_us=1092763 heap after 158848
+I (7278) HYBRID_TLS: wolfSSL_connect success!
+I (7278) HYBRID_TLS: Negotiated TLS1.3 group: X25519MLKEM768
+I (7344) HYBRID_TLS: Received: HTTP/1.0 200 ok
+I (18464) HYBRID_TLS: heap before tls 156748
+I (19565) HYBRID_TLS: handshake_us=1101846 heap after 158404
+I (19567) HYBRID_TLS: wolfSSL_connect success!
+I (19567) HYBRID_TLS: Negotiated TLS1.3 group: X25519MLKEM768
+I (19619) HYBRID_TLS: Received: HTTP/1.0 200 ok

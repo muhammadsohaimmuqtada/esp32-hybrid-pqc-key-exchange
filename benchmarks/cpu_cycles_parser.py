@@ -20,12 +20,7 @@ def parse_log_to_csv(input_file, output_file):
                 match = pattern.search(line)
                 if match:
                     operation = match.group(1).strip()
-                    # Map legacy firmware log string to standard FIPS 203 ML-KEM-768
-                    if "ML-KEM" in operation:
-                        if "Keygen" in operation:
-                            operation = "ML-KEM-768 Keygen"
-                        elif "Decap" in operation:
-                            operation = "ML-KEM-768 Decap"
+                    # Operation is read directly from log (e.g. ML-KEM-768 Keygen)
                     latency_us = int(match.group(2))
                     cycles = int(match.group(3))
                     results.append([operation, latency_us, cycles])
@@ -47,7 +42,7 @@ def parse_log_to_csv(input_file, output_file):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Parse ESP32 benchmark logs to CSV")
-    parser.add_argument("--input", default="../data/raw_logs/esp_bench_full_real.log", help="Path to raw log file")
+    parser.add_argument("--input", default="../data/raw_logs/energy_esp32_mlkem768_usb_proof.txt", help="Path to raw log file")
     parser.add_argument("--output", default="../data/processed_results/parsed_cycles.csv", help="Output CSV path")
     
     args = parser.parse_args()

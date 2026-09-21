@@ -1,0 +1,29 @@
+Chip is ESP32-D0WD-V3 (revision v3.1)
+Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+Crystal is 40MHz
+MAC: 5c:01:3b:be:bc:58
+
+I (19187) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 302989 us, 48476981 cycles
+I (19188) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)
+I (19203) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 14164 us, 2266200 cycles
+I (19204) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)
+I (19208) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)
+I (19218) PQC_MAIN: Sending handshake to http://10.35.3.156:8443/handshake (1249 bytes)...
+I (19871) PQC_MAIN: Handshake successful! Session ID: 220b12ea2fdebbe2...
+I (19873) CRYPTO_HYBRID: Server response HMAC verification successful!
+I (20030) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 155923 us, 24946960 cycles
+I (20031) CRYPTO_HYBRID: X25519 shared secret derived
+I (20064) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18512 us, 2961717 cycles
+I (20064) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended
+I (20067) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))
+I (20075) PQC_MAIN: handshake_us=849604 heap after 196736
+I (20094) CRYPTO_HYBRID: All key material zeroized
+I (20099) PQC_MAIN: Waiting 15 seconds before next handshake...
+
+[PQC_SERVER]
+[INFO] PQC_SERVER: Client handshake HMAC verification successful
+[INFO] PQC_SERVER: Handshake #374: mode=Hybrid (X25519 + ML-KEM-768)
+[INFO] PQC_SERVER:   [DEBUG] PK recv: 527828de5a27def4...72c20360843289b1
+[INFO] PQC_SERVER:   [DEBUG] CT sent: 1e15afce8def63f3...d3dd6e7689aabacc
+[INFO] PQC_SERVER:   Assigned Session ID: 220b12ea2fdebbe2b26f92e1b7279083
+[INFO] PQC_SERVER:   Handshake complete! Total payload (including 32B HMAC): 1168 bytes

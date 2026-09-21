@@ -324,7 +324,7 @@ int benchmark_send_results(const benchmark_stats_t stats[3],
         "\"hybrid\":{\"latency_ms\":%.2f,\"peak_heap_kb\":%.1f,\"payload_bytes\":%u,\"cpu_cycles\":%u},"
         "\"iterations\":%u,"
         "\"chip\":\"ESP32-D0WD-V3\","
-        "\"freq_mhz\":240,"
+        "\"freq_mhz\":160,"
         "\"sram_kb\":520"
         "}",
         stats[0].mean_total_ms, stats[0].mean_peak_heap/1024.0f, (unsigned int)stats[0].payload_bytes, (unsigned int)stats[0].mean_total_cycles,
@@ -368,6 +368,12 @@ int benchmark_send_results(const benchmark_stats_t stats[3],
  * Fulfills Q1 journal review requirement for direct comparison of latency, RAM, and energy.
  */
 void benchmark_run_mbedtls_baseline(void) {
+    ESP_LOGW(TAG, "This function is a local crypto stub, NOT a full TLS 1.3 handshake");
+    return;
+}
+
+#if 0 /* NEUTRALIZED: Synthetic benchmark stub previously used synthetic scaling (*3, +48KB) */
+void benchmark_run_mbedtls_baseline_disabled(void) {
     ESP_LOGI(TAG, "=== Running Standard mbedTLS (TLS 1.3) Baseline Benchmark ===");
 
     size_t heap_before = heap_caps_get_free_size(MALLOC_CAP_DEFAULT);
@@ -489,4 +495,5 @@ void benchmark_run_mbedtls_baseline(void) {
     mbedtls_entropy_free(&entropy);
     mbedtls_x509_crt_free(&cacert);
 }
+#endif
 

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Self-consistency test using fixed seeds. Not NIST CAVP certified test vectors.
 """
 Known Answer Test (KAT) and Deterministic Verification Suite for ML-KEM-768
 Validates the ML-KEM-768 shared object implementation (libmlkem.so)

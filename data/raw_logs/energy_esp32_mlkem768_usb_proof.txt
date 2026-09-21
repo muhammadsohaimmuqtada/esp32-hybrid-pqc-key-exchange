@@ -1,0 +1,1153 @@
+Executing action: monitor
+Running idf_monitor in directory /home/kali/Hybrid-PQC-implementaion-on-IOT-esp32-/firmware
+Executing "/home/kali/.espressif/python_env/idf5.5_py3.14_env/bin/python /home/kali/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB0 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/kali/Hybrid-PQC-implementaion-on-IOT-esp32-/firmware/build/esp32_hybrid_pqc.elf /home/kali/Hybrid-PQC-implementaion-on-IOT-esp32-/firmware/build/bootloader/bootloader.elf -m '/home/kali/.espressif/python_env/idf5.5_py3.14_env/bin/python' '/home/kali/esp/esp-idf/tools/idf.py' '-p' '/dev/ttyUSB0'"...
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6380
+ho 0 tail 12 room 4
+load:0x40078000,len:15916
+load:0x40080400,len:3860
+entry 0x40080638
+[0;32mI (29) boot: ESP-IDF v5.5 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Sep  3 2026 09:21:59[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v3.1[0m
+[0;32mI (33) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (37) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (40) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (44) boot: Enabling RNG early entropy source...[0m
+[0;32mI (49) boot: Partition Table:[0m
+[0;32mI (51) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (57) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (64) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (71) boot:  2 factory          factory app      00 00 00010000 00200000[0m
+[0;32mI (77) boot: End of partition table[0m
+[0;32mI (80) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=1efb8h (126904) map[0m
+[0;32mI (131) esp_image: segment 1: paddr=0002efe0 vaddr=3ff80000 size=00020h (    32) load[0m
+[0;32mI (131) esp_image: segment 2: paddr=0002f008 vaddr=3ffb0000 size=01010h (  4112) load[0m
+[0;32mI (137) esp_image: segment 3: paddr=00030020 vaddr=400d0020 size=ac38ch (705420) map[0m
+[0;32mI (384) esp_image: segment 4: paddr=000dc3b4 vaddr=3ffb1010 size=02dd0h ( 11728) load[0m
+[0;32mI (388) esp_image: segment 5: paddr=000df18c vaddr=40080000 size=17220h ( 94752) load[0m
+[0;32mI (436) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (437) boot: Disabling RNG early entropy source...[0m
+[0;32mI (447) cpu_start: Multicore app[0m
+[0;32mI (455) cpu_start: Pro cpu start user code[0m
+[0;32mI (455) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (455) app_init: Application information:[0m
+[0;32mI (455) app_init: Project name:     esp32_hybrid_pqc[0m
+[0;32mI (460) app_init: App version:      abb5f92-dirty[0m
+[0;32mI (464) app_init: Compile time:     Sep  3 2026 09:21:02[0m
+[0;32mI (470) app_init: ELF file SHA256:  cd23cfa90...[0m
+[0;32mI (474) app_init: ESP-IDF:          v5.5[0m
+[0;32mI (477) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (481) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (485) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (489) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (496) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (501) heap_init: At 3FFB87D0 len 00027830 (158 KiB): DRAM[0m
+[0;32mI (506) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (511) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (517) heap_init: At 40097220 len 00008DE0 (35 KiB): IRAM[0m
+[0;32mI (523) spi_flash: detected chip: generic[0m
+[0;32mI (526) spi_flash: flash io: dio[0m
+[0;32mI (530) main_task: Started on CPU0[0m
+[0;32mI (533) main_task: Calling app_main()[0m
+[0;32mI (557) PQC_MAIN: [0m
+[0;32mI (557) PQC_MAIN: ╔══════════════════════════════════════════════════════════╗[0m
+[0;32mI (565) PQC_MAIN: ║    HYBRID POST-QUANTUM CRYPTOGRAPHY — ESP32 EDGE       ║[0m
+[0;32mI (573) PQC_MAIN: ║    X25519 + ML-KEM-512 (FIPS 203) + HKDF-SHA256        ║[0m
+[0;32mI (580) PQC_MAIN: ╠══════════════════════════════════════════════════════════╣[0m
+[0;32mI (597) PQC_MAIN: ║  Chip:    ESP32 rev 301, 2 cores @ 240 MHz             ║[0m
+[0;32mI (604) PQC_MAIN: ║  SRAM:    520 KB                                        ║[0m
+[0;32mI (611) PQC_MAIN: ║  Flash:   4 MB                                          ║[0m
+[0;32mI (619) PQC_MAIN: ║  Free heap: 270648 bytes                                   ║[0m
+[0;32mI (626) PQC_MAIN: ╚══════════════════════════════════════════════════════════╝[0m
+[0;32mI (643) PQC_MAIN: [0m
+[0;32mI (649) wifi:wifi driver task: 3ffc212c, prio:23, stack:6656, core=0[0m
+[0;32mI (666) wifi:wifi firmware version: f3dbad7[0m
+[0;32mI (666) wifi:wifi certification version: v7.0[0m
+[0;32mI (666) wifi:config NVS flash: enabled[0m
+[0;32mI (666) wifi:config nano formatting: disabled[0m
+[0;32mI (671) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (675) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (679) wifi:Init management short buffer num: 32[0m
+[0;32mI (684) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (688) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (692) wifi:Init static rx buffer num: 10[0m
+[0;32mI (696) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (701) wifi_init: rx ba win: 6[0m
+[0;32mI (702) wifi_init: accept mbox: 6[0m
+[0;32mI (705) wifi_init: tcpip mbox: 32[0m
+[0;32mI (709) wifi_init: udp mbox: 6[0m
+[0;32mI (711) wifi_init: tcp mbox: 6[0m
+[0;32mI (714) wifi_init: tcp tx win: 5760[0m
+[0;32mI (717) wifi_init: tcp rx win: 5760[0m
+[0;32mI (720) wifi_init: tcp mss: 1440[0m
+[0;32mI (723) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (727) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (733) phy_init: phy_version 4860,6b7a6e5,Feb  6 2025,14:47:07[0m
+[0;32mI (820) wifi:mode : sta (5c:01:3b:be:bc:58)[0m
+[0;32mI (821) wifi:enable tsf[0m
+[0;32mI (824) PQC_MAIN: Connecting to Wi-Fi SSID: Bomboclattt[0m
+[0;32mI (838) wifi:new:<8,0>, old:<1,0>, ap:<255,255>, sta:<8,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (839) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (847) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (856) wifi:Association refused temporarily time 1000, comeback time 1100 (TUs)[0m
+[0;32mI (1983) wifi:state: assoc -> assoc (0x0)[0m
+[0;32mI (2001) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (2031) wifi:connected with Bomboclattt, aid = 9, channel 8, BW20, bssid = 58:85:e9:63:0e:89[0m
+[0;32mI (2032) wifi:security: WPA2-PSK, phy: bgn, rssi: -52[0m
+[0;32mI (2037) wifi:pm start, type: 1[0m
+
+[0;32mI (2182) wifi:AP's beacon interval = 204800 us, DTIM period = 2[0m
+[0;32mI (2549) wifi:<ba-add>idx:0 (ifx:0, 58:85:e9:63:0e:89), tid:0, ssn:0, winSize:64[0m
+[0;32mI (3584) esp_netif_handlers: sta ip: 192.168.43.193, mask: 255.255.255.0, gw: 192.168.43.1[0m
+[0;32mI (3585) PQC_MAIN: Connected! IP: 192.168.43.193[0m
+[0;32mI (3586) PQC_MAIN: Wi-Fi connected successfully[0m
+[0;32mI (3590) main_task: Returned from app_main()[0m
+[0;32mI (3590) PQC_MAIN: Starting Hybrid PQC task...[0m
+[0;32mI (3598) PQC_MAIN: Testing public internet connectivity: connecting to http://www.google.com...[0m
+[0;32mI (4031) wifi:<ba-add>idx:1 (ifx:0, 58:85:e9:63:0e:89), tid:4, ssn:0, winSize:64[0m
+[0;32mI (6417) PQC_MAIN: Google connection successful! Status: 200, Length: -1[0m
+[0;32mI (6420) PQC_MAIN: === Executing 100-Iteration Q1 Journal Benchmark Suite ===[0m
+[0;32mI (6420) BENCHMARK: === Benchmarking Classical (X25519) (10 iterations) ===[0m
+[0;32mI (6821) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 393620 us, 62978532 cycles[0m
+[0;32mI (6822) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (6824) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (6832) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (8537) BENCHMARK: Fetched 80 bytes (content_length=80)[0m
+[0;32mI (8540) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (8741) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 200383 us, 32060460 cycles[0m
+[0;32mI (8741) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (8743) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Classical (X25519))[0m
+[0;32mI (8750) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (8755) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (9152) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 392266 us, 62761918 cycles[0m
+[0;32mI (9152) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (9154) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (9163) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (9206) BENCHMARK: Fetched 80 bytes (content_length=80)[0m
+[0;32mI (9209) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (9410) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 200846 us, 32134500 cycles[0m
+[0;32mI (9411) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (9412) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Classical (X25519))[0m
+[0;32mI (9420) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (9425) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (9821) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 391361 us, 62617038 cycles[0m
+[0;32mI (9821) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (9823) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (9832) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (10999) BENCHMARK: Fetched 80 bytes (content_length=80)[0m
+[0;32mI (11003) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (11206) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 202203 us, 32351752 cycles[0m
+[0;32mI (11206) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (11208) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Classical (X25519))[0m
+[0;32mI (11215) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (11220) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (11618) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 393469 us, 62954396 cycles[0m
+[0;32mI (11619) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (11621) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (11630) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (11675) BENCHMARK: Fetched 80 bytes (content_length=80)[0m
+[0;32mI (11678) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (11879) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 200079 us, 32011900 cycles[0m
+[0;32mI (11879) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (11881) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Classical (X25519))[0m
+[0;32mI (11888) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (11894) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (12290) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 392236 us, 62757166 cycles[0m
+[0;32mI (12291) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (12293) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (12302) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (13452) BENCHMARK: Fetched 80 bytes (content_length=80)[0m
+[0;32mI (13455) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (13659) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 203563 us, 32569296 cycles[0m
+[0;32mI (13660) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (13662) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Classical (X25519))[0m
+[0;32mI (13669) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (13674) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (14071) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 391823 us, 62691168 cycles[0m
+[0;32mI (14071) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (14073) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (14082) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (15505) BENCHMARK: Fetched 80 bytes (content_length=80)[0m
+[0;32mI (15508) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (15707) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 198499 us, 31759006 cycles[0m
+[0;32mI (15708) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (15709) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Classical (X25519))[0m
+[0;32mI (15716) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (15722) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (16119) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 392415 us, 62785772 cycles[0m
+[0;32mI (16119) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (16121) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (16130) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (16750) BENCHMARK: Fetched 80 bytes (content_length=80)[0m
+[0;32mI (16753) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (16952) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 197559 us, 31608752 cycles[0m
+[0;32mI (16952) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (16954) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Classical (X25519))[0m
+[0;32mI (16961) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (16966) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (17362) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 391058 us, 62568636 cycles[0m
+[0;32mI (17362) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (17364) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (17373) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (17422) BENCHMARK: Fetched 80 bytes (content_length=80)[0m
+[0;32mI (17425) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (17629) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 203566 us, 32569672 cycles[0m
+[0;32mI (17630) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (17632) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Classical (X25519))[0m
+[0;32mI (17639) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (17644) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (18041) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 392355 us, 62776148 cycles[0m
+[0;32mI (18042) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (18044) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (18053) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (19187) BENCHMARK: Fetched 80 bytes (content_length=80)[0m
+[0;32mI (19190) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (19388) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 196435 us, 31428868 cycles[0m
+[0;32mI (19388) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (19390) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Classical (X25519))[0m
+[0;32mI (19397) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (19403) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (19799) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 392308 us, 62768576 cycles[0m
+[0;32mI (19800) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (19802) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (19811) CRYPTO_HYBRID: Packed 65 bytes of public keys (including 32B HMAC) for mode Classical (X25519)[0m
+[0;32mI (21235) BENCHMARK: Fetched 80 bytes (content_length=80)[0m
+[0;32mI (21238) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (21442) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 203357 us, 32536352 cycles[0m
+[0;32mI (21443) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (21445) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Classical (X25519))[0m
+[0;32mI (21452) CRYPTO_HYBRID: All key material zeroized[0m
+[0;32mI (21456) BENCHMARK:   Progress: 10/10 (last: 2035.74 ms)[0m
+[1;31mE (21462) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (21467) BENCHMARK:   Completed: mean=1484.59 ms, stddev=603.955 ms[0m
+[0;32mI (21473) BENCHMARK: === Benchmarking PQC (ML-KEM-768) (10 iterations) ===[0m
+[0;32mI (21494) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 14376 us, 2299423 cycles[0m
+[0;32mI (21494) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (21498) CRYPTO_HYBRID: Packed 1217 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-768)[0m
+[0;32mI (21507) CRYPTO_HYBRID: Packed 1217 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-768)[0m
+[0;32mI (22088) BENCHMARK: Fetched 1136 bytes (content_length=1136)[0m
+[0;32mI (22092) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (22092) CRYPTO_HYBRID: [DEBUG] PK sent: 045b4fbf6b630e06...ddbc59a8834d6eb3[0m
+[0;32mI (22097) CRYPTO_HYBRID: [DEBUG] CT recv: ba7eb3fa804536eb...0bf0aa4e59c15054[0m
+[0;32mI (22122) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18488 us, 2957904 cycles[0m
+[0;32mI (22122) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (22125) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: PQC (ML-KEM-768))[0m
+[0;32mI (22132) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (22137) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (22155) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13358 us, 2136615 cycles[0m
+[0;32mI (22155) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (22159) CRYPTO_HYBRID: Packed 1217 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-768)[0m
+[0;32mI (22168) CRYPTO_HYBRID: Packed 1217 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-768)[0m
+[0;32mI (22215) BENCHMARK: Fetched 1136 bytes (content_length=1136)[0m
+[0;32mI (22219) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (22219) CRYPTO_HYBRID: [DEBUG] PK sent: 7325673a978719da...e4f0b76af6c0d0b8[0m
+[0;32mI (22224) CRYPTO_HYBRID: [DEBUG] CT recv: d7afc2e81548e53c...e4a81fe5fbe3147c[0m
+[0;32mI (22249) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18481 us, 2956924 cycles[0m
+[0;32mI (22249) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (22252) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: PQC (ML-KEM-768))[0m
+[0;32mI (22259) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (22264) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (22282) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13360 us, 2136737 cycles[0m
+[0;32mI (22282) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (22286) CRYPTO_HYBRID: Packed 1217 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-768)[0m
+[0;32mI (22295) CRYPTO_HYBRID: Packed 1217 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-768)[0m
+[0;32mI (22341) BENCHMARK: Fetched 1136 bytes (content_length=1136)[0m
+[0;32mI (22344) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (22345) CRYPTO_HYBRID: [DEBUG] PK sent: 95d7133db068b719...b2c10ad06a96c073[0m
+[0;32mI (22349) CRYPTO_HYBRID: [DEBUG] CT recv: 0ba6e875d1475f79...d6d78a4516456ba0[0m
+[0;32mI (22375) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 19411 us, 3105708 cycles[0m
+[0;32mI (22376) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (22379) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: PQC (ML-KEM-768))[0m
+[0;32mI (22386) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (22391) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (22409) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13414 us, 2145439 cycles[0m
+[0;32mI (22409) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (22413) CRYPTO_HYBRID: Packed 1217 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-768)[0m
+[0;32mI (22422) CRYPTO_HYBRID: Packed 1217 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-768)[0m
+[0;32mI (22478) BENCHMARK: Fetched 1136 bytes (content_length=1136)[0m
+[0;32mI (22481) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (22482) CRYPTO_HYBRID: [DEBUG] PK sent: d51b39079b6229b5...7edcaf1fd309993c[0m
+[0;32mI (22487) CRYPTO_HYBRID: [DEBUG] CT recv: 73753aeca4fc1217...275478ac6f861377[0m
+[0;32mI (22512) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18483 us, 2957298 cycles[0m
+[0;32mI (22512) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (22515) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: PQC (ML-KEM-768))[0m
+[0;32mI (22522) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (22527) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (22545) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13557 us, 2168483 cycles[0m
+[0;32mI (22545) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (22549) CRYPTO_HYBRID: Packed 1217 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-768)[0m
+[0;32mI (22558) CRYPTO_HYBRID: Packed 1217 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-768)[0m
+[0;32mI (22610) BENCHMARK: Fetched 1136 bytes (content_length=1136)[0m
+[0;32mI (22614) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (22614) CRYPTO_HYBRID: [DEBUG] PK sent: 09f1bbb7d61eb349...456129ee47aa9ec6[0m
+[0;32mI (22618) CRYPTO_HYBRID: [DEBUG] CT recv: c6e7c71db2db9df4...dc1444ba0e238879[0m
+[0;32mI (22644) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18688 us, 2990024 cycles[0m
+[0;32mI (22645) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (22647) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: PQC (ML-KEM-768))[0m
+[0;32mI (22654) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (22660) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (22677) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13403 us, 2143087 cycles[0m
+[0;32mI (22678) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (22682) CRYPTO_HYBRID: Packed 1217 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-768)[0m
+[0;32mI (22691) CRYPTO_HYBRID: Packed 1217 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-768)[0m
+[0;32mI (22736) BENCHMARK: Fetched 1136 bytes (content_length=1136)[0m
+[0;32mI (22739) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (22739) CRYPTO_HYBRID: [DEBUG] PK sent: 547ac1e4235566db...ec808c35326530a0[0m
+[0;32mI (22744) CRYPTO_HYBRID: [DEBUG] CT recv: 068628a13e5e176e...775e4236378d264d[0m
+[0;32mI (22770) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 19400 us, 3104034 cycles[0m
+[0;32mI (22771) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (22773) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: PQC (ML-KEM-768))[0m
+[0;32mI (22780) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (22786) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (22803) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13433 us, 2148545 cycles[0m
+[0;32mI (22804) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (22808) CRYPTO_HYBRID: Packed 1217 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-768)[0m
+[0;32mI (22817) CRYPTO_HYBRID: Packed 1217 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-768)[0m
+[0;32mI (22866) BENCHMARK: Fetched 1136 bytes (content_length=1136)[0m
+[0;32mI (22870) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (22870) CRYPTO_HYBRID: [DEBUG] PK sent: 3ff1597faa8f5053...332599f58627fbeb[0m
+[0;32mI (22874) CRYPTO_HYBRID: [DEBUG] CT recv: d72625f1fcd46573...58720e935e4d2350[0m
+[0;32mI (22900) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 19383 us, 3101206 cycles[0m
+[0;32mI (22901) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (22904) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: PQC (ML-KEM-768))[0m
+[0;32mI (22910) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (22916) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (22934) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13372 us, 2138726 cycles[0m
+[0;32mI (22934) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (22938) CRYPTO_HYBRID: Packed 1217 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-768)[0m
+[0;32mI (22947) CRYPTO_HYBRID: Packed 1217 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-768)[0m
+[0;32mI (23010) BENCHMARK: Fetched 1136 bytes (content_length=1136)[0m
+[0;32mI (23013) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (23013) CRYPTO_HYBRID: [DEBUG] PK sent: 230c82e62415adb4...c81cb9c640b4af42[0m
+[0;32mI (23018) CRYPTO_HYBRID: [DEBUG] CT recv: d953f1b30b9a2477...73b7c182b39bfe30[0m
+[0;32mI (23043) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18485 us, 2957472 cycles[0m
+[0;32mI (23043) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (23046) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: PQC (ML-KEM-768))[0m
+[0;32mI (23053) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (23059) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (23076) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13352 us, 2135631 cycles[0m
+[0;32mI (23076) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (23080) CRYPTO_HYBRID: Packed 1217 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-768)[0m
+[0;32mI (23089) CRYPTO_HYBRID: Packed 1217 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-768)[0m
+[0;32mI (23154) BENCHMARK: Fetched 1136 bytes (content_length=1136)[0m
+[0;32mI (23157) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (23157) CRYPTO_HYBRID: [DEBUG] PK sent: 0f20a5b6407011a7...06bb9f517a35005c[0m
+[0;32mI (23162) CRYPTO_HYBRID: [DEBUG] CT recv: db49270838071b6f...91897d99571beb7b[0m
+[0;32mI (23187) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18480 us, 2956656 cycles[0m
+[0;32mI (23187) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (23190) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: PQC (ML-KEM-768))[0m
+[0;32mI (23197) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (23203) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (23220) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13358 us, 2136659 cycles[0m
+[0;32mI (23221) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (23224) CRYPTO_HYBRID: Packed 1217 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-768)[0m
+[0;32mI (23233) CRYPTO_HYBRID: Packed 1217 bytes of public keys (including 32B HMAC) for mode PQC (ML-KEM-768)[0m
+[0;32mI (23298) BENCHMARK: Fetched 1136 bytes (content_length=1136)[0m
+[0;32mI (23302) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (23302) CRYPTO_HYBRID: [DEBUG] PK sent: 3bd9a91163cf5f66...98215d70f758912b[0m
+[0;32mI (23306) CRYPTO_HYBRID: [DEBUG] CT recv: 080861de62c11b12...670b937da4927073[0m
+[0;32mI (23332) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18478 us, 2956252 cycles[0m
+[0;32mI (23332) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (23335) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: PQC (ML-KEM-768))[0m
+[0;32mI (23342) CRYPTO_HYBRID: All key material zeroized[0m
+[0;32mI (23346) BENCHMARK:   Progress: 10/10 (last: 125.80 ms)[0m
+[1;31mE (23352) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (23357) BENCHMARK:   Completed: mean=168.29 ms, stddev=158.553 ms[0m
+[0;32mI (23363) BENCHMARK: === Benchmarking Hybrid (X25519 + ML-KEM-768) (10 iterations) ===[0m
+[0;32mI (23764) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 392971 us, 62874812 cycles[0m
+[0;32mI (23764) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (23780) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 14082 us, 2252353 cycles[0m
+[0;32mI (23780) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (23784) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (23794) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (23876) BENCHMARK: Fetched 1168 bytes (content_length=1168)[0m
+[0;32mI (23879) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (24080) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 199780 us, 31964116 cycles[0m
+[0;32mI (24080) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (24081) CRYPTO_HYBRID: [DEBUG] PK sent: 17317b74453709e0...624b5cb3fa4469d4[0m
+[0;32mI (24088) CRYPTO_HYBRID: [DEBUG] CT recv: 67048160d33b61bf...fba1b7dca3d5887c[0m
+[0;32mI (24114) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18666 us, 2986562 cycles[0m
+[0;32mI (24114) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (24117) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (24125) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (24130) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (24529) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 394294 us, 63086262 cycles[0m
+[0;32mI (24530) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (24545) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13913 us, 2225343 cycles[0m
+[0;32mI (24546) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (24550) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (24560) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (24609) BENCHMARK: Fetched 1168 bytes (content_length=1168)[0m
+[0;32mI (24613) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (24814) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 200128 us, 32019706 cycles[0m
+[0;32mI (24814) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (24816) CRYPTO_HYBRID: [DEBUG] PK sent: afa315a096b9c958...22e68d3447aa8680[0m
+[0;32mI (24822) CRYPTO_HYBRID: [DEBUG] CT recv: cff5e565995f4c0b...7f5e052e59846d6a[0m
+[0;32mI (24848) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18514 us, 2962056 cycles[0m
+[0;32mI (24848) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (24851) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (24859) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (24864) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (25259) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 390157 us, 62424480 cycles[0m
+[0;32mI (25260) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (25275) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 14117 us, 2258077 cycles[0m
+[0;32mI (25276) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (25280) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (25290) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (25342) BENCHMARK: Fetched 1168 bytes (content_length=1168)[0m
+[0;32mI (25345) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (25544) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 198274 us, 31723048 cycles[0m
+[0;32mI (25545) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (25546) CRYPTO_HYBRID: [DEBUG] PK sent: cc740f9614c2e0b3...156c6fe3bc5f3bd0[0m
+[0;32mI (25553) CRYPTO_HYBRID: [DEBUG] CT recv: d556d3af663ed5b3...9b6f0adb891db908[0m
+[0;32mI (25578) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18712 us, 2993686 cycles[0m
+[0;32mI (25578) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (25581) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (25589) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (25595) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (25992) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 392226 us, 62755476 cycles[0m
+[0;32mI (25992) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (26008) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13908 us, 2224681 cycles[0m
+[0;32mI (26008) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (26012) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (26022) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (26073) BENCHMARK: Fetched 1168 bytes (content_length=1168)[0m
+[0;32mI (26076) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (26278) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 201521 us, 32242750 cycles[0m
+[0;32mI (26279) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (26280) CRYPTO_HYBRID: [DEBUG] PK sent: eca87b541ab3ab51...6dca2117a0559392[0m
+[0;32mI (26287) CRYPTO_HYBRID: [DEBUG] CT recv: a19be9bdf14be36d...95b6758f192b99af[0m
+[0;32mI (26312) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18499 us, 2959752 cycles[0m
+[0;32mI (26313) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (26315) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (26323) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (26329) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (26726) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 392848 us, 62855034 cycles[0m
+[0;32mI (26727) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (26742) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13909 us, 2224705 cycles[0m
+[0;32mI (26743) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (26747) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (26756) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (27401) BENCHMARK: Fetched 1168 bytes (content_length=1168)[0m
+[0;32mI (27404) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (27603) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 197895 us, 31662364 cycles[0m
+[0;32mI (27603) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (27604) CRYPTO_HYBRID: [DEBUG] PK sent: bc102457e94b2255...9cd391e9f06865d3[0m
+[0;32mI (27611) CRYPTO_HYBRID: [DEBUG] CT recv: 7228306dd07b6101...0c2d995e5bd6a82d[0m
+[0;32mI (27637) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18521 us, 2963264 cycles[0m
+[0;32mI (27637) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (27640) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (27648) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (27653) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (28050) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 392133 us, 62740694 cycles[0m
+[0;32mI (28050) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (28066) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13913 us, 2225379 cycles[0m
+[0;32mI (28066) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (28070) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (28080) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (28629) BENCHMARK: Fetched 1168 bytes (content_length=1168)[0m
+[0;32mI (28633) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (28832) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 198266 us, 31721846 cycles[0m
+[0;32mI (28832) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (28833) CRYPTO_HYBRID: [DEBUG] PK sent: 598b232664876715...ab9ca55e99929adb[0m
+[0;32mI (28840) CRYPTO_HYBRID: [DEBUG] CT recv: cd27a3a3646b1bd9...b4ff1f97df7b6ff5[0m
+[0;32mI (28865) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18512 us, 2961778 cycles[0m
+[0;32mI (28866) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (28869) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (28877) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (28882) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (29278) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 391622 us, 62658804 cycles[0m
+[0;32mI (29279) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (29294) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13916 us, 2225747 cycles[0m
+[0;32mI (29295) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (29299) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (29309) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (29366) BENCHMARK: Fetched 1168 bytes (content_length=1168)[0m
+[0;32mI (29369) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (29574) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 203773 us, 32602920 cycles[0m
+[0;32mI (29574) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (29575) CRYPTO_HYBRID: [DEBUG] PK sent: 9e4626c2018e82cb...0ce361fa664f3788[0m
+[0;32mI (29582) CRYPTO_HYBRID: [DEBUG] CT recv: 9e3d88c181b82659...73d527565e46678d[0m
+[0;32mI (29608) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18515 us, 2962326 cycles[0m
+[0;32mI (29608) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (29611) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (29619) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (29624) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (30021) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 392498 us, 62799048 cycles[0m
+[0;32mI (30022) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (30037) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13913 us, 2225379 cycles[0m
+[0;32mI (30038) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (30042) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (30052) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (30104) BENCHMARK: Fetched 1168 bytes (content_length=1168)[0m
+[0;32mI (30107) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (30311) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 203040 us, 32485568 cycles[0m
+[0;32mI (30311) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (30312) CRYPTO_HYBRID: [DEBUG] PK sent: a9e87a32b714d1ea...f2476e7139034c10[0m
+[0;32mI (30319) CRYPTO_HYBRID: [DEBUG] CT recv: 4c9184e48433f3a8...4a3ddab27850a5f6[0m
+[0;32mI (30345) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18511 us, 2961642 cycles[0m
+[0;32mI (30345) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (30348) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (30356) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (30361) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (30758) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 391786 us, 62685114 cycles[0m
+[0;32mI (30758) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (30774) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13903 us, 2223795 cycles[0m
+[0;32mI (30774) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (30778) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (30788) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (31094) BENCHMARK: Fetched 1168 bytes (content_length=1168)[0m
+[0;32mI (31097) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (31295) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 197090 us, 31533776 cycles[0m
+[0;32mI (31295) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (31296) CRYPTO_HYBRID: [DEBUG] PK sent: fcea9fecc76e04d2...3952ae24c1753206[0m
+[0;32mI (31303) CRYPTO_HYBRID: [DEBUG] CT recv: d619e11fb59f181d...3e5776b6a1d5e5f0[0m
+[0;32mI (31329) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18518 us, 2962768 cycles[0m
+[0;32mI (31329) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (31332) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (31340) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (31345) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (31742) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 392501 us, 62799524 cycles[0m
+[0;32mI (31743) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (31758) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13916 us, 2225811 cycles[0m
+[0;32mI (31759) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (31763) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (31773) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (33115) BENCHMARK: Fetched 1168 bytes (content_length=1168)[0m
+[0;32mI (33119) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (33323) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 203255 us, 32520144 cycles[0m
+[0;32mI (33323) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (33324) CRYPTO_HYBRID: [DEBUG] PK sent: cabc12edcb507264...a8fba0ae2496e2f7[0m
+[0;32mI (33331) CRYPTO_HYBRID: [DEBUG] CT recv: 7f94c65c5c7c9c33...878cd7b44f664808[0m
+[0;32mI (33356) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18518 us, 2962818 cycles[0m
+[0;32mI (33357) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (33360) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (33368) CRYPTO_HYBRID: All key material zeroized[0m
+[0;32mI (33372) BENCHMARK:   Progress: 10/10 (last: 2007.88 ms)[0m
+[1;31mE (33378) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (33382) BENCHMARK:   Completed: mean=980.72 ms, stddev=402.221 ms[0m
+[0;32mI (33388) BENCHMARK: [0m
+[0;32mI (33390) BENCHMARK: ╔══════════════════════════════════════════════════════════════════╗[0m
+[0;32mI (33410) BENCHMARK: ║          HYBRID PQC BENCHMARK RESULTS — ESP32-D0WD-V3           ║[0m
+[0;32mI (33418) BENCHMARK: ╠══════════════════════════════════════════════════════════════════╣[0m
+[0;32mI (33438) BENCHMARK: ║ Metric         │ Classical    │ PQC          │ Hybrid           ║[0m
+[0;32mI (33447) BENCHMARK: ╠════════════════╪══════════════╪══════════════╪══════════════════╣[0m
+[0;32mI (33466) BENCHMARK: ║ Latency (ms)   │  1484.59     │   168.29     │   980.72         ║[0m
+[0;32mI (33475) BENCHMARK: ║ Peak RAM (KB)  │      0.1     │      0.0     │      0.0         ║[0m
+[0;32mI (33484) BENCHMARK: ║ Payload (B)    │      145     │     2353     │     2417         ║[0m
+[0;32mI (33492) BENCHMARK: ║ CPU Cycles     │ 239010359     │ 28408144     │ 158563679         ║[0m
+[0;32mI (33501) BENCHMARK: ╚══════════════════════════════════════════════════════════════════╝[0m
+[0;32mI (33521) BENCHMARK: [0m
+[0;32mI (33601) BENCHMARK: Benchmark results sent to server[0m
+[0;32mI (33602) BENCHMARK: === Running Standard mbedTLS (TLS 1.3) Baseline Benchmark ===[0m
+[1;31mE (33814) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[1;31mE (34019) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[1;31mE (34225) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[1;31mE (34430) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[1;31mE (34636) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (34636) BENCHMARK: [0m
+[0;32mI (34636) BENCHMARK: ╔═════════════════════════════════════════════════════════════════════════════════════════════════╗[0m
+[0;32mI (34660) BENCHMARK: ║                  STANDARD mbedTLS (TLS 1.3) vs HYBRID PQC BASELINE COMPARISON                   ║[0m
+[0;32mI (34671) BENCHMARK: ╠═════════════════════════════════╤══════════╤══════════════╤═════════════╤═════════════════════╣[0m
+[0;32mI (34698) BENCHMARK: ║ Protocol                        │ RAM (KB) │ Latency (ms) │ Energy (mJ) │ Total Cycles        ║[0m
+[0;32mI (34709) BENCHMARK: ╠═════════════════════════════════╪══════════╪══════════════╪═════════════╪═════════════════════╣[0m
+[0;32mI (34737) BENCHMARK: ║ Standard mbedTLS (TLS 1.3)      │     50.0 │       1029.6 │      475.68 │           494215050 ║[0m
+[0;32mI (34748) BENCHMARK: ║ This Work (ML-KEM-768 + X25519) │      0.0 │        980.7 │      196.14 │           158563679 ║[0m
+[0;32mI (34759) BENCHMARK: ╚═════════════════════════════════╧══════════╧══════════════╧═════════════╧═════════════════════╝[0m
+[0;32mI (34787) BENCHMARK: [0m
+[0;32mI (34789) PQC_MAIN: [0m
+[0;32mI (34791) PQC_MAIN: === Starting continuous hybrid telemetry ===[0m
+[1;31mE (34796) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (35194) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 391873 us, 62698904 cycles[0m
+[0;32mI (35194) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (35210) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 14373 us, 2298975 cycles[0m
+[0;32mI (35211) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (35215) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (35225) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (36394) PQC_MAIN: Handshake successful! Session ID: c9ffa4b26cae5e16...[0m
+[0;32mI (36396) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (36598) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 200533 us, 32084594 cycles[0m
+[0;32mI (36598) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (36599) CRYPTO_HYBRID: [DEBUG] PK sent: 486597ba92c0e003...b0fa5ea1da7ab781[0m
+[0;32mI (36606) CRYPTO_HYBRID: [DEBUG] CT recv: baf05c478aa8c2da...de39e45696783258[0m
+[0;32mI (36631) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18527 us, 2964370 cycles[0m
+[0;32mI (36632) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (36635) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (36642) PQC_MAIN: handshake_us=1410024 heap after 196268[0m
+[0;32mI (36648) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (36654) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (36662) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (36666) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (37064) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 391928 us, 62707736 cycles[0m
+[0;32mI (37064) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (37080) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13945 us, 2230409 cycles[0m
+[0;32mI (37080) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (37084) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (37094) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (37649) PQC_MAIN: Handshake successful! Session ID: 3d51f228d468295f...[0m
+[0;32mI (37651) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (37851) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 198776 us, 31803310 cycles[0m
+[0;32mI (37852) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (37853) CRYPTO_HYBRID: [DEBUG] PK sent: a61936ee41260a18...52aabc4b99356e26[0m
+[0;32mI (37859) CRYPTO_HYBRID: [DEBUG] CT recv: 0ab6b58744d8ab66...6164bc19771ea3cb[0m
+[0;32mI (37885) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18511 us, 2961790 cycles[0m
+[0;32mI (37885) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (37888) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (37896) PQC_MAIN: handshake_us=793729 heap after 196268[0m
+[0;32mI (37901) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (37907) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (37915) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (37920) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (38317) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 391985 us, 62716934 cycles[0m
+[0;32mI (38318) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (38333) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13948 us, 2230965 cycles[0m
+[0;32mI (38334) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (38338) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (38347) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (38432) PQC_MAIN: Handshake successful! Session ID: d69c0c4a765094c0...[0m
+[0;32mI (38434) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (38636) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 200694 us, 32110324 cycles[0m
+[0;32mI (38637) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (38638) CRYPTO_HYBRID: [DEBUG] PK sent: f4c539666634effa...7cbc32980c205c92[0m
+[0;32mI (38644) CRYPTO_HYBRID: [DEBUG] CT recv: 03241a0d7a26bf86...dea54d68a4e30288[0m
+[0;32mI (38670) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18505 us, 2960728 cycles[0m
+[0;32mI (38670) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (38673) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (38681) PQC_MAIN: handshake_us=325391 heap after 196268[0m
+[0;32mI (38686) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (38692) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (38700) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (38705) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (39104) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 393467 us, 62954142 cycles[0m
+[0;32mI (39104) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (39120) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13949 us, 2231069 cycles[0m
+[0;32mI (39120) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (39124) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (39134) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (39727) PQC_MAIN: Handshake successful! Session ID: d698958ee7223774...[0m
+[0;32mI (39729) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (39926) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 196067 us, 31369988 cycles[0m
+[0;32mI (39927) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (39928) CRYPTO_HYBRID: [DEBUG] PK sent: 0402b785f8904e82...7e0c8dc4b0c3cb18[0m
+[0;32mI (39935) CRYPTO_HYBRID: [DEBUG] CT recv: 3c3d73ceff748a2f...28e9fabdbfecfce0[0m
+[0;32mI (39960) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18507 us, 2961022 cycles[0m
+[0;32mI (39961) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (39963) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (39971) PQC_MAIN: handshake_us=829270 heap after 196268[0m
+[0;32mI (39977) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (39982) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (39991) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (39995) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (40394) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 393094 us, 62894440 cycles[0m
+[0;32mI (40394) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (40410) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13947 us, 2230881 cycles[0m
+[0;32mI (40410) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (40414) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (40424) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (40540) PQC_MAIN: Handshake successful! Session ID: 40358081d72f9cf9...[0m
+[0;32mI (40542) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (40742) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 199188 us, 31869322 cycles[0m
+[0;32mI (40743) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (40744) CRYPTO_HYBRID: [DEBUG] PK sent: ad9646760c17dca8...b1f213d5b073ef90[0m
+[0;32mI (40751) CRYPTO_HYBRID: [DEBUG] CT recv: ca7553a26a19fab0...f09e82397d997e0f[0m
+[0;32mI (40776) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18511 us, 2961674 cycles[0m
+[0;32mI (40776) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (40779) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (40787) PQC_MAIN: handshake_us=355126 heap after 196268[0m
+[0;32mI (40793) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (40798) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (40806) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (40811) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (41209) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 392048 us, 62727070 cycles[0m
+[0;32mI (41209) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (41225) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13949 us, 2231125 cycles[0m
+[0;32mI (41225) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (41229) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (41239) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (41339) PQC_MAIN: Handshake successful! Session ID: b0d44464c2b8cf47...[0m
+[0;32mI (41340) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (41543) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 201689 us, 32269520 cycles[0m
+[0;32mI (41544) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (41545) CRYPTO_HYBRID: [DEBUG] PK sent: c23b2ef170bd5ee0...b53a32a7d9ba2da8[0m
+[0;32mI (41552) CRYPTO_HYBRID: [DEBUG] CT recv: abac91467c7ae40e...01d3f8ae66496679[0m
+[0;32mI (41577) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18512 us, 2961854 cycles[0m
+[0;32mI (41578) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (41580) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (41588) PQC_MAIN: handshake_us=341443 heap after 196268[0m
+[0;32mI (41594) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (41599) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (41608) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (41612) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (42010) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 392759 us, 62840832 cycles[0m
+[0;32mI (42011) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (42027) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 14154 us, 2263787 cycles[0m
+[0;32mI (42027) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (42031) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (42041) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (42572) PQC_MAIN: Handshake successful! Session ID: 6bf8c9f78429e768...[0m
+[0;32mI (42573) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (42775) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 200504 us, 32079830 cycles[0m
+[0;32mI (42776) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (42777) CRYPTO_HYBRID: [DEBUG] PK sent: 993a26a4783994e6...15aa6c1af72b7351[0m
+[0;32mI (42784) CRYPTO_HYBRID: [DEBUG] CT recv: 3891fa0275fcb321...8b10eb45a312c1b3[0m
+[0;32mI (42809) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18711 us, 2993678 cycles[0m
+[0;32mI (42810) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (42812) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (42820) PQC_MAIN: handshake_us=771384 heap after 196268[0m
+[0;32mI (42826) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (42831) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (42840) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (42844) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (43242) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 392122 us, 62738752 cycles[0m
+[0;32mI (43242) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (43258) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13952 us, 2231567 cycles[0m
+[0;32mI (43258) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (43262) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (43272) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (44586) PQC_MAIN: Handshake successful! Session ID: fd22a40c5bd428b4...[0m
+[0;32mI (44588) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (44786) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 196313 us, 31409238 cycles[0m
+[0;32mI (44786) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (44787) CRYPTO_HYBRID: [DEBUG] PK sent: 50c051c2db4d66c5...6288b5d2040ebbf1[0m
+[0;32mI (44794) CRYPTO_HYBRID: [DEBUG] CT recv: c13f7922a63b1b0a...59e6d2c4de04e451[0m
+[0;32mI (44819) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18515 us, 2962242 cycles[0m
+[0;32mI (44820) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (44823) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (44830) PQC_MAIN: handshake_us=1550490 heap after 195936[0m
+[0;32mI (44836) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (44842) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (44850) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (44854) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (45253) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 393370 us, 62938502 cycles[0m
+[0;32mI (45254) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (45270) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 14057 us, 2248343 cycles[0m
+[0;32mI (45270) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (45274) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (45284) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (45837) PQC_MAIN: Handshake successful! Session ID: 562988c550a946f7...[0m
+[0;32mI (45839) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (46044) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 203794 us, 32606292 cycles[0m
+[0;32mI (46045) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (46046) CRYPTO_HYBRID: [DEBUG] PK sent: 7cb4ab502c1006c9...2968932db54b3dc3[0m
+[0;32mI (46052) CRYPTO_HYBRID: [DEBUG] CT recv: dee4af2534a0b951...b8a7cd3fac57d31a[0m
+[0;32mI (46078) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18512 us, 2961816 cycles[0m
+[0;32mI (46078) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (46081) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (46089) PQC_MAIN: handshake_us=797137 heap after 196268[0m
+[0;32mI (46094) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (46100) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (46108) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (46113) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (46511) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 392638 us, 62821382 cycles[0m
+[0;32mI (46511) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (46527) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13951 us, 2231415 cycles[0m
+[0;32mI (46527) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (46531) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (46541) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (47864) PQC_MAIN: Handshake successful! Session ID: 802d042898f9bb3a...[0m
+[0;32mI (47866) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (48071) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 204106 us, 32656234 cycles[0m
+[0;32mI (48072) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (48073) CRYPTO_HYBRID: [DEBUG] PK sent: 55244454d558df52...6ee7a63eb871cda8[0m
+[0;32mI (48080) CRYPTO_HYBRID: [DEBUG] CT recv: 2f0b66eebea04813...edc497b3c339bc05[0m
+[0;32mI (48105) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18505 us, 2960708 cycles[0m
+[0;32mI (48105) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (48108) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (48116) PQC_MAIN: handshake_us=1567027 heap after 195936[0m
+[0;32mI (48122) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (48127) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (48136) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (48140) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (48537) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 391410 us, 62624992 cycles[0m
+[0;32mI (48538) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (48553) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13933 us, 2228527 cycles[0m
+[0;32mI (48553) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (48557) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (48567) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (49911) PQC_MAIN: Handshake successful! Session ID: 005d034644600bc6...[0m
+[0;32mI (49913) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (50112) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 197866 us, 31657788 cycles[0m
+[0;32mI (50112) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (50113) CRYPTO_HYBRID: [DEBUG] PK sent: 5249a01d743782f8...df3a8828344cd883[0m
+[0;32mI (50120) CRYPTO_HYBRID: [DEBUG] CT recv: 47116c62d82c4285...c60f7b4d9719e5bf[0m
+[0;32mI (50146) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18525 us, 2963990 cycles[0m
+[0;32mI (50146) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (50149) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (50157) PQC_MAIN: handshake_us=1581474 heap after 195936[0m
+[0;32mI (50162) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (50168) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (50176) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (50181) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (50581) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 394262 us, 63081250 cycles[0m
+[0;32mI (50581) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (50597) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 14055 us, 2248043 cycles[0m
+[0;32mI (50597) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (50601) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (50611) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (51961) PQC_MAIN: Handshake successful! Session ID: 9ca8edb5e362bbe0...[0m
+[0;32mI (51962) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (52164) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 200022 us, 32002802 cycles[0m
+[0;32mI (52164) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (52165) CRYPTO_HYBRID: [DEBUG] PK sent: 8e113cf6d8aa8945...9a9409df4133fd97[0m
+[0;32mI (52172) CRYPTO_HYBRID: [DEBUG] CT recv: d666f4835ef836a4...5b1a8e2b5bbbb432[0m
+[0;32mI (52198) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18518 us, 2962772 cycles[0m
+[0;32mI (52198) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (52201) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (52209) PQC_MAIN: handshake_us=1589681 heap after 195940[0m
+[0;32mI (52214) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (52220) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (52228) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (52233) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (52630) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 391927 us, 62707600 cycles[0m
+[0;32mI (52631) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (52646) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 14054 us, 2247831 cycles[0m
+[0;32mI (52647) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (52651) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (52660) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (53607) PQC_MAIN: Handshake successful! Session ID: 63e314eed77bcc59...[0m
+[0;32mI (53608) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (53808) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 198647 us, 31782758 cycles[0m
+[0;32mI (53808) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (53810) CRYPTO_HYBRID: [DEBUG] PK sent: 23f6906d131c9791...f4834a17d1aeb222[0m
+[0;32mI (53816) CRYPTO_HYBRID: [DEBUG] CT recv: ee0b6fdc9a203415...1c1e693eef88516e[0m
+[0;32mI (53842) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18509 us, 2961216 cycles[0m
+[0;32mI (53842) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (53845) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (53853) PQC_MAIN: handshake_us=1184411 heap after 196268[0m
+[0;32mI (53858) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (53864) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (53872) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (53877) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (54273) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 390765 us, 62521710 cycles[0m
+[0;32mI (54274) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (54289) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13938 us, 2229369 cycles[0m
+[0;32mI (54289) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (54293) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (54303) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (55645) PQC_MAIN: Handshake successful! Session ID: b386b3639322d17d...[0m
+[0;32mI (55647) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (55848) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 199358 us, 31896566 cycles[0m
+[0;32mI (55848) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (55849) CRYPTO_HYBRID: [DEBUG] PK sent: 0e57340f86a1f6a4...7055a88e70442744[0m
+[0;32mI (55856) CRYPTO_HYBRID: [DEBUG] CT recv: 5c52630a57d03baa...570da1a8b79193b9[0m
+[0;32mI (55881) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18509 us, 2961388 cycles[0m
+[0;32mI (55882) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (55885) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (55892) PQC_MAIN: handshake_us=1581248 heap after 195936[0m
+[0;32mI (55898) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (55904) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (55912) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (55916) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (56314) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 392272 us, 62762742 cycles[0m
+[0;32mI (56315) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (56330) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13944 us, 2230259 cycles[0m
+[0;32mI (56331) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (56335) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (56344) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (57696) PQC_MAIN: Handshake successful! Session ID: cc4ce9b05038165f...[0m
+[0;32mI (57697) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (57900) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 201158 us, 32184574 cycles[0m
+[0;32mI (57900) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (57901) CRYPTO_HYBRID: [DEBUG] PK sent: 57b398642031be69...c4d2c6d5663af661[0m
+[0;32mI (57908) CRYPTO_HYBRID: [DEBUG] CT recv: d97cf60cdb4287ca...d644e5c1346548ff[0m
+[0;32mI (57934) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18513 us, 2962064 cycles[0m
+[0;32mI (57934) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (57937) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (57945) PQC_MAIN: handshake_us=1592294 heap after 196268[0m
+[0;32mI (57950) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (57956) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (57964) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (57969) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (58366) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 391678 us, 62667772 cycles[0m
+[0;32mI (58366) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (58382) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13958 us, 2232477 cycles[0m
+[0;32mI (58382) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (58386) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (58396) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (58472) PQC_MAIN: Handshake successful! Session ID: 77be878991243335...[0m
+[0;32mI (58474) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (58678) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 203400 us, 32543224 cycles[0m
+[0;32mI (58679) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (58680) CRYPTO_HYBRID: [DEBUG] PK sent: f05987a8576c0c0c...2e85c0ca36b46489[0m
+[0;32mI (58687) CRYPTO_HYBRID: [DEBUG] CT recv: 13ddf20ec6c41693...6a199f4f9bcbc067[0m
+[0;32mI (58712) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18524 us, 2963682 cycles[0m
+[0;32mI (58713) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (58716) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (58723) PQC_MAIN: handshake_us=319207 heap after 196268[0m
+[0;32mI (58729) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (58735) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (58743) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (58747) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (59142) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 389046 us, 62246668 cycles[0m
+[0;32mI (59142) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (59158) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13954 us, 2231767 cycles[0m
+[0;32mI (59158) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (59162) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (59172) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (59262) PQC_MAIN: Handshake successful! Session ID: 3c338f7132270347...[0m
+[0;32mI (59263) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (59466) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 201684 us, 32268642 cycles[0m
+[0;32mI (59467) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (59468) CRYPTO_HYBRID: [DEBUG] PK sent: 9f038a9cc292663b...cd1010dba51760e0[0m
+[0;32mI (59474) CRYPTO_HYBRID: [DEBUG] CT recv: 2a3f6eb23babbc79...90c4998b046f7e27[0m
+[0;32mI (59500) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18517 us, 2962586 cycles[0m
+[0;32mI (59500) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (59503) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (59511) PQC_MAIN: handshake_us=330833 heap after 196268[0m
+[0;32mI (59516) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (59522) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (59530) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (59535) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (59932) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 391673 us, 62667054 cycles[0m
+[0;32mI (59933) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (59948) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13953 us, 2231803 cycles[0m
+[0;32mI (59948) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (59952) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (59962) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (60067) PQC_MAIN: Handshake successful! Session ID: 9f38d4232579e22f...[0m
+[0;32mI (60069) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (60269) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 198740 us, 31797770 cycles[0m
+[0;32mI (60270) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (60271) CRYPTO_HYBRID: [DEBUG] PK sent: a8c50c8d54cefb51...83615e8e0086f948[0m
+[0;32mI (60277) CRYPTO_HYBRID: [DEBUG] CT recv: b80239a201ef5a88...b62da4d4fe2a8203[0m
+[0;32mI (60303) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18510 us, 2961544 cycles[0m
+[0;32mI (60303) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (60306) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (60314) PQC_MAIN: handshake_us=343591 heap after 196268[0m
+[0;32mI (60319) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (60325) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (60333) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (60338) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (60735) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 391400 us, 62623378 cycles[0m
+[0;32mI (60735) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (60751) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13952 us, 2231547 cycles[0m
+[0;32mI (60751) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (60755) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (60765) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (60815) PQC_MAIN: Handshake successful! Session ID: ccdb009b7b05cf5e...[0m
+[0;32mI (60816) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (61020) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 202665 us, 32425776 cycles[0m
+[0;32mI (61021) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (61022) CRYPTO_HYBRID: [DEBUG] PK sent: eb276e644212fbb7...e7a055bb6b969d25[0m
+[0;32mI (61029) CRYPTO_HYBRID: [DEBUG] CT recv: 026cd30c63c47909...0387591da7a40c68[0m
+[0;32mI (61054) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18506 us, 2960888 cycles[0m
+[0;32mI (61054) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (61057) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (61065) PQC_MAIN: handshake_us=292125 heap after 196276[0m
+[0;32mI (61070) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (61076) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (61084) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (61089) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (61487) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 392649 us, 62823126 cycles[0m
+[0;32mI (61488) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (61503) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13946 us, 2230681 cycles[0m
+[0;32mI (61504) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (61508) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (61517) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (61616) PQC_MAIN: Handshake successful! Session ID: 102f79a3a0ec2fae...[0m
+[0;32mI (61617) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (61822) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 203623 us, 32578970 cycles[0m
+[0;32mI (61823) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (61824) CRYPTO_HYBRID: [DEBUG] PK sent: dd6907ec417dd1f3...e8c80d9a17a1add1[0m
+[0;32mI (61831) CRYPTO_HYBRID: [DEBUG] CT recv: d6499db77cd07dcc...2300a1cc17c8f4e5[0m
+[0;32mI (61856) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18506 us, 2960962 cycles[0m
+[0;32mI (61856) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (61859) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (61867) PQC_MAIN: handshake_us=341844 heap after 196276[0m
+[0;32mI (61873) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (61878) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (61887) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (61891) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (62288) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 391533 us, 62644662 cycles[0m
+[0;32mI (62289) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (62304) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13956 us, 2232155 cycles[0m
+[0;32mI (62305) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (62309) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (62318) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (63035) PQC_MAIN: Handshake successful! Session ID: ed273edfd8f259e9...[0m
+[0;32mI (63037) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (63239) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 201282 us, 32204496 cycles[0m
+[0;32mI (63240) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (63241) CRYPTO_HYBRID: [DEBUG] PK sent: 3bc0a45969904cfa...99c3995fd2143907[0m
+[0;32mI (63248) CRYPTO_HYBRID: [DEBUG] CT recv: 8edbfd6cee250667...8bd3558173c9594b[0m
+[0;32mI (63273) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18518 us, 2962806 cycles[0m
+[0;32mI (63274) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (63276) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (63284) PQC_MAIN: handshake_us=957970 heap after 196276[0m
+[0;32mI (63290) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (63295) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (63304) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (63308) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (63707) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 393144 us, 62902462 cycles[0m
+[0;32mI (63707) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (63723) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13946 us, 2230565 cycles[0m
+[0;32mI (63723) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (63727) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (63737) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (65068) PQC_MAIN: Handshake successful! Session ID: 887b3c6862eef1ca...[0m
+[0;32mI (65069) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (65272) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 202106 us, 32336218 cycles[0m
+[0;32mI (65273) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (65274) CRYPTO_HYBRID: [DEBUG] PK sent: 82c2046a88ad2340...9efb4be3d19b4e03[0m
+[0;32mI (65281) CRYPTO_HYBRID: [DEBUG] CT recv: e3f2cb90580bc245...dd00f88378fa9b58[0m
+[0;32mI (65306) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18515 us, 2962372 cycles[0m
+[0;32mI (65307) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (65309) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (65317) PQC_MAIN: handshake_us=1572216 heap after 195944[0m
+[0;32mI (65323) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (65329) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (65337) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (65341) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (65740) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 393402 us, 62943690 cycles[0m
+[0;32mI (65741) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (65756) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 14051 us, 2247427 cycles[0m
+[0;32mI (65757) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (65761) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (65771) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (67116) PQC_MAIN: Handshake successful! Session ID: cbb3e654bc4dbf54...[0m
+[0;32mI (67118) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (67319) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 200214 us, 32033322 cycles[0m
+[0;32mI (67320) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (67321) CRYPTO_HYBRID: [DEBUG] PK sent: 52807e71c7ce4290...3aa5164ce4723df0[0m
+[0;32mI (67327) CRYPTO_HYBRID: [DEBUG] CT recv: c5c59ae97e64b595...6744edc23d661f38[0m
+[0;32mI (67353) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18512 us, 2961770 cycles[0m
+[0;32mI (67353) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (67356) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (67364) PQC_MAIN: handshake_us=1585313 heap after 195944[0m
+[0;32mI (67369) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (67375) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (67383) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (67388) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (67787) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 393894 us, 63022400 cycles[0m
+[0;32mI (67788) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (67804) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 14068 us, 2250099 cycles[0m
+[0;32mI (67804) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (67808) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (67818) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (69167) PQC_MAIN: Handshake successful! Session ID: eb5a5d3f2a2a0479...[0m
+[0;32mI (69168) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (69373) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 203465 us, 32553612 cycles[0m
+[0;32mI (69373) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (69374) CRYPTO_HYBRID: [DEBUG] PK sent: e583685e70a32416...fc073fafb9962530[0m
+[0;32mI (69381) CRYPTO_HYBRID: [DEBUG] CT recv: 376315df05da1f0f...fede08bfe6242fbf[0m
+[0;32mI (69407) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18508 us, 2961132 cycles[0m
+[0;32mI (69407) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (69410) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (69418) PQC_MAIN: handshake_us=1591934 heap after 195944[0m
+[0;32mI (69423) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (69429) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (69437) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (69442) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (69841) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 393584 us, 62972808 cycles[0m
+[0;32mI (69841) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (69857) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 14138 us, 2261407 cycles[0m
+[0;32mI (69857) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (69861) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (69871) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (71214) PQC_MAIN: Handshake successful! Session ID: 54d6deb62cd6ae84...[0m
+[0;32mI (71216) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (71419) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 201718 us, 32274140 cycles[0m
+[0;32mI (71419) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (71420) CRYPTO_HYBRID: [DEBUG] PK sent: 81757950db423db1...7a3ac859b0c141d3[0m
+[0;32mI (71427) CRYPTO_HYBRID: [DEBUG] CT recv: 5965ca406ab3d4b4...01bd29d986278608[0m
+[0;32mI (71453) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18719 us, 2994884 cycles[0m
+[0;32mI (71453) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (71456) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (71464) PQC_MAIN: handshake_us=1584514 heap after 195932[0m
+[0;32mI (71469) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (71475) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (71483) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (71488) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (71885) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 391706 us, 62672320 cycles[0m
+[0;32mI (71885) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (71901) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13952 us, 2231497 cycles[0m
+[0;32mI (71901) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (71905) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (71915) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (73259) PQC_MAIN: Handshake successful! Session ID: d4656abae023d541...[0m
+[0;32mI (73261) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (73463) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 201413 us, 32225282 cycles[0m
+[0;32mI (73464) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (73465) CRYPTO_HYBRID: [DEBUG] PK sent: 3c1a1cccdb9e2152...812270132b2d628b[0m
+[0;32mI (73472) CRYPTO_HYBRID: [DEBUG] CT recv: 309f661f46e0e968...c89ebf77d97e0d2c[0m
+[0;32mI (73497) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18507 us, 2961144 cycles[0m
+[0;32mI (73497) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (73500) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (73508) PQC_MAIN: handshake_us=1584935 heap after 196276[0m
+[0;32mI (73514) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (73519) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (73528) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (73532) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (73929) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 391581 us, 62652170 cycles[0m
+[0;32mI (73930) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (73945) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13955 us, 2231987 cycles[0m
+[0;32mI (73946) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (73950) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (73959) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (74067) PQC_MAIN: Handshake successful! Session ID: 36e8dc761b99f001...[0m
+[0;32mI (74068) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (74269) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 199116 us, 31857682 cycles[0m
+[0;32mI (74269) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (74270) CRYPTO_HYBRID: [DEBUG] PK sent: 98e455a4a0564ce5...969cb2c81a5973c8[0m
+[0;32mI (74277) CRYPTO_HYBRID: [DEBUG] CT recv: 1b5b652249ed1a47...ae7e11471380c29e[0m
+[0;32mI (74302) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18518 us, 2962766 cycles[0m
+[0;32mI (74303) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (74306) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (74314) PQC_MAIN: handshake_us=346071 heap after 196276[0m
+[0;32mI (74319) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (74325) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (74333) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (74337) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (74736) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 392739 us, 62837666 cycles[0m
+[0;32mI (74736) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (74752) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13955 us, 2232065 cycles[0m
+[0;32mI (74752) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (74756) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (74766) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (74833) PQC_MAIN: Handshake successful! Session ID: 9f5ebaad6e2dabf2...[0m
+[0;32mI (74835) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (75035) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 198983 us, 31836624 cycles[0m
+[0;32mI (75035) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (75036) CRYPTO_HYBRID: [DEBUG] PK sent: 0af73afe9664b0e5...63159755644e25a3[0m
+[0;32mI (75043) CRYPTO_HYBRID: [DEBUG] CT recv: d28e0bda48f2682a...6181b06eaeca1643[0m
+[0;32mI (75069) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18516 us, 2962500 cycles[0m
+[0;32mI (75069) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (75072) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (75080) PQC_MAIN: handshake_us=305815 heap after 196276[0m
+[0;32mI (75085) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (75091) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (75099) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (75104) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (75501) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 391833 us, 62692618 cycles[0m
+[0;32mI (75501) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (75517) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13953 us, 2231637 cycles[0m
+[0;32mI (75517) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (75521) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (75531) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m
+[0;32mI (76143) PQC_MAIN: Handshake successful! Session ID: 3928e3f0584038fc...[0m
+[0;32mI (76145) CRYPTO_HYBRID: Server response HMAC verification successful![0m
+[0;32mI (76345) CRYPTO_HYBRID: BENCHMARK [X25519 Shared Secret]: 199315 us, 31889732 cycles[0m
+[0;32mI (76346) CRYPTO_HYBRID: X25519 shared secret derived[0m
+[0;32mI (76347) CRYPTO_HYBRID: [DEBUG] PK sent: fc826b10a1706667...aa194185b437ebf1[0m
+[0;32mI (76354) CRYPTO_HYBRID: [DEBUG] CT recv: 6791448eda0d7723...3228d7e89e5adc34[0m
+[0;32mI (76379) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Decap]: 18509 us, 2961348 cycles[0m
+[0;32mI (76379) CRYPTO_HYBRID: ML-KEM-768 shared secret derived and appended[0m
+[0;32mI (76382) CRYPTO_HYBRID: Session key derived via HKDF-SHA256 (mode: Hybrid (X25519 + ML-KEM-768))[0m
+[0;32mI (76390) PQC_MAIN: handshake_us=850870 heap after 196276[0m
+[0;32mI (76396) PQC_MAIN: Key rotation threshold reached. Rotating keys...[0m
+[0;33mW (76401) PQC_MAIN: Too many telemetry errors or session expired. Initiating re-handshake...[0m
+[0;32mI (76409) CRYPTO_HYBRID: All key material zeroized[0m
+[1;31mE (76414) task_wdt: esp_task_wdt_reset(707): task not found[0m
+[0;32mI (76811) CRYPTO_HYBRID: BENCHMARK [X25519 Keygen]: 391711 us, 62673080 cycles[0m
+[0;32mI (76812) CRYPTO_HYBRID: X25519 keypair generated (32-byte pubkey)[0m
+[0;32mI (76827) CRYPTO_HYBRID: BENCHMARK [ML-KEM-768 Keygen]: 13952 us, 2231583 cycles[0m
+[0;32mI (76828) CRYPTO_HYBRID: ML-KEM-768 keypair generated (pk=1184 bytes, sk=2400 bytes)[0m
+[0;32mI (76832) CRYPTO_HYBRID: Packed 1249 bytes of public keys (including 32B HMAC) for mode Hybrid (X25519 + ML-KEM-768)[0m
+[0;32mI (76841) PQC_MAIN: Sending handshake to http://192.168.43.74:8443/handshake (1249 bytes)...[0m

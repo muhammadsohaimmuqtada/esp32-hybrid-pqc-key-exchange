@@ -1,6 +1,6 @@
 # Memory Footprint and Allocation Analysis
 
-This document provides empirical evidence and breakdown of static flash, SRAM data/BSS, RTOS stack, and dynamic heap consumption for the ML-KEM-768 + X25519 hybrid PQC implementation on the ESP32-D0WD-V3.
+This document provides empirical evidence and breakdown of static flash, SRAM data/BSS, RTOS stack, and dynamic heap consumption for the ML-KEM-768 + X25519 hybrid PQC implementation on the ESP32-D0WD-V3 @ 160 MHz.
 
 ## 1. Static Binary Footprint (Xtensa ELF Analysis)
 Extracted via `xtensa-esp32-elf-size -A firmware/build/esp32_hybrid_pqc.elf`:
@@ -32,8 +32,8 @@ Extracted via `xtensa-esp32-elf-size -A firmware/build/esp32_hybrid_pqc.elf`:
 | **Total `libmlkem768`** | **13,017 B (~12.7 KB)** | **0 B** | **0 B** | **Zero static RAM footprint** |
 
 ## 2. Stack Allocation
-- Dedicated RTOS Task Stack (`pqc_task`): **16 KB (16,384 bytes)**
-- High water mark observed during nested NTT and Keccak operations: ~9.2 KB peak, leaving >6.8 KB safety margin against stack overflow.
+- Dedicated RTOS Task Stack (`pqc_task`): **32 KB (32,768 bytes)** (configured in `main.c` line 462 via `xTaskCreatePinnedToCore(..., 32768, ...)`).
+- High water mark observed during nested NTT and Keccak operations: ~9.2 KB peak, leaving >22.8 KB safety margin against stack overflow.
 
 ## 3. Dynamic Heap Footprint
 Measured on real hardware via FreeRTOS `esp_get_free_heap_size()`:

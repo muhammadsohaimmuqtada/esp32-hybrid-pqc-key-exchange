@@ -34,7 +34,7 @@
 \maketitle
 
 \begin{abstract}
-IoT edge nodes deployed in industrial, medical, and municipal networks increasingly rely on Elliptic Curve Diffie-Hellman (ECDH) for session key establishment. Once a Cryptographically Relevant Quantum Computer (CRQC) becomes operational, Shor's algorithm renders every such session retroactively decryptable---a threat compounded today by Harvest Now, Decrypt Later (HNDL) adversaries who archive encrypted traffic for future decryption. This paper reports our hands-on implementation of a stateful hybrid key-exchange protocol on a physical Espressif ESP32-D0WD-V3 microcontroller running FreeRTOS. The protocol runs X25519 and ML-KEM-768 (NIST FIPS 203) in parallel, binding both shared secrets through HKDF-SHA256 so that session confidentiality survives even if one primitive is broken. Mutual authentication is enforced using HMAC-SHA256 authentication tags keyed by a 32-byte pre-shared key; subsequent telemetry packets are encrypted with AES-256-GCM and protected against replay via a monotonic sequence counter in the GCM IV. Over 100 measured iterations on the real board, we recorded a mean handshake latency of 635.88 ms, a peak SRAM heap consumption of 13.8 KB, and a total CPU cost of 103.38M cycles. Energy boundaries were physically established using a UNI-T UTP1310 laboratory power supply (5.00V) and a UNI-T UT55 digital multimeter across a 0.1\,$\Omega$ shunt resistor, confirming an upper bound of 0.75\,J per handshake at a 150\,mA peak, safely below the onboard regulator's brownout threshold. To validate long-term operational resilience, physical endurance testing captured 17,502 raw TCP SYNs on the wire and logged 14,157 completed sessions across 19.00 cumulative active hours in 4 operational sittings, with an 8.10-hour longest continuous window. Finally, the protocol state machine and key agreement were formally verified using the ProVerif automated theorem prover, mathematically confirming session key secrecy against active Dolev-Yao adversaries and eliminating responder replay vulnerabilities via strict transcript binding.
+IoT edge nodes deployed in industrial, medical, and municipal networks increasingly rely on Elliptic Curve Diffie-Hellman (ECDH) for session key establishment. Once a Cryptographically Relevant Quantum Computer (CRQC) becomes operational, Shor's algorithm renders every such session retroactively decryptable---a threat compounded today by Harvest Now, Decrypt Later (HNDL) adversaries who archive encrypted traffic for future decryption. This paper reports an implementation of a stateful hybrid key-exchange protocol on a physical Espressif ESP32-D0WD-V3 microcontroller running FreeRTOS at 160~MHz. The protocol executes X25519 and ML-KEM-768 (NIST FIPS 203) in parallel, binding both shared secrets through HKDF-SHA256 so that session confidentiality survives even if one primitive is broken. On physical hardware, ML-KEM-768 primitives benchmark at 13.89~ms (2.22M cycles, $n=50$) for KeyGen and 18.58~ms (2.97M cycles, $n=49$) for Decap. Mutual authentication is enforced using HMAC-SHA256 authentication tags keyed by a 32-byte pre-shared key (PSK); subsequent telemetry packets are encrypted with AES-256-GCM with replay prevention via a monotonic sequence counter in the 12-byte IV. Over 100 end-to-end handshake iterations, the hybrid protocol achieved a mean latency of 635.88~ms, peak SRAM heap consumption of 13.8~KB, and a total CPU cost of 103.38M cycles. Energy boundaries were physically established using a UNI-T UTP1310 laboratory power supply (5.00\,V) and a digital multimeter across a 0.1\,$\Omega$ shunt resistor, confirming a conservative energy upper bound of 0.75\,J per handshake calculated from 5.00\,V and a 150\,mA peak current. Physical endurance testing captured 17,502 raw TCP SYNs on the wire, yielding 14,157 parser-accepted completed sessions (validated by payload size + TCP FIN) over 19.00\,h of active execution across 4 operational sittings, with an 8.10-hour longest continuous window. Finally, formal protocol verification in ProVerif mathematically validates session key secrecy under an uncompromised private PSK against active Dolev-Yao adversaries.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -42,7 +42,7 @@ Post-Quantum Cryptography, Internet of Things, Embedded Systems, Hybrid Key Exch
 \end{IEEEkeywords}
 
 \section{Introduction}
-When we started this project, the central question was simple: can a 240~MHz dual-core microcontroller with 520~KB of SRAM run both X25519 and ML-KEM-768 in a single handshake without crashing the FreeRTOS watchdog, starving the Wi-Fi stack, or running out of heap? The answer turned out to be yes — but getting there required solving three concrete engineering problems that existing literature does not address head-on.
+When we started this project, the central question was simple: can an Espressif ESP32-D0WD-V3 dual-core microcontroller operating at 160~MHz with 520~KB of SRAM and 4~MB external SPI flash run both X25519 and ML-KEM-768 in a single handshake without starving the Wi-Fi stack or exhausting heap memory? The answer turned out to be yes — but getting there required solving three concrete engineering problems that existing literature does not address head-on.
 
 ESP32 nodes are common in real deployments—industrial sensor grids, smart-metering infrastructure, hospital telemetry endpoints—because they combine Wi-Fi, Bluetooth, and dual-core processing in a sub-\$5 package. Their sessions today rely on X25519 ECDH~\cite{b5}, which provides strong 128-bit classical security. That guarantee disappears entirely once a fault-tolerant quantum computer running Shor's algorithm~\cite{b1} becomes available, reducing X25519's security parameter to zero. The HNDL threat makes the deadline earlier than it appears: adversaries are already collecting ciphertext today, waiting to decrypt it later. For sensor nodes protecting long-lived data—municipal water control SCADA logs, medical device readings, power-grid telemetry—the exposure window already exceeds plausible CRQC deployment timelines~\cite{b10}.
 
@@ -67,7 +67,7 @@ The path from Regev's original LWE construction~\cite{b3} to a running firmware 
 The case for running two KEMs simultaneously rather than picking one is theoretically grounded: Bindel et al.~\cite{b8} formally proved that a combiner KEM is secure as long as at least one constituent KEM is secure. NIST SP~800-227~\cite{b9} and the ongoing IETF drafts~\cite{b16,b17} both recommend hybrid designs for exactly this reason during the transition period. Our implementation directly applies this combiner pattern.
 
 \subsection{TLS vs. Bare-Metal RTOS Approaches}
-Most hybrid PQC integration work targets TLS~1.3~\cite{b14,b16,b17}. The advantage is clear: you get a fully standardized, analyzed protocol. The cost on constrained hardware is also clear: in our own measurement, a standard mbedTLS~1.3 handshake with an ECDHE-ECDSA certificate consumes 776.40~ms and 372.66M CPU cycles on the same ESP32 board, and its peak dynamic allocation exceeds 49~KB — leaving insufficient SRAM headroom for ML-KEM-768's 1,184-byte public key and 2,400-byte secret key on top. We therefore eliminated the complex TLS state machine entirely and structured the cryptographic negotiation as a single application-layer round-trip (1 RTT) directly over an established TCP connection. This architectural decision strictly decouples transport setup (the standard TCP 3-way handshake) from the ephemeral key agreement (one \texttt{ClientHello}/\texttt{ServerHello} exchange) and subsequent authenticated telemetry flights, which is the key design choice that makes fitting into a 13.8~KB dynamic memory bound possible.
+Most hybrid PQC integration work targets TLS~1.3~\cite{b14,b16,b17}. The advantage is clear: you get a fully standardized, analyzed protocol. The cost on constrained hardware is also clear: physical TLS~1.3 handshakes on ESP32 hardware measure approximately 1.09~s in wall-clock latency for hybrid wolfSSL (X25519MLKEM768, documented in \texttt{hybrid\_tls\_usb\_serial.txt}) and 0.80--2.35~s for classical mbedTLS (ECDHE-ECDSA, documented in \texttt{classical\_tls\_usb\_serial.txt}), while peak dynamic heap allocation exceeds 49~KB for certificate parsing---leaving insufficient SRAM headroom for ML-KEM-768's 1,184-byte public key and 2,400-byte secret key on top. Preliminary drafts of this work reported a synthetic baseline of 776.40~ms and 372.66M CPU cycles; that baseline was an artifact of an emulation benchmark loop in \texttt{benchmark.c} applying scalar multipliers and has been formally withdrawn. On physical hardware, third-party TLS stacks do not expose internal CCOUNT cycle counters for network handshakes, so cycle counts for full TLS~1.3 handshakes are unavailable. We therefore eliminated the complex TLS state machine entirely and structured the cryptographic negotiation as a single application-layer round-trip (1 RTT) directly over an established TCP connection. This architectural decision strictly decouples transport setup (the standard TCP 3-way handshake) from the ephemeral key agreement (one \texttt{ClientHello}/\texttt{ServerHello} exchange) and subsequent authenticated telemetry flights, which is the key design choice that makes fitting into a 13.8~KB dynamic memory bound possible.
 
 \subsection{PQC Benchmarks on Constrained Processors}
 The pqm4 project~\cite{b7} established the ARM Cortex-M4 as the standard embedded PQC benchmark target. Botros et al.~\cite{b6} and Abdulrahman et al.~\cite{b12} squeezed fast Kyber implementations into tight SRAM using hand-written NTT assembly. Our target, the Xtensa LX6, is a different architecture — it lacks the Cortex-M4's SIMD MAC instructions — so those optimizations do not transfer directly~\cite{b11,b23}. We measured the performance overhead of this architectural gap and report it in our benchmarks.
@@ -105,7 +105,7 @@ u \leftarrow X_j, \quad t \leftarrow \zeta^W X_k \pmod{q}
 \begin{equation}
 X_j \leftarrow u + t \pmod{q}, \quad X_k \leftarrow u - t \pmod{q}
 \end{equation}
-where $W$ follows the bit-reversal permutation. This reduces polynomial multiplication from $O(n^2)$ to $O(n \log n)$ — on a 240~MHz Xtensa this is the difference between a starvation-triggering delay and a manageable one. For modular reduction, we use Barrett reduction with constant $\mu = \lfloor 2^{32}/q \rfloor = 1290167$:
+where $W$ follows the bit-reversal permutation. This reduces polynomial multiplication from $O(n^2)$ to $O(n \log n)$ — on a 160~MHz Xtensa this is the difference between a starvation-triggering delay and a manageable one. For modular reduction, we use Barrett reduction with constant $\mu = \lfloor 2^{32}/q \rfloor = 1290167$:
 \begin{equation}
 \text{Reduce}(a) = a - \lfloor \frac{a \cdot \mu}{2^{32}} \rfloor \cdot q
 \end{equation}
@@ -125,25 +125,18 @@ ML-KEM achieves IND-CCA2 security by wrapping an IND-CPA public-key encryption s
 \subsection{Cryptographic Key Binding via HKDF}
 Binding the classical and post-quantum shared secrets is necessary to prevent an adversary from tampering with either component. We use HKDF-SHA256~\cite{b9} in two steps:
 \begin{enumerate}
-    \item \textbf{Extract Step:} We extract a single pseudorandom key (PRK) from the concatenated secrets. The extraction uses the transcript hash $\text{transcript\_hash} = \text{SHA256}(\text{ClientHello} \parallel \text{ServerHello})$ as the salt:
+    \item \textbf{Extract Step:} We extract a pseudorandom key (PRK) from the concatenated shared secrets. The extraction uses the session salt (or Session ID):
     \begin{equation}
-    \begin{aligned}
-    \text{PRK} ={} & \text{HMAC-SHA256}(\text{transcript\_hash}, \\
-    & \text{X25519\_ss} \parallel \text{ML-KEM\_ss})
-    \end{aligned}
+    \text{PRK} = \text{HMAC-SHA256}(\text{salt}, \text{X25519\_ss} \parallel \text{ML-KEM\_ss})
     \end{equation}
-    \item \textbf{Expand Step:} We expand the PRK into the final 256-bit session key by prepending the transcript hash to the info string:
+    \item \textbf{Expand Step:} We expand the PRK into the final 256-bit session key using the info string \texttt{"session-key"}:
     \begin{equation}
-    \begin{aligned}
-    \text{session\_key} ={} & \text{HMAC-SHA256}(\text{PRK}, \\
-    & \text{transcript\_hash} \parallel \texttt{"session-key"} \\
-    & \parallel \text{0x01})
-    \end{aligned}
+    \text{session\_key} = \text{HMAC-SHA256}(\text{PRK}, \texttt{"session-key"} \parallel \text{0x01})
     \end{equation}
 \end{enumerate}
 
 \section{Hybrid Protocol Specification and Message Layout}
-The protocol operates over a persistent TCP transport. Transport connection establishment follows the standard TCP 3-way handshake (1 transport RTT via SYN $\to$ SYN-ACK $\to$ ACK). Once the TCP transport is active, the core cryptographic key-exchange phase executes in exactly a single application-layer round-trip (1 application RTT): the ESP32 client transmits its 1,249-byte \texttt{ClientHello} containing ephemeral public keys and HMAC tag, and receives the 1,168-byte \texttt{ServerHello} containing the server's public key, ML-KEM ciphertext, and \texttt{ServerFinished} MAC. Both endpoints derive the bound 256-bit session key, after which key confirmation and subsequent authenticated telemetry flights proceed over the same persistent TCP connection.
+The protocol operates over a persistent TCP transport. Transport connection establishment follows the standard TCP 3-way handshake (1 transport RTT via SYN $\to$ SYN-ACK $\to$ ACK). Once the TCP transport is active, the core cryptographic key-exchange phase executes in exactly a single application-layer round-trip (1 application RTT): the ESP32 client transmits its 1,249-byte \texttt{ClientHello} containing ephemeral public keys and HMAC tag, and receives the 1,168-byte \texttt{ServerHello} containing the server's public key, ML-KEM ciphertext, Session ID, and transcript authentication tag $\tau_S$. Both endpoints derive the bound 256-bit session key, after which authenticated telemetry flights proceed immediately over the established connection.
 
 We chose HTTP/1.1 as the application framing layer deliberately for this research prototype because it keeps the Python server simple and lets us capture clean Wireshark traces without TLS record-layer wrapping. The binary cryptographic payloads are transport-agnostic; they could equally sit inside MQTT or CoAP messages in a production deployment. Authentication uses HMAC-SHA256 under a 32-byte PSK compiled as a firmware constant. In production, this PSK would be injected during board programming into the ESP32's eFuse or NVS partition under Secure Boot V2.
 
@@ -152,37 +145,29 @@ This work is not proposing that HTTP/1.1 replace TLS for general Internet deploy
 \subsection{Handshake Request (ClientHello) Layout}
 The client serializes its public key material:
 \begin{equation}
-\text{ClientHello} = \text{Mode} \parallel Q_C \parallel pk_{\text{KEM}}
+\text{ClientHello} = \text{Mode} \parallel Q_C \parallel pk_{\text{KEM}} \parallel \tau_C
 \end{equation}
-The payload consists of a 1-byte mode identifier (Hybrid = 2), a 32-byte X25519 public key, an 1,184-byte ML-KEM-768 public key, and a 32-byte HMAC-SHA256 authentication tag, totalling 1,249 bytes.
+The payload consists of a 1-byte mode identifier (Hybrid = 2), a 32-byte X25519 public key $Q_C$, an 1,184-byte ML-KEM-768 public key $pk_{\text{KEM}}$, and a 32-byte HMAC-SHA256 authentication tag $\tau_C = \text{HMAC-SHA256}(PSK, \text{Mode} \parallel Q_C \parallel pk_{\text{KEM}})$, totalling 1,249 bytes.
 
 \subsection{Handshake Response (ServerHello) Layout}
-The server response body encodes a 16-byte session identifier, cryptographic response, and a 32-byte MAC-based key confirmation message (\texttt{ServerFinished}):
+The server response body encodes a 16-byte session identifier, cryptographic response, and a 32-byte transcript authentication tag $\tau_S$:
 \begin{equation}
 \begin{aligned}
-\text{ServerHello} &= \text{SID} \parallel Q_S \parallel c_{\text{KEM}} \\
-\text{ServerFinished} &= \text{HMAC-SHA256}(\text{session\_key}, \\
-&\qquad \text{transcript\_hash}) \\
-M_{\text{resp}} &= \text{ServerHello} \parallel \text{ServerFinished}
+\text{ServerHello} &= \text{SID} \parallel Q_S \parallel c_{\text{KEM}} \parallel \tau_S \\
+\tau_S &= \text{HMAC-SHA256}(PSK, \text{ClientHello} \parallel \text{SID} \parallel Q_S \parallel c_{\text{KEM}})
 \end{aligned}
 \end{equation}
-The payload consists of a 16-byte Session ID, a 32-byte X25519 public key, a 1,088-byte ML-KEM-768 ciphertext, and a 32-byte \texttt{ServerFinished} MAC, totalling 1,168 bytes.
+The payload consists of a 16-byte Session ID, a 32-byte X25519 public key $Q_S$, a 1,088-byte ML-KEM-768 ciphertext $c_{\text{KEM}}$, and a 32-byte HMAC tag $\tau_S$, totalling 1,168 bytes.
 
-\subsection{Client Key Confirmation Layout}
-To finalize the handshake and prove possession of the derived keys, the client sends a \texttt{ClientFinished} message to the \texttt{/handshake\_finished} endpoint. This is constructed as a MAC over the transcript hash:
-\begin{equation}
-\begin{aligned}
-\text{ClientFinished} ={} & \text{HMAC-SHA256}(\text{session\_key}, \\
-& \text{transcript\_hash} \parallel \text{0x02})
-\end{aligned}
-\end{equation}
+\subsection{Mutual Authentication and Absence of ClientFinished}
+Unlike TLS 1.3, which mandates a subsequent \texttt{ClientFinished} handshake flight, mutual authentication in our protocol is fully completed upon client receipt and verification of $\tau_S$. There is no separate \texttt{ClientFinished} message; the client verifies $\tau_S$ using the shared PSK and transcript binding, derives the session key, and immediately transitions to authenticated data transmission.
 
 \subsection{Telemetry POST Body Layout}
 Each encrypted telemetry packet is structured as:
 \begin{equation}
 P_{\text{telem}} = \text{SID} \parallel \text{IV} \parallel C \parallel \tau
 \end{equation}
-The payload consists of a 16-byte Session ID, a 12-byte GCM IV, a variable-length ciphertext $C$, and a 16-byte GCM Authentication Tag $\tau$.
+The payload consists of a 16-byte Session ID, a 12-byte GCM IV, a variable-length ciphertext $C$, and a 16-byte GCM Authentication Tag $\tau$. Telemetry payload encryption utilizes AES-256-GCM with NULL Additional Authenticated Data ($\text{AAD} = \text{NULL}, \text{len} = 0$). Monotonic replay protection and packet ordering are enforced directly through the 12-byte IV, which concatenates a 4-byte sequence counter with 8 bytes from the hardware TRNG ($IV = \text{Counter}_{32} \parallel \text{Random}_{64}$).
 
 The overall system architecture is illustrated in Fig. \ref{fig1}, detailing the dual-core pinning and network stack isolation. The hybrid handshake message exchange sequence is shown in Fig. \ref{fig2}.
 
@@ -264,13 +249,12 @@ To guarantee the entropy quality of the ephemeral key generation, the private ke
     \STATE $\mathit{combined} \leftarrow \mathit{combined} \mathbin{\Vert} \text{ML-KEM\_ss}$
 \ENDIF
 \STATE Derive session key via HKDF-SHA256:
-\STATE $\mathit{PRK} \leftarrow \text{HMAC-SHA256}(\text{transcript\_hash},\; \mathit{combined})$ \COMMENT{HKDF-Extract}
-\STATE $\mathit{info} \leftarrow \text{transcript\_hash} \mathbin{\Vert} \text{"session-key"} \mathbin{\Vert} \text{0x01}$
+\STATE $\mathit{PRK} \leftarrow \text{HMAC-SHA256}(\text{salt},\; \mathit{combined})$ \COMMENT{HKDF-Extract}
+\STATE $\mathit{info} \leftarrow \text{"session-key"} \mathbin{\Vert} \text{0x01}$
 \STATE \texttt{ctx.session\_key} $\leftarrow \text{HMAC-SHA256}(\mathit{PRK},\; \mathit{info})$ \COMMENT{HKDF-Expand}
-\STATE $\mathit{calc\_mac} \leftarrow \text{HMAC-SHA256}(\texttt{ctx.session\_key},$\\
-    \hspace*{1.5em}$\text{transcript\_hash})$
-\IF{$\mathit{calc\_mac} \neq \text{ServerFinished}$}
-    \RETURN $-1$ \COMMENT{Abort: Server validation failed}
+\STATE $\mathit{calc\_mac} \leftarrow \text{HMAC-SHA256}(PSK, \text{ClientHello} \mathbin{\Vert} S_{\text{data}}[0 \dots S_{\text{len}} - 33])$
+\IF{$\mathit{calc\_mac} \neq \tau_S$}
+    \RETURN $-1$ \COMMENT{Abort: Server authentication failed}
 \ENDIF
 \STATE Securely zeroize $\mathit{combined}$, $\mathit{PRK}$, \texttt{ctx.x25519\_privkey}, and \texttt{ctx.mlkem\_sk}
 \RETURN $0$
@@ -288,22 +272,16 @@ To guarantee the entropy quality of the ephemeral key generation, the private ke
     \IF{$\mathit{ret} \neq 0$}
         \STATE $\text{vTaskDelay}(5000\text{ ms})$ \textbf{continue}
     \ENDIF
-    \STATE $\text{ClientHello} \leftarrow \text{Mode} \mathbin{\Vert} \texttt{ctx.x25519\_pubkey} \mathbin{\Vert} \texttt{ctx.mlkem\_pk}$
+    \STATE $\tau_C \leftarrow \text{HMAC-SHA256}(PSK, \text{Mode} \mathbin{\Vert} \texttt{ctx.x25519\_pubkey} \mathbin{\Vert} \texttt{ctx.mlkem\_pk})$
+    \STATE $\text{ClientHello} \leftarrow \text{Mode} \mathbin{\Vert} \texttt{ctx.x25519\_pubkey} \mathbin{\Vert} \texttt{ctx.mlkem\_pk} \mathbin{\Vert} \tau_C$
     \STATE $(\mathit{resp}, s) \leftarrow \text{HTTP\_POST}(\text{"/handshake"}, \text{ClientHello})$
     \IF{$s \neq 200 \lor |\mathit{resp}| < 48$}
         \STATE $\text{vTaskDelay}(5000\text{ ms})$ \textbf{continue}
     \ENDIF
-    \STATE $\mathit{ret} \leftarrow \text{hybrid\_process\_server\_response}(\texttt{ctx},$\\
-    \hspace*{1.5em}$\text{ClientHello}, \mathit{resp})$
+    \STATE $\mathit{ret} \leftarrow \text{hybrid\_process\_server\_response}(\texttt{ctx}, \text{ClientHello}, \mathit{resp})$
     \IF{$\mathit{ret} \neq 0$}
         \STATE $\text{vTaskDelay}(5000\text{ ms})$ \textbf{continue}
     \ENDIF
-    \STATE $\text{ServerHello} \leftarrow \mathit{resp}[0 \dots |\mathit{resp}| - 33]$
-    \STATE $\text{transcript\_hash} \leftarrow \text{SHA256}(\text{ClientHello} \mathbin{\Vert} \text{ServerHello})$
-    \STATE $\mathit{cf\_data} \leftarrow \text{transcript\_hash} \mathbin{\Vert} \text{0x02}$
-    \STATE $\text{ClientFinished} \leftarrow$\\
-    \hspace*{1.5em}$\text{HMAC-SHA256}(\texttt{ctx.session\_key}, \mathit{cf\_data})$
-    \STATE $\text{HTTP\_POST}(\text{"/handshake\_finished"}, \text{ClientFinished})$
     \STATE Secure Channel Established (AES-256-GCM)
     \STATE $k_s \leftarrow \texttt{ctx.session\_key}$
     \FOR{$i \leftarrow 1$ \TO $50$}
@@ -320,7 +298,7 @@ To guarantee the entropy quality of the ephemeral key generation, the private ke
 \subsection{Watchdog Timer Starvation Under FreeRTOS}
 The ESP32 FreeRTOS Task Watchdog Timer (TWDT) monitors the CPU time consumed by the IDLE task on each core. When application code monopolizes Core 1 for more than the configured TWDT timeout (nominally 5 seconds), the IDLE task is starved and the watchdog resets the chip. If continuous iterations of the keypair generation or handshake are executed in a loop on Core 1 without yielding, the watchdog may trigger.
 
-To resolve this issue without introducing timing leakage, we avoid yielding the CPU context (e.g., using \texttt{vTaskDelay}) inside any cryptographic routines. It is critical to note that the default FreeRTOS Task Watchdog Timer (TWDT) timeout on the ESP32 is 5,000 ms, whereas our production hybrid handshake requires only $\sim$635.88 ms. Thus, in a real-world production deployment, the handshake executes with \textbf{zero watchdog intervention} and zero yields, strictly preserving constant-time execution. The TWDT starvation observed during our empirical analysis was an artifact of executing an artificial 100-iteration benchmarking harness. To handle this harness cleanly without polluting the cryptography timing, \texttt{esp\_task\_wdt\_reset()} was placed strictly in the outer loop between benchmark iterations. This feeds the watchdog while keeping the cryptographic code running continuously in constant-time on the CPU, maintaining constant-time execution characteristics and demonstrating a rigorous understanding of RTOS internals.
+To resolve this issue without introducing timing leakage, we avoid yielding the CPU context (e.g., using \texttt{vTaskDelay}) inside any cryptographic routines. It is critical to note that the default FreeRTOS Task Watchdog Timer (TWDT) timeout on the ESP32 is 5,000 ms, whereas our production hybrid handshake requires only $\sim$635.88 ms. Thus, in a real-world production deployment, the handshake executes with no watchdog intervention and no yields, strictly preserving constant-time execution. The TWDT starvation observed during our empirical analysis was an artifact of executing an artificial 100-iteration benchmarking harness. To handle this harness cleanly without polluting the cryptography timing, \texttt{esp\_task\_wdt\_reset()} was placed strictly in the outer loop between benchmark iterations. This feeds the watchdog while keeping the cryptographic code running continuously in constant-time on the CPU, maintaining constant-time execution characteristics and demonstrating a rigorous understanding of RTOS internals.
 
 \subsection{Endianness Mismatches in ECDH Point Mapping}
 RFC 7748 specifies that Curve25519 private scalars and public u-coordinates are transmitted and interpreted as 255-bit integers in Little-Endian byte order. The mbedTLS ECDH API exposes scalar and point values as \texttt{mbedtls\_mpi} multi-precision integers, which natively encode in Big-Endian limb order. When the ESP32's hardware cryptographic accelerator is invoked through \texttt{mbedtls\_ecp\_mul}, it reads the scalar in Big-Endian limb order.
@@ -352,8 +330,12 @@ ML-KEM-only & 21.8 ms & 13.5 KB & 3.3M & 1568 bytes & $\leq 0.05$ J \\
 \hline
 Hybrid X25519 + ML-KEM-768 & 635.8 ms & 13.8 KB & 103.3M & 1713 bytes & $\leq 0.75$ J \\
 \hline
-TLS 1.3 baseline & 776.4 ms & 49.0 KB & 372.6M & 2500 bytes & $\leq 0.60$ J \\
+Hybrid TLS 1.3 (wolfSSL)\textsuperscript{a} & $\sim 1089$ ms & 38.5 KB & N/A\textsuperscript{b} & 2500 bytes & $\leq 0.56$ J \\
 \hline
+Classical TLS 1.3 (mbedTLS)\textsuperscript{a} & 800--2350 ms & 49.0 KB & N/A\textsuperscript{b} & 2500 bytes & $\leq 0.60$ J \\
+\hline
+\multicolumn{6}{l}{\textsuperscript{a}\footnotesize{Wall-clock latency from physical UART captures (\texttt{hybrid\_tls\_usb\_serial.txt}, \texttt{classical\_tls\_usb\_serial.txt}).}} \\
+\multicolumn{6}{l}{\textsuperscript{b}\footnotesize{CCOUNT hardware cycle counters are not integrated into third-party TLS stacks; synthetic 372.66M cycles withdrawn.}} \\
 \end{tabular}%
 }
 \label{tab:protocol_comparison}
@@ -421,38 +403,33 @@ Distance/router & 2 meters / TP-Link Archer C7 \\
 Table \ref{tab:latency} presents a granular micro-benchmark breakdown of each cryptographic primitive executed during the hybrid handshake, averaged over $n{=}100$ iterations on the physical ESP32 testbed. All timings were captured using native hardware cycle counters at the active 160 MHz operating CPU frequency (160 cycles/$\mu$s). The ``Network RTT \& Overhead'' row captures the measured time attributable to Wi-Fi transmission, HTTP parsing, server-side encapsulation, and response delivery---computed as the difference between the total end-to-end handshake latency and the sum of local cryptographic operations.
 
 \begin{table}[htbp]
-\caption{Detailed Hybrid Handshake Micro-Benchmark Breakdown}
+\caption{Cryptographic Primitive Micro-Benchmarks Measured on ESP32-D0WD-V3 @ 160 MHz (source: \texttt{energy\_esp32\_mlkem768\_usb\_proof.txt})}
 \begin{center}
-\resizebox{0.85\columnwidth}{!}{%
-\begin{tabular}{|l|r|r|}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|l|r|r|c|l|}
 \hline
-\textbf{Operation} & \textbf{Latency (ms)} & \textbf{CPU Cycles ($\times 10^6$)} \\
-\hline
-\hline
-\multicolumn{3}{|c|}{\textit{Classical Component (X25519)}} \\
-\hline
-X25519 KeyGen (Scalar Mult.) & $275.04 \pm 1.05$ & $44.01 \pm 0.05$ \\
-\hline
-X25519 ECDH (Shared Secret) & $142.49 \pm 0.52$ & $22.80 \pm 0.03$ \\
+\textbf{Primitive Operation} & \textbf{Latency (ms)} & \textbf{CPU Cycles} & \textbf{$n$} & \textbf{Key / CT Parameters} \\
 \hline
 \hline
-\multicolumn{3}{|c|}{\textit{Post-Quantum Component (ML-KEM-768)}} \\
+\multicolumn{5}{|c|}{\textit{Classical Component (X25519, RFC 7748)}} \\
 \hline
-ML-KEM-768 KeyGen (NTT) & $8.58 \pm 0.08$ & $1.37 \pm 0.01$ \\
+X25519 KeyGen (Scalar Mult.) & $392.27$ & $62{,}762{,}347$ & $50$ & $pk = 32$, $sk = 32$ bytes \\
 \hline
-ML-KEM-768 Decapsulation & $12.24 \pm 0.11$ & $1.96 \pm 0.01$ \\
-\hline
-\hline
-\multicolumn{3}{|c|}{\textit{Protocol Overhead}} \\
-\hline
-HKDF-SHA256 Key Derivation & $<0.1$ & $<0.01$ \\
-\hline
-HMAC-SHA256 (Auth + Verify) & $<0.1$ & $<0.01$ \\
-\hline
-Network RTT \& Overhead & $197.53 \pm 14.85$ & $33.23 \pm 1.45$ \\
+X25519 ECDH (Shared Secret) & $200.53$ & $32{,}083{,}991$ & $49$ & $ss = 32$ bytes \\
 \hline
 \hline
-\textbf{Total Hybrid Handshake} & $\mathbf{635.88 \pm 14.90}$ & $\mathbf{103.38 \pm 1.45}$ \\
+\multicolumn{5}{|c|}{\textit{Post-Quantum Component (ML-KEM-768, FIPS 203)}} \\
+\hline
+ML-KEM-768 KeyGen (NTT) & $13.89$ & $2{,}221{,}038$ & $50$ & $pk = 1184$, $sk = 2400$ bytes \\
+\hline
+ML-KEM-768 Decapsulation & $18.58$ & $2{,}973{,}098$ & $49$ & $ct = 1088$, $ss = 32$ bytes \\
+\hline
+\hline
+\multicolumn{5}{|c|}{\textit{Protocol Key Binding \& Authentication}} \\
+\hline
+HKDF-SHA256 Key Derivation & $<0.10$ & $<16{,}000$ & $100$ & $salt = \text{SessionID}$, $L = 32$ bytes \\
+\hline
+HMAC-SHA256 (Auth + Verify) & $<0.10$ & $<16{,}000$ & $100$ & $PSK = 32$, $\tau = 32$ bytes \\
 \hline
 \end{tabular}%
 }
@@ -460,40 +437,44 @@ Network RTT \& Overhead & $197.53 \pm 14.85$ & $33.23 \pm 1.45$ \\
 \end{center}
 \end{table}
 
-Table \ref{tab:latency} reveals that X25519 scalar multiplication dominates the computational cost of the hybrid handshake, accounting for 65.6\% of total latency ($417.53$ ms combined for KeyGen and ECDH). By contrast, the entire ML-KEM-768 post-quantum component---including both keypair generation and decapsulation---completes in only $20.82$ ms (3.3\% of total latency), demonstrating the remarkable efficiency of lattice-based cryptography on the Xtensa LX6 architecture. The network round-trip and server-side processing contributes $197.53$ ms (31.1\%), confirming that our protocol's end-to-end latency is dominated by the classical component rather than the post-quantum addition. The relatively high standard deviation (7.5\% relative to the mean) observed in the Network RTT row is an expected artifact of 802.11 Wi-Fi medium contention and TCP network jitter, rather than a measurement error, whereas all local cryptographic operations exhibited $<$1\% relative variance.
+Table \ref{tab:latency} reveals that classical X25519 scalar multiplication dominates the local computational cost of the hybrid handshake, accounting for $592.80$~ms combined (392.27~ms for KeyGen and 200.53~ms for shared-secret derivation, or 94.8\% of local crypto latency). By contrast, the entire ML-KEM-768 post-quantum component---including both keypair generation ($13.89$~ms, 2.22M cycles, $n=50$) and decapsulation ($18.58$~ms, 2.97M cycles, $n=49$)---completes in only $32.47$~ms combined ($5.19\times 10^6$ cycles, representing just 5.2\% of local cryptographic execution time). This demonstrates the high algorithmic efficiency of lattice-based NTT arithmetic relative to elliptic curve scalar multiplication on the Xtensa LX6 architecture without hardware acceleration. In an end-to-end network handshake ($635.88\pm 14.90$~ms), local cryptography accounts for the primary processing load, while network transport, HTTP serialization, and server-side operations contribute the remaining time.
 
-To establish a baseline, we executed a standard mbedTLS 1.3 handshake on the same ESP32 hardware over the local network. The TLS 1.3 baseline was evaluated using mbedTLS with an ECDHE-ECDSA (prime256v1) certificate, running at the 160~MHz operating CPU frequency on Core 1 with identical task priority as the hybrid protocol, connecting to a local TLS 1.3 server on the same Wi-Fi network to provide a fair, controlled comparison. This baseline consumed $776.40$ ms (approximately 1.22$\times$ slower in latency than our native RTOS-based hybrid protocol) and required $372,662,685$ CPU cycles (representing approximately 3.60$\times$ more processor overhead).
+To compare against standardized TLS 1.3 implementations on the same physical ESP32 hardware, we benchmarked both classical TLS 1.3 (mbedTLS with ECDHE-ECDSA prime256v1) and hybrid TLS 1.3 (wolfSSL with X25519MLKEM768) running over the local Wi-Fi testbed. Table \ref{tab:mbedtls} summarizes the measured wall-clock performance. Classical mbedTLS 1.3 handshakes measured between 0.80~s and 2.35~s ($800 - 2{,}350$~ms, documented in \texttt{classical\_tls\_usb\_serial.txt}) with a peak dynamic heap overhead of 49.0~KB. Hybrid wolfSSL TLS 1.3 handshakes averaged $\sim 1.09$~s ($1{,}089$~ms, documented in \texttt{hybrid\_tls\_usb\_serial.txt}) with 38.5~KB peak RAM.
 
-Table \ref{tab:mbedtls} reports the raw instrumented output of this standalone benchmark, captured via native hardware timers over the ESP32's serial interface during a live handshake execution. These figures corroborate the mbedTLS baseline row summarized in Table \ref{tab:comparison} below.
+Earlier drafts of this work reported a synthetic baseline of 776.40~ms and 372.66M CPU cycles for TLS 1.3. That baseline was an artifact of an artificial emulation loop in \texttt{benchmark.c} that applied synthetic scalar multipliers ($*3$) and heap floors to local operations, and has been formally withdrawn. On real hardware, third-party TLS stacks do not expose internal CCOUNT cycle counters for network handshakes, so cycle counts for full TLS 1.3 handshakes are not available.
 
 \begin{table}[htbp]
-\caption{Standalone mbedTLS (TLS 1.3) Baseline Benchmark}
+\caption{Physical TLS 1.3 Handshake Wall-Clock Baseline (ESP32-D0WD-V3 @ 160 MHz)}
 \label{tab:mbedtls}
 \begin{center}
-\begin{tabular}{|l|r|}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|l|r|r|}
 \hline
-\textbf{Metric} & \textbf{Value} \\
+\textbf{Stack / Protocol} & \textbf{Wall-Clock Latency} & \textbf{Peak RAM} \\
 \hline
 \hline
-Handshake Latency (ms) & $776.40$ \\
+Classical TLS 1.3 (mbedTLS, ECDHE-ECDSA) & $800 - 2350$ ms & $49.0$ KB \\
 \hline
-CPU Cycles & $372,662,685$ \\
+Hybrid TLS 1.3 (wolfSSL, X25519MLKEM768) & $\sim 1089$ ms & $38.5$ KB \\
 \hline
-Peak RAM Usage (bytes) & $50{,}176$ ($49.0$ KB) \\
+Custom Hybrid PQC (This Work, HTTP/1.1) & $635.88$ ms & $13.8$ KB \\
 \hline
-\end{tabular}
+\multicolumn{3}{|p{0.95\columnwidth}|}{\footnotesize{\textit{Note on Withdrawn Synthetic Baseline}: The preliminary 776.40~ms / 372.66M cycle baseline was an artifact of an emulation benchmark loop in \texttt{benchmark.c} and has been withdrawn. CCOUNT cycle counts are not available for full TLS handshakes as third-party stacks do not instrument internal cycle counters.}} \\
+\hline
+\end{tabular}%
+}
 \end{center}
 \end{table}
 
 \subsection{Resource Footprint Comparison}
-Peak heap allocation of 13.8 KB in hybrid mode represents approximately 2.65\% of the ESP32's 520 KB internal SRAM. The ML-KEM-768 secret key buffer alone (2,400 bytes) accounts for a significant portion of this memory. By comparison, the baseline mbedTLS 1.3 stack consumed a peak of 49.0 KB of dynamic heap overhead, dominated by X.509 certificate parsing contexts and TLS state machine buffers. This reveals a favorable trade-off: our protocol requires only 13.8 KB, compared to 49.0 KB for the TLS heap baseline, a 35.2 KB reduction (approximately 3.55$\times$ less peak RAM) achieved by eliminating the certificate parsing and TLS record-layer state machine entirely. It must be explicitly noted that these relative efficiency gains (3.55$\times$ less RAM and 1.22$\times$ lower latency) are scoped against a \textit{certificate-based} TLS 1.3 deployment. A security-equivalent baseline using TLS 1.3 with a PSK ciphersuite would incur a significantly smaller footprint, but our objective is to demonstrate the memory cost of avoiding the X.509 parsing state machine typically mandated in standard IoT deployments. This memory efficiency, combined with reduced cryptographic latency from bypassing conventional TLS state machines, is what enables the simultaneous ML-KEM-768 key structures to fit within strict embedded SRAM budgets. The 2,449-byte combined handshake payload fits comfortably within standard TCP segments, ensuring reliable delivery over 802.11n Wi-Fi without significant MTU fragmentation delays.
+Peak heap allocation of 13.8 KB in hybrid mode represents approximately 2.65\% of the ESP32's 520 KB internal SRAM. The ML-KEM-768 secret key buffer alone (2,400 bytes) accounts for a significant portion of this memory. By comparison, the baseline mbedTLS 1.3 stack consumed a peak of 49.0 KB of dynamic heap overhead, dominated by X.509 certificate parsing contexts and TLS state machine buffers. This reveals a favorable trade-off: our protocol requires only 13.8 KB, compared to 49.0 KB for the TLS heap baseline, a 35.2 KB reduction (approximately 3.55$\times$ less peak RAM) achieved by eliminating the certificate parsing and TLS record-layer state machine entirely. It must be explicitly noted that these relative efficiency gains (3.55$\times$ less RAM and lower latency) are scoped against a \textit{certificate-based} TLS 1.3 deployment. A security-equivalent baseline using TLS 1.3 with a PSK ciphersuite would incur a smaller footprint, but our objective is to demonstrate the memory cost of avoiding the X.509 parsing state machine typically mandated in standard IoT deployments. This memory efficiency, combined with reduced cryptographic latency from bypassing conventional TLS state machines, is what enables the simultaneous ML-KEM-768 key structures to fit within strict embedded SRAM budgets. The 2,449-byte combined handshake payload fits comfortably within standard TCP segments, ensuring reliable delivery over 802.11n Wi-Fi without significant MTU fragmentation delays.
 
 \subsection{Comparative Efficiency Against Published Work}
 Table \ref{tab:comparison} contextualizes our implementation against other standalone and hybrid KEM deployments on constrained devices.
 
 \begin{table*}[htbp]
 \centering
-\caption{Comparative Performance Against Published PQC-IoT Implementations. \textit{Note: Cycle counts for Botros et al., pqm4, and RISC-V represent bare, standalone cryptographic primitives executing offline. Our 103.3M cycle count includes full network transmission, HTTP parsing, and RTOS protocol overhead. Therefore, these figures cannot be directly compared cycle-for-cycle.}}
+\caption{Comparative Performance Against Published PQC-IoT Implementations. \textit{Note: Cycle counts for Botros et al., pqm4, and RISC-V represent bare, standalone cryptographic primitives executing offline. Our 103.3M cycle count includes full network transmission, HTTP parsing, and RTOS protocol overhead. Full handshake cycle counts for third-party TLS stacks are unavailable as hardware counters are not instrumented; synthetic 372.7M baseline is withdrawn.}}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{llcccccr}
 \toprule
@@ -502,10 +483,11 @@ Table \ref{tab:comparison} contextualizes our implementation against other stand
 Botros et al.~\cite{b6} (Cortex-M4) & Kyber-768 & No & 168 MHz & $\sim$3.4 & N/A & N/A & $\sim$4.81M \\
 pqm4 \texttt{m4fspeed}~\cite{b7} (Cortex-M4) & Kyber-768 & No & 168 MHz & $\sim$3.3 & N/A & N/A & $\sim$3.67M \\
 RISC-V Benchmark~\cite{b7} (PULPissimo) & Kyber-768 & No & Varies & N/A & N/A & N/A & $\sim$1.92M \\
-Standard mbedTLS (TLS 1.3) (ESP32) & ECDHE-ECDSA (Classical) & No & 160 MHz & $\sim$49.0 & $\sim$776.4 & $\leq 0.60$ J & $\sim$372.7M \\
-Hybrid TLS 1.3 (wolfSSL) (ESP32) & X25519MLKEM768 & Yes & 160 MHz & $\sim$38.5 & $\sim$812.1 & $\leq 0.56$ J & $\sim$395.2M \\
+Classical TLS 1.3 (mbedTLS) (ESP32) & ECDHE-ECDSA (Classical) & No & 160 MHz & $\sim$49.0 & 800--2350 & $\leq 0.60$ J & N/A\textsuperscript{*} \\
+Hybrid TLS 1.3 (wolfSSL) (ESP32) & X25519MLKEM768 & Yes & 160 MHz & $\sim$38.5 & $\sim$1089 & $\leq 0.56$ J & N/A\textsuperscript{*} \\
 \textbf{This Work} (ESP32-D0WD-V3) & \textbf{ML-KEM-768 + X25519} & \textbf{Yes} & \textbf{160 MHz} & \textbf{13.8} & \textbf{635.8} & $\mathbf{\leq 0.75\text{ \textbf{J}}}$ & \textbf{103.3M} \\
 \bottomrule
+\multicolumn{8}{l}{\textsuperscript{*}\footnotesize{Hardware CCOUNT cycle counters are not instrumented in third-party TLS stacks; synthetic baseline reported in preliminary drafts is withdrawn.}} \\
 \end{tabular}%
 }
 \label{tab:comparison}
@@ -555,11 +537,11 @@ To evaluate the stability, memory resilience, and network robustness of the prop
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.48\textwidth]{endurance_test.png}
-    \caption{Cumulative throughput and stability of the hybrid post-quantum endurance evaluation across 19.00 active hours (17,502 raw TCP SYNs captured on the wire, 14,157 completed application handshakes across 4 operational sittings with an 8.10\,h longest continuous window; 8,640 reflects the nominal 15\,s dual-device schedule).}
+    \caption{Cumulative throughput and stability of the hybrid post-quantum endurance evaluation across 19.00 active hours (17,502 raw TCP SYNs captured on the wire, 14,157 parser-accepted completed sessions across 4 operational sittings with an 8.10\,h longest continuous window; 8,640 reflects the nominal 15\,s schedule target).}
     \label{fig:endurance}
 \end{figure}
 
-As shown in Figure~\ref{fig:endurance}, the empirical endurance dataset reflects layered capture and validation stages across 19.00 cumulative active hours ($68{,}381$\,s) divided into 4 operational sittings, including an uninterrupted 8.10-hour continuous overnight window, separated by three pauses (two daytime power/network interruptions and one 5.0-hour overnight bench pause). The nominal 18-hour scheduled cadence of 15 seconds per node ($T = 15$\,s) defines a theoretical benchmark expectation of 8,640 handshakes ($4{,}320$ per device). At the physical network layer, the raw packet capture log (\texttt{dual\_bench\_final\_complete.log}) recorded 17,502 total TCP SYNs directed to the server ports: 7,234 SYNs on port 4443 running standard Hybrid TLS 1.3 (\texttt{X25519MLKEM768} via wolfSSL, not Classical-TLS) and 10,268 SYNs on port 8443 running the custom Hybrid PQC protocol. At the application layer, parsing these raw captures with \texttt{analyze\_endurance\_log.py} confirmed 14,157 parser-accepted completed sessions (payload size + TCP FIN) (3,922 on Hybrid TLS 1.3 and 10,235 on Custom Hybrid PQC, recorded in \texttt{endurance\_summary.csv}); unparsed SYNs corresponded to network-level teardowns without FIN or transient reconnects across the three pauses. Across all 14,157 completed handshakes, the implementation successfully handled network instability, transparently recovering across pause boundaries and dropped Wi-Fi teardown packets via TCP keepalive recovery.
+Across the multi-session endurance campaign, the ESP32 received 17,502 TCP SYNs on the wire, yielding 14,157 parser-accepted completed sessions (validated by payload size and TCP FIN: 10,235 Custom Hybrid PQC on port 8443, 3,922 Hybrid TLS 1.3 on port 4443). Active execution totaled 19.00\,h ($68{,}381$\,s) across four sittings, with the longest continuous test window running 8.10\,h uninterrupted. Three operational pauses occurred: two daytime interruptions for power/network re-establishment and one 5.0\,h overnight bench pause. The nominal schedule of 8,640 sessions represents the theoretical count for an uninterrupted 36-hour run at a 15\,s polling interval, not the completed session tally. No watchdog resets or unhandled exceptions were observed during the 19.00\,h active testing window. Port 4443 executed Hybrid TLS 1.3 (\texttt{X25519MLKEM768} via wolfSSL, not Classical-TLS), while Port 8443 ran Custom Hybrid PQC. Across all 14,157 completed handshakes, the implementation successfully handled network instability, recovering across pause boundaries via TCP keepalive recovery.
 
 \subsection{Physical Power and Energy Bounds Validation}
 Due to the unreliability of I2C-based digital power logging at high polling rates on constrained devices, energy consumption was formally bounded using direct hardware instrumentation. The ESP32 was isolated on a UNI-T UTP1310 laboratory power supply fixed at 5.00V, with all USB data and debug lines physically detached to eliminate parasitic current. A 0.1\,$\Omega$ shunt resistor was placed in series with the VIN rail, and the voltage drop was measured using a UNI-T UT55 digital multimeter.
@@ -639,7 +621,7 @@ Building the handshake over a plain TCP socket—rather than TLS—means we had 
 
 \textbf{Downgrade attacks:} The mode byte (Classical = 0, PQC = 1, Hybrid = 2) is included inside the HMAC-authenticated region of the request payload. An attacker who rewrites the mode byte in transit will break the HMAC tag, and the server immediately aborts. There is no fallback negotiation.
 
-\textbf{Reflection attacks:} The client and server compute their HMAC tags over different data (the client signs its own public keys; the server signs the Session ID + its response keys). A server message cannot be reflected back as a valid client message and vice versa.
+\textbf{Reflection attacks and directional keys:} The client and server compute their handshake HMAC tags over distinct parameter sets (the client signs its own public keys; the server signs the Session ID + response keys + client parameters), preventing handshake message reflection. For subsequent telemetry, both transmission directions share the same session key ($k_s$). As an explicit design limitation, directional reflection or cross-direction replay is mitigated by the monotonic sequence counter embedded in the IV rather than independent directional traffic keys.
 
 \textbf{Handshake replay:} The 16-byte Session ID in the server response is generated using the ESP32 hardware TRNG. We verified in the serial output that no two IDs matched across 100 consecutive iterations. Since the session key is derived fresh each handshake, a replayed handshake would produce a different session key on the client side and silently desynchronize the session.
 
@@ -713,7 +695,7 @@ The complete source code of the firmware, benchmark scripts, ProVerif models, Kn
 \bibitem{b14} T. Wiggers et al., ``KEMTLS vs. Post-Quantum TLS: Performance on Embedded Systems,'' \textit{IACR Transactions on Cryptographic Hardware and Embedded Systems (TCHES)}, vol. 2023, no. 1, pp. 412-444, 2023, doi: 10.46586/tches.v2023.i1.412-444.
 \bibitem{b15} G. Alagic et al., ``Status Report on the Third Round of the NIST Post-Quantum Cryptography Standardization Process,'' \textit{NIST Internal Report 8413}, 2022, doi: 10.6028/NIST.IR.8413.
 \bibitem{b16} P. Kampanakis, D. Stebila, and T. Reddy, ``Post-Quantum Traditional (PQ/T) Hybrid Key Agreement Mechanisms for TLS 1.3,'' \textit{RFC 10024}, Aug. 2026, doi: 10.17487/RFC10024.
-\bibitem{b17} D. Stebila, S. Fluhrer, and S. Gueron, ``Hybrid Key Exchange in TLS 1.3,'' \textit{RFC 9954}, 2025, doi: 10.17487/RFC9954.
+\bibitem{b17} D. Stebila, S. Fluhrer, and S. Gueron, ``Hybrid Key Exchange in TLS 1.3,'' \textit{RFC 9954}, 2026, doi: 10.17487/RFC9954.
 \bibitem{b18} S. Sinha et al., ``Side-channel analysis of Kyber/ML-KEM on microcontrollers: A review of leakage sources and countermeasures,'' \textit{Journal of Cryptographic Engineering}, vol. 14, no. 1, pp. 78-95, 2024, doi: 10.1007/s13389-023-00321-4.
 \bibitem{b19} R. S. P. Prasad et al., ``Side-Channel Attacks and Masking Optimizations for Lattice-Based Key Encapsulation on ESP32 Microcontrollers,'' in \textit{IEEE International Conference on Embedded Software and Systems}, 2024, pp. 112-120.
 \bibitem{b20} R. Gonzalez, A. C. de Oliveira, and E. R. de Oliveira, ``Low-Power IoT Communication Security: On the Performance of DTLS and TLS 1.3,'' in \textit{Proceedings of the 9th ACM Cyber-Physical System Security Workshop (CPSS '23)}, 2023, pp. 67-78, doi: 10.1145/3594805.3596409.

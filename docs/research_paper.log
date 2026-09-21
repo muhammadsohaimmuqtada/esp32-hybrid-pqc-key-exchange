@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Debian) (preloaded format=pdflatex 2026.6.13)  16 JUL 2026 09:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Debian) (preloaded format=pdflatex 2026.8.17)  21 SEP 2026 10:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **research_paper.tex
 (./research_paper.tex
-LaTeX2e <2025-11-01>
-L3 programming layer <2026-05-15>
+LaTeX2e <2026-06-01>
+L3 programming layer <2026-06-18>
 (./IEEEtran.cls
 Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
 -- See the "IEEEtran_HOWTO" manual for usage information.
@@ -121,7 +121,7 @@ LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2025/07/09 v2.17z AMS math features
+Package: amsmath 2026/05/19 v2.18d AMS math features
 \@mathmargin=\skip52
 
 For additional information on amsmath, use the `?' option.
@@ -185,8 +185,8 @@ LaTeX Info: Redefining \Relbar on input line 970.
 \multlinegap=\skip53
 \multlinetaggap=\skip54
 \mathdisplay@stack=\toks22
-LaTeX Info: Redefining \[ on input line 2950.
-LaTeX Info: Redefining \] on input line 2951.
+LaTeX Info: Redefining \[ on input line 2965.
+LaTeX Info: Redefining \] on input line 2966.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
@@ -206,7 +206,7 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+Package: keyval 2026-05-17 v1.15 key=value parser (DPC)
 \KV@toks@=\toks23
 )
 \c@ALC@unique=\count303
@@ -232,10 +232,10 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@algorithm=\count308
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+Package: graphicx 2026-05-17 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2026-05-17 v1.4h Standard LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
@@ -304,6 +304,9 @@ Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
+(/usr/share/texlive/texmf-dist/tex/latex/placeins/placeins.sty
+Package: placeins 2005/04/18  v 2.2
+)
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count314
@@ -311,20 +314,20 @@ File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
 (./research_paper.aux)
 \openout1 = `research_paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
 
 -- Lines per column: 58 (exact).
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -349,225 +352,339 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Underfull \hbox (badness 5203) in paragraph at lines 38--40
-[]\OT1/ptm/b/it/9 Index Terms\OT1/ptm/b/n/9 ---Post-Quantum Cryp-tog-ra-phy, In
--ter-net of
- []
+LaTeX Font Info:    Trying to load font information for U+msa on input line 37.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 45.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 45.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 37.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texm
-f-dist/fonts/enc/dvips/base/8r.enc}
+)
+Underfull \hbox (badness 5203) in paragraph at lines 40--42
+[]\OT1/ptm/b/it/9 Index Terms\OT1/ptm/b/n/9 ---Post-Quantum Cryp-tog-ra-phy, In
+-ter-net of
+ []
+
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 4
+7.
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 49--50
+[]\OT1/ptm/m/n/10 NIST fi-nal-ized the an-swer in Au-gust 2024 with
+ []
+
+
+Underfull \hbox (badness 1371) in paragraph at lines 49--50
+\OT1/ptm/m/n/10 the clas-si-cal X25519 com-po-nent pre-serves se-cu-rity. The
+ []
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-
+dist/fonts/enc/dvips/base/8r.enc}
 
 
 ]
-Underfull \hbox (badness 1867) in paragraph at lines 64--65
-[]\OT1/ptm/m/n/10 Module-LWE (M-LWE), the foun-da-tion of ML-KEM,
- []
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 7
+0.
 
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 130--131
-[]\OT1/ptm/b/n/10 Decapsulate: \OT1/ptm/m/n/10 Us-ing the se-cret key $\OML/cmm
-/m/it/10 sk \OT1/cmr/m/n/10 =
- []
-
-
-Underfull \hbox (badness 2781) in paragraph at lines 130--131
-\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 s; pk; H\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 pk\
-OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; z\OT1/cmr/m/n/10 )$\OT1/ptm/m/n/10 , the de-
-cap-su-lat-ing en-tity com-putes
- []
-
-
-Underfull \hbox (badness 4582) in paragraph at lines 130--131
-\OT1/ptm/m/n/10 cor-rec-tion. If the re-encrypted ci-pher-text matches,
- []
-
-
-Underfull \hbox (badness 1484) in paragraph at lines 130--131
-\OT1/ptm/m/n/10 it re-turns the shared se-cret; oth-er-wise it re-turns a
- []
-
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 1
-44.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-Overfull \hbox (9.23889pt too wide) in paragraph at lines 142--145
-\OT1/ptm/m/n/10 where the salt is \OT1/pcr/m/n/10 "HybridPQC-ESP32-Session-v1"\
-OT1/ptm/m/n/10 . 
+Underfull \hbox (badness 3735) in paragraph at lines 70--71
+\OT1/ptm/m/n/10 ware is also clear: phys-i-cal TLS 1.3 hand-shakes on
+ []
+
+[2]
+Underfull \hbox (badness 6842) in paragraph at lines 122--123
+[]\OT1/ptm/b/n/10 Decapsulate: \OT1/ptm/m/n/10 The holder of se-cret key $\OML/
+cmm/m/it/10 sk \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (8.03923pt too wide) detected at line 131
+[][] \OT1/cmr/m/n/10 = []([]\OML/cmm/m/it/10 ; [] \OMS/cmsy/m/n/10 k []\OT1/cmr
+/m/n/10 )
+ []
+
+
+Overfull \hbox (41.89995pt too wide) detected at line 135
+[][] \OT1/cmr/m/n/10 = []([]\OML/cmm/m/it/10 ; [] \OMS/cmsy/m/n/10 k []\OT1/cmr
+/m/n/10 )
+ []
+
+
+Overfull \hbox (41.35023pt too wide) detected at line 159
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 163--164
+[]\OT1/ptm/m/n/10 Unlike TLS 1.3, which man-dates a sub-se-quent
  []
 
 [3]
-<../figures/architecture_diagram.png, id=24, 1369.115pt x 124.465pt>
+<../figures/architecture_diagram.png, id=26, 1369.115pt x 124.465pt>
 File: ../figures/architecture_diagram.png Graphic file (type png)
 <use ../figures/architecture_diagram.png>
 Package pdftex.def Info: ../figures/architecture_diagram.png  used on input lin
-e 184.
+e 175.
 (pdftex.def)             Requested size: 258.0pt x 23.45297pt.
-<../figures/handshake_sequence.png, id=25, 1662.21pt x 1616.0375pt>
+<../figures/handshake_sequence.png, id=27, 657.45625pt x 633.36626pt>
 File: ../figures/handshake_sequence.png Graphic file (type png)
 <use ../figures/handshake_sequence.png>
 Package pdftex.def Info: ../figures/handshake_sequence.png  used on input line 
-190.
-(pdftex.def)             Requested size: 163.79846pt x 159.24597pt.
+181.
+(pdftex.def)             Requested size: 163.79846pt x 157.7903pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 221--222
+Underfull \hbox (badness 10000) in paragraph at lines 212--213
 [] []\OT1/ptm/m/n/10 Generate ran-dom 32-byte pri-vate key
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 223--224
+Underfull \hbox (badness 10000) in paragraph at lines 214--215
 [] []\OT1/pcr/m/n/10 ctx.x25519_privkey[0] $\OMS/cmsy/m/n/10  $
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 224--225
+Underfull \hbox (badness 10000) in paragraph at lines 215--216
 [] []\OT1/pcr/m/n/10 ctx.x25519_privkey[31] $\OMS/cmsy/m/n/10  $
  []
 
 
-Underfull \hbox (badness 5726) in paragraph at lines 225--226
+Underfull \hbox (badness 5726) in paragraph at lines 216--217
 [] []\OT1/ptm/m/n/10 Compute pub-lic key \OT1/pcr/m/n/10 ctx.x25519_pubkey $\OM
 S/cmsy/m/n/10  $
  []
 
 
-Underfull \hbox (badness 1874) in paragraph at lines 228--229
-[] []\OT1/ptm/m/n/10 Generate ML-KEM-512 key-pair (\OT1/pcr/m/n/10 ctx.mlkem_pk
+Underfull \hbox (badness 1874) in paragraph at lines 219--220
+[] []\OT1/ptm/m/n/10 Generate ML-KEM-768 key-pair (\OT1/pcr/m/n/10 ctx.mlkem_pk
 \OT1/ptm/m/n/10 ,
  []
 
-LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 2
-49.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
-File: omsptm.fd 
-)
-LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 249.
 
-Underfull \hbox (badness 10000) in paragraph at lines 257--258
+Underfull \hbox (badness 1577) in paragraph at lines 228--229
+[] []\OT1/ptm/m/n/10 Context \OT1/pcr/m/n/10 ctx\OT1/ptm/m/n/10 ; \OT1/pcr/m/n/
+10 ClientHello\OT1/ptm/m/n/10 ; server re-sponse
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 242--243
 [] []\OT1/ptm/m/n/10 Compute clas-si-cal se-cret: $[] \OMS/cmsy/m/n/10  
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 261--262
+Underfull \hbox (badness 10000) in paragraph at lines 246--247
 [] []\OT1/ptm/m/n/10 Extract ML-KEM ci-pher-text $\OML/cmm/m/it/10 c[] \OMS/cms
 y/m/n/10  
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 263--264
+Underfull \hbox (badness 10000) in paragraph at lines 248--249
 [] []\OT1/ptm/m/n/10 Decapsulate: $[] \OMS/cmsy/m/n/10  
  []
 
+LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 2
+52.
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 252.
 
-Underfull \hbox (badness 10000) in paragraph at lines 269--270
-[] []\OT1/pcr/m/n/10 ctx.session_key $\OMS/cmsy/m/n/10  
+Underfull \hbox (badness 5741) in paragraph at lines 255--256
+[] []$[] \OMS/cmsy/m/n/10   []\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 PSK; [] \OMS/cm
+sy/m/n/10 k
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 270--271
+Underfull \hbox (badness 10000) in paragraph at lines 259--260
 [] []\OT1/ptm/m/n/10 Securely ze-roize $[]$, $[]$,
  []
 
 
-Underfull \hbox (badness 5847) in paragraph at lines 281--282
+Underfull \hbox (badness 5847) in paragraph at lines 270--271
 [] []\OT1/ptm/m/n/10 Initialize cryp-to-graphic con-text \OT1/pcr/m/n/10 ctx \O
 T1/ptm/m/n/10 with mode
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 286--287
-[] []\OT1/ptm/m/n/10 Pack pub-lic keys: $[] \OMS/cmsy/m/n/10   [] k
+Underfull \hbox (badness 10000) in paragraph at lines 275--276
+[] []$\OML/cmm/m/it/10 ^^\[] \OMS/cmsy/m/n/10   []\OT1/cmr/m/n/10 (\OML/cmm/m/i
+t/10 PSK; [] \OMS/cmsy/m/n/10 k
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 287--288
-[] []\OT1/ptm/m/n/10 Compute hand-shake sig-na-ture: $[] \OMS/cmsy/m/n/10  
+Overfull \hbox (32.92311pt too wide) in paragraph at lines 281--282
+[] []$[] \OMS/cmsy/m/n/10   []\OT1/cmr/m/n/10 ([]\OML/cmm/m/it/10 ; []; []\OT1/
+cmr/m/n/10 )$ 
  []
 
 [4 <../figures/architecture_diagram.png (PNG copy)> <../figures/handshake_seque
-nce.png (PNG copy)>] [5] [6]
-<../figures/power_lifecycle.png, id=41, 752.8125pt x 681.54625pt>
+nce.png (PNG copy)>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5]
+Underfull \hbox (badness 5302) in paragraph at lines 442--443
+\OT1/ptm/m/n/10 Ta-ble V[] sum-ma-rizes the mea-sured wall-clock per-for-
+ []
+
+[6]
+
+LaTeX Font Warning: Font shape `OT1/ptm/m/scit' undefined
+(Font)              using `OT1/ptm/m/it' instead on input line 477.
+
+<../figures/power_lifecycle.png, id=42, 752.8125pt x 681.54625pt>
 File: ../figures/power_lifecycle.png Graphic file (type png)
 <use ../figures/power_lifecycle.png>
-Package pdftex.def Info: ../figures/power_lifecycle.png  used on input line 507
+Package pdftex.def Info: ../figures/power_lifecycle.png  used on input line 502
 .
 (pdftex.def)             Requested size: 163.79846pt x 148.28711pt.
+[7 <../figures/power_lifecycle.png (PNG copy)>]
+<../figures/endurance_test.png, id=47, 542.025pt x 317.988pt>
+File: ../figures/endurance_test.png Graphic file (type png)
+<use ../figures/endurance_test.png>
+Package pdftex.def Info: ../figures/endurance_test.png  used on input line 539.
 
-Underfull \hbox (badness 1472) in paragraph at lines 543--544
+(pdftex.def)             Requested size: 247.6778pt x 145.30583pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<../figures/energy_bounds.png, id=49, 578.16pt x 361.35pt>
+File: ../figures/energy_bounds.png Graphic file (type png)
+<use ../figures/energy_bounds.png>
+Package pdftex.def Info: ../figures/energy_bounds.png  used on input line 551.
+(pdftex.def)             Requested size: 247.6778pt x 154.79852pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[8 <../figures/endurance_test.png>]
+Underfull \hbox (badness 1721) in paragraph at lines 569--571
+\OT1/ptm/m/n/10 the mod-eled se-cu-rity prop-er-ties un-der ac-tive Dolev-Yao
+ []
+
+
+Underfull \hbox (badness 4832) in paragraph at lines 569--571
+\OT1/ptm/m/n/10 ad-ver-saries. The ver-i-fi-ca-tion en-gine proved both \OT1/pc
+r/m/n/10 not
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 569--571
+\OT1/pcr/m/n/10 attacker(secret_client_data[]) is true
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 569--571
+\OT1/ptm/m/n/10 and \OT1/pcr/m/n/10 not attacker(secret_server_data[]) is
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 569--571
+\OT1/pcr/m/n/10 ==> inj-event(server_key_derived(k)) is
+ []
+
+
+Underfull \hbox (badness 1430) in paragraph at lines 569--571
+\OT1/pcr/m/n/10 true\OT1/ptm/m/n/10 , for-mally con-firm-ing in-jec-tive key ag
+ree-ment and
+ []
+
+
+Underfull \hbox (badness 1472) in paragraph at lines 575--576
 \OT1/ptm/m/n/10 (QROM). The con-struc-tion achieves IND-CCA2 se-cu-rity
  []
 
 
-Underfull \hbox (badness 3439) in paragraph at lines 546--547
+Underfull \hbox (badness 3439) in paragraph at lines 578--579
 []\OT1/ptm/m/n/10 Without au-then-ti-ca-tion, ephemeral Diffie-Hellman and
  []
 
-[7 <../figures/power_lifecycle.png (PNG copy)>] [8] [9]
-Underfull \hbox (badness 1406) in paragraph at lines 635--636
-[]\OT1/ptm/m/n/8 H. Zhou et al., ``A Per-for-mance Eval-u-a-tion of TLS and DTL
-S
+[9 <../figures/energy_bounds.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 637--638
+[]\OT1/ptm/b/n/10 Timing mea-sure-ments. \OT1/ptm/m/n/10 All la-ten-cies are th
+e
  []
 
 
-Underfull \hbox (badness 5878) in paragraph at lines 635--636
-\OT1/ptm/m/n/8 1.3 for Resource-Constrained IoT De-vices,'' \OT1/ptm/m/it/8 IEE
-E In-ter-net of
+Underfull \hbox (badness 4084) in paragraph at lines 637--638
+\OT1/ptm/m/n/10 mean of 100 con-sec-u-tive it-er-a-tions cap-tured via
  []
 
 
-Underfull \hbox (badness 2799) in paragraph at lines 635--636
-\OT1/ptm/m/it/8 Things Jour-nal\OT1/ptm/m/n/8 , vol. 10, no. 18, pp. 16234-1624
-8, 2023, doi:
+Underfull \hbox (badness 2293) in paragraph at lines 637--638
+\OT1/pcr/m/n/10 esp_timer_get_time() \OT1/ptm/m/n/10 be-fore and af-ter each
  []
 
-[10
+
+Underfull \hbox (badness 1533) in paragraph at lines 669--670
+[]\OT1/ptm/m/n/10 We set out to an-swer one prac-ti-cal ques-tion: can a
+ []
+
+
+Underfull \hbox (badness 2790) in paragraph at lines 669--670
+\OT1/ptm/m/n/10 production-grade hy-brid post-quantum key ex-change |
+ []
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 677--678
+\OT1/ptm/m/n/10 GitHub at $https : / / github . com / muhammadsohaimmuqtada /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--678
+\OT1/ptm/m/n/10 esp32-[]hybrid-[]pqc-[]key-[]exchange$ un-der re-lease tag
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [11]
+[12
 
 ] (./research_paper.aux)
  ***********
-LaTeX2e <2025-11-01>
-L3 programming layer <2026-05-15>
+LaTeX2e <2026-06-01>
+L3 programming layer <2026-06-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 4724 strings out of 469254
- 73486 string characters out of 5464782
- 521813 words of memory out of 5000000
- 33497 multiletter control sequences out of 15000+600000
- 675515 words of font info for 133 fonts, out of 8000000 for 9000
+ 4817 strings out of 469082
+ 75526 string characters out of 5458915
+ 519912 words of memory out of 5000000
+ 33745 multiletter control sequences out of 15000+600000
+ 678409 words of font info for 143 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 57i,13n,65p,1843b,487s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,14n,65p,2186b,487s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/
-utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on research_paper.pdf (10 pages, 525099 bytes).
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
+/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on research_paper.pdf (12 pages, 779461 bytes).
 PDF statistics:
- 136 PDF objects out of 1000 (max. 8388607)
- 82 compressed objects within 1 object stream
+ 162 PDF objects out of 1000 (max. 8388607)
+ 96 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

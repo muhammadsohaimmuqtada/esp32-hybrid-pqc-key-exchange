@@ -85,10 +85,12 @@ All queries (`k_session` secrecy, mutual handshake injection, and forward secrec
 python3 tools/analyze_endurance_log.py
 ```
 Parses [`docs/evidence/endurance_summary.csv`](docs/evidence/endurance_summary.csv) across physical testbed sessions:
-- **17,502 raw SYNs** captured on the wire across all operational sessions (7,234 on port 4443 and 10,268 on port 8443).
-- **14,157 parser-accepted sessions** validated by payload size and TCP FIN (10,235 Custom Hybrid PQC and 3,922 Hybrid TLS 1.3).
-- **19.00 h active duration** across **4 operational sittings** (separated by three pauses: two daytime power/network interruptions and one 5.0 h overnight bench pause).
+- **17,502 raw TCP SYNs** captured on the wire across all operational sessions (7,234 on port 4443 and 10,268 on port 8443).
+- **14,157 parser-accepted completed sessions** validated by payload size and TCP FIN (10,235 Custom Hybrid PQC and 3,922 Hybrid TLS 1.3).
+- **19.00 h active execution** (68,381 s) across **4 operational sittings**.
 - **8.10 h longest continuous window** during uninterrupted overnight testing.
+- **Three operational pauses** (two daytime power/network interruptions, one 5.0 h overnight bench pause).
+- **8,640** was the nominal 15 s schedule target, not completed session count.
 - **Port 4443 = Hybrid TLS 1.3 X25519MLKEM768** (wolfSSL), not classical baseline.
 
 ### 4. Build and Run Backend Server
@@ -109,16 +111,18 @@ idf.py -p /dev/ttyUSB0 flash monitor
 
 ---
 
-## 📊 Summary of Headline Findings
+## 📊 Summary of Cryptographic Primitive Benchmarks
 
-| Metric | Classical Reference (X25519) | PQC Reference (ML-KEM-768) | Hybrid Proposed (X25519 + ML-KEM-768) | Classical TLS 1.3 Baseline |
-| :--- | :--- | :--- | :--- | :--- |
-| **Public Key Size** | 32 bytes | 1,184 bytes | 1,216 bytes | Variable (X.509 chain) |
-| **Ciphertext Size** | 32 bytes | 1,088 bytes | 1,120 bytes | Variable |
-| **Peak Heap Usage** | ~6.4 KB | ~11.2 KB | **13.8 KB** | > 38.0 KB |
-| **Local CPU Cycles** | 4.96M cycles | 12.35M cycles | **17.31M cycles** | 82.50M cycles |
-| **Computation Time** | ~31.0 ms | ~77.2 ms | **108.2 ms** | ~515.6 ms |
-| **Quantum Resistance** | No | Yes (FIPS 203) | **Yes (FIPS 203 + RFC 7748)** | No |
+Measured on physical ESP32-D0WD-V3 @ 160 MHz (source: [`data/raw_logs/energy_esp32_mlkem768_usb_proof.txt`](data/raw_logs/energy_esp32_mlkem768_usb_proof.txt), parsed via [`data/processed_results/parsed_cycles.csv`](data/processed_results/parsed_cycles.csv)):
+
+| Operation | Sample Count ($n$) | Mean Latency | Mean CPU Cycles | Public Key Size | Secret Key / Ciphertext Size |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **ML-KEM-768 Keygen** | $n = 50$ | 13.89 ms ($13,886\ \mu\text{s}$) | 2.22M cycles ($2,221,038$) | 1,184 bytes | 2,400 bytes |
+| **ML-KEM-768 Decap** | $n = 49$ | 18.58 ms ($18,582\ \mu\text{s}$) | 2.97M cycles ($2,973,098$) | 1,184 bytes | 1,088 bytes (ct) |
+| **X25519 Keygen** | $n = 50$ | 392.27 ms ($392,269\ \mu\text{s}$) | 62.76M cycles ($62,762,347$) | 32 bytes | 32 bytes |
+| **X25519 Shared Secret** | $n = 49$ | 200.53 ms ($200,530\ \mu\text{s}$) | 32.08M cycles ($32,083,991$) | 32 bytes | 32 bytes |
+
+> **Note on TLS 1.3 Baseline & Synthetic Harness Withdrawal**: Earlier reported values of 776.40 ms and 372.66M cycles for TLS 1.3 were synthetic artifacts from an emulation loop in `firmware/main/benchmark.c` (applying synthetic scalar multipliers and heap floors) and have been formally withdrawn. Actual physical wall-clock TLS 1.3 handshakes on ESP32 measure ~1.09 s for hybrid wolfSSL (see [`data/raw_logs/hybrid_tls_usb_serial.txt`](data/raw_logs/hybrid_tls_usb_serial.txt)) and 0.80–2.35 s for classical mbedTLS (see [`data/raw_logs/classical_tls_usb_serial.txt`](data/raw_logs/classical_tls_usb_serial.txt)).
 
 ---
 

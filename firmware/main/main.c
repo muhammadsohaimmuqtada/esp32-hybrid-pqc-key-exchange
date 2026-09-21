@@ -3,7 +3,7 @@
  * X25519 + ML-KEM-768 Hybrid Post-Quantum Key Exchange
  *
  * Protocol: session_key = HKDF-SHA256(X25519_ss || ML-KEM_ss)
- * Target: ESP32-D0WD-V3 (240 MHz, 520 KB SRAM, 4 MB Flash)
+ * Target: ESP32-D0WD-V3 (160 MHz, 520 KB SRAM, 4 MB Flash)
  *
  * Based on: "Hybrid Post-Quantum Cryptography on ESP32 Edge Devices"
  */
